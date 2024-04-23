@@ -1,4 +1,5 @@
 #cover{
+    position: relative;
     .intro-container{
         .intro-header{
             font-family: "Poppins", Sans-serif;
@@ -38,6 +39,40 @@
                 -o-transition: all .2s linear;
                 -ms-transition: all .2s linear;
                 text-decoration: none;
+            }
+        }
+    }
+}
+
+#about{
+    position: relative;
+    padding-bottom: 50px;
+
+    .about-container{
+        .about-image-container{
+            .about-image{
+                max-width: 350px;
+                width: 100%;
+                box-shadow: -39px 55px 0px 6px rgba(25,19,70);
+            }
+
+            .social-media-container{
+                align-self: flex-start;
+                margin-left: 58px;
+            }
+        }
+
+        .about-content-container{
+            .about-header{
+                font-family: 'Poppins';
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 1.2;
+                padding-bottom: 20px;
+            }
+            .about-description{
+                margin-bottom: 1.6em;
+                line-height: 1.8;
             }
         }
     }

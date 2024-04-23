@@ -1,10 +1,21 @@
 <div class="section-container container">
-    <div class="intro-about-container w-100 row">
-        <div class="about-image-container col-md-4">
-            <img src="{{ site.data.setting.about-image }}" class="img-fluid d-block"/>
+    <div class="about-container w-100 row">
+        <div class="about-image-container col-md-5 no-gutter d-flex flex-column align-items-center">
+            <img src="{{ site.data.setting.about-image }}" class="img-fluid d-block about-image"/>
+            <div class="social-media-container">
+                <ul class="nav d-flex flex-row mt-2">
+                    {% for media in site.data.setting.social-media %}
+                        <li class="me-3">
+                            <a class="text-muted" href="{{ social-media.url }}">
+                                <img src="{{ media.icon }}" class="footer-icon icon"/>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
        
-        <div class="about-content-container col-md-8">
+        <div class="about-content-container col-md-7 no-gutter">
             <h3 class="about-header">{{ site.data.setting.about-header }}</h3>
             <p class="about-description">{{ site.data.setting.about-description }}</p>
         </div>
