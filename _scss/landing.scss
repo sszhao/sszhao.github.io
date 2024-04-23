@@ -1,0 +1,44 @@
+#cover{
+    .intro-container{
+        .intro-header{
+            font-family: "Poppins", Sans-serif;
+            font-size: 62px;
+            font-weight: 700;
+            padding-top: 80px;
+            padding-bottom: 70px;
+
+            .intro-description{
+                padding: 10px 0px 0px 0px;
+                font-family: "Lato", Sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 1;
+            }
+        }
+    }
+
+    .intro-video-container{
+        padding-top: 80px;
+        padding-bottom: 70px;
+        height: 100%;
+        overflow: hidden;
+        transform: translateZ(0);
+
+        .intro-button-container{
+            margin-top: 20px;
+
+            .intro-button{
+                border: 1px solid #fff;
+                padding: 20px 30px 20px 30px;
+                font-size: 16px;
+                color: #fff;
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -mos-transition: all .2s linear;
+                -o-transition: all .2s linear;
+                -ms-transition: all .2s linear;
+                text-decoration: none;
+            }
+        }
+    }
+}
