@@ -1,0 +1,46 @@
+<div class="section-container container">
+    <div class="header-container">
+        <h2 class="text-center">{{ site.data.setting.publication-header }}</h2>
+    </div>
+
+    <div class="button-group filters-button-group text-center">
+        {% for filter in site.data.setting.publication-filter %}
+        <button class="button {% if forloop.first %}is-checked{%endif%}" 
+                        data-filter="{% if forloop.index == 1 %}{{ filter.filter }}{%else%} .{{ filter.filter }} {%endif%}">
+            {% if forloop.index == 1 %}{{ filter.text }}{% else %} {{ filter.filter | upcase }} {% endif %} 
+        </button>
+        {% endfor %}
+    </div>
+
+    <div class="grid">
+        {% for publication in site.publications %}
+        <div class="publication-container publication-item {{ publication.date | date:'%Y' }} w-100" data-category="{{ publication.date | date:'%Y' }}">
+            <div class="row">
+                <div class="left-section col-md-4">
+                    <img src="{{ publication.image }}" class="img-fluid d-block"/>
+                </div>
+
+                <div class="right-section col-md-6">
+                    <div class="content-container">
+                        <span class="date">{{ publication.date | date: '%Y' }}</span>
+                        <span class="title">{{ publication.title }}</span>
+                        <span class="authors">{{ publication.authors }}</span>
+                    </div>
+
+                    <a href="{{ publication.pdf-link }}" target="_blank"> View PDF</a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+    {% endfor %}
+    </div>
+
+    <div class="counter-container d-flex flex-row">
+        {% for counter in site.data.setting.showcase-counter %}
+        <div class="item-container d-flex flex-row flex-fill">
+            <span class="number d-block">{{ counter.number }}</span>
+            <span class="number d-block">{{ counter.text }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>

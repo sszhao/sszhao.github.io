@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">{{ site.data.setting.brand-logo }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-lg-0">
+        {% for nav-item in site.data.setting.nav-list %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ nav-item.url }}">{{ nav-item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="nav-button-container">
+        <a href="#">Explore Now</a>
+      </div>
+    </div>
+  </div>
+</nav>
