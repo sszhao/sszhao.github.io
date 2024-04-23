@@ -9,17 +9,61 @@ body{
 }
 
 nav{
-    // .navbar-brand{
-    //     color: #fff;
-    // }
+    background-color: #0b043a;
 
-    // .navbar-nav{
-    //     .navbar-item{
-    //         .nav-link{
-    //             color: #fff;
-    //         }
-    //     }
-    // }
+    .container{
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 1240px;
+
+        .navbar-brand{
+            font-size: 1.875rem;
+            max-width: 198px;
+            white-space: normal;
+            margin-right: 0;
+        }
+
+        .nav-item{
+            .nav-link{
+                padding: 0 1em;
+                font-size: 16px;
+                color: #c3c0d8;
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -mos-transition: all .2s linear;
+                -o-transition: all .2s linear;
+                -ms-transition: all .2s linear;
+
+                &:hover{
+                    color: #fff;
+                }   
+            }
+        }
+
+        .nav-button-container{
+            .button-link{
+                text-decoration: none;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 26px;
+                padding-right: 26px;
+                font-weight: 600;
+                font-size: 1rem;
+                border: 1px solid #fff;
+                color: #fff;
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -mos-transition: all .2s linear;
+                -o-transition: all .2s linear;
+                -ms-transition: all .2s linear;
+
+                &:hover{
+                    color: #905cff;
+                    background-color: #fff;
+                }
+            }
+        }
+    }
 }
 
 .icon{
