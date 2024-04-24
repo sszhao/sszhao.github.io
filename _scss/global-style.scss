@@ -17,10 +17,13 @@ nav{
         max-width: 1240px;
 
         .navbar-brand{
+            padding-top: 10px;
+            padding-bottom: 10px;
             font-size: 1.875rem;
             max-width: 198px;
             white-space: normal;
             margin-right: 0;
+            line-height: 1.2;
         }
 
         .nav-item{
