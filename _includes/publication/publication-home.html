@@ -1,0 +1,39 @@
+<div class="section-container container">
+    <div class="grid">
+        {% for publication in site.publications reversed %}
+        <div class="publication-container publication-item {{ publication.date | date:'%Y' }} w-100" data-category="{{ publication.date | date:'%Y' }}">
+            <div class="row">
+                <div class="left-section col-md-3">
+                    <div class="image-container">
+                        <img src="{{ publication.image }}" class="img-fluid d-block image"/>
+                    </div>
+                </div>
+
+                <div class="right-section col-md-9">
+                    <div class="content-container">
+                        <span class="date d-block">
+                            {% if publication.date-text %} {{ publication.date-text }}&nbsp;{% endif %}
+                            {{ publication.date | date: '%Y' }}
+                        </span>
+                        <span class="title d-block">{{ publication.title }}</span>
+                        <span class="authors d-block">{{ publication.author }}</span>
+                        {% if publication.pdf-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View PDF</a>
+                        {% endif %}
+                        {% if publication.video-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View Video</a>
+                        {% endif %}
+                        {% if publication.page-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View Link</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if forloop.last %}
+            {% else %}
+            <div class="publication-divider"></div>
+            {% endif %}
+        </div> 
+    {% endfor %}
+    </div>
+</div>

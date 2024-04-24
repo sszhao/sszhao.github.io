@@ -1,0 +1,164 @@
+
+#cover{
+    position: relative;
+
+    .section-container{
+        position: relative;
+        max-width: 1360px;
+        width: 100%;
+
+        .intro-container{
+            position: relative;
+            min-height: 102px;
+            box-shadow: 0px 0px #00000070;
+            padding-top: 112px;
+            padding-bottom: 112px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+            margin-left: 0px;
+            margin-right: 0px;
+            row-gap: 0px;
+            column-gap: 0px;
+            overflow: visible;
+            border-color: inherit;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+            background-attachment: scroll;
+            background-image: url('/assets/hero/publication-banner.jpeg');
+            background-clip: padding-box;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+
+            &::before{
+                max-width: 1360px;
+                content: "";
+                position: absolute;
+                pointer-events: none;
+                top: -0px;
+                left: -0px;
+                width: 100%;
+                height: 100%;
+                border-color: inherit;
+                background-image: linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgb(38, 14, 14) 55%, rgba(155, 81, 224, 0.5) 100%);
+                opacity: 1;
+            }
+
+            .intro-header{
+                position: relative;
+                z-index: 10;
+                font-size: 3.875rem;
+                font-weight: 700;
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.2em;
+                letter-spacing: -2px;
+            }
+        }
+    }
+   
+}
+
+#publication{
+    position: relative;
+
+    .section-container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .header-container{
+            .header{
+                font-family: "Poppins", Sans-serif;
+                font-size: 48px;
+                font-weight: 700;
+                line-height: 1.2em;
+            }
+        }
+
+        
+        .publication-container{
+            .left-section{
+                .image-container{
+                    .image{
+                        border-radius: 6px;
+                    }
+                }
+            }
+            .right-section{
+                padding-left: 30px;
+
+                .content-container{
+                    .date{
+                        font-size: 20px;
+                        line-height: 0.9em;
+                        letter-spacing: 0px;
+                        font-family: 'Poppins';
+                        font-weight: 700;
+                    }
+
+                    .title{
+                        margin-bottom: 8px;
+                        margin-top: 12px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        font-family: 'Poppins';
+                        font-weight: 700;
+                        font-size: 19px;
+                        line-height: 1.35em;
+                    }
+
+                    .authors{
+                        color: #c3c0d8;
+                        margin: 0;
+                        font-size: 14px;
+                    }
+
+                    .publication-link{
+                        margin-right: 15px;
+                        margin-top: 15px;
+                        display: inline-block;
+                        text-decoration: none;
+                        border-style: solid;
+                        border: 1px solid #8750fc;
+                        background-color: #8750fc;
+                        color: #fff;
+                        font-weight: 700;
+                        line-height: 26px;
+                        font-size: 16px;
+                        font-size: 1rem;
+                        border-radius: 0;
+                        padding-top: 16px;
+                        padding-right: 32px;
+                        padding-bottom: 16px;
+                        padding-left: 32px;
+                        transition: all .2s linear;
+                        -webkit-transition: all .2s linear;
+                        -mos-transition: all .2s linear;
+                        -o-transition: all .2s linear;
+                        -ms-transition: all .2s linear;
+                        text-decoration: none;
+
+                        &:hover{
+                            background-color: #fff;
+                            color: #8750fc;
+                            border-color: #8750fc;
+                        }
+                    }
+                }
+            }
+
+            .publication-divider{
+                width: 100%;
+                border: 1px solid #605a8a;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+        }
+        
+    }
+}

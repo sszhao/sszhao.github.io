@@ -3,9 +3,9 @@ logo-link: "https://shengdongzhao.com/"
 
 nav-list:
   - title: Home
-    url:
+    url: /
   - title: Research
-    url:
+    url: /publication/
   - title: Synteraction Lab
     url:
   - title: Blog
