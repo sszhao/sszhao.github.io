@@ -40,6 +40,29 @@ javascript: >
                 $( this ).addClass('is-checked');
             });
         });
+
+        // Only trigger publication counter on page offset view
+        $triggerCounter = 0;
+        $(window).on('scroll', function(){
+            const yScrollPos = window.pageYOffset;
+            const scrollPosTrigger = 3600;
+            if(yScrollPos >= scrollPosTrigger && $triggerCounter == 0) {
+                $('.count').each(function () {
+                    $(this).prop('Counter',0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 2500,
+                        easing: 'linear',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now));
+                        }
+                    });
+                });
+                $triggerCounter = 1;
+            }
+        });
+        
+        
     </script>
 ---
 {{ content }}

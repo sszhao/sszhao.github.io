@@ -1,11 +1,11 @@
 <div class="section-container container">
     <div class="header-container">
-        <h2 class="text-center">{{ site.data.setting.publication-header }}</h2>
+        <h2 class="text-center header">{{ site.data.setting.publication-header }}</h2>
     </div>
 
     <div class="button-group filters-button-group text-center">
         {% for filter in site.data.setting.publication-filter %}
-        <button class="button {% if forloop.first %}is-checked{%endif%}" 
+        <button class="filter-button {% if forloop.first %}is-checked{%endif%}" 
                         data-filter="{% if forloop.index == 1 %}{{ filter.filter }}{%else%} .{{ filter.filter }} {%endif%}">
             {% if forloop.index == 1 %}{{ filter.text }}{% else %} {{ filter.filter | upcase }} {% endif %} 
         </button>
@@ -16,30 +16,49 @@
         {% for publication in site.publications %}
         <div class="publication-container publication-item {{ publication.date | date:'%Y' }} w-100" data-category="{{ publication.date | date:'%Y' }}">
             <div class="row">
-                <div class="left-section col-md-4">
-                    <img src="{{ publication.image }}" class="img-fluid d-block"/>
+                <div class="left-section col-md-3">
+                    <div class="image-container">
+                        <img src="{{ publication.image }}" class="img-fluid d-block image"/>
+                    </div>
                 </div>
 
-                <div class="right-section col-md-6">
+                <div class="right-section col-md-8">
                     <div class="content-container">
-                        <span class="date">{{ publication.date | date: '%Y' }}</span>
-                        <span class="title">{{ publication.title }}</span>
-                        <span class="authors">{{ publication.authors }}</span>
+                        <span class="date d-block">
+                            {% if publication.date-text %} {{ publication.date-text }}&nbsp;{% endif %}
+                            {{ publication.date | date: '%Y' }}
+                        </span>
+                        <span class="title d-block">{{ publication.title }}</span>
+                        <span class="authors d-block">{{ publication.author }}</span>
+                        {% if publication.pdf-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View PDF</a>
+                        {% endif %}
+                        {% if publication.video-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View Video</a>
+                        {% endif %}
+                        {% if publication.page-link %}
+                        <a href="{{ publication.pdf-link }}" target="_blank" class="publication-link"> View Link</a>
+                        {% endif %}
                     </div>
-
-                    <a href="{{ publication.pdf-link }}" target="_blank"> View PDF</a>
                 </div>
             </div>
-        </div>
-        <hr/>
+            <div class="publication-divider"></div>
+        </div> 
     {% endfor %}
+    </div>
+
+     <div class="publication-page-container">
+        <a href="#" class="publication-link">See More</a>
     </div>
 
     <div class="counter-container d-flex flex-row">
         {% for counter in site.data.setting.showcase-counter %}
-        <div class="item-container d-flex flex-row flex-fill">
-            <span class="number d-block">{{ counter.number }}</span>
-            <span class="number d-block">{{ counter.text }}</span>
+        <div class="item-container d-flex flex-row flex-fill {% if forloop.last %} no-border{% endif %}">
+            <span class="counter-number d-block {% if forloop.index == 2%}fillerPlus{% else %}filler{% endif %}">
+                <strong class="count">{{ counter.number }}</strong>
+                {% if forloop.index == 2 %}<strong class="extra">+</strong>{% endif %}     
+            </span>
+            <span class="counter-text d-block">{{ counter.text }}</span>
         </div>
         {% endfor %}
     </div>

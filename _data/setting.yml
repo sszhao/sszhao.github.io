@@ -37,13 +37,13 @@ publication-filter:
 
 showcase-counter:
   - number: 15
-    text: Years of experience
-  - number: 120+
+    text: Years of <br/>experience
+  - number: 120
     text: Publications
   - number: 48
     text: Collaborators
   - number: 15
-    text: PhD graduates
+    text: PhD <br/>graduates
 
 team:
   - image: /assets/img/member/member1.png

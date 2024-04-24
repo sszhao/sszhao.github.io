@@ -216,3 +216,209 @@
         }
     }
 }
+
+#publication{
+    position: relative;
+
+    .section-container{
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .header-container{
+            .header{
+                font-family: "Poppins", Sans-serif;
+                font-size: 48px;
+                font-weight: 700;
+                line-height: 1.2em;
+            }
+        }
+
+        .filters-button-group{
+            margin-bottom: 20px;
+            
+            .filter-button{
+                background-color: #1b1448;
+                border: 1px solid #fff;
+                padding: 6px 15px;
+                margin: 3px 3px 15px;
+                font-size: 13px;
+                line-height: 1.8;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                padding: 6px 15px;
+                cursor: pointer;
+                font-weight: normal;
+                color: #fff;
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -mos-transition: all .2s linear;
+                -o-transition: all .2s linear;
+                -ms-transition: all .2s linear;
+                text-decoration: none;
+
+                &:hover, &.is-checked{
+                    background-color: #8750fc;
+                    border: 1px solid #8750fc;
+                }
+            }
+        }
+
+        .grid{
+            .publication-container{
+                .left-section{
+                    .image-container{
+                        .image{
+                            border-radius: 6px;
+                        }
+                    }
+                }
+                .right-section{
+                    padding-left: 30px;
+
+                    .content-container{
+                        .date{
+                            font-size: 20px;
+                            line-height: 0.9em;
+                            letter-spacing: 0px;
+                            font-family: 'Poppins';
+                            font-weight: 700;
+                        }
+
+                        .title{
+                            margin-bottom: 8px;
+                            margin-top: 12px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            font-family: 'Poppins';
+                            font-weight: 700;
+                            font-size: 19px;
+                            line-height: 1.35em;
+                        }
+
+                        .authors{
+                            color: #c3c0d8;
+                            margin: 0;
+                            font-size: 14px;
+                        }
+
+                        .publication-link{
+                            margin-top: 15px;
+                            display: inline-block;
+                            text-decoration: none;
+                            border-style: solid;
+                            border: 1px solid #8750fc;
+                            background-color: #8750fc;
+                            color: #fff;
+                            font-weight: 700;
+                            line-height: 26px;
+                            font-size: 16px;
+                            font-size: 1rem;
+                            border-radius: 0;
+                            padding-top: 16px;
+                            padding-right: 32px;
+                            padding-bottom: 16px;
+                            padding-left: 32px;
+                            transition: all .2s linear;
+                            -webkit-transition: all .2s linear;
+                            -mos-transition: all .2s linear;
+                            -o-transition: all .2s linear;
+                            -ms-transition: all .2s linear;
+                            text-decoration: none;
+
+                            &:hover{
+                                background-color: #fff;
+                                color: #8750fc;
+                                border-color: #8750fc;
+                            }
+                        }
+                    }
+                }
+
+                .publication-divider{
+                    width: 100%;
+                    border: 1px solid #605a8a;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 40px;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+
+        .publication-page-container{
+            padding-bottom: 50px;
+            text-align: center;
+
+            .publication-link{
+                margin-top: 15px;
+                display: inline-block;
+                text-decoration: none;
+                border-style: solid;
+                border: 1px solid #8750fc;
+                background-color: #8750fc;
+                color: #fff;
+                font-weight: 700;
+                line-height: 26px;
+                font-size: 16px;
+                font-size: 1rem;
+                border-radius: 0;
+                padding-top: 16px;
+                padding-right: 32px;
+                padding-bottom: 16px;
+                padding-left: 32px;
+                transition: all .2s linear;
+                -webkit-transition: all .2s linear;
+                -mos-transition: all .2s linear;
+                -o-transition: all .2s linear;
+                -ms-transition: all .2s linear;
+                text-decoration: none;
+
+                &:hover{
+                    background-color: #fff;
+                    color: #8750fc;
+                    border-color: #8750fc;
+                }
+            }   
+        }
+
+        .counter-container{
+            padding-top: 80px;
+            padding-bottom: 80px;
+            
+            .item-container{
+                border-right: 1px solid #fff;
+                padding: 25px;
+                justify-content: space-around;
+                align-items: center;
+
+                .counter-number{
+                    font-size: 64px;
+                    font-weight: 400;
+                    line-height: 1;
+
+                    &.filler{
+                        min-width: 75px;
+                    }
+
+                    &.fillerPlus{
+                        min-width: 150px;
+                    }
+
+                    .extra{
+                        margin-left: -10px;
+                    }
+                }
+
+                .counter-text{
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 1.2em;
+                }
+
+                &.no-border{
+                    border: none !important;
+                }
+            }
+        }
+    }
+}
