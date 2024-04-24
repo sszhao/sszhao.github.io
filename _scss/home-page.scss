@@ -46,7 +46,7 @@
 
 #about{
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
 
     .about-container{
         .about-image-container{
@@ -73,6 +73,145 @@
             .about-description{
                 margin-bottom: 1.6em;
                 line-height: 1.8;
+            }
+        }
+    }
+}
+
+#blog{
+    position: relative;
+
+    .header-container{
+        padding-top: 25px;
+        padding-bottom: 10px;
+
+        .header{
+            font-family: "Poppins", Sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2em;
+        }
+    }
+    .blog-list-container{
+        padding-top: 20px;
+        padding-bottom: 50px;
+        
+        .blog-item{
+            .card{
+                position: relative;
+                background-color: #1b1448;
+                margin-bottom: 20px;
+
+                .image-container{
+                    position: relative;
+
+                    .image{
+                        position: relative;
+                        padding: 20px;
+                        overflow: hidden;
+                        display: block;
+                        border-radius: 10px;
+                        outline: 0;
+                    }
+                    .date-container{
+                        left: -10px;
+                        position: absolute;
+                        bottom: 30px;
+                        top: auto;
+
+                        .date-tag{
+                            background-color: #8750FC;
+                            width: auto;
+                            height: auto;
+                            border-radius: 0;
+                            padding-left: 22px;
+                            padding-right: 12px;
+                            position: relative;
+                            display: flex;
+                            font-size: 12px;
+                            text-align: center;
+                            color: #fff;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            align-items: center;
+                            margin-left: 4px;
+
+                            &::before{
+                                color: #6228DE;
+                                border-width: 5px;
+                                left: 0%;
+                                top: -6px;
+                                border-right: solid #6228DE;
+                                border-left: solid transparent;
+                                position: absolute;
+                                content: "";
+                                border-bottom: solid #6228DE;
+                                border-top: solid transparent;
+                                box-sizing: border-box;
+                            }
+                            .date-wrapper{
+                                margin: 7px 0;
+                                display: block;
+                                line-height: 1;
+                                width: 100%;
+                                font-size: 12px;
+                                text-align: center;
+                                
+                                strong{
+                                display: block;
+                                font-size: 22px;
+                                font-weight: 900;
+                                line-height: 1;
+                                margin-bottom: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+
+                .card-body{
+                        background-color: #1b1448;
+                        border-width: 1px 1px 1px 1px;
+                        padding: 20px 40px 40px;
+                    .card-title{
+                        font-size: 18px;
+                        margin-bottom: 28px;
+                        line-height: 1.2;
+                        font-weight: 400;
+                        font-family: 'Poppins', sans-serif;
+                        letter-spacing: -1px;
+                    }
+                    .card-link{
+                        background-color: #1b1448;
+                        border-style: solid;
+                        border-width: 1px 1px 1px 1px;
+                        border-radius: 1px;
+                        font-size: 15px;
+                        padding: 15px 30px;
+                        display: inline-block;
+                        color: #fff;
+                        position: relative;
+                        display: inline-block;
+                        line-height: 1;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        white-space: nowrap;
+                        vertical-align: middle;
+                        text-align: center;
+                        -webkit-transition: all .4s ease;
+                        transition: all .4s ease;
+                        text-decoration: none;
+
+                        &:hover{
+                            background-color: #fff;
+                            color: #8750FC;
+                            border-color: #8750FC;
+                        }
+                    }
+                }
             }
         }
     }
