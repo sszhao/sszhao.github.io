@@ -5,7 +5,7 @@
 
     <div class="member-container">
         <div class="row">
-            {% for member in site.data.setting.team %}
+            {% for member in site.data.setting.team limit:8 %}
             <div class="member-item col-md-3 d-flex flex-column align-items-center">
                 <img src="{{ member.image }}" class="member-image img-fluid d-block rounded-circle">
                 <span class="member-name d-block text-center">{{ member.name }}</span>

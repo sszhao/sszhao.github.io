@@ -4,7 +4,7 @@
 
     .section-container{
         position: relative;
-        max-width: 1360px;
+        // max-width: 1360px;
         width: 100%;
 
         .intro-container{
@@ -35,7 +35,7 @@
             flex-wrap: nowrap;
 
             &::before{
-                max-width: 1360px;
+                // max-width: 1360px;
                 content: "";
                 position: absolute;
                 pointer-events: none;

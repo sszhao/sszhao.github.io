@@ -9,9 +9,9 @@ nav-list:
   - title: Synteraction Lab
     url:
   - title: Blog
-    url:
+    url:  /blog/
   - title: Team member
-    url:
+    url:  /team-member/
 
 intro-header: "Heads-up Computing"
 intro-description: "Towards to the next interaction paradigm via wearable intelligent assistants"
@@ -71,6 +71,16 @@ team:
   - image: /assets/img/member/member8.png
     name: Yaorui
     title: Research Assistant
+  - image: /assets/img/member/avatar.png
+    name: Felicia Tan
+    title: Intern
+  - image: /assets/img/member/avatar.png
+    name: William
+    title: Intern
+  - image: /assets/img/member/member9.png
+    name: Gu Yue
+    title: Visiting Phd Student
+
 
 social-media:
   - icon: /assets/icon/facebook.svg
