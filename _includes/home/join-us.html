@@ -1,18 +1,22 @@
-<div class="section-container container ">
-    <div class="col-md-4 d-flex align-items-center">
-        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-            Join us
-        </a>
-    </div>
-
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-    {% for media in site.data.setting.social-media %}
-        <li class="ms-3">
-            <a class="text-muted" href="{{ social-media.url }}">
-                <img src="{{ media.icon }}" class="footer-icon icon"/>
+<div class="section-container container">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6 left-section">
+            <a href="#" class="join-link">
+                Join us
             </a>
-        </li>
-    {% endfor %}
-    </ul>
+        </div>
+
+        <div class="right-section col-md-6">
+            <ul class="justify-content-end list-unstyled d-flex mb-0">
+            {% for media in site.data.setting.social-media %}
+                <li class="ms-3">
+                    <a class="text-muted" href="{{ social-media.url }}">
+                        <img src="{{ media.icon }}" class="footer-icon icon"/>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
     

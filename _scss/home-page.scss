@@ -505,5 +505,23 @@
             }
         }   
     }
-    
-}   
+}
+
+#join-us{
+    position: relative;
+    padding-top: 130px;
+    padding-bottom: 80px;
+
+    .left-section{
+        .join-link{
+            font-family: "Poppins", Sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2em;
+            color: #8750fc;
+        }
+    }
+    .right-section{
+
+    }
+}
