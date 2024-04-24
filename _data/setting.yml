@@ -45,6 +45,7 @@ showcase-counter:
   - number: 15
     text: PhD <br/>graduates
 
+team-header: Research Team
 team:
   - image: /assets/img/member/member1.png
     name: Ashwin Ram

@@ -422,3 +422,88 @@
         }
     }
 }
+
+#team{
+    position: relative;
+
+    .header-container{
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        .header{
+            font-family: "Poppins", Sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2em;
+        }
+    }
+
+    .member-container{
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        .member-item{
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            .member-image{
+                width: 135px;
+                height: 135px;
+                object-fit: cover;
+                object-position: center;
+                margin-bottom: 20px;
+            }
+
+            .member-name{
+                font-family: "Poppins", Sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: 0.3px;
+                margin-bottom: 10px;
+            }
+
+            .member-title{
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .team-page-container{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+
+        .team-link{
+            margin-top: 15px;
+            display: inline-block;
+            text-decoration: none;
+            border-style: solid;
+            border: 1px solid #8750fc;
+            background-color: #8750fc;
+            color: #fff;
+            font-weight: 700;
+            line-height: 26px;
+            font-size: 16px;
+            font-size: 1rem;
+            border-radius: 0;
+            padding-top: 16px;
+            padding-right: 32px;
+            padding-bottom: 16px;
+            padding-left: 32px;
+            transition: all .2s linear;
+            -webkit-transition: all .2s linear;
+            -mos-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            -ms-transition: all .2s linear;
+            text-decoration: none;
+
+            &:hover{
+                background-color: #fff;
+                color: #8750fc;
+                border-color: #8750fc;
+            }
+        }   
+    }
+    
+}   
