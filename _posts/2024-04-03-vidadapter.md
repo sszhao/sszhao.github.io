@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title: "VidAdapter: Adapting Blackboard-Style Videos for Ubiquitous Viewing"
 image: 
 description: 

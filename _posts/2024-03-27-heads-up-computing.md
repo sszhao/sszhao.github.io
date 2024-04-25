@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: blog
 title: "Heads-Up Computing Moving Beyond the Device-Centered Paradigm"
 image: /assets/blog/截圖-2024-02-21-下午10.16.07.png
 description: 
 keywords: 
-date:  2023-03-27 23:43:45 -0500
+date:  2024-03-27 23:43:45 -0500
 published: true
 author: Shengdong Zhao, Felicia Tan, Katherine Fennedy
 category: Publications

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title: "Mindful Moments: Exploring On-the-go Mindfulness Practice On Smart-glasses"
 image: /assets/blog/Mindful-Moments-e1712151108172.png
 description: 

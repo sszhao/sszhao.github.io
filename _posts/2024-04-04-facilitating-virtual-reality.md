@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title: "Facilitating Virtual Reality Integration in Medical Education: A Case Study of Acceptability and Learning Impact in Childbirth Delivery Training"
 image: 
 description: 

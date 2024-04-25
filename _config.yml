@@ -23,12 +23,12 @@ sass:
   sass_dir: _scss
   style: compressed
 
-collections:
-  category:
-    output: true
-  publications:
-    output: true
-    permalink: /:title/
+# collections:
+#   category:
+#     output: true
+#   publications:
+#     output: true
+#     permalink: /:title/
 
 paginate: 5
 paginate_path: blogs/page:num/
