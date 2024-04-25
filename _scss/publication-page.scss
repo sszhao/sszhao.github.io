@@ -84,6 +84,10 @@
                 .image-container{
                     .image{
                         border-radius: 6px;
+                        width: 260px;
+                        height: 135px;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
             }

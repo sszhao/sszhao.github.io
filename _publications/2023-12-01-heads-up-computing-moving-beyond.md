@@ -7,7 +7,6 @@ video-link:
 author: "Shengdong Zhao, Felicia Tan, Katherine Fennedy"
 date-text:
 date:  2023-12-01 23:43:45 -0500
-published: true
 ---
 
 
