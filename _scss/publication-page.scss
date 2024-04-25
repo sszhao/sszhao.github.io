@@ -166,3 +166,15 @@
         
     }
 }
+
+@media (max-width: 768px){
+    #cover{
+        .section-container{
+            .intro-container{
+                .intro-header{
+                    font-size: 44px;
+                }
+            }
+        }
+    } 
+}
