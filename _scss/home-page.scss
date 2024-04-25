@@ -597,6 +597,19 @@
             .header{
                 font-size: 36px;
             }
+        }
+        .blog-list-container{
+            .blog-item{
+                .card{
+                    .card-body{
+                        .card-link{
+                            // display: table;
+                            // margin-left: auto;
+                            // margin-right: auto;
+                        }
+                    } 
+                } 
+            } 
         } 
     } 
 
@@ -628,6 +641,20 @@
                     }
                 }
             }
+
+            .grid{
+                .publication-container{
+                    .left-section{
+                        .image-container{
+                            margin-bottom: 15px;
+                            .image{
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+                        } 
+                    } 
+                } 
+            } 
         }
     } 
 
@@ -657,7 +684,7 @@
                 font-size: 28px;
             }
         } 
-    } 
+    }
 }
 
 @media (max-width: 768px){
@@ -690,5 +717,5 @@
                 }
             }
         }
-    } 
+    }
 }
