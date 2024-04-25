@@ -7,6 +7,9 @@ date:  2024-04-04 23:43:45 -0500
 published: true
 category: Uncategorized
 author: Chang Liu, Felicia Fang-Yi Tan, Shengdong Zhao, Abhiram Kanneganti, Gosavi Arundhati tushar, Eng Tat Khoo
+pdf-link: assets/blog/Facilitating-Virtual-Reality-Integration-in-Medical-Education.pdf
+page-link:
+video-link:
 ---
 
 

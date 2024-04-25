@@ -1,0 +1,31 @@
+<div class="blog-list-container blog-specific">
+<!-- This loops through the paginated pages -->
+    <div class="blog-item">
+        <div class="blog-content">
+            <a href="#" class="d-block text-decoration-none blog-title-link">
+                <h2 class="blog-title">{{ page.title }}</h2>
+            </a>
+            {% if page.category %}
+            <span class="d-block blog-category">Category: {{ page.category }}</span>
+            {% endif %}
+            {% if page.description %}
+            <p class="d-block blog-description">{{ page.description }}</p>
+            {% endif %}
+            {% if page.author %}
+            <span class="d-block blog-author">Authors: {{ page.author }}</span>
+            {% endif %}
+            <div class="content-container">
+                {{ content }}
+            </div>
+            {% if page.pdf-link %}
+            <a href="{{ page.pdf-link }}" target="_blank" class="page-link"> View PDF</a>
+            {% endif %}
+            {% if page.video-link %}
+            <a href="{{ page.video-link }}" target="_blank" class="page-link"> View Video</a>
+            {% endif %}
+            {% if page.page-link %}
+            <a href="{{ page.page-link }}" target="_blank" class="page-link"> View Link</a>
+            {% endif %} 
+        </div>
+    </div>
+</div>

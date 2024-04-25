@@ -4,6 +4,7 @@ body{
 
 #blog{
     position: relative;
+    min-height: calc(82vh - 65px);
 
     .container{
         max-width: 1240px;
@@ -15,9 +16,29 @@ body{
         .blog-list-container{
             background-color: #0b043a;
 
+            &.blog-specific{
+                .blog-item{
+                    border: none;
+                }
+            }
+
             .blog-item{
                 padding: 3em;
                 border-bottom: 1px solid #938db9;
+
+                .content-container{
+                    img{
+                        display: block;
+                        max-width: 100%;
+                        width: 60%;
+                        height: auto;
+                        vertical-align: middle;
+                        margin-left: auto;
+                        margin-right: auto;
+
+                        margin-bottom: 15px;
+                    }
+                }
 
                 .image-container{
                     margin-bottom: 1.5em;
@@ -174,4 +195,36 @@ body{
             }
         }
     }    
+}
+
+.page-link{
+    margin-right: 15px;
+    margin-top: 15px;
+    display: inline-block;
+    text-decoration: none;
+    border-style: solid;
+    border: 1px solid #8750fc;
+    background-color: #8750fc;
+    color: #fff;
+    font-weight: 700;
+    line-height: 26px;
+    font-size: 16px;
+    font-size: 1rem;
+    border-radius: 0;
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 16px;
+    padding-left: 32px;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -mos-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    text-decoration: none;
+
+    &:hover{
+        background-color: #fff;
+        color: #8750fc;
+        border-color: #8750fc;
+    }
 }
