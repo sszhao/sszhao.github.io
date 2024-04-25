@@ -138,5 +138,40 @@ body{
                 }
             }
         }
+
+        .sidebar-container{
+            padding-left: 30px;
+
+            .recent-post-container{
+                .header{
+                    font-size: 1.7rem;
+                    margin-bottom: 0.7em;
+                    font-weight: 700;
+                    font-family: 'Poppins', sans-serif;
+                    line-height: 1.2em;
+                    letter-spacing: -1px;
+                }
+
+                ul{
+                    li{
+                        a{
+                            display: block;
+                            color: #8750fc;
+                            margin-bottom: 15px;
+                            text-decoration: none;
+                            transition: all .2s linear;
+                            -webkit-transition: all .2s linear;
+                            -mos-transition: all .2s linear;
+                            -o-transition: all .2s linear;
+                            -ms-transition: all .2s linear;
+
+                            &:hover{
+                                color: #905cff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }    
 }
