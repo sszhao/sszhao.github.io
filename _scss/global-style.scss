@@ -154,10 +154,18 @@ footer{
             }
         }
     }
-
 }
 
 @media (max-width: 992px){
+    nav{
+        .container{
+            .navbar-brand{
+                max-width: 100%;
+                font-size: 1.25em;
+            }
+        }
+    }
+
     .navbar-toggler{
         border: 1px solid transparent;
 
