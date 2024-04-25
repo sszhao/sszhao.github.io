@@ -8,7 +8,7 @@ date:  2024-03-27 23:43:45 -0500
 published: true
 author: Shengdong Zhao, Felicia Tan, Katherine Fennedy
 category: Publications
-pdf-link:
+pdf-link: /assets/blog/3571722.pdf
 page-link:
 video-link:
 ---
