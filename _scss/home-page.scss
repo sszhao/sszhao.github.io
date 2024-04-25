@@ -118,6 +118,10 @@
                         display: block;
                         border-radius: 10px;
                         outline: 0;
+                        object-fit: cover;
+                        object-position: center;
+                        width: 350px;
+                        height: 250px;
                     }
                     .date-container{
                         left: -10px;

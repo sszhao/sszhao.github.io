@@ -35,13 +35,19 @@ body{
                         vertical-align: middle;
                         margin-left: auto;
                         margin-right: auto;
-
                         margin-bottom: 15px;
                     }
                 }
 
                 .image-container{
                     margin-bottom: 1.5em;
+
+                    .image{
+                        width: 700px;
+                        height: 360px;
+                        object-fit: cover;
+                        object-position: center;
+                    }
                 }
 
                 .blog-title-link{

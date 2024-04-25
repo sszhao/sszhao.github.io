@@ -1,7 +1,7 @@
 ---
 layout: /pages-layout/blog
 title: ""
-image: "g"
+image: "/assets/blog/placeholder-image.jpeg"
 description: 
 keywords: 
 date:  2023-03-27 23:43:45 -0500

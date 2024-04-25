@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "Facilitating Virtual Reality Integration in Medical Education: A Case Study of Acceptability and Learning Impact in Childbirth Delivery Training"
-image: 
+image: /assets/blog/placeholder-image.jpeg
 description: 
 date:  2024-04-04 23:43:45 -0500
 published: true
