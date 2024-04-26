@@ -1,5 +1,5 @@
 ---
-layout: /pages-layout/blog
+layout: blog
 title: ""
 image: "/assets/blog/placeholder-image.jpeg"
 description: 
