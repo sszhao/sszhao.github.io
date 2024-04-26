@@ -15,7 +15,7 @@ plugins:
   - jekyll-paginate
   - jekyll-admin
 
-# markdown: kramdown
+markdown: kramdown
 
 ###############################################################
 ## SCSS settings.
