@@ -234,3 +234,44 @@ body{
         border-color: #8750fc;
     }
 }
+
+@media (max-width: 768px){
+     #blog{
+        .container{
+            .sidebar-container{
+                .recent-post-container{
+                    .header{
+                        margin-top: 30px;
+                    }
+                } 
+            } 
+        } 
+    } 
+}
+
+@media (max-width: 576px){
+    #blog{
+        .container{
+            .blog-list-container{
+                .blog-item{
+                    padding: 30px;
+
+                    .image-container{
+                        .image{
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                } 
+            }
+
+            .sidebar-container{
+                .recent-post-container{
+                    .header{
+                        margin-top: 30px;
+                    }
+                } 
+            } 
+        } 
+    } 
+}
