@@ -13,7 +13,6 @@ github_username:  jekyll
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-admin
 
 markdown: kramdown
 
