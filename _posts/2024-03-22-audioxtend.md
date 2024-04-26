@@ -4,7 +4,7 @@ title: "AudioXtend: Assisted Reality Visual Accompaniments forAudiobook Storytel
 image: "/assets/blog/AudioXtend-feature.png"
 description: 
 keywords: 
-date:  2023-03-27 23:43:45 -0500
+date:  2024-03-27 23:43:45 -0500
 published: true
 author: Felicia Fang-Yi Tan, Peisen Xu, Ashwin Ram, Wei Zhen Suen, Shengdong Zhao, Yun Huang, Christophe Hurter
 category:

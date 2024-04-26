@@ -1,7 +1,7 @@
 ---
 layout: blog
 image: /assets/blog/WeChat-Image_20240320164324.jpeg
-date: '2023-03-21 23:43:45 -0500'
+date: '2024-03-21 23:43:45 -0500'
 published: true
 title: "Prof. Shengdong Zhao Talks About Heads-up Computing at Jinan University"
 description: Professor Shengdong Zhao visited the Guangdong Institute of Smart Education, Jinan University and delivered a captivating talk on Heads-up Computing.
