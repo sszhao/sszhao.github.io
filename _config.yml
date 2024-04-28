@@ -33,6 +33,99 @@ collections:
 paginate: 5
 paginate_path: blogs/page:num/
 
+# Prose.io setting
+
+prose:
+  rooturl: '_posts'
+  # siteurl: 'http://prose.github.io/starter/'
+  # relativeLinks: 'http://prose.github.io/starter/links.jsonp'
+  media: '/assets/'
+  ignore:
+    - index.md
+    - _config.yml
+    - /_layouts
+    - /_includes
+  metadata:
+    _posts:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "blog"
+      - name: "title"
+        field:
+          element: "text"
+          value: ""
+      - name: "image"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "description"
+        field:
+          element: "text"
+          value: ""
+      - name: "date"
+        field:
+          element: "date"
+          value: ""
+      - name: "category"
+        field:
+          element: "text"
+          value: ""
+      - name: "author"
+        field:
+          element: "text"
+          value: ""
+      - name: "pdf-link"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "page-link"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "video-link"
+        field:
+          element: "text"
+          value: "/assets/"
+    _publications:
+      - name: "title"
+        field:
+          element: "text"
+          value: ""
+      - name: "image"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "description"
+        field:
+          element: "text"
+          value: ""
+      - name: "date"
+        field:
+          element: "date"
+          value: ""
+      - name: "category"
+        field:
+          element: "text"
+          value: ""
+      - name: "author"
+        field:
+          element: "text"
+          value: ""
+      - name: "pdf-link"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "page-link"
+        field:
+          element: "text"
+          value: "/assets/"
+      - name: "video-link"
+        field:
+          element: "text"
+          value: "/assets/"
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
