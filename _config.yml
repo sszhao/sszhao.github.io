@@ -41,10 +41,10 @@ prose:
   # relativeLinks: 'http://prose.github.io/starter/links.jsonp'
   media: '/assets/'
   # ignore:
-  #   - index.md
-  #   - _config.yml
-  #   - /_layouts
-  #   - /_includes
+    # - index.md
+    # - _config.yml
+    # - /_layouts
+    # - /_includes
   metadata:
     _posts:
       - name: "layout"
@@ -60,7 +60,7 @@ prose:
         field:
           label: "image"
           element: "text"
-          value: "/assets/"
+          value: "/assets/blog/placeholder-image.jpeg"
       - name: "description"
         field:
           label: 'description'
@@ -106,7 +106,7 @@ prose:
         field:
           label: "image"
           element: "text"
-          value: "/assets/"
+          value: "/assets/blog/placeholder-image.jpeg"
       - name: "description"
         field:
           label: 'description'
