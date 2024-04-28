@@ -40,11 +40,11 @@ prose:
   # siteurl: 'http://prose.github.io/starter/'
   # relativeLinks: 'http://prose.github.io/starter/links.jsonp'
   media: '/assets/'
-  ignore:
-    - index.md
-    - _config.yml
-    - /_layouts
-    - /_includes
+  # ignore:
+  #   - index.md
+  #   - _config.yml
+  #   - /_layouts
+  #   - /_includes
   metadata:
     _posts:
       - name: "layout"
@@ -53,75 +53,93 @@ prose:
           value: "blog"
       - name: "title"
         field:
+          label: "title"
           element: "text"
           value: ""
       - name: "image"
         field:
+          label: "image"
           element: "text"
           value: "/assets/"
       - name: "description"
         field:
+          label: 'description'
           element: "text"
           value: ""
       - name: "date"
         field:
-          element: "date"
-          value: ""
+          label: date
+          element: "text"
+          value: "CURRENT_DATETIME"
       - name: "category"
         field:
+          label: "category"
           element: "text"
           value: ""
       - name: "author"
         field:
+          label: "author"
           element: "text"
           value: ""
       - name: "pdf-link"
         field:
+          label: "pdf-link"
           element: "text"
           value: "/assets/"
       - name: "page-link"
         field:
+          label: "page-link"
           element: "text"
-          value: "/assets/"
+          value: ""
       - name: "video-link"
         field:
+          label: "video-link"
           element: "text"
           value: "/assets/"
     _publications:
       - name: "title"
         field:
+          label: "title"
           element: "text"
           value: ""
       - name: "image"
         field:
+          label: "image"
           element: "text"
           value: "/assets/"
       - name: "description"
         field:
+          label: 'description'
           element: "text"
           value: ""
       - name: "date"
         field:
-          element: "date"
-          value: ""
+          label: date
+          element: "text"
+          value: "CURRENT_DATETIME"
       - name: "category"
         field:
+          label: "category"
           element: "text"
           value: ""
       - name: "author"
         field:
+          label: "author"
           element: "text"
           value: ""
       - name: "pdf-link"
         field:
+          label: "pdf-link"
           element: "text"
           value: "/assets/"
       - name: "page-link"
         field:
+          label: "page-link"
           element: "text"
-          value: "/assets/"
+          value: ""
       - name: "video-link"
         field:
+          label: "video-link"
           element: "text"
           value: "/assets/"
 
