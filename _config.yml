@@ -36,7 +36,7 @@ paginate_path: blogs/page:num/
 # Prose.io setting
 
 prose:
-  rooturl: '_posts'
+  rooturl: ''
   # siteurl: 'http://prose.github.io/starter/'
   # relativeLinks: 'http://prose.github.io/starter/links.jsonp'
   media: '/assets/'
