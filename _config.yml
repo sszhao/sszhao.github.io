@@ -40,11 +40,24 @@ prose:
   # siteurl: 'http://prose.github.io/starter/'
   # relativeLinks: 'http://prose.github.io/starter/links.jsonp'
   media: '/assets/'
-  # ignore:
-    # - index.md
-    # - _config.yml
-    # - /_layouts
-    # - /_includes
+  ignore:
+    - index.html
+    - _config.yml
+    - /_layouts
+    - /_includes
+    - /css
+    - /publication
+    - /team
+    - /_scss
+    - /pages
+    - /js
+    - .github
+    - /blogs
+    - .gitignore
+    - 404.html
+    - Gemfile
+    - README.md
+
   metadata:
     _posts:
       - name: "layout"
