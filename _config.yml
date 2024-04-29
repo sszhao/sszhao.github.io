@@ -98,7 +98,7 @@ prose:
         field:
           label: "pdf-link"
           element: "text"
-          value: "/assets/"
+          value:
       - name: "page-link"
         field:
           label: "page-link"
@@ -108,7 +108,7 @@ prose:
         field:
           label: "video-link"
           element: "text"
-          value: "/assets/"
+          value:
     _publications:
       - name: "title"
         field:
@@ -144,7 +144,7 @@ prose:
         field:
           label: "pdf-link"
           element: "text"
-          value: "/assets/"
+          value: 
       - name: "page-link"
         field:
           label: "page-link"
@@ -154,7 +154,7 @@ prose:
         field:
           label: "video-link"
           element: "text"
-          value: "/assets/"
+          value: 
 
 
 # Exclude from processing.
