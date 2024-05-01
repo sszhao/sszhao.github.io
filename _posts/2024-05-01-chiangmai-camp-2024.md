@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "A Perfect Blend of Learning and Exploration:Unlock Your HCI Potential in Our Research Camp in Chiang Mai this Summer"
-image: "assets/blog/Chiang Mai Post.png"
+image: "assets/blog/chiangmai2024.png"
 description: Excited to announce our HCI Research Summer Camp in Chiang Mai this July! Join me for an immersive experience in one of Thailand's most captivating cities. Together, we'll delve into the world of HCI research, collaborate on projects, and unlock your potential in this vibrant field. 
 keywords: 
 date:  2024-05-01 10:00:00 -0500
@@ -13,7 +13,7 @@ page-link:
 video-link:
 ---
 
-![Chiang Mai Camp Poster](/assets/blog/Chiang Mai Post.png "Chiang Mai Camp")
+![Chiang Mai Camp Poster](/assets/blog/chiangmai2024.png "Chiang Mai Camp")
 
 Synteraction Lab invites you to a summer Research Camp in the first week of July in Chiang Mai, Thailand. This stunning city, steeped in history and rich in culture, provides an inspiring backdrop to delve into the exciting world of HCI research.
 
