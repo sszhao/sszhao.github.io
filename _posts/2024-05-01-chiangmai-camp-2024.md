@@ -29,6 +29,7 @@ This is a unique opportunity to enhance your research skills, collaborate with e
 Apply now and make your summer truly enriching in the heart of one of Thailand's most beautiful cities. If you are interested, please fill out the following form. **(https://forms.gle/YqeYqdxHueDPv396A)**
 
 **Frequently Asked Questions**
+
 Q：What is the time of the research camp and what is the activity arrangement? 
 A： The research camp will officially start on July 6th. On July 6th and 7th, we will organize some warm-up activities to help everyone get to know each other and become familiar with the surroundings. Following that, from July 8th to 13th, we will conduct a six-day intensive training for the first phase.
 After the first phase concludes, outstanding students will be invited to participate in a project internship from July 14th to August 4th, lasting for three weeks. Please note that this is a voluntary activity, and it's okay if students cannot participate for the entire duration. This will be an excellent opportunity for in-depth practice and application of learned knowledge. We look forward to every student gaining valuable experience and growth during this process.
