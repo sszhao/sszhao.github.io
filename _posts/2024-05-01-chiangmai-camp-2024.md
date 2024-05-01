@@ -13,6 +13,7 @@ page-link:
 video-link:
 ---
 
+![Chiang Mai Camp Poster](/assets/blog/Chiang Mai Post.png "Chiang Mai Camp")
 
 Synteraction Lab invites you to a summer Research Camp in the first week of July in Chiang Mai, Thailand. This stunning city, steeped in history and rich in culture, provides an inspiring backdrop to delve into the exciting world of HCI research.
 
@@ -26,7 +27,7 @@ Due to the venue's space limitations, we have fewer than 40 total slots availabl
 
 This is a unique opportunity to enhance your research skills, collaborate with experienced researchers, and potentially kick-start your publication journey in HCI. All set against the backdrop of Chiang Mai, a city known for its breathtaking landscapes, historic temples, and friendly locals.
 
-Apply now and make your summer truly enriching in the heart of one of Thailand's most beautiful cities. If you are interested, please fill out the following form. **(https://forms.gle/YqeYqdxHueDPv396A)**
+Apply now and make your summer truly enriching in the heart of one of Thailand's most beautiful cities. If you are interested, please fill out the following **[Google Form](https://forms.gle/YqeYqdxHueDPv396A)**
 
 **Frequently Asked Questions**
 
