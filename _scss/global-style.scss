@@ -44,27 +44,32 @@ nav{
         }
 
         .nav-button-container{
-            .button-link{
-                text-decoration: none;
-                padding-top: 12px;
-                padding-bottom: 12px;
-                padding-left: 26px;
-                padding-right: 26px;
-                font-weight: 600;
-                font-size: 1rem;
-                border: 1px solid #fff;
-                color: #fff;
-                transition: all .2s linear;
-                -webkit-transition: all .2s linear;
-                -mos-transition: all .2s linear;
-                -o-transition: all .2s linear;
-                -ms-transition: all .2s linear;
-
-                &:hover{
-                    color: #905cff;
-                    background-color: #fff;
+            a{
+                img{
+                    height: 80px;
                 }
             }
+            // .button-link{
+            //     text-decoration: none;
+            //     padding-top: 12px;
+            //     padding-bottom: 12px;
+            //     padding-left: 26px;
+            //     padding-right: 26px;
+            //     font-weight: 600;
+            //     font-size: 1rem;
+            //     border: 1px solid #fff;
+            //     color: #fff;
+            //     transition: all .2s linear;
+            //     -webkit-transition: all .2s linear;
+            //     -mos-transition: all .2s linear;
+            //     -o-transition: all .2s linear;
+            //     -ms-transition: all .2s linear;
+
+            //     &:hover{
+            //         color: #905cff;
+            //         background-color: #fff;
+            //     }
+            // }
         }
     }
 }
