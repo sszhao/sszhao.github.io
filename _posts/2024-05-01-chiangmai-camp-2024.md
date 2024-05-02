@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "A Perfect Blend of Learning and Exploration:Unlock Your HCI Potential in Our Research Camp in Chiang Mai this Summer"
-image: "assets/blog/chiangmai2024.png"
+image: "/assets/blog/chiangmai2024.png"
 description: Excited to announce our HCI Research Summer Camp in Chiang Mai this July! Join me for an immersive experience in one of Thailand's most captivating cities. Together, we'll delve into the world of HCI research, collaborate on projects, and unlock your potential in this vibrant field. 
 keywords: 
 date:  2024-05-01 10:00:00 -0500
