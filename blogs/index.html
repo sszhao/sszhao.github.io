@@ -3,8 +3,13 @@ layout: pages-layout/blog-list
 ---
 <section id="blog">
 	<div class="container">
-		<div class="col-md-8 offset-md-2">
-		{% include blog-list/content.html %}
-		</div>	
+		<div class="row">
+			<div class="col-md-8 col-12">
+				{% include blog-list/content.html %}
+			</div>
+			<div class="col-md-4 col-12">
+				{% include sidebar.html %}
+			</div>
+		</div>
 	</div>
 </section>
