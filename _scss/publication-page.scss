@@ -94,7 +94,9 @@
                 }
             }
             .right-section{
-                padding-left: 10px;
+                 display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
 
                 .content-container{
                     .date{
@@ -106,8 +108,8 @@
                     }
 
                     .title{
-                        margin-bottom: 8px;
-                        margin-top: 12px;
+                        margin-bottom: 6px;
+                        margin-top: 6px;
                         margin-left: 0px;
                         margin-right: 0px;
                         font-family: 'Poppins';

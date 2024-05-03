@@ -279,9 +279,9 @@
                 .left-section{
                     .image-container{
                         .image{
-                            max-width: 100%;
+                            max-width: 212px;
                             width: 100%;
-                            height: 135px;
+                            height: 159px;
                             border-radius: 6px;
                             object-fit: cover;
                             object-position: center;
@@ -289,7 +289,9 @@
                     }
                 }
                 .right-section{
-                    padding-left: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
 
                     .content-container{
                         .date{
@@ -301,8 +303,8 @@
                         }
 
                         .title{
-                            margin-bottom: 8px;
-                            margin-top: 12px;
+                            margin-bottom: 6px;
+                            margin-top: 6px;
                             margin-left: 0px;
                             margin-right: 0px;
                             font-family: 'Poppins';

@@ -16,13 +16,13 @@
         {% for publication in site.publications %}
         <div class="publication-container publication-item {{ publication.date | date:'%Y' }} w-100" data-category="{{ publication.date | date:'%Y' }}">
             <div class="row">
-                <div class="left-section col-md-3">
+                <div class="left-section col-md-2">
                     <div class="image-container">
                         <img src="{{ publication.image }}" class="img-fluid d-none d-md-block image"/>
                     </div>
                 </div>
 
-                <div class="right-section col-md-8">
+                <div class="right-section col-md-10">
                     <div class="content-container">
                         <span class="date d-block">
                             {% if publication.date-text %} {{ publication.date-text }}&nbsp;{% endif %}
