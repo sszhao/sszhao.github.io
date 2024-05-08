@@ -289,11 +289,18 @@
                     }
                 }
                 .right-section{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-evenly;
+                    // display: flex;
+                    // flex-direction: column;
+                    // justify-content: space-evenly;
 
                     .content-container{
+                        height: 100%;
+                        width: 100%;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
                         .date{
                             font-size: 20px;
                             line-height: 0.9em;
@@ -320,6 +327,7 @@
                         }
 
                         .publication-link{
+                            width: fit-content;
                             margin-top: 8px;
                             display: inline-block;
                             text-decoration: none;
@@ -353,7 +361,7 @@
 
                 .publication-divider{
                     width: 100%;
-                    border: 1px solid #938db9;
+                    // border: 1px solid #938db9;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 10px;
