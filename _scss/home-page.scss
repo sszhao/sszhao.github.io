@@ -185,6 +185,7 @@
                         border-width: 1px 1px 1px 1px;
                         padding: 20px 40px 40px;
                     .card-title{
+                        color: #fff;
                         font-size: 18px;
                         margin-bottom: 28px;
                         line-height: 1.2;
@@ -704,6 +705,16 @@
 }
 
 @media (max-width: 768px){
+    #publication{
+        .section-container{
+            .grid{
+                .publication-container{
+                    min-height: 175px;
+                }
+            }
+        } 
+    } 
+
     #team{
         .member-container{
             .member-item{
