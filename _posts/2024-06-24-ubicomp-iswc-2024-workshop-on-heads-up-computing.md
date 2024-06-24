@@ -2,7 +2,7 @@
 layout: new
 title: "UbiComp/ISWC 2024 Workshop on Heads-Up Computing"
 description: "Opportunities and Challenges of the Next Interaction Paradigm with Wearable Intelligent Assistants"
-image: /assets/images/ubicomp24-image.jpeg
+image: /assets/img/ubicomp24-image.jpeg
 date:  "2024-06-24"
 category: Workshop
 role: Lab Admin
