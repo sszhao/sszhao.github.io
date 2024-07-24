@@ -12,5 +12,8 @@ pdf-link:
 page-link:
 video-link:
 ---
+Synteraction Lab's weekly running event saw another successful turnout this Thursday.
+
 ![ ](/assets/img/group-running.jpeg " ")
+
 Lab members gathered at the local track, showcasing their enthusiasm and commitment to fitness. The event continues to foster camaraderie and promote healthy lifestyles among team members.
