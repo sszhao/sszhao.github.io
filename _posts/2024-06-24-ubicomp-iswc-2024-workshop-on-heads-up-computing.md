@@ -10,7 +10,7 @@ author:
 category:
 pdf-link:
 page-link:
-video-link
+video-link:
 ---
 Join us at Ubicomp 2024 for an immersive workshop on Heads-Up Computing, where we'll navigate the future of wearable and pervasive technology — all innovators and thought leaders are welcome!
 
