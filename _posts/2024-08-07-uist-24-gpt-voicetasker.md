@@ -15,7 +15,7 @@ video-link:
 
 !Congratulations to the authors of "GPTVoiceTasker: Advancing Multi-step Mobile Task Efficiency Through Dynamic Interface Exploration and Learning". This paper has been accepted to UIST'24. 
 
-![-](/assets/images/GPTVoiceTasker.png "-")
+![-](/assets/img/GPTVoiceTasker.png "-")
 
 
 ## Authors
