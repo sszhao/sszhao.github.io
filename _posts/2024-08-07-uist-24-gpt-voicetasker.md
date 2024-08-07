@@ -7,7 +7,7 @@ keywords:
 date:  2024-08-07 23:43:45 -0500
 published: true
 author: 
-category: Paper Acceptance
+category:
 pdf-link:
 page-link:
 video-link:
