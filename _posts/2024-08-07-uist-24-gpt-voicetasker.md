@@ -1,8 +1,8 @@
 ---
 layout: blog
-title: UIST 2024: GPTVoiceTasker: Advancing Multi-step Mobile Task Efficiency Through Dynamic Interface Exploration and Learning
-image: /assets/img/GPTVoiceTasker1.png
-description: "Congratulations to the authors of GPTVoiceTasker: Advancing Multi-step Mobile Task Efficiency Through Dynamic Interface Exploration and Learning."
+title: "UIST 2024: GPTVoiceTasker: Advancing Multi-step Mobile Task Efficiency Through Dynamic Interface Exploration and Learning"
+image: "/assets/img/GPTVoiceTasker1.png"
+description: Congratulations to the authors of GPTVoiceTasker: Advancing Multi-step Mobile Task Efficiency Through Dynamic Interface Exploration and Learning.
 keywords: 
 date:  2024-08-07 23:43:45 -0500
 published: true
