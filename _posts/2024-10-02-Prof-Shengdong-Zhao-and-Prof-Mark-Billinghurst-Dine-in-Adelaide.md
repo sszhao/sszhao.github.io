@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "Prof. Shengdong Zhao and Prof. Mark Billinghurst Dine in Adelaide"
-image: "/assets/img/adelaide-dinner.jpg
+image: "/assets/img/adelaide-dinner.jpg"
 description:
 keywords: 
 date:  2024-10-02 23:43:45 -0500
