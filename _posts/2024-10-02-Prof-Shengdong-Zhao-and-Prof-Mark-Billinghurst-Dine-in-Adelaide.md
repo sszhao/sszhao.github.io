@@ -13,3 +13,4 @@ page-link:
 video-link:
 ---
 Prof. Shengdong Zhao and renowned AR/VR researcher Prof. Mark Billinghurst recently shared dinner in Adelaide, Australia.
+![Alt text](/assets/img/adelaide-dinner.jpg " ")
