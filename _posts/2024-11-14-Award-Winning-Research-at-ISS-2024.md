@@ -17,4 +17,4 @@ I'm excited to share that our research paper, "GestureGPT: Toward Zero-Shot Free
 
 This achievement is a testament to the hard work and dedication of my colleagues: Xin Zeng, Xiaoyu Wang, Tengxiang Zhang, Chun Yu, and Yiqiang Chen.
 
-![Alt text](/assets/img/Best-Paper-Award-at-ISS-2024.jpg"a title")
+![Alt text](/assets/img/Best-Paper-Award-at-ISS-2024.jpg "a title")
