@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "Award-Winning Research at ISS 2024"
-image: "/assets/img/Best-Paper-Award-at-ISS-2024.jpg"
+image: "/assets/img/best-paper-iss-2024.png"
 description:  
 keywords: 
 date: 2024-11-14 23:43:45 -0500
@@ -16,4 +16,4 @@ I'm excited to share that our research paper, "GestureGPT: Toward Zero-Shot Free
 
 This achievement is a testament to the hard work and dedication of my colleagues: Xin Zeng, Xiaoyu Wang, Tengxiang Zhang, Chun Yu, and Yiqiang Chen.
 
-![Alt text](/assets/img/Best-Paper-Award-at-ISS-2024.jpg "a title")
+![Alt text](/assets/img/best-paper-iss-2024.png "a title")
