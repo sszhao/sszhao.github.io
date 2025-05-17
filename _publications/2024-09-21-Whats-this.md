@@ -1,6 +1,6 @@
 ---
 title: "What's this? Understanding User Interaction Behaviour with Multimodal Input Information Retrieval System"
-image: /assets/img/DWhats-this.png
+image: /assets/img/Whats-this.png
 pdf-link: "https://synteraction.org/assets/files/Wang%20S,%20et%20al%20-%202024%20-%20Understanding%20User%20Interaction%20Behaviour%20with.pdf"
 page-link:
 video-link:
