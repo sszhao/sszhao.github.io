@@ -1,6 +1,6 @@
 ---
 title: "GlassMail: Towards Personalised Wearable Assistant for On-the-Go Email Creation on Smart Glasses"
-image: /assets/img/GlassMails.png
+image: /assets/img/publication/imageGlassMails.png
 pdf-link: "https://synteraction.org/assets/files/Zhou,%20C%20et%20al%202024%20-%20GlassMail%20Towards%20Personalised%20Wearable%20Assistant%20for%20On-the-Go%20Email%20Creation%20on%20Smart%20Glasses.pdf"
 page-link:
 video-link:
