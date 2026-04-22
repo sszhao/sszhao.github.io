@@ -1,0 +1,28 @@
+<div class="section-container container">
+    <div class="intro-container">
+        <h2 class="intro-header text-center">{{ site.data.setting.intro-header }}</h2>
+        <span class="intro-description text-center d-block">{{ site.data.setting.intro-description }}</span>
+    </div>
+
+    <div class="intro-video-container">
+        <div class="embed-responsive embed-responsive-16by9">
+            <video
+                id="my-video"
+                class="video-js w-100 h-100"
+                controls
+                preload="auto"
+                poster="{{ site.data.setting.intro-video-poster }}">
+                <source src="{{ site.data.setting.intro-video-mp4 }}" type="video/mp4" />
+                <source src="{{ site.data.setting.intro-video-webm }}" type="video/webm" />
+                <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                </p>
+            </video>
+        </div>
+
+        <div class="intro-button-container d-flex justify-content-center">
+            <a href="#" class="intro-button text-center">See More</a>
+        </div>
+    </div>
+</div>

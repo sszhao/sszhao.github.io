@@ -1,5 +1,6 @@
 ---
 layout: null
+permalink: /blog/index.html
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,18 @@ layout: null
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-030YPW3KDJ');
+</script>
 <style>
+/* ───────────────────────────────────────────────────────────────────
+   Synteraction Lab — Color & Type Foundations
+   ─────────────────────────────────────────────────────────────────── */
 :root {
   --paper:         rgb(250, 249, 246);
   --paper-2:       rgb(244, 243, 241);
@@ -35,32 +47,170 @@ layout: null
   --font-display:  "Space Grotesk", system-ui, sans-serif;
   --font-body:     "Manrope", system-ui, sans-serif;
 }
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body { background: var(--paper); color: var(--fg-1); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--paper);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 a { color: inherit; }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 96px; width: 100%; }
-.site-nav { position: sticky; top: 0; z-index: 50; height: 80px; width: 100%; background: rgba(250,249,246,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(26,28,26,0.04); }
-.site-nav__inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
-.site-nav__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--ink); letter-spacing: -0.55px; text-decoration: none; }
-.site-nav__links { display: flex; gap: 36px; align-items: center; }
-.site-nav__link { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg-2); text-decoration: none; transition: color 180ms; position: relative; padding: 6px 0; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 96px;
+  width: 100%;
+}
+
+/* ─── Nav ──────────────────────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
 .site-nav__link:hover { color: var(--ink); }
-.site-nav__link--active { color: var(--purple-700); font-weight: 700; }
-.site-nav__link--active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--purple-700); border-radius: 1px; }
-.site-nav__cta { margin-left: 12px; display: flex; align-items: center; text-decoration: none; }
-.site-nav__cta img { height: 40px; width: auto; border-radius: 8px; }
-.site-footer { background: var(--paper-2); border-top: 1px solid var(--border-warm); padding: 72px 0 48px; }
-.site-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border-warm); }
-.site-footer__brand { display: flex; flex-direction: column; gap: 16px; max-width: 320px; }
-.site-footer__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.55px; color: var(--purple-700); }
-.site-footer__tagline { font-family: var(--font-body); font-weight: 300; font-size: 15px; line-height: 24px; color: var(--fg-2); margin: 0; }
-.site-footer__col h4 { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); margin: 0 0 16px 0; }
-.site-footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.site-footer__col a { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); text-decoration: none; transition: color 180ms; }
+.site-nav__link--active {
+  color: var(--purple-700);
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: var(--purple-700);
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--paper-2);
+  border-top: 1px solid var(--border-warm);
+  padding: 72px 0 48px;
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-warm);
+}
+.site-footer__brand {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 320px;
+}
+.site-footer__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.55px;
+  color: var(--purple-700);
+}
+.site-footer__tagline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--fg-2);
+  margin: 0;
+}
+.site-footer__col h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin: 0 0 16px 0;
+}
+.site-footer__col ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.site-footer__col a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
 .site-footer__col a:hover { color: var(--purple-700); }
-.site-footer__legal { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-family: var(--font-body); font-size: 12px; color: var(--fg-4); }
-.site-footer__legal a { color: var(--fg-4); text-decoration: none; margin-left: 24px; }
+.site-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-4);
+}
+.site-footer__legal a {
+  color: var(--fg-4);
+  text-decoration: none;
+  margin-left: 24px;
+}
+
+/* ─── Utilities ────────────────────────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before {
+  content: ""; width: 24px; height: 1px;
+  background: var(--gold-700); opacity: 0.5;
+}
+
+/* ── Blog Page ── */
 .blog { padding: 128px 0 96px; background: var(--paper); position: relative; overflow: hidden; }
 .blog__deco { position: absolute; right: -80px; top: 40px; width: 320px; height: 320px; border-radius: 12px; background: rgba(255,224,135,0.2); pointer-events: none; }
 .blog__header { position: relative; margin-bottom: 80px; max-width: 720px; }
@@ -77,6 +227,7 @@ a { color: inherit; }
 .post__title { font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1.15; letter-spacing: -0.8px; color: var(--ink); margin: 0; text-wrap: balance; }
 .post__excerpt { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 26px; color: var(--fg-2); margin: 0; }
 .post__link { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple-700); text-decoration: none; margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; }
+
 .sidebar { display: flex; flex-direction: column; gap: 48px; position: sticky; top: 112px; align-self: start; }
 .side-card { background: var(--white); border: 1px solid rgba(206,194,215,0.3); border-radius: 16px; padding: 28px; box-shadow: 0 20px 40px rgba(26,28,26,0.04); }
 .side-h { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); margin: 0 0 16px; }
@@ -94,28 +245,38 @@ a { color: inherit; }
 .subscribe__btn:hover { background: var(--purple-600); }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { background: var(--paper-2); border: 1px solid var(--border-warm); border-radius: 999px; padding: 6px 14px; font-family: var(--font-body); font-size: 12px; color: var(--fg-2); }
+
 .recent-list { display: flex; flex-direction: column; gap: 20px; }
 .recent-item { display: flex; flex-direction: column; gap: 4px; text-decoration: none; transition: opacity 180ms; }
 .recent-item:hover { opacity: 0.7; }
 .recent-tag { font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--gold-700); letter-spacing: 0.1em; text-transform: uppercase; }
 .recent-heading { font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.3; }
+
 .teaching { background: var(--paper-2); border: 1px solid rgba(206,194,215,0.2); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
 .teaching h4 { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin: 0; color: var(--ink); }
 .teaching p { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); line-height: 22px; margin: 0; }
 .teaching a { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--purple-700); text-decoration: none; margin-top: 4px; }
-.pagination { display: flex; align-items: center; gap: 8px; padding-top: 48px; margin-top: 16px; border-top: 1px solid var(--border-warm); }
-.pagination__page { display: flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; border-radius: 10px; font-family: var(--font-display); font-weight: 700; font-size: 14px; text-decoration: none; color: var(--fg-2); background: var(--white); border: 1px solid var(--border-warm); transition: all 180ms ease; }
-.pagination__page:hover { background: var(--purple-700-05); border-color: var(--purple-700-20); color: var(--purple-700); }
-.pagination__page--active { background: var(--purple-700); border-color: var(--purple-700); color: var(--white); pointer-events: none; }
-.pagination__next { display: flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--purple-700); margin-left: auto; transition: opacity 180ms; }
-.pagination__next:hover { opacity: 0.7; }
-.pagination__prev { display: flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--purple-700); margin-right: auto; transition: opacity 180ms; }
-.pagination__prev:hover { opacity: 0.7; }
-@media (max-width: 1024px) { .container { padding: 0 32px; } .blog__layout { grid-template-columns: 1fr; } .sidebar { position: static; } .post { grid-template-columns: 1fr; } .blog__giant { display: none; } .blog__title { font-size: 48px; letter-spacing: -2px; } .site-footer__grid { grid-template-columns: 1fr 1fr; } .site-nav__links { gap: 20px; } }
+
+.archive-links { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border-warm); }
+.archive-link { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; color: var(--fg-2); text-decoration: none; transition: color 180ms; }
+.archive-link:hover { color: var(--purple-700); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .container { padding: 0 32px; }
+  .blog__layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .post { grid-template-columns: 1fr; }
+  .blog__giant { display: none; }
+  .blog__title { font-size: 48px; letter-spacing: -2px; }
+  .site-footer__grid { grid-template-columns: 1fr 1fr; }
+  .site-nav__links { gap: 20px; }
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="site-nav">
   <div class="site-nav__inner">
     <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
@@ -133,11 +294,12 @@ a { color: inherit; }
   </div>
 </nav>
 
+<!-- BLOG -->
 <section class="blog">
   <div class="blog__deco"></div>
   <div class="container">
     <header class="blog__header">
-      <span class="blog__giant">{{ paginator.page | prepend: '0' | slice: -2, 2 }}</span>
+      <span class="blog__giant">01</span>
       <h1 class="blog__title">Latest News and Blogs.</h1>
       <p class="blog__subtitle">Reflections on the intersection of human psychology, hardware design, and the future of interaction.</p>
     </header>
@@ -145,31 +307,9 @@ a { color: inherit; }
     <div class="blog__layout">
       <div class="blog__posts">
 
-        {% for post in paginator.posts %}
+        {% for post in site.posts limit:10 %}
         {% include blog-card.html post=post style="full" %}
         {% endfor %}
-
-        {% if paginator.total_pages > 1 %}
-        <nav class="pagination">
-          {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="pagination__prev">← Prev</a>
-          {% endif %}
-
-          {% for page in (1..paginator.total_pages) %}
-            {% if page == paginator.page %}
-            <span class="pagination__page pagination__page--active">{{ page }}</span>
-            {% elsif page == 1 %}
-            <a href="/blogs/" class="pagination__page">{{ page }}</a>
-            {% else %}
-            <a href="/{{ site.paginate_path | replace: ':num', page }}" class="pagination__page">{{ page }}</a>
-            {% endif %}
-          {% endfor %}
-
-          {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="pagination__next">Next →</a>
-          {% endif %}
-        </nav>
-        {% endif %}
 
       </div>
 
@@ -177,19 +317,21 @@ a { color: inherit; }
         <div class="side-card">
           <h3 class="side-h">Categories</h3>
           <div class="cat-list">
-            <a href="#" class="cat cat--active"><span>All Posts</span><span class="cat__count">{{ site.posts.size }}</span></a>
-            <a href="#" class="cat"><span>News</span><span class="cat__count">{{ site.categories.News.size }}</span></a>
-            <a href="#" class="cat"><span>Publications</span><span class="cat__count">{{ site.categories.Publications.size }}</span></a>
-            <a href="#" class="cat"><span>Events</span><span class="cat__count">{{ site.categories.Event.size }}</span></a>
-            <a href="#" class="cat"><span>Lab Life</span><span class="cat__count">{{ site.categories['Lab Life'].size }}</span></a>
+            <a href="#" class="cat cat--active"><span>All Posts</span><span class="cat__count">28</span></a>
+            <a href="#" class="cat"><span>News</span><span class="cat__count">12</span></a>
+            <a href="#" class="cat"><span>Publications</span><span class="cat__count">8</span></a>
+            <a href="#" class="cat"><span>Events</span><span class="cat__count">4</span></a>
+            <a href="#" class="cat"><span>Lab Life</span><span class="cat__count">4</span></a>
           </div>
         </div>
+
         <div class="subscribe">
           <h4>Stay updated.</h4>
           <p>A monthly letter on HCI research and academic life. No more, no less.</p>
           <input class="subscribe__input" placeholder="you@email.com">
           <button class="subscribe__btn">Subscribe</button>
         </div>
+
         <div class="side-card">
           <h3 class="side-h">Recent Thoughts</h3>
           <div class="recent-list">
@@ -201,6 +343,7 @@ a { color: inherit; }
             {% endfor %}
           </div>
         </div>
+
         <div class="side-card">
           <h3 class="side-h">Popular Tags</h3>
           <div class="tags">
@@ -212,22 +355,38 @@ a { color: inherit; }
             <span class="tag">OHMD</span>
           </div>
         </div>
+
         <div class="teaching">
           <h4>Teaching Resources</h4>
           <p>Access lecture notes and workshop materials for CS4249 & CS5240.</p>
           <a href="#">Browse Repository →</a>
+        </div>
+
+        <div class="archive-links">
+          <a href="#" class="archive-link">
+            <svg width="14" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Archive
+          </a>
+          <a href="#" class="archive-link">
+            <svg width="14" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+            RSS
+          </a>
         </div>
       </aside>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
         <span class="site-footer__wordmark">Synteraction Lab</span>
-        <p class="site-footer__tagline">An HCI research group exploring heads-up computing and the perceptual field — led by Prof. Shengdong Zhao at City University of Hong Kong.</p>
+        <p class="site-footer__tagline">
+          An HCI research group exploring heads-up computing and the perceptual field —
+          led by Prof. Shengdong Zhao at City University of Hong Kong.
+        </p>
       </div>
       <div class="site-footer__col">
         <h4>Research</h4>

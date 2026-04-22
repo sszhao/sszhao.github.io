@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -472,43 +475,9 @@ a { color: inherit; }
       <p class="thoughts__lede">Notes on research methodology, academic life, and the future of interaction design.</p>
     </div>
     <div class="thoughts__grid">
-      
-      
-
-
-<a class="article" href="/2026/04/13/visiting-three-star-mound-sanxingdui.html">
-  <img class="article__img" src="/assets/blog/SanXinDuiVisit.jpeg" alt="Visiting Three Star Mound(s) — Sanxingdui">
-  <span class="article__date">Apr 13, 2026 · Personal Life</span>
-  <h3 class="article__title">Visiting Three Star Mound(s) — Sanxingdui</h3>
-  <p class="article__excerpt">During an outreach trip to Chengdu, a visit to the Sanxingdui Museum revealed astonishing artifacts from the ancient Shu civilization, dating back three thousand years.</p>
-</a>
-
-
-      
-      
-
-
-<a class="article" href="/2026/04/09/april-9-running-and-eating.html">
-  <img class="article__img" src="/assets/blog/April9RunningAndEating.jpeg" alt="April 9 Running and Eating">
-  <span class="article__date">Apr 09, 2026 · Lab Life</span>
-  <h3 class="article__title">April 9 Running and Eating</h3>
-  <p class="article__excerpt">Thanks to Rui and Yingyu's initiative, Synteraction Lab's weekly running and eating tradition is back — with a refreshing evening run and noodle dinner.</p>
-</a>
-
-
-      
-      
-
-
-<a class="article" href="/2026/04/08/lunch-with-tony-tang-in-cityu-s-bistro-lodge.html">
-  <img class="article__img" src="/assets/blog/MeetingTony.jpeg" alt="Lunch with Tony Tang in CityU's Bistro Lodge">
-  <span class="article__date">Apr 08, 2026 · Lab Life</span>
-  <h3 class="article__title">Lunch with Tony Tang in CityU's Bistro Lodge</h3>
-  <p class="article__excerpt">A visit from Dr. Tony Tang of SMU led to energizing discussions on human-AI interaction over lunch at CityU's Bistro Lodge.</p>
-</a>
-
-
-      
+      {% for post in site.posts limit:3 %}
+      {% include blog-card.html post=post style="card" %}
+      {% endfor %}
     </div>
   </div>
 </section>

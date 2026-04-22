@@ -1,0 +1,28 @@
+<!-- Recent News and Blogs Section -->
+<section class="thoughts-section">
+  <div class="container">
+    <div class="thoughts-section__header">
+      <h2 class="thoughts-section__title">Recent News and Blogs</h2>
+      <p class="thoughts-section__subtitle">Notes on research methodology, academic life, and the future of interaction design.</p>
+    </div>
+
+    <div class="thoughts-section__grid">
+      {% for post in site.posts limit:3 %}
+      <article class="thought-card">
+        <a href="{{ post.url }}" class="thought-card__link">
+          <div class="thought-card__image">
+            <img src="{{ post.image | default: '/assets/blog/placeholder-image.jpeg' }}" alt="{{ post.title }}" loading="lazy">
+          </div>
+          <div class="thought-card__content">
+            {% if post.category %}
+            <span class="thought-card__category">{{ post.category }}</span>
+            {% endif %}
+            <h3 class="thought-card__title">{{ post.title }}</h3>
+            <p class="thought-card__meta">{{ post.date | date: "%b %d, %Y" }}</p>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

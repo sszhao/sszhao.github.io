@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand poppins-bold" href="{{ site.data.setting.logo-link }}">{{ site.data.setting.brand-logo }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#menu-modal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-lg-0">
+        {% for nav-item in site.data.setting.nav-list %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ nav-item.url }}">{{ nav-item.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="nav-button-container">
+        <a class="button-link .poppins-regular" href="https://www.synteraction.org/" target="_blank">
+          <img src="/assets/synteraction-logo.jpeg" class="img-fluid d-block"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,106 @@
+brand-logo: Shengdong (Shen) Zhao
+logo-link: "/"
+
+nav-list:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Research
+    url: /research/
+  - title: Book
+    url: /book/
+  - title: Heads-Up Computing
+    url: /heads-up-computing/
+  - title: Blog
+    url:  /blogs/
+
+# Book Information
+book:
+  title: "Navigate the World of HCI Research"
+  subtitle: "A Fresh Researcher's Roadmap"
+  author: "Prof. Zhao Shengdong"
+  publisher: "City University of Hong Kong"
+  date: "October 2025"
+  cover: "/assets/img/book-cover.svg"
+  description: "A comprehensive guide for aspiring HCI researchers, covering foundations, empirical research, constructive research, and practical guidance for your first HCI project."
+  sections:
+    - title: "Foundations of HCI Research"
+      chapters:
+        - "Introduction"
+        - "Research Contributions in HCI"
+    - title: "Empirical Research"
+      chapters:
+        - "Introduction to Empirical Research"
+        - "The 5-Step Approach to Experiment Design"
+    - title: "Constructive Research"
+      chapters:
+        - "Overview and Interaction Techniques"
+        - "System and Toolkits"
+    - title: "Other Important Aspects"
+      chapters:
+        - "Guide to Your First HCI Project"
+        - "Literature Reviews"
+
+# Heads-Up Computing
+heads-up-computing:
+  title: "Heads-Up Computing"
+  tagline: "Moving beyond the screen-locked present"
+  description: "We explore a world where information is seamlessly integrated into the user's perceptual field, reducing cognitive load and maximizing presence."
+  features:
+    - title: "Vision Priority"
+      description: "Information displayed in the user's field of view"
+      icon: "eye"
+    - title: "Audio Feedback"
+      description: "Spatial audio cues for notifications and alerts"
+      icon: "audio"
+
+# Hero Section
+hero:
+  eyebrow: "New Publication"
+  title: "Navigate the World of HCI Research."
+  title-highlight: "HCI"
+  description: "A fresh researcher's roadmap through the complex landscape of Human-Computer Interaction. Curating a career of inquiry and innovation."
+  cta-primary: "Explore the Book"
+  cta-secondary: "Read the Introduction"
+  image: "/assets/img/book-cover.jpg"
+
+# Bio Section
+bio:
+  number: "01"
+  title: "The Archivist's Perspective"
+  text: "Shengdong Zhao is a Professor and researcher dedicated to redefining the interplay between humans and intelligent systems. Based at NUS, his work bridges the gap between sophisticated engineering and human-centric design, curating the future of multimodal interaction."
+  highlight-word: "Professor"
+  link: "/about/"
+  link-text: "Read Full Biography"
+
+# Publications Section
+publications:
+  title: "Selected Publications"
+  subtitle: "Selected publications that have shaped the discourse of modern multimodal interaction."
+  view-all: "View All Publications"
+  view-all-link: "/research/"
+
+# Thoughts/Blog Section
+thoughts:
+  title: "Thoughts"
+  subtitle: "Notes on research methodology, academic life, and the future of interaction design."
+
+# CTA Section
+cta:
+  title: "Build the Future of Interaction with Us."
+  title-highlight: "Interaction with Us."
+  description: "We are looking for inquisitive minds across CS, Psychology, and Design to join our research laboratory. If you are passionate about the future of computing, let's connect."
+  button: "Join the Lab"
+  button-link: "https://www.synteraction.org/"
+
+# Footer
+footer:
+  copyright: "© 2024 Shengdong Zhao. All rights reserved."
+  links:
+    - title: "Email"
+      url: "mailto:shengdong.zhao@cityu.edu.hk"
+    - title: "Google Scholar"
+      url: "https://scholar.google.com/citations?user=your-id"
+    - title: "GitHub"
+      url: "https://github.com/sszhao"

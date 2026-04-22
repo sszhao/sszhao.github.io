@@ -1,0 +1,58 @@
+<div class="blog-list-container">
+<!-- This loops through the paginated posts -->
+    {% for post in paginator.posts %}
+    <div class="blog-item">
+        {% if post.image %}
+        <div class="image-container">
+            <img src="{{ post.image }}" class="image img-fluid d-block"/>
+        </div>
+        {% endif %}
+        <div class="blog-content">
+            <a href="{{ post.url }}" class="d-block text-decoration-none blog-title-link">
+                <h2 class="blog-title">{{ post.title }}</h2>
+            </a>
+            {% if post.category %}
+            <span class="d-block blog-category">Category: {{ post.category }}</span>
+            {% endif %}
+            {% if post.description %}
+            <p class="d-block blog-description">{{ post.description }}</p>
+            {% endif %}
+            {% if post.author %}
+            <span class="d-block blog-author">Authors: {{ post.author }}</span>
+            {% endif %}
+            <a href="{{ post.url }}" class="blog-link">Read More »</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination links -->
+{% if paginator.total_pages > 1 %}
+<div class="pagination d-flex flex-row justify-content-between">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="side-link">&laquo; Prev</a>
+    {% else %}
+    <span class="side-text">&laquo; Prev</span>
+    {% endif %}
+
+    <div class="pagination-item d-flex flex-row ">
+        {% for page in (1..paginator.total_pages) %}
+        <div class="pagination-number">
+        {% if page == paginator.page %}
+            <em>{{ page }}</em>
+            {% elsif page == 1 %}
+            <a href="{{ '/blogs/' | relative_url }}">{{ page }}</a>
+            {% else %}
+            <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" class="side-link">Next &raquo;</a>
+    {% else %}
+    <span class="side-text">Next &raquo;</span>
+    {% endif %}
+</div>
+{% endif %}
