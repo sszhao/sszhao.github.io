@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays"
 image: "/assets/blog/Heads-Up-Multitasker.png"
 description: 

@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Prof. Shengdong Zhao Talks About Heads-up Computing at HKUST Guangzhou"
 image: "/assets/blog/WeChat-Image_20240320162306.jpeg"
 description: "Guangzhou, March 18, 2024 (Xinhua) – Professor Shengdong Zhao visited the Hong Kong University of Science and Technology (HKUST) Guangzhou campus. He engaged with Prof. Fan Mingming’s group and delivered a captivating talk on Heads-up Computing."

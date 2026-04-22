@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Identify and Evaluate Research Ideas in HCI"
 image:
 description: "A good start is half the battle won. “People think focus means saying yes to the thing you’ve got to focus on. But that’s not what it means at all. It means saying no to the hundred other good ideas that there are. You have to pick carefully. I’m actually as proud of the things"

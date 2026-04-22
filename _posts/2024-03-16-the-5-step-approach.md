@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "The 5-Step Approach for Controlled Experiment Design for HCI"
 image: "/assets/blog/The-5-Step-Approach-for-Controlled-Experiment-Design-for-HCI.png"
 description: Controlled experiment, an approach that has been adopted from research methods in psychology, is now widely used in HCI. Design an effective controlled experiment is not necessarily easy, even for experienced researchers. Existing controlled experiment designing tools focused more on the process of designing, but they are often not intuitive and guided enough for less experienced users to use. We introduce a 5-step approach to guide users through the experimental design process, and helped them to better understand the experimental design process.

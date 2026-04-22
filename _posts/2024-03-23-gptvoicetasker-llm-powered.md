@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "GPT VoiceTasker: LLM-Powered Virtual Assistant for SmartphoneWeb Development Success"
 image: "/assets/blog/placeholder-image.jpeg"
 description: 

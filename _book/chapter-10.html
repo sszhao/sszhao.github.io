@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-09.html" class="book-breadcrumb__link">&larr; Chapter 9</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="acknowledgements.html" class="book-breadcrumb__link">Acknowledgements &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.jz4mcvo2q6gl">
+ <span class="c41 c21 c3">
+  Chapter 10: How to Read and Respond to HCI Reviews
+ </span>
+</h2>
+<p class="c11">
+ <span class="c17">
+  Background &amp; context:
+ </span>
+ <span class="c2">
+  <br/>
+  The significance of comprehending peer reviews for academic papers cannot be overstated. It is imperative that one learns how to respond to these reviews in an appropriate manner. This not only enhances the quality of one's research paper, but also provides valuable insight into the evaluation process. In essence, writing a research paper is like engaging in a discourse with reviewers, and having a thorough understanding of the reviews and the ability to respond appropriately is an essential component of honing these skills.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In light of my extensive experience as a reviewer for CHI, an Associate Chair, a Senior Chair, and a Paper Chair, I would like to share my thoughts and insights with all of you.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Understanding the review process
+ </span>
+ <span class="c2">
+  :
+  <br/>
+  The format of CHI reviews has undergone changes over the years to keep pace with its evolving nature. However, the fundamental principles have remained relatively constant. In this regard, I would like to share some key information with you.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The review team typically comprises one First Associate Chair (1st AC), one Second Associate Chair (2nd AC), and a select number of reviewers (currently 2, previously 3). With the increasing number of submissions, which have grown by 15-20% annually for several years and now surpass 3000 per year, there is a shortage of available reviewers. Experienced reviewers are becoming semi-retired and are reviewing less, which has led to a decline in the quality of Associate Chairs (ACs) and reviewers. Many of the current reviewers are inexperienced, such as PhD students, and tend to be overly critical and focus on minor details rather than the overall picture. In addition, the ACs are overburdened, as they are responsible for reviewing 10-15 submissions each, leading to limited time for in-depth reading and analysis.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The implications of this are significant for authors seeking to have their papers accepted. The quality of the presentation is of utmost importance, as the storyline must be clear and easy to understand. The structure and writing must effectively highlight the key points, making it difficult for reviewers to overlook them. The presentation must be professional to ensure it is not misread during the review process, given the varying quality of reviewers. Remember ACs are overburdened, so they can only spend limited time reading your paper, also many reviewers are inexperienced, thus if the paper is complex, they won’t understand it.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Not all reviews are equal.
+ </span>
+ <span class="c3">
+  <br/>
+  The most important reviews are the ones from the AC and 2AC. This is because they are ones who will argue for acceptance or rejection in the PC meeting. Reviewers don’t argue for acceptance or rejection in PC meetings, so their opinions carry less weight.
+ </span>
+ <span class="c17">
+  Implications:
+ </span>
+ <span class="c2">
+  need to address all the issues raised by the AC and 2AC first, before addressing the issues raised by the reviewers.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  However, the AC and 2AC are extremely busy people with very high workloads, so it’s not uncommon to see a strategy from the AC who just summarizes the reviews from the other three reviewers (2AC, R1 and R2) without even reading the paper very carefully. This can be seen from the way the meta-reviews are written. If you see personal opinions in the meta review that’s only from the AC, that means the AC has read the paper. If you see the AC only summarizes the other three reviews, then there is a chance that s/he hasn’t read the paper carefully and just makes a judgment based on the others.
+ </span>
+ <span class="c17">
+  Implications:
+ </span>
+ <span class="c2">
+  since 1st AC and 2nd AC are the ones who will determine your fate, it’s important to figure out where they stand. Are they leaning towards rejection or acceptance? If they are leaning toward rejection, what’s their concerns? It’s really important to address their concerns sufficiently in order to change their mind.
+ </span>
+</p>
+<h3 class="c35" id="h.sqbc9v20wuij">
+ <span class="c28 c3">
+  Understand what exactly the reviewers are asking
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  It is important to note that reviewers can only assess the quality of a paper in relation to four crucial aspects of its contribution to the HCI community. These are:
+ </span>
+</p>
+<ul class="c5 lst-kix_9v0qs2a52sfr-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Contribution to knowledge:
+  </span>
+  <span class="c2">
+   Does your paper make a significant contribution to the field of HCI, and is the contribution sufficient to warrant publication as a long/short paper of a particular page length?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Originality:
+  </span>
+  <span class="c2">
+   What is new and novel about your contribution, and how does it stand out from previous work in the field?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Significance:
+  </span>
+  <span class="c2">
+   Why is your contribution important and how does it impact the field of HCI or society as a whole?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Validity:
+  </span>
+  <span class="c2">
+   Is the evidence presented trustworthy, and do the conclusions and claims support the results and insights? Is there any flaw in your methodology that may affect the validity of your contribution?
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  In some instances, reviewers may also evaluate the relevance of your contribution to the HCI community. However, as CHI is becoming more inclusive, such assessments are becoming less common as most submissions are aligned with the focus of CHI.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  When faced with a review comment, it is important to first understand the aspect(s) in which the reviewer is assessing your contribution, whether it be in relation to its size, originality, significance, or validity, or a combination of these. Once this has been determined, you can then craft a response that addresses the reviewer's concerns and clarifies your contribution.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Let’s look at some examples:
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Here are the main concerns raised in a meta-review (see definition below) about an actual paper submitted to CHI 2023.
+  <br/>
+ </span>
+ <span class="c3 c10">
+  A meta-review in SIGCHI refers to a review of the reviews for a particular paper submission. The meta-review process is typically conducted by an Associate Chair (AC) or Senior Chair (SC) and involves evaluating the individual reviews for a paper, considering the feedback provided by the reviewers, and making a final decision on the paper's acceptability for publication.
+ </span>
+</p>
+<ul class="c5 lst-kix_s0pvr71e3g09-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Missing convincing application scenarios (R3)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The simulated conversation in the first study has limited validity for addressing RQ1 (2AC), and how it was conducted needs elaboration (R2).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Several details about the study setups are currently missing (see 2AC’s extensive list of questions)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The discussion lacks depth and reference to related work (R3, R2)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The sample population makes it difficult to generalize results (R1)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   I wondered about the paper’s claims of originality: Is the ParaGlassMenu really a novel interaction technique (as claimed in the paper’s contribution statement) or rather a novel application of an existing technique (e.g., Weigel &amp; Steimle’s technique is highly similar)? (1AC)
+  </span>
+ </li>
+</ul>
+<h3 class="c35" id="h.22cguido793v">
+ <span class="c28 c3">
+  Exercise 1.1
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Understand the nature of review feedback
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Missing convincing application scenarios (R3)
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c2">
+  Which aspect of the contribution is the subject of the reviewer's concern? Is it the originality, significance, or validity of the contribution?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  The simulated conversation in the first study has limited validity for addressing RQ1 (2AC), and how it was conducted needs elaboration (R2).
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+  <br/>
+  But in what way the reviewer is questioning the validity?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Several details about the study setups are currently missing (see 2AC’s extensive list of questions)
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c2">
+  Which aspect of the contribution is the subject of the reviewer's concern? Is it the originality, significance, or validity of the contribution?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  The discussion lacks depth and reference to related work (R3, R2)
+ </span>
+ <span class="c2">
+  <br/>
+  Originality? Significance? Validity?
+  <br/>
+  Answer: this one is a bit tricky. It is questioning multiple aspects.
+ </span>
+</p>
+<ul class="c5 lst-kix_s0pvr71e3g09-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Lack of depth can mean the issues discussed are obvious, or no new insights, which is related to originality
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Or I don’t know in what way you are similar or different from previous results, which is also related to originality.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Lack of reference to related work can be about validity -&gt; I can’t trust your discussion/opinions
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  The sample population makes it difficult to generalize results (R1)
+ </span>
+ <span class="c2">
+  <br/>
+  This one is about validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  I wondered about the paper’s claims of originality: Is the ParaGlassMenu really a novel interaction technique (as claimed in the paper’s contribution statement) or rather a novel application of an existing technique (e.g., Weigel &amp; Steimle’s technique is highly similar)? (1AC)
+ </span>
+ <span class="c2">
+  <br/>
+  This one is about originality
+ </span>
+</p>
+<h3 class="c35" id="h.eap5j7b10nyl">
+ <span class="c28 c3">
+  Exercise 1.2 Determine Priorities
+ </span>
+</h3>
+<p class="c11">
+ <span class="c17">
+  Prioritization of the issues.
+ </span>
+ <span class="c2">
+  The raised issues do not carry the same weight. Some are major issues, such as reviewers don’t know the contribution of your paper, or don’t think the contribution is enough. You will see words like “I don’t understand the contribution” (questioning the contribution to research)? “What’s novel?” (questioning the originality) “What’s the usage scenario?” (questioning the significance), “I don’t see evidence to support the claims” (questioning the validity of your work). Remember, a paper is judged by its contribution to knowledge in three aspects, originality (novelty), significance (impact), and validity (trustworthy of the claims and results). If a paper with enough new knowledge with significant impact, logically sound and has enough data to support its claims, then it should be accepted, and reasons to reject come from finding major flaws in the above aspects.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  On the other hand, reviewers can raise issues such as “I don’t understand this sentence”, “this figure is not clear”, “writing here can be improved”, or “here is an idea the authors didn’t  think about”. These are minor issues which shouldn’t fundamentally affect the decision to accept a paper. Sometimes, reviewers will raise new ideas and provide suggestions to the paper. Some of them can be ignored if it is not within your scope of the paper unless the reviewer says not including the suggestion in the revision will affect acceptance.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To understand the priority better, let’s look at a (real) example.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Rate the importance of reviewers’ concerns
+ </span>
+</p>
+<ul class="c5 lst-kix_s0pvr71e3g09-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Missing convincing application scenarios (R3)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The simulated conversation in the first study has limited validity for addressing RQ1 (2AC), and how it was conducted needs elaboration (R2).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Several details about the study setups are currently missing (see 2AC’s extensive list of questions)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The discussion lacks depth and reference to related work (R3, R2)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The sample population makes it difficult to generalize results (R1)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   I wondered about the paper’s claims of originality: Is the ParaGlassMenu really a novel interaction technique (as claimed in the paper’s contribution statement) or rather a novel application of an existing technique (e.g., Weigel &amp; Steimle’s technique is highly similar)? (1AC)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Answer:
+ </span>
+ <span class="c2">
+  <br/>
+  In general, questions regarding originality and significance hold a higher priority than those pertaining to validity. Of the questions raised, the yellow-highlighted ones are considered the most important to address, as they strongly challenge the originality and significance of the paper. The first question essentially asks about the practical usefulness of the technique, while the last question asks about the novelty of the contribution.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The gray-highlighted question also relates to the originality, significance, and validity of the paper, but is considered of slightly lower priority due to its vague nature, making it more difficult to address.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The remaining three questions are primarily concerned with the validity of the studies and are given a slightly lower priority compared to the other three questions.
+ </span>
+</p>
+<h3 class="c35" id="h.dqpedq9w0wyg">
+ <span class="c28 c3">
+  Exercise 1.3 Addressing the issues
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  How to respond?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  You need to think of convincing arguments to answer reviewers concerns. For originality, you need to be able to argue what exactly is new? Often, the reviewer may not know, so you need to articulate clearly. For example, reviewers may say, icon has been used in notifications before, so what’s new about Icon notifications, you need to tell them what’s different, and why your contribution is new and enough. For significance, you need to argue for “generalizability” and “impact”, “usefulness” of your solutions. For validity, you need to argue why you choose a particular method to evaluate, and why your method can make the claims based on the evidence.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For the case described above, the initial questions to be addressed are Q6 and Q1. Q6 pertains to the originality of the work and it is crucial that the new aspect of the contribution is clearly articulated. The reviewer has noted a prior work and it is necessary to differentiate the current work from it and, more importantly, to effectively communicate the value and significance of the contribution so as to convince the reviewer.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  First, let’s look at Q6:
+ </span>
+</p>
+<ul class="c5 lst-kix_s0pvr71e3g09-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   I wondered about the paper’s claims of originality: Is the ParaGlassMenu really a novel interaction technique (as claimed in the paper’s contribution statement) or rather a novel application of an existing technique (e.g., Weigel &amp; Steimle’s technique is highly similar)? (1AC)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Below is an attempt to clarify the contributions and uniqueness of the existing work
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As we update in the introduction, we list four important design aspects that contribute to the unique position of ParaGlassMenu and how two subtle interactions (non-intrusive and hiding) are supported by it.
+ </span>
+</p>
+<ol class="c5 lst-kix_1av6t67uf2vj-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   First, it minimizes visual distractions (being non-intrusive [64]) to users during social settings by leveraging the insights of attention-maintaining visualizations [36]. This allows users to focus on their conversational partner while interacting with the menu items displayed in the peripheral area of their vision on an Optical See-Through Head-Mounted Display (OHMD) [34].
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Second, the input mechanism, using a ring mouse, supports discreet manipulations (hiding activities [64]) cross-scenario [71] to minimize distracting others and protect privacy when necessary [54].
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Third, ParaGlassMenu supports both discrete and continuous manipulations to accommodate a wider range of interaction needs.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Fourth, as a hierarchical menu, ParaGlassMenu is scalable and can accommodate a larger set of commands than many previously proposed subtle interaction techniques (e.g., Jaw-Teeth interaction [8], etc.).
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  The combination of the above 4 factors makes ParaGlassMenu a unique, general-purpose, subtle interaction technique that’s specially designed for digital interaction in social settings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Note that it might be useful to tell reviewers the main contribution of the paper again just to remind them about the value of the paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, one thing that has not been addressed above is how our technique differs from Weigel &amp; Steimle’s work. Since this is a piece of work mentioned by the 1AC, we have to respond to it and clearly say what and why we are different. Below is an attempt.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Weigel et al. [80] introduced a flexible input device that can be deformed into various shapes, including a ring. They demonstrated an example of a pie menu on Google Glass and Oculus Rift as one instance of their design space. However, their focus was on the flexible input mechanism rather than interactions in social settings, so they did not provide menu design guidelines or further evaluate their design in social settings. ParaGlassMenu fills this gap by introducing a concrete design that satisfies the four requirements mentioned in the introduction and provides empirical validation. In particular, the requirement of displaying the menu non-intrusively around the face of a conversation partner is not mentioned by Weigel et al., but we believe it is a key insight that contributes to the effectiveness of ParaGlassMenu in supporting seamless digital interactions during social settings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Now let’s look at Q1:
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Missing convincing application scenarios (R3)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Just to provide a bit of background, the submitted paper proposes ParaGlassMenu, a semi-transparent circular menu that can be displayed around a conversation partner’s face
+  <br/>
+  on Optical See-Through Head-Mounted Display (OHMD) and interacted subtly using a ring mouse. The authors claim that ParaGlassMenu offers the best overall performance in balancing social engagement and digital interaction needs in conversations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  The introduction opening is revised to include 2 application scenarios:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In an ideal world, face-to-face social interactions are the best when all parties involved give undivided attention to one another. However, real-world situations are often more complex. Considering the following two scenarios: a) John is living alone in his apartment and has decided to host a party in his place. After the arrival of the guests, as the only host, he needs to juggle between the needs of chatting with the guests with the other host duties, including preparing food and drinks, adjusting the environment to make it more comfortable for the guests, etc. b) John is asked to join an ad hoc in-person meeting after work, preventing him from going to a date. His girlfriend, Nicole, unaware of the situation, sends him a message to ask what happened. At this moment, John must choose between ignoring the message, which may upset Nicole [2], or pausing the current conversation to reply to the message, which could impair the face-to-face interaction [19, 40, 56, 78]. Although less desirable, such scenarios are quite common in everyday life as we need to handle multiple requests during social interactions. In such situations, it may be desirable to minimize the interruption of these secondary tasks to the primary social interaction, which leads to the topic of this paper: how to support secondary human-computer interaction with minimal interference to ongoing primary social interactions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Note the key here is to think of convincing application scenarios to motivate the utility of the proposed technique. The inclusion of the two examples above help to convince the readers (reviewers) that the proposed technique can be useful in real life situations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Now you have a basic understanding of how to read reviews and respond to them, let’s look at two more examples from real paper submissions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Example 2
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here is another paper
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Background: this submission is on the topic of “
+ </span>
+ <span class="c17">
+  Can Icons Outperform Text? Understanding the Role of Pictograms in OHMD Notifications
+ </span>
+ <span class="c2">
+  ”
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Here is the
+ </span>
+ <span class="c17">
+  abstract
+ </span>
+ <span class="c3">
+  of the submission:
+ </span>
+ <span class="c3 c10">
+  Optical see-through head-mounted displays (OHMDs) can provide just-in-time digital assistance to users while they are engaged in ongoing tasks. However, given users’ limited attentional resources when multitasking, there is a need to concisely and accurately present information in OHMDs. Existing approaches for digital
+ </span>
+ <span class="c3">
+  <br/>
+ </span>
+ <span class="c54 c21 c3 c10">
+  information presentation involve using either text or pictograms. While pictograms have enabled rapid recognition and easier use in warning messages and traffic signs, most studies using pictograms for digital notifications have exhibited unfavorable results. We thus conducted a series of four iterative studies to understand how we can support effective notification presentation on OHMDs during multitasking scenarios. We find that while icon-augmented notifications can outperform text-only notifications, their effectiveness depends on icon familiarity, encoding density, and environmental brightness. We reveal design implications when using icon-augmented notifications in OHMDs and present plausible reasons for the observed disparity in literature.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here are the main concerns raised in a meta-review.
+ </span>
+</p>
+<ul class="c5 lst-kix_ud84gdrmxfqt-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The AR/OHMD chosen is not well argued or explained and the paper would benefit from an examination of these affordances within the context of the results presented.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The laboratory study’s primary task is very contrived and the authors could explain better why this task is representative of tasks were they envision OHMD being used.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   All four studies are limited to primary and secondary tasks and the authors should expand and discuss ecological validity limits.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The novelty of the concept is not clear, the authors should explain if the novelty of the proposed method is one of the contributions of this paper.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The appropriateness of the criteria used in user studies is not clear and need to be explained clearly.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   There are some issues with the procedure of study 3, the authors need to explain if their procedure unfairly increased the users’ familiarity with the icons, impacting the results.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The motivation of doing this work is a bit confusing, the authors discusses multitasking scenarios, but only focus on calendar events, the reviewer suggest keeping the paper limited to “calendar” events and generalize it in the discussion section.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The design process needs more details and clarifying.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The studies need more details and explanation.
+  </span>
+ </li>
+</ul>
+<h3 class="c35" id="h.qwgru8jrmqzs">
+ <span class="c28 c3">
+  Exercise 2.1
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Let’s first look at the comments and try to figure out what they are asking.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  1.
+ </span>
+ <span class="c17">
+  The AR/OHMD chosen is not well argued or explained and the paper would benefit from an examination of these affordances within the context of the results presented.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  What does this question really ask?
+  <br/>
+  Originality? Significance? Validity?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Why study AR/OHMD? -&gt; Why is studying AR/OHMD interesting and important?
+  <br/>
+  -&gt; Significance, Originality
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The paper would benefit from an examination of these affordances within the context of the results presented?
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   What are the characteristics of this context you choose to investigate? -&gt; Originality
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   What is the scope? -&gt; Significance
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Noted that it’s not always obvious what the reviewers are really concerned about. It takes experience to read between the lines to understand their intentions. While we provide you with a general framework, in some cases, if you can’t figure it out, remember to consult your advisor who is likely to have more experience to understand exactly what the reviewers mean.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  2. The laboratory study’s primary task is very contrived and the authors could explain better why this task is representative of tasks where they envision OHMD being used.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  3. All four studies are limited to primary and secondary tasks and the authors should expand and discuss ecological validity limits.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity -&gt; ecological validity (Question, what are the other types of validities?)
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  4. The novelty of the concept is not clear, the authors should explain if the novelty of the proposed method is one of the contributions of this paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Originality
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  5. The appropriateness of the criteria used in user studies is not clear and need to be explained clearly.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  6. There are some issues with the procedure of study 3, the authors need to explain if their procedure unfairly increased the users' familiarity with the icons, impacting the results.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  7. The motivation of doing this work is a bit confusing, the authors discusses multitasking scenarios, but only focus on calendar events, the reviewer suggest keeping the paper limited to *calendar* events and generalize it in the discussion section.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is saying: you seem to claim a larger phenomenon A, but you only investigated an element/component/subcategory of A, which means they question the Validity. In other words, reviewers are fine with the contribution of the paper, but they are worried that the paper overclaims its contribution which can mislead the readers.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  8. The design process needs more details and clarification.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is also obvious -&gt; Validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  9. The studies need more details and explanation.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This one is also obvious -&gt; Validity
+ </span>
+</p>
+<h3 class="c35" id="h.21wy1w62gx78">
+ <span class="c28 c3">
+  Exercise 2.2 Determine Priorities
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Please describe the priority of the concerns. Which ones have the highest priority that are critical to the acceptance of the paper? Which ones are the secondary?
+ </span>
+</p>
+<ul class="c5 lst-kix_ud84gdrmxfqt-0">
+ <li class="c11 c15 li-bullet-0">
+  <span>
+   The AR/OHMD chosen is not well argued or explained and the paper would benefit from an examination of these affordances within the context of the results presented.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span>
+   The laboratory study’s primary task is very contrived and the authors could explain better why this task is representative of tasks where they envision OHMD being used.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span>
+   All four studies are limited to primary and secondary tasks and the authors should expand and discuss ecological validity limits.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span>
+   The novelty of the concept is not clear, the authors should explain if the novelty of the proposed method is one of the contributions of this paper.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The appropriateness of the criteria used in user studies is not clear and need to be explained clearly.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   There are some issues with the procedure of study 3, the authors need to explain if their procedure unfairly increased the users' familiarity with the icons, impacting the results.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The motivation of doing this work is a bit confusing, the authors discusses multitasking scenarios, but only focus on calendar events, the reviewer suggest keeping the paper limited to *calendar* events and generalize it in the discussion section.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The design process needs more details and clarification.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The studies need more details and explanation.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Answer:
+ </span>
+ <span class="c2">
+  <br/>
+  As previously stated, questions regarding the paper’s originality and significance hold a higher priority than those pertaining to validity in general. Among the questions raised, those have been highlighted in yellow are considered the most important to address, as they strongly challenge the originality and significance of the paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The first question essentially asks about the benefits and advantages of the chosen technique, while the last question asks about the novelty of the contribution. The remaining questions are predominantly concerned with the validity of the research and are accorded a relatively lower priority compared to the aforementioned inquiries.
+ </span>
+</p>
+<h3 class="c35" id="h.ri5sr9gkbs18">
+ <span class="c28 c3">
+  Exercise 2.3 Addressing the issues
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  How to respond?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For the case described above, the initial questions to be addressed are Q1 and Q4. First, Let’s look at the Q1.
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The AR/OHMD chosen is not well argued or explained and the paper would benefit from an examination of these affordances within the context of the results presented.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  It is mainly about the Selection of OHMD and generalization. Below is an attempt to clarify this.
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A BT-300 was selected as our OHMD since its functionality/features are a subset of the more advanced OHMDs (such as HoloLens2, Nreal Light, etc.); thus, its results could be better generalized to a wide range of OHMDs.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Generalizing results to other OHMDs. Compared to advanced 3D projection-supported OHMDs, like Microsoft HoloLens2 (HL2) or Nreal Light (Nreal), which have a larger FoV (field of view), use 3D projections, and support various anchoring techniques (HL2 and Nreal support the head, body, and world anchoring), the OHMD prototype we used, BT-300, has a smaller FoV, uses 2D projection, and supports head anchoring. Given that the features of BT-300 are a subset of those from HL2 and Nreal, those HL2 and Nreal that are using similar configurations to the BT-300 can more easily replicate our results obtained on BT-300. If the more advanced OHMDs use features that are specific to their capabilities, e.g., world anchoring, given the limited world anchoring distance (e.g., recommended distance for HL2 is 1.25m - 5m) [48], we believe our results still largely hold, as previous studies comparing pictograms and text-based traffic signs from the similar physical distance (e.g., [27]) showed favourable results towards pictograms due to the high encoding density of icons.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Now let’s look at Q4:
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The novelty of the concept is not clear, the authors should explain if the novelty of the proposed method is one of the contributions of this paper.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Just to provide a bit of background and examples to convince the novelty of icon-augmented notifications.
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   As the novelty of the icon-augmentation concept was unclear, a description of how icon-augmented notification differs from the current notification was added to sec 3. Additionally, some sample notifications are provided here (see the bottom of this response) to showcase the above difference vividly.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   “[sec 3, lines 183-187] Although current mobile notifications use icons to display the notification source (e.g., app, sender) in a supplementary manner, the content of the notification is still entirely displayed using the text format [3, 5]. In contrast, our work explores how we can represent the content of the notifications itself partially via icons, which is significantly different from existing approaches.”
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   We believe our work is novel and has originality for the following reasons. First, while icons have been used in mobile notifications before, how they were incorporated differs from our approach. For example, in iOS/Android notifications [3, 5], icons are primarily used to represent the source of the application where the notification comes from and do not represent any of the main content. Hence, without them, the notifications are still understandable, while in our case, the icons are part of the main content, and without them, the notifications are incomplete and can’t be comprehended easily. Second, OHMD is a very different context than mobile phones, and we are not aware of any prior investigations studying the incorporation of icons in OHMD multitasking contexts. Finally, while the artifact (icon-augmented calendar notifications) is a contribution, the paper’s main contribution is the enhanced understanding of the potential role that icons can play in notifications. Thus, we believe when evaluating the originality of the paper, both the artifact and the enhanced insights gained from empirical studies need to be considered while, in our opinion, the latter carries a heavier weight.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   As shown in Fig 17, MacBook (M1) sample notifications (for details on Apple/iOS/Mac notifications, see [5]),
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The icon represents the notification source (e.g., application), while the notification content (title and message) is shown purely using text. On the other hand, in icon-augmented notifications, the title or the message itself is represented using a combination of an icon and text.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   For example, consider the above text-only notification “Thesis update meeting at 4 pm”, which can be converted to an icon-augmented notification as “&lt;Thesis icon&gt; 4 pm”, where &lt;Thesis icon&gt; is a user-selected icon to represent the “Thesis update” event. The same applies to Android notifications also (see [3] for examples).
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c28 c17">
+  Example 3
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here is another paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Background: this submission is on the topic of “
+ </span>
+ <span class="c17">
+  Not All Spacings are Created Equal: The Effect of Text Spacings in On-the-go Reading Using Optical See-Through Head-Mounted Displays
+ </span>
+ <span class="c2">
+  ”
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Here is the
+ </span>
+ <span class="c17">
+  abstract
+ </span>
+ <span class="c3">
+  of this submission:
+ </span>
+ <span class="c3 c10">
+  The emergent Optical Head-Mounted Display (OHMD) platform has made mobile reading possible by superimposing digital text onto users’ view of the environment. However, mobile reading through OHMD needs to be effectively balanced with the user’s environmental awareness. Hence, a series of studies were conducted to explore how text spacing strategies facilitate such balance. Through these studies, it was found that increasing spacing within the text can significantly enhance mobile reading on OHMDs in both simple and
+ </span>
+ <span class="c3">
+  <br/>
+ </span>
+ <span class="c3 c10">
+  complex navigation scenarios and that such benefits mainly come from increasing the inter-line spacing, but not inter-word spacing. Compared with existing positioning strategies, increasing inter-line spacing improves mobile OHMD information reading in terms of reading speed (11.9% faster), walking speed (3.7% faster), and switching between reading and navigation (106.8% more accurate and 33% faster).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here are the main concerns raised in a meta-review.
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It needs to be better positioned with respect to everyday XR devices; the authors are encouraged to place their findings into context to highlight the potential benefits of their findings.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It also notes that the work needs to be better positioned in the literature.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It was not convinced by the significance and raised questions about why this work is necessary.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   'Pilot studies' with limited sample size constitute a sizeable part of the contribution and questions the impact this may have on the validity of findings, versus the more rigorous 'full' studies.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It’s better to justify and motivate the experimental approach. Related to this, all reviewers raised questions or potential issues that require clarification. Again, these are all points that should be addressed through revisions should the authors choose to do so.
+  </span>
+ </li>
+</ul>
+<h3 class="c35" id="h.flh819yrwpu3">
+ <span class="c28 c3">
+  Exercise 3.1
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Let’s first look at the comments and try to figure out what they are asking.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  1. It needs to be better positioned with respect to everyday XR devices; the authors are encouraged to place their findings into context to highlight the potential benefits of their findings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Significance
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  2. It also notes that the work needs to be better positioned in the literature.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Originality
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  3. It was not convinced by the significance and raised questions about why this work is necessary.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Significance
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  4. 'Pilot studies' with limited sample size constitute a sizeable part of the contribution and questions the impact this may have on the validity of findings, versus the more rigorous 'full' studies.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  5. It’s better to justify and motivate the experimental approach. Related to this, all reviewers raised questions or potential issues that require clarification. Again, these are all points that should be addressed through revisions should the authors choose to do so.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This one is obvious -&gt; Validity
+ </span>
+</p>
+<h3 class="c35" id="h.fuecdab82uq2">
+ <span class="c28 c3">
+  Exercise 3.2 Determine Priorities
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Please describe the priority of the concerns. Which one to look at?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  1. It needs to be better positioned with respect to everyday XR devices; the authors are encouraged to place their findings into context to highlight the potential benefits of their findings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  2. It also notes that the work needs to be better positioned in the literature.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  3. It was not convinced by the significance and raised questions about why this work is necessary.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  4. 'Pilot studies' with limited sample size constitute a sizeable part of the contribution and questions the impact this may have on the validity of findings, versus the more rigorous 'full' studies.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  5. It’s better to justify and motivate the experimental approach. Related to this, all reviewers raised questions or potential issues that require clarification. Again, these are all points that should be addressed through revisions should the authors choose to do so.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Answer:
+ </span>
+ <span class="c2">
+  <br/>
+  Questions regarding the paper’s originality and significance hold a higher priority than those pertaining to validity in general. Among the questions raised, those have been highlighted in yellow are considered the most important to address, as they strongly challenge the originality and significance of the paper. The remaining two questions are primarily concerned with the validity of the studies and are given a slightly lower priority compared to the other three questions.
+ </span>
+</p>
+<h3 class="c35" id="h.7g6tx8cm8rmu">
+ <span class="c28 c3">
+  Exercise 3.3 Addressing the issues
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  How to address?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For the case described above, the initial questions to be addressed are Q1, Q2 and Q3. Q1 and Q2 can be combined. First, let’s look at Q1 and Q2:
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It needs to be better positioned with respect to everyday XR devices; the authors are encouraged to place their findings into context to highlight the potential benefits of their findings.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It also notes that the work needs to be better positioned in the literature.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  To address these questions, we added the context of XR devices to enhance the motivation of our work in the introduction.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The future world we live in will likely be a blend of physical and virtual realities, creating a seamless and immersive experience. The exact details of how this will manifest are still being explored and debated, but increasing evidence has pointed to an emergent concept called the "metaverse" that blends these two realms. By allowing users to access virtual information while still being aware of their surroundings, Optical See-Through Head-Mounted Display (OHMD), due to its heads-up and hands-free capabilities, is a promising platform that can help users to more seamlessly explore and live in the metaverse. With OHMDs, users can now adopt a new heads-up interaction paradigm [89 ], allowing them to receive in-context, just-in-time digital assistance anytime and in any environment.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We also added the context of XR devices in Related work (See Subsection 2.1) to clarify the originality of this work.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Recent research revealed that Extended Reality (XR) would become mainstream in everyday life in the coming years. One type of wearable XR device is the emerging smart glasses platform OHMD. Unlike traditional reading, OHMDs allow users to access digital information while still being aware of their surroundings, making them especially useful for on-the-go situations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We finally explained our contributions in the response letter.
+  <br/>
+  Our proposed approach enhances the functionality of current XR devices, such as Focals and Nreal Air glasses, enabling new usage scenarios that are more useful and versatile in everyday contexts. This will be also beneficial in industrial settings, where the use of HoloLens2 and other XR devices enable workers to multitask more effectively while receiving instructions. Overall, our approach is an important advancement in the field of XR technology and has the potential to benefit a wide range of users in the future.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Now let’s look at Q3:
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   It was not convinced by the significance and raised questions about why this work is necessary.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  We added examples and previous works in Introduction.
+  <br/>
+  Note that one reason spaces with text were previously underexplored is related to the length of the text. Previous studies have mainly explored the reading of small chunks of text (a few words to a sentence) on OHMDs as they are easier to read during mobile multitasking scenarios. With only a small amount of text, there is limited need and room to further adjust spaces within the
+  <br/>
+  text. Yet if only small chunks of text were permitted to be displayed on OHMDs, it could be restrictive. While it is easy to display simple instructions or notifications, longer pieces of text (e.g., email, news article, recipe, etc.) need to be broken down into small chunks and displayed piece by piece, which has been shown by previous studies to significantly reduce user comprehension.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Then we also added a new Subsection 2.2.3 on Text Quantity of Related Work to convince this.
+  <br/>
+  The amount of text displayed on a single OHMD screen could affect user perception. According to Chen et al., low-text quantities might include labels with a few words, while high-text quantities might consist of detailed description of objects. Previous studies on OHMD mobile reading have primarily focused on short texts (i.e., low-text quantities), such as presenting only several words or one sentence at a time. While these strategies can help reduce the cognitive load associated with mobile reading, they limit the amount of content that can be shown. Studies have shown that displaying small chunks of words on the screen can negatively impact users’ reading comprehension. Dillon et al. found that splitting sentences between pages often results in a frequent return to the previous page to reread the text. This splitting will likely disrupt the comprehension process by placing an extra burden on the limited capacity of working memory. Additionally, 10-20% of the eye movements made when reading in this condition are regressions to earlier fixated words. Previous research also indicated that larger text sizes are more readable than smaller ones.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In the mobile learning context, Ram et al. suggested that users can comprehend 6-8 chunks of the information displayed on-screen for controlling the information density. They further recommended that the information be persisted on the same screen to ease the temporal load on the working memory. Previous research has also highlighted the importance of data persistence for enhancing the understanding of information presented on OHMD, which suggests the potential value of displaying longer texts on these devices. However, Fukushima et al. investigated presenting 10-line text using default spacing settings on an OHMD while walking on a treadmill and found that the text blocks displayed were challenging to read while walking and felt “overwhelming”. Therefore, we investigate how to adjust text spacing so that users can access longer text (e.g., emails or articles) intuitively and efficiently for OHMD mobile reading.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The inclusion of examples and previous works above helps to convince the readers (reviewers) that the proposed technique can be useful in real-life situations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Don’t understand or misunderstand your contribution
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Examples:
+  </span>
+  <span class="c17">
+   It was not convinced by the significance and raised questions about why this work is necessary [Q3 of Exercise 3].
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Response: We used examples and previous works to explain why large chunks of text are not an issue and in fact, desirable for user comprehension. Our proposed approach utilizes visual output as a primary mode, supported by research showing that 80% of information is obtained via visual output. So we enhanced our introduction and Related Work to clarify our significance (
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="#h.ijye4rh04kx2">
+    see above 3.3 answer of Q3
+   </a>
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Attacking the originality of your contribution
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Examples:
+  </span>
+  <span class="c17">
+   The novelty of the concept is not clear, the authors should explain if the novelty of the proposed method is one of the contributions of this paper  [Q4 of Exercise 2].
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Response: We believe our work is novel and has originality for the following reasons. First, while icons have been used in mobile notifications before, how they were incorporated differs from our approach. For example, in iOS/Android notifications [3, 5], icons are primarily used to represent the source of the application where the notification comes from and do not represent any of the main content. Hence, without them, the notifications are still understandable, while in our case, the icons are part of the main content, and without them, the notifications are incomplete and can’t be comprehended easily. Second, OHMD is a very different context than mobile phones, and we are not aware of any prior investigations studying the incorporation of icons in OHMD multitasking contexts. Finally, while the artifact (icon-augmented calendar notifications) is a contribution, the paper’s main contribution is the enhanced understanding of the potential role that icons can play in OHMD notifications. Thus, we believe when evaluating the originality of the paper, both the artifact and the enhanced insights gained from empirical studies need to be considered while, in our opinion, the latter carries a heavier weight (
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="#h.p5117qppf6xd">
+    see above 2.3 answer of Q4
+   </a>
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Attacking the significance of your contribution
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Example:
+  </span>
+  <span class="c17">
+   Missing convincing application scenarios (R3) [Q1 of Exercise 1].
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Response: Just to provide a bit of background, the submitted paper proposes ParaGlassMenu, a semi-transparent circular menu that can be displayed around a conversation partner’s face on Optical See-Through Head-Mounted Display (OHMD) and interacted subtly using a ring mouse. The authors claim that ParaGlassMenu offers the best overall performance in balancing social engagement and digital interaction needs conversations. Note the key here is to think of convincing application scenarios to motivate the utility of the proposed technique. The inclusion of the two examples above help to convince the readers (reviewers) that the proposed technique can be useful in real life situations (
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="#h.yi4f0eexwtux">
+    see above 1.3 answer of Q1
+   </a>
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Attacking the validity of your contribution
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Validity can be attacked in many different ways. The common ones are:
+ </span>
+</p>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Sample size is too small (significance results found can be due to skewed population and due to chance)
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The design of experiment is flawed
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Confounding variables not controlled
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Confounding variables are factors that can affect the outcome of an experiment but are not being measured or controlled. They can introduce bias or random error, making it difficult to determine whether the results are due to the independent variable being studied or some other factor.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Internal validity, external validity, and ecological validity are important concepts in research methodology, particularly in experimental research.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Internal validity
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-3 start">
+ <li class="c11 c98 li-bullet-0">
+  <span class="c2">
+   Internal validity refers to the extent to which an experiment is designed and conducted in a way that ensures that changes in the dependent variable are caused by changes in the independent variable, rather than other extraneous factors. To ensure internal validity, researchers often use control groups, randomization, blinding, and other methods to minimize the influence of confounding variables and ensure that the results are attributable to the independent variable being studied.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   External validity
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-3 start">
+ <li class="c11 c98 li-bullet-0">
+  <span class="c2">
+   External validity, on the other hand, refers to the generalizability of the findings beyond the specific context of the experiment. In other words, to what extent can the results of an experiment be applied to other populations, settings, or situations? To ensure external validity, researchers must ensure that the sample studied is representative of the population of interest and that the experiment is conducted in a way that reflects real-world conditions.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Ecological validity
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-3 start">
+ <li class="c11 c98 li-bullet-0">
+  <span class="c2">
+   Ecological validity refers to the extent to which an experiment is conducted in a way that reflects the real-world setting in which the phenomenon of interest occurs. This is particularly important in studies of human behavior, where the environment and social context can have a significant impact on behavior. To ensure ecological validity, researchers often use naturalistic observation or field studies to observe behavior in real-world settings, rather than laboratory experiments.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   In summary, internal validity is concerned with the accuracy and precision of the findings within the context of the study, external validity is concerned with the generalizability of the findings to other populations or situations, and ecological validity is concerned with the extent to which the study reflects the real-world setting in which the phenomenon of interest occurs.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Example:
+  </span>
+  <span class="c17">
+   The simulated conversation in the first study has limited validity for addressing RQ1 (2AC), and how it was conducted needs elaboration (R2). [Exercise 1]
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Response:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Thanks for pointing out the concerns about the use of a virtual conversation partner. As pointed out by MacKenzie’s book “Human-computer interaction: an empirical research perspective”, the designer of the experiment needs to trade off internal validity vs. external validity. While using realistic conversation partners can enhance external validity, it can significantly reduce internal validity by introducing potential confounding variables, such as inconsistent replies in terms of content and duration can affect the users' manipulation behaviors, which makes it hard to have a fair comparison between objective measures, such as face focus, accuracy, and duration. Thus, to keep high internal validity we used a simulated setting in Study 1, and evaluated the external validity in Study 2 to complement Study 1.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   In the revision, we add the reason for why using a virtual conversation partner in study 1’s apparatus [sec 5.3]:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Note that the virtual conversation partner was used with a trade-off consideration between external validity and internal validity [53]. While using realistic conversation partners can enhance external validity, it can significantly reduce internal validity by introducing potential confounding factors, such as inconsistent replies in terms of content and duration, which can affect the users’ manipulation behaviors. Thus, we selected a virtual conversation partner to make a fair comparison in this study.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   As for R2’s concerns, thank you for pointing out the unclear description. We clarify this in the revision of study 1, sec 5.6.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   the virtual conversation partner was displayed on the central monitor and continuously speaking (moving mouth) until the participant successfully completed each trial (see the details of stimuli in Appendix A.2). We ask the participants to act as if they are listening to their conversation partner when manipulating.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Example:
+  </span>
+  <span class="c17">
+   All four studies are limited to primary and secondary tasks and the authors should expand and discuss ecological validity limits. [Exercise 2]
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Response:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   [sec 10, lines 1388-1399] As discussed in study 4 (sec 8.6), external brightness mainly affected the noticeability of icon-augmented notifications, and shaking mainly affected the legibility of text notifications. With the advancement in technology, such as retinal projection [48] (e.g., Vaunt glasses), the effects of external brightness will be minimized, and the use of fonts/icons which are less susceptible to shakiness [61] can minimize legibility issues. Although the selected vigilance task in Study 1-3 can mimic dynamic conditions in realistic situations (sec 5.3), it did not simulate severe stake conditions, such as bumping into someone while walking in a crowded street. It also does not include scenarios involving potential danger that one can encounter in real-life AR usage (e.g., reduced depth of focus and reaction time [81]). However, we believe the pictogram format will have a higher salience during shakes, be easier to perceive in sub-optimal conditions (sec 9.2.3), and provide higher attention control (sec 5.7, sec 9.2); thus, offering more advantages during those scenarios.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   As mentioned in original sec 10, “the results do not capture long-term effects and may not evenly apply to other populations”, indicating the need for further ecological studies.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Example:
+  </span>
+  <span class="c17">
+   'Pilot studies' with limited sample size constitute a sizeable part of the contribution and question the impact this may have on the validity of findings, versus the more rigorous 'full' studies. [Exercise 3]
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Response:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_fu97zn7gyrre-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   As reviewer argued the sample size of pilot studies, we recruited 4 more participants to add rigor to the previous Pilot 1, and the new analysis remains consistent as reflected in the new Study 1. We condensed the previous Pilot 2 into one paragraph in the new Study 1.
+  </span>
+ </li>
+</ul>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-09.html" class="book-breadcrumb__link">&larr; Chapter 9</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="acknowledgements.html" class="book-breadcrumb__link">Acknowledgements &rarr;</a>
+</div>
+</body>
+</html>

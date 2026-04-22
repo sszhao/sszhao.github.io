@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Heads-Up Computing Moving Beyond the Device-Centered Paradigm"
 image: /assets/blog/截圖-2024-02-21-下午10.16.07.png
 description: 

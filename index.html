@@ -1,28 +1,583 @@
----
-layout: pages-layout/home
----
-<section id="cover">
-  {% include home/cover.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shengdong Zhao — Synteraction Lab</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-030YPW3KDJ');
+</script>
+<style>
+/* ───────────────────────────────────────────────────────────────────
+   Synteraction Lab — Color & Type Foundations
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --paper:         rgb(250, 249, 246);
+  --paper-2:       rgb(244, 243, 241);
+  --paper-3:       rgb(233, 232, 229);
+  --border-warm:   rgb(227, 226, 224);
+  --ink:           rgb(26, 28, 26);
+  --fg-1:          rgb(26, 28, 26);
+  --fg-2:          rgb(75, 68, 84);
+  --fg-4:          rgb(120, 113, 108);
+  --purple-700:    rgb(121, 41, 216);
+  --purple-600:    rgb(147, 74, 243);
+  --purple-200:    rgb(215, 186, 255);
+  --purple-700-05: rgba(121, 41, 216, 0.05);
+  --purple-700-20: rgba(121, 41, 216, 0.2);
+  --gold-800:      rgb(114, 91, 0);
+  --gold-700:      rgb(115, 92, 0);
+  --gold-700-05:   rgba(115, 92, 0, 0.05);
+  --gold-700-30:   rgba(115, 92, 0, 0.3);
+  --gold-500:      rgb(253, 211, 77);
+  --gold-300:      rgb(255, 224, 135);
+  --white:         rgb(255, 255, 255);
+  --font-display:  "Space Grotesk", system-ui, sans-serif;
+  --font-body:     "Manrope", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 96px;
+  width: 100%;
+}
+
+/* ─── Nav ──────────────────────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: var(--purple-700);
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: var(--ink); }
+.site-nav__link--active {
+  color: var(--purple-700);
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: var(--purple-700);
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--paper-2);
+  border-top: 1px solid var(--border-warm);
+  padding: 72px 0 48px;
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border-warm);
+}
+.site-footer__brand {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 320px;
+}
+.site-footer__wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.55px;
+  color: var(--purple-700);
+}
+.site-footer__tagline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--fg-2);
+  margin: 0;
+}
+.site-footer__col h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin: 0 0 16px 0;
+}
+.site-footer__col ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.site-footer__col a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+.site-footer__col a:hover { color: var(--purple-700); }
+.site-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-4);
+}
+.site-footer__legal a {
+  color: var(--fg-4);
+  text-decoration: none;
+  margin-left: 24px;
+}
+
+/* ─── Utilities ────────────────────────────────────────────────── */
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::before {
+  content: ""; width: 24px; height: 1px;
+  background: var(--gold-700); opacity: 0.5;
+}
+.highlight-strip {
+  background: var(--gold-300);
+  padding: 0 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.pill-button {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+  cursor: pointer; border: none;
+}
+.pill-button--primary {
+  background: var(--purple-700);
+  color: var(--white);
+}
+.pill-button--primary:hover { background: var(--purple-600); }
+.pill-button--outline {
+  border: 1px solid var(--gold-700-30);
+  color: var(--gold-700);
+  background: transparent;
+}
+.pill-button--outline:hover { background: var(--gold-700-05); }
+.pill-button--ghost {
+  color: var(--purple-700);
+  background: transparent;
+  padding: 10px 0;
+}
+.pill-button--ghost:hover { gap: 12px; }
+
+/* ── Hero ── */
+.home-hero { position: relative; padding: 128px 0 96px; overflow: hidden; background: var(--paper); }
+.home-hero__deco-1 { position: absolute; right: -80px; top: 40px; width: 384px; height: 384px; border-radius: 12px; background: rgba(215,186,255,0.22); pointer-events: none; }
+.home-hero__deco-2 { position: absolute; left: -64px; bottom: -80px; width: 256px; height: 256px; border-radius: 12px; background: rgba(255,224,135,0.28); pointer-events: none; }
+.home-hero__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+.home-hero__col { display: flex; flex-direction: column; gap: 28px; }
+.home-hero__title { font-family: var(--font-display); font-weight: 700; font-size: 72px; line-height: 72px; letter-spacing: -3.6px; color: var(--ink); margin: 0; }
+.home-hero__sub { font-family: var(--font-body); font-weight: 300; font-size: 20px; line-height: 32.5px; color: var(--fg-2); margin: 0; max-width: 480px; }
+.home-hero__ctas { display: flex; gap: 16px; margin-top: 12px; }
+.home-hero__image-wrap { position: relative; }
+.home-hero__tilt { position: absolute; inset: -12px -4px -12px -24px; transform: rotate(-2deg); border-radius: 32px; background: var(--paper-2); }
+.home-hero__img { position: relative; width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 40px rgba(26,28,26,0.08); display: block; }
+
+/* ── Bio ── */
+.bio { padding: 96px 0; background: var(--paper-2); position: relative; }
+.bio__grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+.bio__img { width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(26,28,26,0.08); aspect-ratio: 4/5; object-fit: cover; }
+.bio__title { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1.05; letter-spacing: -1.8px; color: var(--ink); margin: 16px 0 24px; }
+.bio__lede { font-family: var(--font-body); font-weight: 300; font-size: 18px; line-height: 32px; color: var(--fg-2); margin: 0 0 20px; }
+
+/* ── Heads-up ── */
+.hucomp { padding: 128px 0; background: var(--paper); position: relative; overflow: hidden; }
+.hucomp__deco { position: absolute; left: -60px; top: 80px; width: 280px; height: 280px; border-radius: 12px; background: rgba(215,186,255,0.18); }
+.hucomp__head { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 56px; }
+.hucomp__title { font-family: var(--font-display); font-weight: 700; font-size: 60px; line-height: 1.05; letter-spacing: -2.5px; color: var(--ink); margin: 16px 0 0; }
+.hucomp__title .highlight-strip { background: var(--gold-300); padding: 0 10px; }
+.hucomp__desc { font-family: var(--font-body); font-weight: 300; font-size: 18px; line-height: 30px; color: var(--fg-2); margin: 0; }
+.hucomp__link { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--purple-700); text-decoration: none; transition: gap 180ms ease; display: inline-flex; gap: 6px; margin-top: 8px; }
+.hucomp__link:hover { gap: 10px; }
+
+/* Video player */
+.hucomp__video-wrapper { position: relative; margin-top: 48px; background: var(--paper-2); border-radius: 40px; padding: 48px; box-shadow: 0 20px 40px rgba(26,28,26,0.05); }
+.hucomp__video-container { position: relative; border-radius: 24px; overflow: hidden; background: #000; aspect-ratio: 16/9; }
+.video-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; z-index: 0; pointer-events: none; transition: opacity 300ms ease; }
+.video-player.active { opacity: 1; z-index: 1; pointer-events: auto; }
+.hucomp__video-links { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px; justify-content: center; }
+.hucomp__video-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--fg-4); text-decoration: none; background: none; border: none; cursor: pointer; padding: 8px 16px; border-radius: 999px; transition: all 180ms ease; }
+.hucomp__video-btn:hover { color: var(--purple-700); }
+.hucomp__video-btn--active { color: var(--purple-700); background: var(--purple-700-05); }
+
+/* ── Featured Pubs ── */
+.featpubs { padding: 128px 0; background: var(--paper-2); }
+.featpubs__head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 32px; margin-bottom: 56px; }
+.featpubs__title { font-family: var(--font-display); font-weight: 700; font-size: 48px; letter-spacing: -1.8px; line-height: 1.05; color: var(--ink); margin: 12px 0 0; }
+.featpubs__link { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple-700); text-decoration: none; }
+.featpubs__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.pubcard { background: var(--white); border-radius: 24px; padding: 36px 32px; box-shadow: 0 20px 40px rgba(26,28,26,0.05); display: flex; flex-direction: column; gap: 16px; min-height: 340px; position: relative; border: 1px solid rgba(206,194,215,0.25); text-decoration: none; color: inherit; transition: transform 180ms ease, box-shadow 180ms ease; }
+.pubcard:hover { transform: translateY(-2px); box-shadow: 0 28px 50px rgba(26,28,26,0.08); }
+.pubcard__venue { position: absolute; top: 32px; right: 32px; font-family: var(--font-display); font-weight: 700; font-size: 26px; color: rgba(115,92,0,0.35); letter-spacing: -0.5px; }
+.pubcard__eyebrow { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); }
+.pubcard__title { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 30px; color: var(--ink); margin: 0; letter-spacing: -0.3px; text-wrap: balance; }
+.pubcard__meta { font-family: var(--font-body); font-size: 14px; color: var(--fg-4); margin-top: auto; }
+.pubcard__badge { display: inline-block; background: rgba(255,224,135,0.5); color: var(--gold-800); font-family: var(--font-body); font-weight: 700; font-size: 11px; padding: 4px 10px; border-radius: 999px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ── Thoughts ── */
+.thoughts { padding: 128px 0; background: var(--paper); }
+.thoughts__head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 56px; align-items: end; }
+.thoughts__title { font-family: var(--font-display); font-weight: 700; font-size: 48px; letter-spacing: -1.8px; line-height: 1.05; color: var(--ink); margin: 12px 0 0; }
+.thoughts__lede { font-family: var(--font-body); font-weight: 300; font-size: 18px; line-height: 30px; color: var(--fg-2); margin: 0; }
+.thoughts__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.article { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit; }
+.article__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; background: var(--paper-2); }
+.article__date { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); }
+.article__title { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 30px; letter-spacing: -0.3px; color: var(--ink); margin: 0; }
+.article__excerpt { font-family: var(--font-body); font-size: 15px; line-height: 24px; color: var(--fg-2); margin: 0; }
+
+/* ── CTA ── */
+.cta { padding: 128px 0; background: var(--ink); color: var(--paper); position: relative; overflow: hidden; }
+.cta__grid { display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; position: relative; }
+.cta__title { font-family: var(--font-display); font-weight: 700; font-size: 56px; letter-spacing: -2px; line-height: 1.05; color: var(--paper); margin: 16px 0 0; }
+.cta__sub { font-family: var(--font-body); font-weight: 300; font-size: 20px; line-height: 32px; color: rgba(250,249,246,0.7); margin: 20px 0 0; max-width: 580px; }
+.cta__button { background: var(--purple-700); color: var(--white); }
+.cta__eyebrow { color: var(--gold-300); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .container { padding: 0 32px; }
+  .home-hero__grid, .bio__grid, .hucomp__head, .featpubs__head, .thoughts__head, .cta__grid { grid-template-columns: 1fr; }
+  .featpubs__grid, .thoughts__grid { grid-template-columns: 1fr; }
+  .home-hero__title { font-size: 48px; line-height: 52px; letter-spacing: -2px; }
+  .site-footer__grid { grid-template-columns: 1fr 1fr; }
+  .site-nav__links { gap: 20px; }
+  .hucomp__title { font-size: 40px; }
+  .cta__title { font-size: 40px; }
+  .bio__title { font-size: 36px; }
+  .featpubs__title, .thoughts__title { font-size: 36px; }
+  .hucomp__video-wrapper { padding: 24px; border-radius: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link site-nav__link--active" href="/">Home</a>
+      <a class="site-nav__link" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero__deco-1"></div>
+  <div class="home-hero__deco-2"></div>
+  <div class="container">
+    <div class="home-hero__grid">
+      <div class="home-hero__col">
+        <span class="section-eyebrow">New Publication</span>
+        <h1 class="home-hero__title">Navigate the<br>World of HCI<br>Research.</h1>
+        <p class="home-hero__sub">Demystifying the journey from a novice student to a seasoned researcher. A comprehensive guide exploring the fundamental principles, methodologies, and philosophies of Human-Computer Interaction.</p>
+        <div class="home-hero__ctas">
+          <a href="/book" class="pill-button pill-button--primary">Read the Book →</a>
+        </div>
+      </div>
+      <div class="home-hero__image-wrap">
+        <div class="home-hero__tilt"></div>
+        <img class="home-hero__img" src="/assets/img/book-cover.svg" alt="Navigate the World of HCI Research - Book Cover">
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="about">
-  {% include home/about.html %}
+<!-- BIO -->
+<section class="bio">
+  <div class="container">
+    <div class="bio__grid">
+      <img class="bio__img" src="/assets/img/Shen-CityU1.jpg" alt="Shengdong Zhao">
+      <div>
+        <h2 class="bio__title">Shengdong Zhao.</h2>
+        <p class="bio__lede">I am a full professor in the School of Creative Media and Computer Science Department at the City University of Hong Kong (CityU), previously an Associate Professor at the National University of Singapore (NUS). I hold a PhD in computer science from the University of Toronto, a master's from UC Berkeley, and a dual undergraduate degree in computer science and biology from Linfield College, Oregon. In 2009, I founded the Synteraction Lab, focused on innovative interface tools that simplify people's lives — including Draco, which won Best iPad App of the Year in 2016. My work appears regularly in top HCI venues such as CHI, UIST, UbiComp, CSCW, and ToCHI, and I have co-chaired ACM SIGCHI in 2019, 2020, and UIST 2025. Outside of work, I enjoy reading, running, and exploring nature.</p>
+        <a href="/cv" class="pill-button pill-button--ghost">Read CV →</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="blog">
-  {% include home/blog-home.html %}
+<!-- HEADS-UP -->
+<section class="hucomp">
+  <div class="hucomp__deco"></div>
+  <div class="container">
+    <div class="hucomp__head">
+      <div>
+        <h2 class="hucomp__title">Heads-Up <span class="highlight-strip">Computing.</span></h2>
+      </div>
+      <div>
+        <p class="hucomp__desc">Moving beyond the screen-locked present. We explore a world where information is seamlessly integrated into the user's perceptual field, reducing cognitive load and maximizing presence.</p>
+        <a href="/heads-up-computing" class="hucomp__link">Find Out More →</a>
+      </div>
+    </div>
+    <div class="hucomp__video-wrapper">
+      <div class="hucomp__video-container">
+        <video id="heads-up-video-mp4" src="https://synteraction.org/assets/images/hci-video.mp4" poster="/assets/img/heads-up-lab-vision-poster.png" controls playsinline preload="auto" class="video-player active">
+          Your browser does not support the video tag.
+        </video>
+        <video id="heads-up-video-cacm" src="/assets/videos/cacm-video.mp4" poster="/assets/img/Heads-up-video-image.png" controls playsinline preload="auto" class="video-player">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="hucomp__video-links">
+        <button class="hucomp__video-btn hucomp__video-btn--active" data-video="mp4">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0L9.5 6H16L10.5 9.5L12.5 16L8 12L3.5 16L5.5 9.5L0 6H6.5L8 0Z" fill="#7929d8"/></svg>
+          Lab's Vision
+        </button>
+        <button class="hucomp__video-btn" data-video="cacm">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 0L9.5 6H16L10.5 9.5L12.5 16L8 12L3.5 16L5.5 9.5L0 6H6.5L8 0Z" fill="#7929d8"/></svg>
+          CACM Video
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="publication">
-  {% include home/publication-home.html %}
+<!-- FEATURED PUBS -->
+<section class="featpubs">
+  <div class="container">
+    <div class="featpubs__head">
+      <div>
+        <h2 class="featpubs__title">Recent Publications.</h2>
+      </div>
+      <a class="featpubs__link" href="/publications">View All Publications →</a>
+    </div>
+    <div class="featpubs__grid">
+      <a class="pubcard" href="https://doi.org/10.1145/3742413.3789123" target="_blank" rel="noopener">
+        <span class="pubcard__venue">IUI '26</span>
+        <span class="pubcard__eyebrow">ACM IUI</span>
+        <h3 class="pubcard__title">PersonaMail: Learning and Adapting Personal Communication Preferences for Context-Aware Email Writing</h3>
+        <span class="pubcard__badge">2026</span>
+        <div class="pubcard__meta">Rui Yao, Qiuyuan Ren, Felicia Fang-Yi Tan, Yang Chen, Xiaoyu Zhang, Shengdong Zhao.</div>
+      </a>
+      <a class="pubcard" href="https://doi.org/10.1145/3706598.3713793" target="_blank" rel="noopener">
+        <span class="pubcard__venue">CHI '25</span>
+        <span class="pubcard__eyebrow">ACM CHI</span>
+        <h3 class="pubcard__title">ViFeed: Promoting Slow Eating and Food Awareness through Strategic Video Manipulation during Screen-Based Dining</h3>
+        <span class="pubcard__badge">2025</span>
+        <div class="pubcard__meta">Yang Chen, Felicia Fang-Yi Tan, Zhuoyu Wang, Xing Liu, Jiayi Zhang, Yun Huang, Shengdong Zhao, Ching Chiuan Yen.</div>
+      </a>
+      <a class="pubcard" href="https://doi.org/10.1145/3698204.3716482" target="_blank" rel="noopener">
+        <span class="pubcard__venue">CHI '25</span>
+        <span class="pubcard__eyebrow">ACM CHI</span>
+        <h3 class="pubcard__title">Designing Interactive Multimodal Information Retrieval and Access for Heads Up Computing (DIMIRA-HUC)</h3>
+        <span class="pubcard__badge">2025</span>
+        <div class="pubcard__meta">Haiming Liu, Shengdong Zhao, Silang Wang, Preben Hansen, Ian Oakley, Khanh-Duy Le.</div>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section id="team">
-  {% include home/team.html %}
+<!-- THOUGHTS -->
+<section class="thoughts">
+  <div class="container">
+    <div class="thoughts__head">
+      <div>
+        <h2 class="thoughts__title">Recent News and Blogs.</h2>
+      </div>
+      <p class="thoughts__lede">Notes on research methodology, academic life, and the future of interaction design.</p>
+    </div>
+    <div class="thoughts__grid">
+      <a class="article" href="/2024/12/05/professor-shengdong-zhao-honored-for-pioneering-contributions-in-hci.html">
+        <img class="article__img" src="/assets/img/pioneering-award.jpg" alt="Professor Shengdong Zhao Honored for Pioneering Contributions in HCI">
+        <span class="article__date">Dec 05, 2024 · News</span>
+        <h3 class="article__title">Professor Shengdong Zhao Honored for Pioneering Contributions in HCI</h3>
+        <p class="article__excerpt">Congratulations to Professor Shengdong Zhao for being recognized for his pioneering contributions in Human-Computer Interaction.</p>
+      </a>
+      <a class="article" href="/2024/11/15/award-winning-research-at-iss-2024.html">
+        <img class="article__img" src="/assets/img/best-paper-iss-2024.png" alt="Award-Winning Research at ISS 2024">
+        <span class="article__date">Nov 15, 2024 · News</span>
+        <h3 class="article__title">Award-Winning Research at ISS 2024</h3>
+        <p class="article__excerpt">Congratulations to the team for their award-winning research presented at ISS 2024.</p>
+      </a>
+      <a class="article" href="/2024/10/03/prof-shengdong-zhao-and-prof-mark-billinghurst-dine-in-adelaide.html">
+        <img class="article__img" src="/assets/img/adelaide-dinner.jpg" alt="Prof. Shengdong Zhao and Prof. Mark Billinghurst Dine in Adelaide">
+        <span class="article__date">Oct 03, 2024 · News</span>
+        <h3 class="article__title">Prof. Shengdong Zhao and Prof. Mark Billinghurst Dine in Adelaide</h3>
+        <p class="article__excerpt">Prof. Shengdong Zhao and Prof. Mark Billinghurst enjoyed a dinner together in Adelaide.</p>
+      </a>
+    </div>
+  </div>
 </section>
 
-<section id="join-us">
-  {% include home/join-us.html %}
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta__grid">
+      <div>
+        <h2 class="cta__title">Build the Future of Interaction with Us.</h2>
+        <p class="cta__sub">We are looking for inquisitive minds across CS, Psychology, and Design to join our research laboratory. If you are passionate about the future of computing, let's connect.</p>
+      </div>
+      <a href="https://www.synteraction.org/" target="_blank" rel="noopener" class="pill-button pill-button--primary cta__button">Join the Lab →</a>
+    </div>
+  </div>
 </section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="site-footer__wordmark">Synteraction Lab</span>
+        <p class="site-footer__tagline">
+          An HCI research group exploring heads-up computing and the perceptual field —
+          led by Prof. Shengdong Zhao at City University of Hong Kong.
+        </p>
+      </div>
+      <div class="site-footer__col">
+        <h4>Research</h4>
+        <ul>
+          <li><a href="/heads-up-computing">Heads-Up Computing</a></li>
+          <li><a href="/publications">Publications</a></li>
+          <li><a href="/book">The Book</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Lab</h4>
+        <ul>
+          <li><a href="/">About Prof. Zhao</a></li>
+          <li><a href="/join-us">Join Us</a></li>
+          <li><a href="/cv">Full CV</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Keep in touch</h4>
+        <ul>
+          <li><a href="/blog">Blog &amp; News</a></li>
+          <li><a href="mailto:contact@synteraction.org">contact@synteraction.org</a></li>
+          <li><a href="#">Google Scholar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <span>© 2026 Synteraction Lab · City University of Hong Kong</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Video toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  var videoBtns = document.querySelectorAll('.hucomp__video-btn');
+  var visionVideo = document.getElementById('heads-up-video-mp4');
+  var cacmVideo = document.getElementById('heads-up-video-cacm');
+
+  videoBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var videoType = this.getAttribute('data-video');
+      videoBtns.forEach(function(b) { b.classList.remove('hucomp__video-btn--active'); });
+      this.classList.add('hucomp__video-btn--active');
+      if (videoType === 'cacm') {
+        visionVideo.classList.remove('active');
+        visionVideo.pause();
+        cacmVideo.classList.add('active');
+      } else {
+        cacmVideo.classList.remove('active');
+        cacmVideo.pause();
+        visionVideo.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

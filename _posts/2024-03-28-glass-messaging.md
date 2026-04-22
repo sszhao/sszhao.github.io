@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "GlassMessaging: Towards Ubiquitous Messaging Using OHMDs"
 image: /assets/blog/glassMessaging.png
 description: 

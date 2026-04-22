@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 image: /assets/blog/WeChat-Image_20240320164324.jpeg
 date: '2024-03-21 23:43:45 -0500'
 published: true

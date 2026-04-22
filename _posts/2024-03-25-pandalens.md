@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "PANDALens: Towards AI-Assisted In-Context Writing on OHMD During Travels"
 image: "/assets/blog/PANDALens.png"
 description: 

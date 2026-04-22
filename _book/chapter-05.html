@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-04.html" class="book-breadcrumb__link">&larr; Chapter 4</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-06.html" class="book-breadcrumb__link">Chapter 6 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.re3y9qadxi33">
+ <span class="c41 c21 c3">
+  Chapter 5: Overview and Interaction Techniques
+ </span>
+</h2>
+<h3 class="c35" id="h.cm9v2sr22djp">
+ <span class="c28 c3">
+  5.1 Introduction to Constructive Research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Having explored empirical research methods in the previous chapters, we now turn our attention to another fundamental approach in HCI research: constructive research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Constructive research is unique to Human-Computer Interaction (HCI) research, where researchers create practical solutions that improve how humans interact with technology. Below are some examples of such research:
+ </span>
+</p>
+<ul class="c5 lst-kix_mc1jrmy5axv5-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Bubble Cursor is a pointing technique that uses a dynamic area cursor for quick acquisition of on-screen targets (
+  </span>
+  <span class="c3 c25">
+   Grossman &amp; Balakrishnan, 2005
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   earPod introduced a menu widget that uses touch and audio feedback, enabling users to efficiently navigate menus without looking at the screen (
+  </span>
+  <span class="c3 c25">
+   Zhao et al., 2007
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Draco offered an application for authoring and controlling complex animations through constraints (
+  </span>
+  <span class="c3 c25">
+   Chen et al., 2018
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   D3 (Data-Driven Documents) provided a framework that allows developers to create interactive data visualizations for the web (
+  </span>
+  <span class="c3 c25">
+   Bako et al., 2023
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  While all these examples fall under the umbrella of constructive research, they illustrate a clear distinction in both scope and focus. Bubble Cursor and earPod, for example, are interaction techniques designed to solve targeted challenges — such as improving target acquisition or enabling menu navigation with minimal visual attention. On the other hand, Draco and D3 represent more expansive systems or toolkits: Draco offers a comprehensive platform for authoring constraint-based animations, while D3 empowers developers to build a wide variety of web-based data visualizations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Recognizing these differences is important, as it highlights two primary categories of artifacts within constructive research — Interaction Techniques and Systems/Toolkits. Each category not only addresses different types of problems but also follows its own trajectory in terms of innovation, evaluation, and impact. In the following sections, we will explore how these categories shape the approach and contributions of constructive research in HCI. This chapter will focus on
+ </span>
+ <span class="c17">
+  interaction techniques
+ </span>
+ <span class="c3">
+  , while
+ </span>
+ <span class="c17">
+  systems and toolkits
+ </span>
+ <span class="c2">
+  will be covered in the next.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Brief Overview of Interaction Techniques
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Interaction techniques are fundamental building blocks in Human-Computer Interaction (HCI) that define specific methods for accomplishing common interaction tasks like pointing, menu selection, panning, and zooming. These techniques specify how users can manipulate digital objects to achieve frequently performed operations. They consist of three key components: (1) input actions performed by the user (e.g., mouse movements, key presses, gestures), (2) system processing and interpretation of those inputs, and (3) output feedback presented to the user (e.g., visual, auditory, or haptic responses). These components work together in a tightly coupled manner to create fluid interaction loops between the user and system.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  What distinguishes interaction techniques from other HCI artifacts is their focus on optimizing these commonly used interaction approaches. Since these fundamental operations occur frequently across many applications, improvements to the underlying techniques can benefit any system that adopts them. For example, the Bubble Cursor  (
+ </span>
+ <span class="c3 c25">
+  Grossman &amp; Balakrishnan, 2005
+ </span>
+ <span class="c2">
+  ) enhances the basic pointing operation by dynamically resizing the cursor's activation area based on nearby targets, making target acquisition more efficient across any interface that implements it. The technique clearly defines the input (mouse movement), processing (bubble size adjustment algorithm), and output (visual representation of the bubble).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Interaction techniques can range from simple direct manipulation methods to complex gestural interfaces, but they all aim to improve these core interaction building blocks that users rely on constantly. By focusing on enhancing these fundamental operations, interaction techniques serve as reusable components that can be incorporated into various systems to provide users with more efficient and learnable ways to accomplish common tasks.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While these tasks are essential to user interaction, each technique usually focuses on a single, well-defined purpose. Because of this narrow focus, only a limited set of design factors need to be considered. This enables researchers to examine each factor in depth, making it easier to pinpoint how specific design choices lead to improvements or trade-offs in performance. As a result, research on interaction techniques can provide clear evidence of design causality, demonstrating not only that a technique is effective, but also explaining precisely why and how it achieves its benefits.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The focused nature and narrower scope of interaction techniques make it easier to think about their contributions in terms of one of two primary approaches, or "routes." These routes, which we will discuss in the next section, help define the novelty and value of the work, whether it's by creating a completely new capability or by significantly improving an existing one.
+ </span>
+</p>
+<h3 class="c35" id="h.qzmlc16u219j">
+ <span class="c28 c3">
+  5.2 Routes of Constructive Research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c3">
+  Having established the two primary categories of constructive research—interaction techniques and systems/toolkits — it is important to recognize that another key dimension shapes how research in these areas is conducted and evaluated: the research route. In other words, beyond what kind of artifact is being created, researchers must also consider
+ </span>
+ <span class="c3 c10">
+  how
+ </span>
+ <span class="c2">
+  their work advances the field. The next section introduces these research routes and explains their significance in constructive HCI research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  At this point, you might wonder: if techniques, systems, and toolkits are being created all the time — for instance, with countless new apps appearing in app stores every day — what makes a research artifact different from any other new application or tool? This is a crucial question, and as we discussed in earlier chapters (e.g.,
+ </span>
+ <span class="c3 c25">
+  Chapter 2
+ </span>
+ <span class="c3">
+  ), a core tenet of research, including in HCI, is the creation of
+ </span>
+ <span class="c3 c10">
+  new, useful, and generalizable knowledge
+ </span>
+ <span class="c3">
+  . In constructive research, this knowledge is not just described abstractly but is
+ </span>
+ <span class="c3 c10">
+  embodied and demonstrated through the artifact itself
+ </span>
+ <span class="c2">
+  . The artifact serves as tangible proof of a novel concept, an improved solution, or a new capability that extends our understanding or abilities within interactive computing. To establish that an artifact indeed contributes such new knowledge, the work typically needs to demonstrate its value and novelty through one of two primary approaches or "routes": "be the first" or "be the best."
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Both routes are ways of demonstrating useful, novel knowledge. "Be the first" prioritizes breaking new ground with innovative ideas, while "be the best" emphasizes refining existing approaches to achieve superior performance.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  While this framework can apply universally to constructive research, it is more clearly demonstrated with
+ </span>
+ <span class="c17">
+  interaction techniques
+ </span>
+ <span class="c3">
+  . Because techniques are narrowly focused, it is relatively straightforward to define what makes one "first" or to measure whether it is "best" against an established baseline. For
+ </span>
+ <span class="c17">
+  systems and toolkits
+ </span>
+ <span class="c2">
+  , however, the distinction can be more complex. A system is typically a multifaceted integration of many features—some novel, others not. This complexity sometimes makes direct evaluation against a single baseline challenging, as it can be difficult to find an existing artifact that provides a fair point of comparison across all functionalities.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In the discussion below, we will use examples of both interaction techniques and systems/toolkits to illustrate the "be the first" and "be the best" routes. However, it is important to keep in mind that additional considerations are needed for system and toolkit research; these will be discussed in the next chapter.
+ </span>
+</p>
+<h4 class="c51" id="h.f0vj4moiosb5">
+ <span class="c36 c45 c3">
+  5.2.1 Be the First - When There is No Known Solution:
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  "Be the first" route involves pioneering solutions for unexplored problems in interactive computing. While this route emphasizes novelty, it carries an implicit assumption: the new artifact must not only be novel but also demonstrate clear advantages, or new capabilities (See
+ </span>
+ <span class="c3 c25">
+  Figure 5.1
+ </span>
+ <span class="c2">
+  for two examples).
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Example
+ </span>
+</p>
+<p class="c78">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 311.92px; height: 164.65px;">
+  <img alt="" src="images/image7.png" style="width: 311.92px; height: 164.65px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 243.89px; height: 176.35px;">
+  <img alt="" src="images/image10.png" style="width: 243.89px; height: 176.35px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Figure 5.1:
+ </span>
+ <span class="c3 c10">
+  Left:
+ </span>
+ <span class="c3">
+  Concept designs for pressure widgets, including (a) Flag, (b) Rotating Expanding Pie, (c) Bullseye, (d) TLSlider, (e) Pressure Grid, and (f) Pressure Marking Menu.
+ </span>
+ <span class="c3 c10">
+  Right:
+ </span>
+ <span class="c2">
+  Illustration from the CrossY interface demonstrating the brush palette (left) and the main palette with a find/replace dialogue box (right).
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  One example of the "be the first" route is the Pressure Widget (
+ </span>
+ <span class="c3 c25">
+  Ramos et al., 2004
+ </span>
+ <span class="c2">
+  ), which introduced continuous pressure sensing as a novel input for user interfaces. Before this work, most widgets only used x-y position and simple button presses, overlooking the potential of pressure input available on some styluses and touch devices.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The Pressure Widget project explored how varying pressure could enable multi-state widgets, expanding interaction possibilities. Researchers mapped the design space for pressure-based controls and ran experiments to see how well users could select discrete targets by applying different pressure levels, with various feedback and confirmation methods.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Their findings revealed how many pressure levels users could reliably distinguish and which feedback techniques worked best, leading to a taxonomy of pressure-based widgets and their applications. By demonstrating both feasibility and user benefits, the Pressure Widget opened up new ways to design compact and expressive interfaces. Pressure Widget embodies the "be the first" approach by introducing and validating a new input modality, systematically exploring its design, and providing practical insights for using pressure sensitivity in HCI.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Another illustrative example (Figure 5.1
+ </span>
+ <span class="c3 c10">
+  Right
+ </span>
+ <span class="c3">
+  ) of the "be the first" route in system artifacts is the CrossY system (
+ </span>
+ <span class="c3 c25">
+  Apitz &amp; Guimbretière, 2004
+ </span>
+ <span class="c2">
+  ). CrossY is a simple drawing application developed to demonstrate the feasibility and expressiveness of "goal crossing" as a fundamental interaction paradigm for graphical user interfaces. Prior to CrossY, the dominant paradigm in graphical interfaces was point-and-click, where users select and manipulate objects by pointing and clicking on them. While the concept of goal crossing — triggering actions by crossing boundaries with a pointer — had been discussed in the literature as a possible alternative, it had not been realized as the core mechanism in a fully functional system.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  CrossY breaks new ground by being the first to implement and showcase a complete interface where goal crossing is the primary means of interaction. The system demonstrates that crossing is not only as expressive as point-and-click, but also enables new forms of fluid interaction. For example, CrossY allows users to compose commands in a more seamless and continuous manner, supporting the development of more fluid and flexible interfaces. This practical implementation provides concrete evidence that goal crossing can serve as a viable and even advantageous alternative to traditional interaction techniques.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  By introducing and validating this new interaction paradigm within a working system, CrossY embodies the "be the first" approach: it pioneers a novel concept, demonstrates its feasibility through a real artifact, and opens up new possibilities for interface design. The contribution of CrossY lies not only in the technical implementation, but also in the new knowledge it provides to the HCI community about the potential and practicality of goal crossing as a foundational building block for user interfaces.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While "be the first" research charts new territories, much of the progress in HCI comes from building upon and improving existing foundations. Addressing these gaps is the focus of the "be the best" research route.
+ </span>
+</p>
+<h4 class="c51" id="h.pna7flnryd35">
+ <span class="c36 c45 c3">
+  5.2.2 Be the Best - When There Exists Partial Solution:
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  The "be the best" route focuses on enhancing existing artifacts by developing techniques that outperform current state-of-the-art solutions in specific scenarios or performance metrics. The goal is to raise the bar by improving capabilities, efficiency, or user experience of established solutions (See
+ </span>
+ <span class="c3 c25">
+  Figure 5.2
+ </span>
+ <span class="c2">
+  for two examples).
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Example
+ </span>
+</p>
+<p class="c78">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 164.50px; height: 164.50px;">
+  <img alt="" src="images/image15.png" style="width: 164.50px; height: 164.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 413.50px; height: 130.83px;">
+  <img alt="" src="images/image17.png" style="width: 413.50px; height: 130.83px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Figure 5.2:
+ </span>
+ <span class="c3 c10">
+  Left:
+ </span>
+ <span class="c3">
+  (a) Compound mark technique (b) Simple mark technique. Images on the left show selection from the popup radial menu. Images on right show the same corresponding selection made using the marks alone without popping-up the menu.
+ </span>
+ <span class="c3 c10">
+  Right:
+ </span>
+ <span class="c2">
+  The two modes of the VidAdapter interface: (a) Create mode, which allows direct manipulation of elements and their regions in the video bar for reorganisation and visual appearance modification, and (b) Edit Mode, which allows fine-grained spatial and temporal restructuring of the content extracted by the automatic pipeline.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For example, in the paper "Simple vs. compound mark hierarchical marking menus" (
+ </span>
+ <span class="c3 c25">
+  Zhao &amp; Balakrishnan, 2004
+ </span>
+ <span class="c2">
+  ), researchers developed a variant of hierarchical marking menus that uses a series of inflection-free simple marks instead of the traditional single "zig-zag" compound mark. Through pilot studies and theoretical analysis, they demonstrated that their simple mark approach could significantly increase the number of menu items that could be selected efficiently and accurately. Their user experiments showed that compared to the compound mark technique, the simple mark technique enabled faster and more accurate menu selections, particularly for menus with many items where the compound mark technique struggled. Additionally, their technique required less physical input space, making it especially suitable for small pen-based devices. This exemplifies how researchers can improve upon an existing interaction technique by making key modifications that lead to measurable performance gains.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Another example is VidAdapter (
+ </span>
+ <span class="c3 c25">
+  Ram et al., 2023
+ </span>
+ <span class="c2">
+  ), a tool designed to improve the process of adapting lecture videos for different viewing contexts, such as mobile devices or head-mounted displays. The researchers identified that while video lectures are widely used, adapting them with traditional video editing software is a difficult and slow process. VidAdapter addresses this by automatically extracting key elements from the video (like the presenter and the blackboard content) and allowing users to directly manipulate and reorganize these elements. In their evaluation, they compared VidAdapter against traditional video editors for the task of adapting lecture videos. The results showed that VidAdapter was not only strongly preferred by experienced users but also improved the efficiency of the adaptation process by over 53%. This work is a prime example of the "be the best" approach, as it identifies a clear limitation in existing tools and provides a new solution that offers a significant and quantifiable improvement in performance for a specific, practical task.
+ </span>
+</p>
+<h3 class="c35" id="h.dp5o5d7muwp5">
+ <span class="c28 c3">
+  5.3 Key Dimensions of Constructive Research in Interaction Techniques
+ </span>
+</h3>
+<h4 class="c51" id="h.ussuzrfxh3uv">
+ <span class="c36 c45 c3">
+  5.3.1 "Be the First" Research in Interactive Techniques
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  In this section, we delve into the process of conducting "be the first" research for interaction techniques. We will first present a common "recipe"—a sequence of activities typically found in successful projects of this nature. This recipe outlines the key stages, from identifying a new capability to validating its benefits. To make this recipe more concrete, we will then walk through a case study of the "Mouth Haptics" paper, showing how it follows this pattern. Finally, we will take a closer look at one of the most critical activities in this process: the exploration of the design space.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Common Components in "Be the First" Interaction Technique Papers
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  While there is no strict requirements for innovation, successful 'be the first' papers typically present a common set of components (see
+ </span>
+ <span class="c3 c25">
+  Figure 5.3
+ </span>
+ <span class="c3">
+  ). We refer to these as "components" to emphasize that they are the key
+ </span>
+ <span class="c3 c10">
+  contents
+ </span>
+ <span class="c2">
+  you will typically see in a final paper, not necessarily a procedural recipe for how the research was conducted. It is crucial to understand that the research process to generate such content does not necessarily follow the same order as it appears in the paper; in fact, the workflow is often iterative and non-linear. In this section, we will discuss these key components. Later, we will cover the best practices of the workflow to obtain such content.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 229.50px;">
+  <img alt="" src="images/image24.png" style="width: 602.00px; height: 324.61px; margin-left: 0.00px; margin-top: -61.61px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c2">
+  Figure 5.3 Recipe for Technique (be the first)
+ </span>
+</p>
+<ol class="c5 lst-kix_sa5nypa6pkep-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Identify a New or Underexplored Capability:
+  </span>
+  <span class="c3">
+   The journey begins by identifying a novel capability that has been overlooked or is newly available. This could be a new sensor, an underutilized input channel, or a new context of use. For example,
+  </span>
+  <span class="c3 c10">
+   Pressure Widget
+  </span>
+  <span class="c3">
+   (
+  </span>
+  <span class="c3 c25">
+   Ramos et al., 2004
+  </span>
+  <span class="c3">
+   ) recognized that while some styluses could sense pressure, this continuous input was largely ignored in interface design. The new capability was, therefore, "using continuous pressure as a primary input modality." Similarly,
+  </span>
+  <span class="c3 c10">
+   HoverWidget
+  </span>
+  <span class="c3">
+   (
+  </span>
+  <span class="c3 c25">
+   Grossman et al., 2006
+  </span>
+  <span class="c3">
+   ) harnessed the hover state of a digital pen — its proximity to a tablet surface without touching it—as a new channel for interaction.
+  </span>
+  <span class="c3 c10">
+   SLAP Widgets
+  </span>
+  <span class="c3">
+   (
+  </span>
+  <span class="c3 c25">
+   Weiss et al., 2009
+  </span>
+  <span class="c2">
+   ) explored the novel combination of tangible, physical widgets with the capabilities of multitouch tabletops.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_sa5nypa6pkep-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Conduct a Design Space Exploration:
+  </span>
+  <span class="c3">
+   Once a capability is identified, the next step is to systematically explore its
+  </span>
+  <span class="c3 c10">
+   design space
+  </span>
+  <span class="c3">
+   — the range of possible ways the interaction can be designed. This involves mapping out variations in input, output, and feedback. This exploration demonstrates rigor and provides a valuable map for future researchers, showing that the proposed design is a reasoned choice among many alternatives. For example, the
+  </span>
+  <span class="c3 c10">
+   HoverWidget
+  </span>
+  <span class="c2">
+   paper explicitly lays out a design space for hover interactions, considering dimensions like the distance of the hover and the type of feedback provided. More examples of design space exploration are discussed later.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_sa5nypa6pkep-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Perform Foundational Studies to Understand the Capability:
+  </span>
+  <span class="c3">
+   Before building a complete system, it is crucial to understand the fundamental factors related to the new capability. This often involves controlled experiments to answer basic questions about perception, motor control, and usability. For instance, the
+  </span>
+  <span class="c3 c10">
+   Pressure Widget
+  </span>
+  <span class="c2">
+   researchers first conducted a study to answer a fundamental question: how many distinct pressure levels can a user reliably apply with a stylus? They also investigated which forms of visual feedback were most effective. This foundational knowledge is essential for designing effective interaction techniques.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_sa5nypa6pkep-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Showcase Applications and Usage Scenarios:
+  </span>
+  <span class="c3">
+   With a solid understanding of the capability, the next step is to demonstrate its practical value. This involves designing and showcasing a set of compelling usage scenarios that make the potential of the new technique tangible. The goal is to inspire other designers and researchers by illustrating how the technique can solve real problems or enable new, expressive interactions. The papers for
+  </span>
+  <span class="c3 c10">
+   Pressure Widget
+  </span>
+  <span class="c3">
+   ,
+  </span>
+  <span class="c3 c10">
+   HoverWidget
+  </span>
+  <span class="c3">
+   , and
+  </span>
+  <span class="c3 c10">
+   SLAP Widgets
+  </span>
+  <span class="c2">
+   all feature a rich set of example applications, often accompanied by video demonstrations, to achieve this.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_sa5nypa6pkep-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Conduct a User Study to Validate Benefits:
+  </span>
+  <span class="c3">
+   Finally, to solidify the contribution, researchers often conduct a formal user study to validate the benefits of their new technique. While "be the first" research may not have a direct competitor, the study typically compares the new technique against a baseline or the conventional way of performing a task. This provides evidence of the technique's advantages, such as improved speed, accuracy, or user satisfaction. For example, the
+  </span>
+  <span class="c3 c10">
+   SLAP Widgets
+  </span>
+  <span class="c2">
+   paper included a "Knob Performance Task" that compared their tangible 'Knob' widget against standard virtual on-screen controls for video navigation. The results showed that the SLAP widget improved performance, providing concrete evidence of its value.
+  </span>
+ </li>
+</ol>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     A case study illustrating the "be the first" strategy:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/fullHtml/10.1145/3491102.3501960&amp;sa=D&amp;source=editors&amp;ust=1776402515937232&amp;usg=AOvVaw1vf7Lr0TVfk-Hd6qyeIFyZ">
+      Mouth Haptics in VR using a Headset Ultrasound Phased Array
+     </a>
+    </span>
+    <span class="c4">
+     " CHI 2022, Best Paper
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c11">
+ <span class="c3">
+  To make this recipe more concrete, let's examine how it applies to a real-world example of "be the first" research. We will use the award-winning paper, "Mouth Haptics in Virtual Reality using a Headset Ultrasound Phased Array," as a case study (
+ </span>
+ <span class="c3 c25">
+  Shen et al., 2022
+ </span>
+ <span class="c2">
+  ). By analyzing this paper, we can see how the authors systematically followed the key stages of our recipe to introduce and validate a novel interaction technique. The following breakdown will map the paper's contributions to each of the five steps, from identifying the new capability to validating its benefits.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The "Mouth Haptics" paper introduces a novel way to enhance virtual reality (VR) experiences by providing tactile feedback directly to the user's mouth. The core idea is to use an array of ultrasonic transducers, mounted on a VR headset, to project focused airborne acoustic energy onto the user's lips, teeth, and tongue. This creates a wide range of haptic sensations — from the feeling of a spider crawling across your lips to the splash of rain on your face — without any physical contact. By targeting the mouth, one of the most sensitive parts of the human body, this technique opens up a new channel for creating deeply immersive and compelling virtual worlds.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This research is a quintessential example of the "be the first" approach. In the following sections, we will analyze the Mouth Haptics paper through the lens of our five-stage recipe to see how the authors systematically introduced and validated this new interaction technique.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  New Capability in HCI
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The paper introduces the novel capability of rendering haptic effects directly onto the user's mouth in virtual reality. While previous haptic research focused on handheld controllers and wearables, this work targets the mouth — an area whose high tactile sensitivity (second only to the fingertips in mechanoreceptor density)
+ </span>
+ <span>
+  represents
+ </span>
+ <span class="c2">
+  an untapped channel for sensory feedback. This approach opens a new avenue for creating more immersive VR experiences.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Design Space Exploration
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The authors conducted a systematic exploration of the design space for mouth-based haptics. Given the narrow focus on a specific technology (ultrasound) and target area (the mouth), they were able to perform a relatively comprehensive exploration. They structured this exploration by dividing it into two key aspects: the input technology used to generate the haptics and the resulting output sensations perceived by the user.
+ </span>
+</p>
+<p class="c11">
+ <span class="c54 c17 c76 c71">
+  Input Methods:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The exploration of input centered on the ultrasonic phased array. The authors considered how to configure this hardware to generate precise effects. This included systematically varying the control parameters of the array, such as the frequency, amplitude, and phase of the ultrasound waves from 64 transducers. By precisely controlling these parameters, they could manipulate the location and intensity of the focused acoustic energy on different target areas, including the lips, teeth, and tongue.
+ </span>
+</p>
+<p class="c11">
+ <span class="c54 c17 c76 c71">
+  Output Modalities:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The exploration of output focused on the range of tactile sensations that could be rendered. The authors identified and designed several haptic primitives, including simple point impulses (like a tap), continuous persistent vibrations, and dynamic swipes where the focal point moves across the skin. They then explored how these basic primitives could be animated over time and along 3D paths to create more complex and meaningful effects. This allowed them to simulate a wide variety of real-world sensations, such as the feeling of a spider crawling across the lips or the splash of a raindrop, providing a valuable guide for future designers of haptic experiences.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Studies for Better Understanding the New Capabilities
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  When introducing a novel interaction capability, its fundamental effects on human perception and experience are often unknown. Therefore, it is common for "be the first" papers to include studies to establish this new knowledge. These studies often include formative work that investigates basic perceptual characteristics (e.g., how well can people feel it?) or compares different design variations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The Mouth Haptics paper exemplifies this approach. To understand the basic perceptual qualities of their technique, the authors conducted a perception study with 11 participants. This study investigated the sensitivity and spatial acuity of the lips, teeth, and tongue to the ultrasonic haptic stimuli, helping to determine the most effective modulation frequencies and amplitudes for creating sensations. This provided a baseline understanding for designing effective haptic effects.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Showcase of Usage and Applications
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  VR Scenarios: To demonstrate the technique's potential, the authors created three interactive VR scenarios used to showcase a wide range of applications and to gather user feedback. The scenarios included: a haunted forest, where users could feel spiderwebs brushing against their face or a spider crawling on their lips; a school simulator, which rendered haptics for everyday interactions like drinking from a fountain or brushing teeth; and a racing game, which simulated environmental effects like wind, rain, and puddle splashes, as well as the impact of collisions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Immersive Experiences: Each scenario was designed to show how mouth haptics can enhance immersion by providing tactile feedback that complements the visual and auditory cues. By translating virtual events—from the subtle vibration of a cigarette to the startling splash of goo—into physical sensations on the mouth, the showcase makes the technique's value tangible and provides compelling use cases for creating richer, more believable virtual worlds.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  User Study to Show its Advantage
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Validation of Technique: A user study with 8 participants compares the VR experience with and without mouth haptics. The study evaluates the benefits of the proposed technique in terms of immersion, realism, and user preference.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Comparative Analysis: The user study includes questionnaires that assess the effectiveness of mouth haptics against traditional non-haptic VR experiences. It measures the impact on user experience dimensions such as autotelic, expressivity, immersion, realism, and harmony.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Results and Conclusion: The findings indicate that mouth haptics significantly enhance the VR experience, with participants preferring the haptic condition over non-haptic scenarios. The study concludes that mouth haptics could be a valuable addition to consumer VR systems, offering a new dimension in sensory feedback.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The Mouth Haptics paper serves as an exemplary case study for the "be the first" research recipe, demonstrating how its components work together to build a comprehensive contribution for a new interaction technique. The paper does not merely introduce a
+ </span>
+ <span class="c17">
+  novel capability
+ </span>
+ <span class="c3">
+  in isolation. Instead, it systematically investigates the
+ </span>
+ <span class="c17">
+  design space
+ </span>
+ <span class="c3">
+  to map out the possibilities for future designers. This exploration is then complemented by
+ </span>
+ <span class="c17">
+  perception studies
+ </span>
+ <span class="c3">
+  , answering the HCI question of what users can actually feel. Building on this foundational understanding, the
+ </span>
+ <span class="c17">
+  showcase of applications
+ </span>
+ <span class="c3">
+  makes the technique's value tangible and compelling by demonstrating its use in rich, interactive scenarios. Finally, the
+ </span>
+ <span class="c17">
+  user study
+ </span>
+ <span class="c2">
+  provides the validation, offering empirical evidence that the new technique delivers on its promise by measurably improving the user experience. Each stage synergistically builds upon the others—from the initial concept and its technical scope to its perceptual grounding, practical potential, and validated benefits. This comprehensive approach provides a full picture of the new contribution, which is why these stages are common to "be the first" research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Design Space Exploration for be the first Interaction Techniques**
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Design space exploration is a common and critically important component of "be the first" research projects. However, novice researchers often find this task challenging. A good design space exploration is characterized by well-defined and logical factors; it should be systematic and relevant without being overly complex. To help you create one, this section provides several examples and outlines concrete steps.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 243.71px; height: 159.50px;">
+  <img alt="" src="images/image6.png" style="width: 243.71px; height: 159.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 347.50px; height: 158.51px;">
+  <img alt="" src="images/image22.png" style="width: 347.50px; height: 158.51px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 401.33px;">
+  <img alt="" src="images/image19.png" style="width: 601.70px; height: 401.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 156.00px;">
+  <img alt="" src="images/image13.png" style="width: 601.70px; height: 156.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Figure 5.4:
+ </span>
+ <span class="c3 c10">
+  Top Left
+ </span>
+ <span class="c3">
+  :
+ </span>
+ <span class="c3">
+  Taxonomy of Input Devices
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.billbuxton.com/input04.Taxonomies.pdf&amp;sa=D&amp;source=editors&amp;ust=1776402515949214&amp;usg=AOvVaw3YloIeuiOEmwiXtb3Fe02B">
+   Buxton, 1983
+  </a>
+ </span>
+ <span class="c3">
+  )；
+ </span>
+ <span class="c3 c10">
+  Top Right
+ </span>
+ <span class="c3">
+  ：
+ </span>
+ <span class="c3">
+  Design space of dual-screen postures, for individual and collaborative use, supported by the
+ </span>
+ <span class="c3">
+  Codex
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Hinckley et al., 2009
+ </span>
+ <span class="c3">
+  ).
+ </span>
+ <span class="c3 c10">
+  Middle:
+ </span>
+ <span class="c3">
+  Levels of Sketchnote Design Space: Conciseness, Illustration, Structure, Personification, Cohesion, and Craftsmanship (
+ </span>
+ <span class="c3 c25">
+  Zheng et al., 2021
+ </span>
+ <span class="c3">
+  ).
+ </span>
+ <span class="c3 c10">
+  Bottom
+ </span>
+ <span class="c3">
+  : Comparison of related works using the taxonomy of paper movement (
+ </span>
+ <span class="c3 c25">
+  Zhu and Zhao, 2013
+ </span>
+ <span class="c3">
+  ).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here are steps to create effective design space mappings:
+ </span>
+</p>
+<ol class="c5 lst-kix_iai8dto5itj9-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Identify Core Dimensions or Factors:
+  </span>
+  <span class="c2">
+   Start by determining the fundamental dimensions or factors that define your research space. These can be identified through logical reasoning about what aspects are most relevant to your problem, or by conducting a literature review to see how prior work has characterized the space. For example, in gestural interface research, core factors might include input modality (e.g., hand, finger, full body), sensing technology (e.g., camera, IMU, capacitive), and feedback type (e.g., visual, audio, haptic). Whether derived from first principles or from existing literature, these dimensions should capture the essential ways in which different approaches or solutions vary within your area of study.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_iai8dto5itj9-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Structure the Space:
+  </span>
+  <span class="c2">
+   Arrange your dimensions so that their conceptual relationships are clear and interconnected, forming a coherent bigger picture rather than a collection of unrelated factors. The goal is to show how each dimension relates to and interacts with the others, revealing the underlying structure of the design space. Use representations diagrams to help illustrate how the dimensions combine, influence, or depend on each other. This approach ensures that the design space is not just a list of arbitrary axes, but a meaningful framework that explains how the parts fit together to define the possibilities in your research area.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_iai8dto5itj9-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Validate and Refine:
+  </span>
+  <span class="c2">
+   Share your design space with colleagues and domain experts. Their feedback can help identify missing dimensions, clarify ambiguous classifications, and strengthen the overall organization. Through this iterative refinement process, ensure the design space serves its intended purpose — whether that is to capture the current state of knowledge, suggest promising new research directions, or simply provide a useful lens for thinking about and systematically exploring relevant factors in your research area. The ultimate goal of this iterative design is to arrive at a systematic, insightful conceptual framework that can guide both your own research and that of others in the field.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c17">
+  Summary:
+ </span>
+ <span class="c2">
+  In summary, effective design space exploration involves (1) identifying the core dimensions or factors that define your research area, (2) structuring these dimensions to reveal their relationships and the overall landscape, and (3) validating and refining the space through expert feedback and iteration. This process is a critically important activity for "be the first" interaction technique research, as it not only clarifies the possibilities and boundaries of your new contribution, but also provides a foundation for future innovation and systematic inquiry.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  The Ideal Workflow
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While understanding the common components of a "be the first" paper is a great start, a frequent challenge for novice researchers is knowing how to produce them. What is the most effective process? Which step should come first? Without a clear roadmap, it is easy to misallocate effort—for example, by spending months perfecting a technical implementation before validating whether the core concept is even useful or interesting to users. This can lead to significant wasted time on ideas that are ultimately not viable.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  To address this, we present an ideal workflow based on years of experience conducting this type of research (See
+ </span>
+ <span class="c3 c25">
+  Figure 5.5
+ </span>
+ <span class="c2">
+  ). This workflow is not just a sequence of steps; it is a strategic approach designed to de-risk research projects by front-loading low-cost validation activities. The core principle is to test the most critical assumptions as early and cheaply as possible, ensuring that significant time and resources are only invested in ideas that have demonstrated promise. The following section outlines this workflow, explaining each step and the rationale behind its placement in the sequence to help you avoid common pitfalls and maximize your research efficiency.
+ </span>
+</p>
+<p class="c105">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 364.00px;">
+  <img alt="" src="images/image8.jpg" style="width: 601.70px; height: 364.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c3">
+  Figure 5.5: The “ideal” workflow of “an” interaction technique project (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1ov0eh6MqhzmnBnC1NumWdd-FI2EFuvx6BGbM1tjU8kU/edit%23slide%3Did.g5eec46172eb4c350_200&amp;sa=D&amp;source=editors&amp;ust=1776402515956771&amp;usg=AOvVaw1k0JW36hkMuNNHSgWrbKoK">
+   be the first
+  </a>
+ </span>
+ <span class="c3">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here are the key steps and their rationale:
+ </span>
+</p>
+<ol class="c5 lst-kix_28st71okfqzy-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Propose Interaction Techniques Based on New Capabilities
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Starting point:
+  </span>
+  <span class="c2">
+   Identify emerging technologies or capabilities that haven't been fully explored in an HCI context.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Pursue genuinely novel capabilities, either by creating new hardware yourself or by collaborating with other fields—like material science or engineering—to adapt their cutting-edge technologies for HCI.
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Literature Review
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   Understand the state of the art and identify research gaps. Be comprehensive in reviewing both academic literature and industry developments.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Activities:
+  </span>
+  <span class="c2">
+   Create mind maps, spreadsheets, and notes to document your understanding. See the literature review chapter for more details.
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Explore the Design Space
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Key activities:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_28st71okfqzy-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Identify key design factors for the new capability.
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Define the possible levels for each factor.
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Develop a preliminary taxonomy of potential interaction techniques. Keep this brief, as the core value of the capability has not yet been validated.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Systematically map out the design space to ensure relative comprehensive coverage.
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Brainstorm Applications
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Goal:
+  </span>
+  <span class="c2">
+   Brainstorming and piloting form a key, iterative cycle. The first part is to generate diverse usage scenarios (e.g., at least 5) to demonstrate the potential HCI value and versatility of your new capability. These scenarios are critical for convincing others that your investigation is valuable.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Explore broadly across different domains to find applications that show wider implications. This step feeds directly into pilot studies, which aim to identify a "winning case."
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Pilot Study
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   To quickly validate brainstormed scenarios and find at least one "winning case"—an application where the new capability offers clear benefits over existing methods.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Method:
+  </span>
+  <span class="c2">
+   Use low-cost techniques like Wizard of Oz (WoZ) studies to test concepts before full implementation.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Iterate rapidly between brainstorming and piloting. This cycle allows you to efficiently gather evidence of usefulness and identify the strongest application before investing significant time in platform development.
+  </span>
+ </li>
+</ul>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c11">
+    <span class="c17 c10">
+     Key Checkpoint:
+    </span>
+    <span class="c3">
+     The brainstorming and piloting cycle is a critical checkpoint. The subsequent steps — implementation and formal studies — represent the start of the formal investigation and require a tremendous amount of time and effort. Before moving forward, you must be confident that you have identified at least one "winning case" and can demonstrate a sufficient number of interesting applications. This ensures you are investing significant resources only after validating that your research direction has a strong, promising foundation.
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="6">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Implement a Demonstration Platform
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   Create a platform capable of conducting real experiments.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Requirements:
+  </span>
+  <span class="c2">
+   Must demonstrate multiple application scenarios.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Build something robust enough for formal evaluation but focused on the key innovation.
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="7">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Conduct Formal Study
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   Rigorously validate the usefulness of the new capabilities.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Optional:
+  </span>
+  <span class="c2">
+   Add studies to understand specific properties of the new capabilities.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_28st71okfqzy-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c17">
+   Examples:
+  </span>
+  <span class="c2">
+   Study how humans perceive different levels of pressure or movement ranges.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Design experiments that isolate the impact of your innovation.
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_28st71okfqzy-0" start="8">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Documentation and Demonstration
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_28st71okfqzy-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Deliverables:
+  </span>
+  <span class="c2">
+   Academic paper and video demonstration.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Content:
+  </span>
+  <span class="c2">
+   Showcase various application scenarios in the video.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Clearly communicate both the technical innovation and its practical impact.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  This workflow is specifically designed to identify non-viable research directions as early as possible, before significant resources are invested. Each step builds on previous validation, ensuring that time and effort are only spent on promising directions with clear research contributions. The sequence moves from low-cost exploratory activities to more resource-intensive implementation and studies, maximizing research efficiency while minimizing the risk of pursuing dead ends.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  A Note on Execution: The Art Behind the Science
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While the workflow outlined above provides a structured path for "be the first" research, successfully navigating it is an art that requires experience. The steps offer a map, but the journey is filled with nuanced decisions that are difficult to codify.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For beginner researchers, it is crucial to follow this process in close consultation with an experienced advisor or mentor. An expert can help you recognize a "winning case" from a dead end, judge when a pilot study has yielded enough evidence, and avoid common pitfalls that can lead to significant wasted time and effort.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Often, the true value of this rigorous, front-loaded validation process is only fully appreciated in hindsight. Many researchers only realize the wisdom of systematically de-risking a project after completing one or more projects, some of which may have consumed months or years before a fatal flaw was discovered. By embracing this workflow early, you can build on a foundation of validated ideas and maximize your chances of impactful innovation.
+ </span>
+</p>
+<h4 class="c51" id="h.av0lwf3y3yv6">
+ <span class="c36 c45 c3">
+  5.3.2 "Be the Best" Research in Interactive Techniques
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  While the "be the first" strategy focuses on creating entirely new interaction capabilities, as demonstrated in the Mouth Haptics example above, the "be the best" strategy takes a different approach by improving upon existing interactive techniques that address known problems in HCI.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 224.32px;">
+  <img alt="" src="images/image16.png" style="width: 602.00px; height: 331.37px; margin-left: 0.00px; margin-top: -67.68px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c2">
+  Figure 5.6 Recipe for Technique (be the best)
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Common Components in "Be the Best" Interaction Technique Papers
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Similar to the "be the first" recipe, this approach involves a systematic process of design and evaluation. However, the emphasis shifts from exploring a new frontier to outperforming established solutions for a known problem. This requires a different focus, particularly on rigorous comparison and clear evidence of improvement (see
+ </span>
+ <span class="c3 c25">
+  Figure 5.6
+ </span>
+ <span class="c2">
+  ). The key stages are:
+ </span>
+</p>
+<ol class="c5 lst-kix_n9ooaefhpbo-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Identify a Well-Known Problem and Analyze State-of-the-Art Limitations:
+  </span>
+  <span class="c2">
+   Instead of inventing a new capability, start by identifying a recognized and important problem in HCI. Conduct a thorough review to understand the existing state-of-the-art techniques that address this problem and, crucially, analyze their specific, measurable limitations. This forms the core motivation for your work.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_n9ooaefhpbo-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Design a Novel Solution with a Clear Hypothesis:
+  </span>
+  <span class="c3">
+   Based on the limitations you identified, design a new interaction technique. Your design's novelty should be directly aimed at overcoming those specific drawbacks. This should be guided by a clear hypothesis: a testable claim about
+  </span>
+  <span class="c3 c10">
+   why
+  </span>
+  <span class="c3">
+   and
+  </span>
+  <span class="c3 c10">
+   how
+  </span>
+  <span class="c2">
+   your new approach will be superior to existing ones.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_n9ooaefhpbo-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Implement the Novel Technique and Key Comparators:
+  </span>
+  <span class="c2">
+   Build an implementation of your proposed solution. To enable a fair comparison, you must also implement or obtain access to the most relevant state-of-the-art competitor(s). The quality of all implementations is critical for a valid evaluation.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_n9ooaefhpbo-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Conduct a Rigorous, Comparative User Study:
+  </span>
+  <span class="c2">
+   This is the heart of a "be the best" paper. Design a controlled experiment that directly compares your technique against the established state-of-the-art. The study must be carefully designed to isolate the variable of interest, using well-defined tasks and metrics (e.g., speed, accuracy, error rate, user satisfaction) that allow for a direct, quantitative comparison. Unlike the more exploratory studies common in "be the first" research, the goal here is to produce definitive evidence of superiority.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_n9ooaefhpbo-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Provide a Comprehensive Explanation for the Improvement:
+  </span>
+  <span class="c3">
+   It is not enough to simply show that your technique is better (e.g., "20% faster"). You must explain
+  </span>
+  <span class="c3 c10">
+   why
+  </span>
+  <span class="c2">
+   . Analyze both your quantitative and qualitative data to build a compelling argument that links your design choices back to the observed performance or experience benefits. This analysis should validate your initial hypothesis and provide generalizable insights that can guide future designers.
+  </span>
+ </li>
+</ol>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     A case study illustrating the "be the best" strategy:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/pdf/10.1145/3491102.3501920&amp;sa=D&amp;source=editors&amp;ust=1776402515968189&amp;usg=AOvVaw3o4-0ndzteE7-hB9fVjdyM">
+      Emoballoon-conveying emotional arousal in text chats with speech balloons
+     </a>
+    </span>
+    <span class="c4">
+     " CHI 2022
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c11">
+ <span class="c3">
+  EmoBalloon is a system designed to enrich text-based chat by visually conveying the sender's emotional arousal (
+ </span>
+ <span class="c3 c25">
+  Aoki et al., 2022
+ </span>
+ <span class="c2">
+  ). Instead of relying on static emojis, it analyzes the sender's voice input to dynamically generate expressive speech balloons that change in shape and animation to reflect the emotional tone. This project serves as an example of the "be the best" strategy as illustrated below
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  1. Identify a Well-Known Problem and Analyze State-of-the-Art Limitations
+ </span>
+ <span class="c2">
+  Text-based chat applications are integral to daily communication but suffer from a well-known problem: the inability to convey emotional tone effectively. This can lead to misunderstandings in social and professional contexts. The current state-of-the-art solutions involve using emoticons, stamps, emotional typefaces, and animated text to enhance emotional information. However, these solutions have clear limitations: they are static, require manual selection disrupting conversation flow, and their interpretation can be subjective and culturally dependent.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  2. Design a Novel Solution with a Clear Hypothesis
+ </span>
+ <span class="c2">
+  To overcome these limitations, the EmoBalloon project investigated how emotionality is conveyed visually in Japanese manga. By analyzing the relationship between speech balloon shapes and emotional content in text, they identified a visual language for expressing emotional arousal. Based on these findings, they designed a novel technique to automatically generate expressive speech balloons. The design was guided by a clear hypothesis: that speech balloons whose shapes correspond to emotional arousal would convey the sender's emotional state more accurately than manually selected, static emojis.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  3. Implement the Novel Technique and Key Comparators
+ </span>
+ <span class="c2">
+  The EmoBalloon system was implemented as a functional voice input text chat application. The core of the system was a model trained on data extracted from the Manga109 dataset. This model, an Auxiliary Classifier Generative Adversarial Network (ACGAN), could automatically generate speech balloons with shapes that visually represented a specified level of emotional arousal. The system generated a balloon shape based on the detected speech volume, corresponding to the level of arousal. For comparison, the key state-of-the-art competitors were also implemented: a traditional text chat interface allowing users to select from a standard set of emoticons and a manual selection version of EmoBalloon where users could choose a speech balloon using a slider.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  4. Conduct a Rigorous, Comparative User Study
+ </span>
+ <span class="c2">
+  A controlled experiment was designed to directly compare EmoBalloon against the traditional emoticon interface and the manual selection EmoBalloon interface. In the study, Japanese participants engaged in scripted role-play scenarios, acting as both senders and receivers. After each message was sent, both participants rated the emotional arousal and valence of the message using the Self-Assessment Manikin (SAM) test. This allowed the researchers to measure the difference in perceived emotional arousal between the different interfaces.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  5. Provide a Comprehensive Explanation for the Improvement
+ </span>
+ <span class="c2">
+  The results of the user study demonstrated that EmoBalloon was significantly better at conveying emotional arousal. It measurably reduced the discrepancy between the sender's intended arousal and the receiver's perception of it, confirming the initial hypothesis. The analysis explained why this improvement occurred: the system leveraged a visual language of balloon shapes, derived from Japanese manga, that provided a more nuanced and continuous representation of emotional arousal than discrete, manually selected emoticons. Furthermore, EmoBalloon specifically communicated arousal without altering the emotional valence of the text, unlike emoticons, which can ambiguously affect both. This provided a clear, evidence-based explanation for the technique's superiority.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  EmoBalloon demonstrates a "be the best" approach in HCI by addressing a well-known problem with a novel solution that is both technically innovative and user-centered. The carefully designed user study provides compelling evidence that the proposed technique enhances emotional communication in text chats, offering a more immersive and accurate reflection of the sender's emotional state.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17 c115">
+  The Ideal Workflow
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 364.00px;">
+  <img alt="" src="images/image14.jpg" style="width: 601.70px; height: 364.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c3">
+  Figure 5.7: The “ideal” workflow of “an” interaction technique project (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1ov0eh6MqhzmnBnC1NumWdd-FI2EFuvx6BGbM1tjU8kU/edit%23slide%3Did.g5eec46172eb4c350_200&amp;sa=D&amp;source=editors&amp;ust=1776402515973123&amp;usg=AOvVaw0XBNzfv0Y5PfttZdYJr-JD">
+   be the best
+  </a>
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Best Practices for "Be the Best" Interaction Technique Research in HCI (See
+ </span>
+ <span class="c3 c25">
+  Figure 5.7
+ </span>
+ <span class="c2">
+  ). Here's a detailed explanation of each component:
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  1. Propose an Interaction Technique
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Starting point:
+  </span>
+  <span class="c2">
+   This typically starts with a hunch. For example, you might notice that a state-of-the-art interaction technique is suboptimal and have a reason to believe it can be improved. This insight triggers your investigation to design a better alternative.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  2. Pilots, Pilots, Pilots
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   To determine if your new design shows promise for outperforming the current state-of-the-art.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Key activities:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Conduct rapid, informal pilot studies comparing your technique against state-of-the-art competitors.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Iterate on your design, continuing to pilot until you find consistent, quantitative advantages.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Be prepared to pivot or modify your approach if advantages do not emerge.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Note:
+  </span>
+  <span class="c2">
+   It is crucial to remain objective and know when to stop. Sometimes, the state-of-the-art is simply hard to beat. Avoid becoming overly attached to an idea that isn't showing promise after several iterations. If there is still no clear advantage, be ready to abandon the approach and change direction. This prevents wasting valuable time and energy on a fruitless endeavor.
+  </span>
+ </li>
+</ul>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c11">
+    <span class="c17 c10">
+     Key Milestone: The Go/No-Go Decision
+    </span>
+    <span class="c2">
+     You must have consistent, quantitative evidence from pilot studies demonstrating that your technique outperforms the state-of-the-art. This evidence provides the strong justification required to proceed with a formal, rigorous investigation. Reaching this milestone marks the transition from informal piloting to the formal scientific process detailed in the following steps.
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c11">
+ <span class="c23 c17">
+  3. Literature Review
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Purpose:
+  </span>
+  <span class="c2">
+   Thoroughly understand the research landscape.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Activities:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Document your understanding through mind maps, spreadsheets, and notes.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Identify what has already been done in this space.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Ensure comprehensive knowledge of related work to position your contribution appropriately.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  4. Design the First Formal Lab Study
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Prerequisites:
+  </span>
+  <span class="c2">
+   Only proceed when you know your technique has quantitative advantages.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Process:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Write the design as if submitting for peer review.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Review and revise until the design appears flawless.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Craft a methodologically sound study that will withstand scientific scrutiny.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  5. Conduct the Formal Study
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Scope:
+  </span>
+  <span class="c2">
+   Typically with 4-6 participants initially.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Documentation:
+  </span>
+  <span class="c2">
+   Write down the study results as if preparing for submission.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Review process:
+  </span>
+  <span class="c2">
+   Refine the writing and revise if needed until everything is clear.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Ensure proper experimental controls and data collection. This is similar to what you have learned in empirical research.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  6. Finish Conducting the Rest of the Formal Study
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Scale:
+  </span>
+  <span class="c2">
+   Expand to the full participant pool (typically 12-24 participants).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Maintain consistent protocols across all participants.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  7. Finish Writing the Study
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Key components:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Analyze the results thoroughly.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Explain why the outcomes occurred.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Link results to theories.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Update all sections (design, results, discussion).
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Ensure robust statistical analysis and theoretical grounding.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Note:
+  </span>
+  <span class="c3">
+   It is not enough to show that your technique is better. A true research contribution must also explain
+  </span>
+  <span class="c3 c10">
+   why
+  </span>
+  <span class="c2">
+   it performs better, as this is the source of new knowledge. To build this explanation, connect your results to established theories and investigate the underlying causes by interviewing users, trying the technique yourself, and performing deeper analysis. Your contribution is only solidified once you can convincingly articulate the reasons behind your results.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  8. Evaluate the Contribution
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Decision point:
+  </span>
+  <span class="c2">
+   Assess if the findings constitute a sufficient research contribution. A paper is judged on its overall contribution, and a single study may not generate enough new knowledge to stand alone.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Options:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   If sufficient:
+  </span>
+  <span class="c2">
+   Write the full paper.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   If insufficient:
+  </span>
+  <span class="c2">
+   Design secondary studies to generate additional knowledge and strengthen the contribution.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Secondary studies may include:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Field studies to evaluate the technique in realistic settings.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Studies exploring additional design factors or parameters of the technique.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Longitudinal studies to assess learnability over time.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Best practice:
+  </span>
+  <span class="c2">
+   Be honest about the limitations of your work. Addressing them with further studies builds a more robust and compelling paper.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c23 c17">
+  9. The Challenge and Reward of "Be the Best"
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is worth noting that the "Be the Best" path has become increasingly challenging over time. After decades of HCI research, state-of-the-art interaction techniques for many common tasks have reached a very high level of performance, making it difficult to create a new technique that is demonstrably superior. This reality makes this research route harder to pursue successfully.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, this difficulty should not be a deterrent. With a curious mind and a keen eye for subtle inefficiencies or new technological affordances, researchers can still identify opportunities for meaningful improvement. And when a winner is found, writing a "Be the Best" paper is arguably one of the most straightforward routes to a high-impact publication. The narrative is clear and powerful: a head-to-head comparison demonstrating quantitatively that your technique outperforms the best-known alternative.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Unifying Principles: "First" vs. "Best"
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While "Be the First" and "Be the Best" represent distinct contribution types, they are not mutually exclusive and share fundamental research principles. Understanding their relationship is key to producing high-impact work. A common question is how these two approaches differ and what underlying principles they share.
+ </span>
+</p>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Core Challenge Distinction
+  </span>
+  <span class="c2">
+   :
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   "Be the First"
+  </span>
+  <span class="c3">
+   : The primary challenge is demonstrating
+  </span>
+  <span class="c3 c10">
+   novelty and potential
+  </span>
+  <span class="c2">
+   . This research introduces a new interaction paradigm, input modality, or technological capability. The evaluation focuses on proving that the new concept is viable, opens up new possibilities, and is worthy of further exploration. The comparison is often against a baseline of "not being possible before" or a fundamentally different approach.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   "Be the Best"
+  </span>
+  <span class="c3">
+   : The primary challenge is demonstrating
+  </span>
+  <span class="c3 c10">
+   superior performance
+  </span>
+  <span class="c2">
+   . This research takes an existing, understood problem and provides a solution that is measurably better (e.g., faster, more accurate, less error-prone, or preferred by users) than the current state-of-the-art. The evaluation requires a direct, rigorous, and quantitative comparison against the strongest existing competitors.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Shared Foundations of Rigor
+  </span>
+  <span class="c2">
+   : Despite their different goals, both approaches are built on the same foundation of scientific rigor. This is the most critical common aspect.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_tjumipfplyo5-1">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Deep Literature Review:
+  </span>
+  <span class="c2">
+   You cannot claim to be "first" without knowing what has come before, nor can you claim to be "best" without knowing the current benchmark. A comprehensive understanding of prior work is non-negotiable.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Quantitative Evidence:
+  </span>
+  <span class="c2">
+   Both contribution types move beyond subjective claims. Whether proving the potential of a new idea or the superiority of an existing one, the argument must be supported by quantitative data gathered through carefully designed studies. The "Go/No-Go" milestone, based on pilot data, is critical for both.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Methodological Soundness:
+  </span>
+  <span class="c2">
+   The value of the contribution rests on the quality of the evaluation. Both require well-designed experiments, clear hypotheses, controlled variables, appropriate statistical analysis, and transparent reporting.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  In essence, "Be the First" research creates a new race, while "Be the Best" research aims to win an existing one. Both require the same discipline, training, and rigorous execution to successfully convince the research community of their value.
+ </span>
+</p>
+<h3 class="c35" id="h.wz7z24fsvqoj">
+ <span class="c28 c3">
+  5.4 Conclusion: The Value of Interaction Technique Research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Research into novel interaction techniques represents a vital contribution to the field of HCI. Interaction techniques are standardized sequences of actions that users perform to accomplish specific interaction goals. These techniques form the fundamental building blocks of human-computer interaction, providing consistent ways for users to manipulate and control interfaces. Common examples include:
+ </span>
+</p>
+<ul class="c5 lst-kix_4uuovrthe9r8-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Pointing and Selection
+  </span>
+  <span class="c2">
+   : Using a cursor or touch input to indicate and activate interface elements
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Menu Navigation
+  </span>
+  <span class="c2">
+   : Traversing hierarchical menu structures to access commands and options
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Panning and Scrolling
+  </span>
+  <span class="c2">
+   : Moving through content that extends beyond the visible viewport
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Zooming
+  </span>
+  <span class="c2">
+   : Adjusting the scale and detail level of displayed information
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Dragging and Dropping
+  </span>
+  <span class="c2">
+   : Moving objects by selecting, dragging, and releasing them in new locations
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Text Entry
+  </span>
+  <span class="c2">
+   : Inputting text through keyboards or other text input methods
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Due to their focused scope and relatively simple nature compared to complete systems, interaction techniques enable and demand thorough investigation. The core value proposition lies in developing new, more effective ways to perform common interactions that can be widely applied. This focused scope means researchers must comprehensively validate the technique's benefits through rigorous studies that examine all relevant factors and contexts.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  There are two main paths to making valuable contributions in this space:
+ </span>
+</p>
+<ol class="c5 lst-kix_6kynmwsvt8ax-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Be the First Contributions
+  </span>
+  <span class="c2">
+   - These emerge from exploring entirely new interaction capabilities or contexts, such as:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_6kynmwsvt8ax-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Investigating novel input dimensions like pressure, hover, force, or tilt
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Designing techniques for emerging platforms like VR/AR
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Enabling previously impossible interactions through new technology
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_6kynmwsvt8ax-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Be the Best Contributions
+  </span>
+  <span class="c2">
+   - These focus on measurably improving existing interaction paradigms through careful refinement and validation against state-of-the-art alternatives.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  The need for interaction technique research continues to grow as new technologies, platforms and use cases emerge. Each new context brings unique constraints and opportunities that demand novel interaction solutions. However, it's important to note that interaction techniques are just one component of constructive design research. When tackling more complex creative tasks like sketching, animation, modeling or writing, a more comprehensive systems-level approach is often required. The research strategies and workflow discussed here need to be adapted accordingly for such broader system design challenges - a topic we will explore in depth in the next chapter on systems and toolkits.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Through careful study of interaction techniques, HCI researchers can develop fundamental building blocks that enhance human-computer interaction across many applications. This makes interaction technique research an enduring and valuable contribution to the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Having explored the design and evaluation of individual interaction techniques, we now turn our attention to a different scale of constructive research. The following chapter will discuss the contribution type of "Systems and Toolkits," where the focus shifts from single techniques to integrated systems and enabling platforms that support novel forms of HCI.
+ </span>
+</p>
+<h6 class="c69 c37" id="h.mwph8bn77t4g">
+</h6>
+<h3 class="c35" id="h.7pum9vhn298x">
+ <span class="c3">
+  References
+ </span>
+</h3>
+<p>
+ Grossman, T., &amp; Balakrishnan, R. (2005, April). The bubble cursor: enhancing target acquisition by dynamic resizing of the cursor's activation area. In Proceedings of the SIGCHI conference on Human factors in computing systems (pp. 281-290).
+</p>
+<p>
+ Zhao, S., Dragicevic, P., Chignell, M., Balakrishnan, R., &amp; Baudisch, P. (2007, April). Earpod: eyes-free menu selection using touch input and reactive audio feedback. In Proceedings of the SIGCHI conference on Human factors in computing systems (pp. 1395-1404).
+</p>
+<p>
+ Chen, L., Wang, H., Charles, Z., &amp; Papailiopoulos, D. (2018, July). Draco: Byzantine-resilient distributed training via redundant gradients. In International Conference on Machine Learning (pp. 903-912). PMLR.
+</p>
+<p>
+ Bako, H. K., Varma, A., Faboro, A., Haider, M., Nerrise, F., Kenah, B., ... &amp; Battle, L. (2023, March). User-driven support for visualization prototyping in D3. In Proceedings of the 28th International Conference on Intelligent User Interfaces (pp. 958-972).
+</p>
+<p>
+ Ramos, G., Boulos, M., &amp; Balakrishnan, R. (2004, April). Pressure widgets. In Proceedings of the SIGCHI conference on Human factors in computing systems (pp. 487-494).
+</p>
+<p>
+ Apitz, G., &amp; Guimbretière, F. (2004, October). CrossY: a crossing-based drawing application. In Proceedings of the 17th annual ACM symposium on User interface software and technology (pp. 3-12).
+</p>
+<p>
+ Zhao, S., &amp; Balakrishnan, R. (2004, October). Simple vs. compound mark hierarchical marking menus. In Proceedings of the 17th annual ACM symposium on User interface software and technology (pp. 33-42).
+</p>
+<p>
+ Ram, A., Xiao, H., Zhao, S., &amp; Fu, C. W. (2023). VidAdapter: Adapting Blackboard-Style Videos for Ubiquitous Viewing. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 7(3), 1-19.
+</p>
+<p>
+ Grossman, T., Hinckley, K., Baudisch, P., Agrawala, M., &amp; Balakrishnan, R. (2006, April). Hover widgets: using the tracking state to extend the capabilities of pen-operated devices. In Proceedings of the SIGCHI conference on Human Factors in computing systems (pp. 861-870).
+</p>
+<p>
+ Weiss, M., Wagner, J., Jansen, Y., Jennings, R., Khoshabeh, R., Hollan, J. D., &amp; Borchers, J. (2009, April). SLAP widgets: bridging the gap between virtual and physical controls on tabletops. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 481-490).
+</p>
+<p>
+ Shen, V., Shultz, C., &amp; Harrison, C. (2022, April). Mouth haptics in VR using a headset ultrasound phased array. In Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems (pp. 1-14).
+</p>
+<p>
+ Hinckley, K., Dixon, M., Sarin, R., Guimbretiere, F., &amp; Balakrishnan, R. (2009, April). Codex: a dual screen tablet computer. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 1933-1942).
+</p>
+<p>
+ Zheng, R., Fernández Camporro, M., Romat, H., Henry Riche, N., Bach, B., Chevalier, F., ... &amp; Marquardt, N. (2021, May). Sketchnote components, design space dimensions, and strategies for effective visual note taking. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems (pp. 1-15).
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-04.html" class="book-breadcrumb__link">&larr; Chapter 4</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-06.html" class="book-breadcrumb__link">Chapter 6 &rarr;</a>
+</div>
+</body>
+</html>

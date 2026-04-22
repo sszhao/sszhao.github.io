@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-01.html" class="book-breadcrumb__link">&larr; Chapter 1</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-03.html" class="book-breadcrumb__link">Chapter 3 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.noatn5yoozn">
+ <span class="c41 c21 c3">
+  Chapter 2: What are HCI researchers looking for? Research Contributions in HCI
+ </span>
+</h2>
+<p class="c24">
+ <span class="c2">
+  Before we delve into the intricacies of HCI research, it is important to consider a fundamental question: What is the overarching goal of an HCI research project? The understanding and engagement with this are key to the learning process.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  To count as HCI research, a project must go beyond solving a specific problem. It should produce new knowledge that others in the field can learn from and apply elsewhere.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  Thus, the fundamental criterion to consider in your HCI research is whether it contributes
+ </span>
+ <span class="c17">
+  new knowledge to the field of human-computer interaction
+ </span>
+ <span class="c2">
+  by advancing understanding or offering clear insights. This criterion takes precedence over other objectives, such as developing cutting-edge tools or refining user interfaces. Without meeting this core requirement of knowledge contribution, your work — despite whatever practical utility it may offer — will not qualify as research in the academic sense.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Understanding these fundamental points about HCI research and knowledge contribution is not trivial. The rest of this chapter will help build this understanding by exploring:
+ </span>
+</p>
+<ol class="c5 lst-kix_7bhnkbwr4ccd-0 start" start="1">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   The nature of research problems in HCI and how they relate to knowledge generation.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   The evolution of how HCI contributions are understood and classified, focusing on the shift towards a problem-solving paradigm.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   The multidisciplinary foundations of HCI contributions, drawing from science, engineering, and design.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   A detailed taxonomy of HCI research problems and contribution types.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   Frameworks for evaluating the problem-solving capacities of HCI research.
+  </span>
+ </li>
+</ol>
+<h3 class="c35" id="h.qv7b0hftnh4n">
+ <span class="c28 c3">
+  2.1 The Nature of Research Problems in HCI
+ </span>
+</h3>
+<p class="c24">
+ <span class="c3">
+  Everyday problems are about quick fixes — like putting on a sweater when you're cold.
+  <br/>
+ </span>
+ <span class="c17">
+  HCI research problems, however, aim to uncover general lessons
+ </span>
+ <span class="c2">
+  — like learning how people experience temperature, so we can design better indoor environments in the future.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  When considering what makes something a research problem in HCI, we need to focus on its potential to generate useful knowledge. This means the problem should help us learn something new that advances our understanding of how humans interact with computers. A research problem in HCI typically:
+ </span>
+</p>
+<ol class="c5 lst-kix_ycf1s0w8xy1j-0 start" start="1">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   Identifies something we  do not yet fully understand about human-computer interaction.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   Seeks broader insights that can be applied across different contexts to enhance our capability to solve similar interaction problems.
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   Can be investigated and validated using rigorous scientific approaches.
+  </span>
+ </li>
+</ol>
+<p class="c24">
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c4">
+  Key idea 1: The goal of a research project is to produce (useful) knowledge.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Having established that research problems in HCI are distinct due to their focus on generating broader knowledge, an important question arises: what types of knowledge contributions are considered valuable in HCI, and how has our understanding of these contributions evolved?
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  For over four decades, no one has clearly defined what 'counts' as a valuable contribution in HCI — especially for new researchers trying to figure it out.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  It took nearly 30 years after CHI began for the HCI community to start classifying what "counts" as a contribution.
+ </span>
+ <span class="c17">
+  Before that, it was like trying to write a recipe without agreeing on the ingredients.
+ </span>
+ <span class="c3">
+  A significant milestone was reached in 2012 when Wobbrock documented the community's collective understanding, capturing contribution categories that had evolved over decades of CHI conferences. This classification was a crucial step in establishing a common language and understanding within the HCI community. It was later refined and formally published in a 2016 paper with Kientz, systematically identifying seven main types of research contributions in HCI (
+ </span>
+ <span class="c3 c25">
+  Wobbrock &amp; Kientz, 2016
+ </span>
+ <span class="c3">
+  ): empirical, artefact, methodological, theoretical, dataset, survey, and opinion (
+ </span>
+ <span class="c3">
+  see their Table 3
+ </span>
+ <span class="c2">
+  , right side of the original figure, though the figure itself is not reproduced here for brevity).
+ </span>
+</p>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Suggested Reading:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://courses.cs.washington.edu/courses/cse510/16wi/readings/wobbrock_7contributions_submitted.pdf&amp;sa=D&amp;source=editors&amp;ust=1776402515732654&amp;usg=AOvVaw1xUvPiqNRR06vWKCKOCij8">
+      Research Contributions in Human-Computer Interaction
+     </a>
+    </span>
+    <span class="c4">
+     "
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c24">
+ <span class="c3">
+  The classification of HCI research contributions into seven distinct types, developed through a "
+ </span>
+ <span class="c17">
+  bottom-up approach
+ </span>
+ <span class="c3">
+  ," represented a significant step forward. A
+ </span>
+ <span class="c17">
+  bottom-up approach
+ </span>
+ <span class="c2">
+  involves starting with specific observations (e.g., analyzing existing papers) and gradually identifying broader patterns to form categories. Wobbrock's methodology involved examining decades of CHI papers to identify common types of contributions,  including novel systems, user studies,  and theoretical frameworks.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  While this approach effectively documented the
+ </span>
+ <span class="c3 c10">
+  what
+ </span>
+ <span class="c3">
+  of HCI community activities, it fell short in explaining the field's fundamental
+ </span>
+ <span class="c3 c10">
+  why
+ </span>
+ <span class="c2">
+  —its purpose and direction. To illustrate, consider trying to understand a library's purpose by categorizing its books by color or size. These categories describe physical attributes but miss the library's core mission.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  Imagine organizing a library. A 'bottom-up' approach might sort books by colour or size — helpful, but missing the point. A 'top-down' approach asks: 'What’s the library for?' — leading to meaningful categories like reference materials or fiction. This is where Oulasvirta and Horbaek's seminal work
+ </span>
+ <span class="c17">
+  "HCI Research as Problem Solving"
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk, 2016
+ </span>
+ <span class="c2">
+  ) makes its crucial contribution. Taking a top-down approach, they examined how different types of contributions serve the broader goals of HCI research, addressing key questions the bottom-up summary could not fully answer:
+ </span>
+</p>
+<ol class="c5 lst-kix_kdd6qqyp50pw-0 start" start="1">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   What is the overall goal of HCI research and its contributions?
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   What is the relationship among different types of contributions?
+  </span>
+ </li>
+ <li class="c24 c15 li-bullet-0">
+  <span class="c2">
+   How are these contributions evaluated?
+  </span>
+ </li>
+</ol>
+<table class="c40">
+ <tr class="c85">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Suggested Reading:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/10.1145/2858036.2858283&amp;sa=D&amp;source=editors&amp;ust=1776402515735136&amp;usg=AOvVaw3s7e5z1IX6SaBZLUx41z_6">
+      HCI Research as Problem-Solving
+     </a>
+    </span>
+    <span class="c17">
+     "
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c24">
+ <span class="c3">
+  By adopting this problem-solving lens, Oulasvirta &amp; Horbaek provided a more cohesive understanding of HCI's purpose. A core insight from their perspective is that
+ </span>
+ <span class="c17">
+  the overarching goal of HCI research is to enhance our capability to solve important problems in human interaction with computers (
+ </span>
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c17">
+  Key idea 2).
+ </span>
+ <span class="c2">
+  This reframing offers a much-needed focus and direction.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  Building on this, they clarified the nature of 'problems' and 'solutions'. They posit that
+ </span>
+ <span class="c17">
+  a research problem in HCI is fundamentally a lack of understanding of the interactions between humans and computers (
+ </span>
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c17">
+  Key idea 3).
+ </span>
+ <span class="c3">
+  For instance, a "lack of understanding of how color schemes affect the aesthetic experience of web page browsing" constitutes such a research problem. Consequently, a 'solution' or contribution is the
+ </span>
+ <span class="c17">
+  newly acquired knowledge that addresses this gap and enhances our understanding (
+ </span>
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c17">
+  Key idea 4).
+ </span>
+ <span class="c3">
+  The problem's importance determines the value of this contribution and how significantly the new knowledge advances our understanding. Importantly,
+ </span>
+ <span class="c17">
+  a solution in HCI research need not be definitive or complete; partial insights that offer some new understanding of a significant problem are also valuable (
+ </span>
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c4">
+  Key idea 5).
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  This problem-solving framework also provides a target against which the success of contributions can be measured. Instead of subjective judgments, evaluation can rigorously assess how work advances the goal of enhancing problem-solving capabilities — does it make solving certain problems easier, clarify concepts, or simplify processes? This evaluative framework is essential for advancing the field in a focused and impactful manner.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Now that we have a clearer understanding of HCI contributions through the problem-solving lens,  let us explore how these contributions relate to broader disciplinary foundations.
+ </span>
+</p>
+<table class="c40">
+ <tr class="c85">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c25">
+     HCI = Science + Engineering + Design
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c24">
+ <span class="c2">
+  HCI is a highly multidisciplinary field, drawing from science, engineering, and design, each contributing unique perspectives:
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Science in HCI
+ </span>
+ <span class="c2">
+  focuses on understanding interactions, formulating hypotheses, conducting experiments, and developing theories.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Engineering in HCI
+ </span>
+ <span class="c2">
+  applies scientific principles to design, develop, and evaluate practical software and hardware solutions.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Design in HCI
+ </span>
+ <span class="c2">
+  crafts the user experience, emphasizing aesthetics, usability, and intuitive interfaces.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  While some may debate the extent of its scientific nature,
+ </span>
+ <span class="c17">
+  the scientific method forms a foundational pillar of rigor within HCI research
+ </span>
+ <span class="c2">
+  , ensuring findings are reliable, valid, and generalizable. Cultivating a scientific mindset is crucial for an HCI researcher. However, this does not preclude valuing engineering and design. Integrating scientific rigor with the creativity and practicality of engineering and design leads to robust, innovative, and user-centered solutions.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Therefore, as an HCI researcher, it is highly recommended to:
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Develop a strong scientific foundation (methods, statistics, experimental design).
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Integrate engineering principles (system development, technical considerations).
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Embrace design thinking (UX principles, aesthetics).
+ </span>
+</p>
+<p class="c24">
+ <span class="c25 c10 c20 c56">
+  ★
+ </span>
+ <span class="c4">
+  Key idea 6:  HCI research blends science (for rigor), engineering (for implementation), and design (for user experience). Think of it like baking a cake: science gives you the recipe, engineering builds the oven, and design makes sure it tastes great.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Science, as a systematic enterprise, builds knowledge through testable explanations and predictions, characterized by:
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Empirical evidence
+ </span>
+ <span class="c2">
+  : Reliance on observable and measurable data.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Objectivity
+ </span>
+ <span class="c2">
+  : Minimizing biases.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Predictability
+ </span>
+ <span class="c2">
+  : Theories making testable predictions.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Falsifiability
+ </span>
+ <span class="c2">
+  : Propositions being disconfirmable.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  The scientific discovery process typically involves stages such as Observation, Hypothesis Formulation, Experimentation, Data Collection, Analysis and Interpretation, and ultimately, Theory Development. These stages lead to different kinds of scientific contributions. Larry Laudan, in "Progress and Its Problems," helps clarify these by distinguishing between two fundamental types of problems that scientific contributions aim to solve (
+ </span>
+ <span class="c3 c25">
+  Laudan, 1978
+ </span>
+ <span class="c2">
+  ):
+ </span>
+</p>
+<ol class="c5 lst-kix_599nz6fvt51l-0 start" start="1">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c17">
+   Empirical Problems:
+  </span>
+  <span class="c2">
+   These deal with real-world observations. For example, why do users keep clicking the wrong button in an app? These questions rely on data, testing, and measurable outcomes.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_caxrdsyt50ac-0 start" start="2">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c17">
+   Conceptual Problems:
+  </span>
+  <span class="c3">
+   These involve the theories or frameworks we use to explain user behaviour. Think of it as refining the ‘big ideas’ that guide how we design or interpret systems. A
+  </span>
+  <span class="c17">
+   theoretical contribution
+  </span>
+  <span class="c2">
+   would be a new or refined model addressing this. In HCI, "theoretical contributions" are essentially those that tackle these "conceptual problems."
+  </span>
+ </li>
+</ol>
+<table class="c40">
+ <tr class="c85">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Suggested Reading:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://books.google.com.tw/books?hl%3Den%26lr%3D%26id%3Dx9ZQEL_WP5gC%26oi%3Dfnd%26pg%3DPP13%26dq%3Dlarry%2Blaudan%2Bprogress%2Band%2Bits%2Bproblems%26ots%3DVQB1Tn1Kds%26sig%3DBNsLoegn9QKvDeS7k2akiMTuEmU%26redir_esc%3Dy%23v%3Donepage%26q%3Dlarry%2520laudan%2520progress%2520and%2520its%2520problems%26f%3Dfalse&amp;sa=D&amp;source=editors&amp;ust=1776402515742284&amp;usg=AOvVaw30Q9mJgifas8WDNuYWk-Oc">
+      Progress and Its Problems
+     </a>
+    </span>
+    <span class="c17">
+     "
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c24">
+ <span class="c2">
+  Addressing both empirical and conceptual problems is crucial for scientific advancement. Empirical contributions provide the evidence base, while theoretical contributions (which address conceptual problems) build the explanatory frameworks.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  The relationship between these two types of contributions — and the problems they address — is iterative and symbiotic:
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c3 c10">
+  From Theory/Conceptual Frameworks to Empirical Research:
+ </span>
+ <span class="c2">
+  Existing theories and conceptual understandings motivate and guide empirical investigations by identifying phenomena to study, questions to ask, and hypotheses to test.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c3 c10">
+  From Empirical Research to Theory/Conceptual Frameworks:
+ </span>
+ <span class="c2">
+  Empirical findings, in turn, can support, refute, refine, or lead to the creation of new or revised theories and conceptual understandings.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  In HCI, this interplay is vital. For example, a conceptual model of user engagement (a theoretical framework) might guide the design of an experiment (empirical research) to test its predictions. The results of this experiment then feed back to validate or refine the model. Empirical research without a solid conceptual or theoretical basis may yield isolated facts without broader meaning or direction, while theories lacking empirical support may not accurately reflect real-world interactions and lack  a solid foundation.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  While scientific principles yield empirical and theoretical contributions, HCI's practical nature necessitates recognizing contributions from engineering and design. Thus, HCI includes a third category:
+ </span>
+ <span class="c17">
+  constructive contributions
+ </span>
+ <span class="c2">
+  . These focus on building new tools, systems, or design ideas that address user needs — like designing an eye-tracking interface for accessibility.
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  HCI research, therefore, primarily involves three contribution types: empirical, theoretical (often termed "conceptual" in HCI to include broader frameworks and descriptive explanations beyond mathematical formulations), and constructive.
+ </span>
+</p>
+<h3 class="c35" id="h.6wzv2el50ji2">
+ <span class="c28 c3">
+  2.2 Taxonomy of Problem types
+ </span>
+</h3>
+<p class="c24">
+ <span class="c3">
+  Building on these contribution types,
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk (2016)
+ </span>
+ <span class="c2">
+  propose a taxonomy of HCI research problems, recognizing that research efforts cluster around three recurring problem types, each with subtypes:
+ </span>
+</p>
+<ol class="c5 lst-kix_xn2xmn4jdpho-0 start" start="1">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c17">
+   Empirical problems
+  </span>
+  <span class="c2">
+   involve investigating human-computer interaction phenomena through observation, experimentation, and data analysis.
+  </span>
+ </li>
+</ol>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Subtypes: 1. unknown phenomena, 2. unknown factors, and 3. unknown effects.
+ </span>
+</p>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Example: A controlled experiment comparing gesture-based vs. mouse/keyboard navigation in 3D virtual environments to understand effects on cognitive load and user satisfaction.
+ </span>
+</p>
+<ol class="c5 lst-kix_dpwaqn9foorm-0 start" start="2">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c17">
+   Constructive problems
+  </span>
+  <span class="c3">
+   revolve around designing and developing interactive systems or interfaces to address user needs. This corresponds to
+  </span>
+  <span class="c3 c10">
+   artifact research
+  </span>
+  <span class="c2">
+   .
+  </span>
+ </li>
+</ol>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Subtypes: 1. no known solution, 2. partial, ineffective, or inefficient solution, and 3. insufficient knowledge or resources for implementation or deployment.
+ </span>
+</p>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Example: Developing a novel eye-tracking interface (hardware and software) for individuals with severe motor disabilities.
+ </span>
+</p>
+<ol class="c5 lst-kix_nzf1b93u22e4-0 start" start="3">
+ <li class="c24 c15 li-bullet-0">
+  <span class="c17">
+   Conceptual problems
+  </span>
+  <span class="c3">
+   involve formulating and refining theoretical models, frameworks, and paradigms. This aligns with
+  </span>
+  <span class="c3 c10">
+   theoretical contributions
+  </span>
+  <span class="c2">
+   .
+  </span>
+ </li>
+</ol>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c3">
+  Subtypes (from
+ </span>
+ <span class="c3 c25">
+  Laudan, 1978
+ </span>
+ <span class="c2">
+  ): 1. implausibility, 2. inconsistency, and 3. incompatibility.
+ </span>
+</p>
+<p class="c24 c61 c80">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c2">
+  Example: Developing a new theoretical framework integrating presence, immersion, and interactivity to model user engagement in VR.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  This typology, derived from a top-down theoretical basis, contrasts with bottom-up taxonomies like
+ </span>
+ <span class="c3 c25">
+  Wobbrock's (2012)
+ </span>
+ <span class="c3">
+  , which was based more on community consensus.
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk
+ </span>
+ <span class="c3 c25">
+  (2016)
+ </span>
+ <span class="c2">
+  framework is influential, guiding authors and reviewers, particularly for conferences like ACM CHI.
+ </span>
+</p>
+<p class="c24">
+ <span class="c3">
+  In reviewing
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk's
+ </span>
+ <span class="c3 c25">
+  (2016)
+ </span>
+ <span class="c2">
+  classification, we identify areas for potential refinement to enhance clarity and utility:
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Empirical Category:
+ </span>
+ <span class="c2">
+  While "unknown phenomena" is foundational, "unknown factors" and "unknown effects" are closely linked. A combined "unknown factor/effect" category might be more streamlined.
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Constructive Category:
+ </span>
+ <span class="c2">
+  "No known solution" and "partial solution" are key. "Inability to implement or deploy" could potentially be integrated within "partial solutions."
+ </span>
+</p>
+<p class="c24 c38 c61">
+ <span class="c3">
+  ●
+ </span>
+ <span class="c17">
+  Enrichment:
+ </span>
+ <span class="c2">
+  A distinction could be made between contributions directly advancing HCI capabilities and those enhancing HCI research conduct itself (e.g., new methods, datasets, surveys).
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Building on these observations, we propose a thoughtfully refined classification that preserves the strengths of the original framework while incorporating these suggested enhancements (as shown in the revised figure below). This evolution aims to provide an even clearer and more practical framework.
+ </span>
+</p>
+<h3 class="c101" id="h.yt3qu785auxf">
+ <span class="c28 c3">
+  2.3 Evaluating Problem-Solving Capacities
+ </span>
+</h3>
+<p class="c24">
+ <span class="c3">
+  Effective problem-solving in HCI hinges upon evaluating capacities across multiple dimensions. Key criteria include significance, effectiveness, efficiency, transferability, and confidence.
+ </span>
+ <span class="c17 c25">
+  Table 1
+ </span>
+ <span class="c2">
+  illustrates a framework for this.
+ </span>
+</p>
+<p class="c100">
+ <span class="c2">
+  Table 1: Framework for Evaluating Problem-Solving Capacities in HCI Research
+ </span>
+</p>
+<table class="c40">
+ <tr class="c85">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c4">
+     Criterion
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c4">
+     Description
+    </span>
+   </p>
+  </td>
+ </tr>
+ <tr class="c88">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Significance
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Importance and relevance of the research problem to the HCI community and society at large
+    </span>
+   </p>
+  </td>
+ </tr>
+ <tr class="c110">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Effectiveness
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Extent to which proposed solutions address the identified problem and meet user requirements
+    </span>
+   </p>
+  </td>
+ </tr>
+ <tr class="c118">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Efficiency
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Assessment of resource utilization, scalability, and optimization of solutions
+    </span>
+   </p>
+  </td>
+ </tr>
+ <tr class="c94">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Transferability
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Applicability of findings across diverse contexts and domains
+    </span>
+   </p>
+  </td>
+ </tr>
+ <tr class="c104">
+  <td class="c87" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Confidence
+    </span>
+   </p>
+  </td>
+  <td class="c60" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c2">
+     Robustness and reliability of research outcomes, including empirical validity, replicability, and reproducibility
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c24">
+ <span class="c2">
+  In the past, HCI evaluation emphasized things like novelty or clever design ideas. But today, researchers are shifting toward evaluating how well research helps solve real-world problems. This means asking: 'Does this help users? Is it reliable? Can others apply it elsewhere?'
+ </span>
+</p>
+<p class="c24">
+ <span class="c2">
+  Understanding the fundamental principles of problem-solving and research contributions in HCI provides a solid foundation for further exploration into the intricacies of empirical and artifact research methodologies. As we delve deeper into empirical research in the following chapters and later explore artifact research methodologies, we encourage new researchers to embark on a journey of continuous learning about research. Aspiring researchers and seasoned practitioners alike stand to benefit from a comprehensive understanding of the methodologies and principles underpinning HCI research, paving the way for impactful contributions to the field and driving positive change in the user experience of computing technologies.
+ </span>
+</p>
+<h3 class="c35" id="h.7zi66jds501e">
+ <span class="c28 c3">
+  References
+ </span>
+</h3>
+<p>
+ Wobbrock, J. O., &amp; Kientz, J. A. (2016). Research contributions in human-computer interaction. interactions, 23(3), 38-44.
+</p>
+<p>
+ Oulasvirta, A., &amp; Hornbæk, K. (2016, May). HCI research as problem-solving. In Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems (pp. 4956-4967).
+</p>
+<p>
+ Laudan, L. (1978). Progress and its problems: Towards a theory of scientific growth (Vol. 282). Univ of California Press.
+</p>
+<p class="c11">
+ <span class="c13 c3">
+  Wobbrock, J. O. (2012). Seven research contributions in HCI. Intelligence, 174(12-13), 910-950.
+ </span>
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-01.html" class="book-breadcrumb__link">&larr; Chapter 1</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-03.html" class="book-breadcrumb__link">Chapter 3 &rarr;</a>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "UbiComp/ISWC 2024 Workshop on Heads-Up Computing"
 image: /assets/img/ubicomp24-image.jpeg
 description: "Opportunities and Challenges of the Next Interaction Paradigm with Wearable Intelligent Assistants"

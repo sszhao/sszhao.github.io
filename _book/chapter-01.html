@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 01</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="dedication.html" class="book-breadcrumb__link">&larr; Dedication</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-02.html" class="book-breadcrumb__link">Chapter 2 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.a3zurrshly77">
+ <span class="c41 c21 c3">
+  Chapter 1: Introduction
+ </span>
+</h2>
+<h3 class="c35" id="h.dyd58bb308xp">
+ <span class="c28 c3">
+  1.1 What is HCI?
+ </span>
+</h3>
+<h4 class="c51" id="h.t0jm86hez5lm">
+ <span class="c3">
+  1.1.1 Defining Human-Computer Interaction
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  According to
+ </span>
+ <span class="c3 c25">
+  Preece et al. (2015)
+ </span>
+ <span class="c3">
+  , Human-Computer Interaction (HCI) is a multifaceted discipline dedicated to
+ </span>
+ <span class="c17">
+  studying and designing technologies that enable seamless and productive interactions between humans and computers
+ </span>
+ <span class="c2">
+  . From a practical perspective, this means designing interfaces and systems that align with human needs, behaviors, and cognitive processes to enhance efficiency, effectiveness, and overall user experience.
+ </span>
+</p>
+<h4 class="c51" id="h.m2ckvrpt7lrx">
+ <span class="c36 c45 c3">
+  1.1.2 Distinguishing HCI Research from UI/UX Design
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  UI/UX design and HCI research both aim to improve human-computer interaction but differ in their core focus. UI/UX design is primarily practical, creating effective interfaces that deliver good user experiences for specific users and contexts. Designers are evaluated on consumer satisfaction and business metrics rather than scientific rigor. Unlike researchers, they aren't bound by requirements for statistical significance, detailed methodology documentation, or replicable results — their success is measured by how well their solutions work for target users in real-world applications.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  HCI research, while often involving interface design, aims to generate
+ </span>
+ <span class="c17">
+  new scientific knowledge
+ </span>
+ <span class="c2">
+  about human-computer interaction through rigorous investigation and evaluation. Novelty is typically considered essential — either through innovative designs, methodological approaches, theoretical frameworks, or empirical insights that challenge existing assumptions and expand our understanding of how humans interact with technology.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Unlike commercial products, HCI research prototypes — whether systems or interaction techniques — aren't required to be practical for mass deployment. Some published techniques may function effectively in theory or provide valuable insights, despite having significant limitations in real-world applications. This approach is not only acceptable but valued in HCI research, where knowledge generation is the primary objective. In contrast, such impracticality would typically be considered a failure in UI/UX design. This flexibility enables researchers to explore more experimental approaches, provided they advance our understanding of human-computer interaction.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This is not to say that practical considerations are unimportant in HCI research. Rather, the value of research is often judged based on the quality of its argument and the overall contribution of the insights derived from the investigation, particularly when these insights are generalizable despite technical or practical limitations of the prototypes used. For example, a Wizard of Oz study of an intelligent interface may help us understand the desirable ways in which humans want to interact with computers in futuristic scenarios. Such research can be tremendously valuable even if the system itself isn't practical to implement at the time of study. The insights gained can guide future development when technology catches up to the conceptual vision. This distinction between research and practical design becomes clearer when we examine concrete examples.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For instance, when designing a mobile app menu, a UI/UX designer would focus on creating an effective solution. They may iteratively test their proposed solutions with users until a desirable solution is reached. The resulting menu design may or may not be innovative - it could just follow traditional design principles or simply combine different features from existing approaches to create a practical implementation that meets user needs. As long as the customer likes the menu, the job is well done.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  An HCI researcher approaching the same menu system faces a different challenge. Rather than simply applying established principles to create a practical solution, they must generate new knowledge about menu design. This requires developing innovative approaches that extend beyond existing paradigms. The researcher will create novel designs and conduct rigorous studies to demonstrate not only the advantages of these new designs but also the underlying principles that explain their effectiveness. Furthermore, they must employ methodologically sound research practices to ensure their findings are reliable, valid, and reproducible. The ultimate goal is to contribute validated knowledge to the field that can guide and inform future design work, advancing our collective understanding of human-computer interaction.
+ </span>
+</p>
+<h4 class="c51" id="h.k2wu2heo4872">
+ <span class="c36 c45 c3">
+  1.1.3 The Scope of HCI: From Narrow to Broad
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  As a research discipline, HCI is best defined as a problem-solving field focused on addressing empirical, conceptual, and constructive challenges in human-computer interaction (
+ </span>
+ <span class="c3 c25">
+  MacKenzie, 2013
+ </span>
+ <span class="c3">
+  ) (we will explore these different types of contributions in detail in
+ </span>
+ <span class="c3 c25">
+  Chapter 2
+ </span>
+ <span class="c2">
+  ). Rather than being confined to a single domain like computer science or psychology, HCI research is unified by its focus on solving important problems while producing new knowledge.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The field has evolved significantly over time - from its technical origins in the 1980s through several distinct waves of development, each expanding the scope and focus of HCI research. This evolution has transformed HCI from a narrow discipline concerned with interface optimization to a broad field addressing the complex relationships between humans and technology in various contexts. We'll explore these developmental waves in greater detail in the following section.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The scope of HCI can be viewed along a spectrum from narrow to broad. At its narrowest, HCI focuses on specific interaction techniques and interface elements. In its broadest sense, it encompasses the entire ecosystem of human relationships with technology, including social, cultural, ethical, and even philosophical dimensions of these relationships. This evolution reflects a shift from viewing computers as tools to understanding them as mediators of human experience and social relationships.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This interdisciplinary nature is both a strength and a challenge. It allows HCI to address complex problems from multiple perspectives but can also make it difficult to define clear boundaries for the field. The diagram (
+ </span>
+ <span class="c3 c25">
+  see Figure 1.1
+ </span>
+ <span class="c2">
+  ) illustrates how HCI sits at the intersection of multiple disciplines, drawing from and contributing to each.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For instance, an HCI project could involve the intersection of psychology and computer science, where researchers study the cognitive processes involved in decision-making while using a digital interface. Another project may focus on the intersection of sociology and design, where researchers examine how cultural and social norms influence the use and adoption of new technologies. This interdisciplinary approach enables deeper investigation across domains while ensuring solutions are grounded in diverse perspectives, ultimately leading to more human-centered technological innovations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, this interdisciplinary nature also presents significant challenges. Researchers must develop competence across multiple domains, which requires substantial time and effort. Communication barriers can arise when collaborators from different disciplines use different terminology, methodologies, and evaluation standards. Additionally, publishing interdisciplinary work can be challenging, as reviewers from different backgrounds may have conflicting expectations about what constitutes a valuable contribution.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For newcomers to HCI, this shifting focus, expanding scope, and interdisciplinary nature creates a significant challenge. The field's flexibility — spanning from narrow technical interfaces to broader societal implications — can make it difficult to grasp what exactly constitutes HCI research. When it seems to encompass "anything and everything," newcomers often struggle to find solid footing. This ambiguity makes it crucial to study the fundamentals thoroughly, such as understanding HCI as a problem-solving discipline (
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk, 2016
+ </span>
+ <span class="c2">
+  ). Rather than being overwhelmed by its breadth, focus first on comprehending core frameworks that define the field's boundaries and contributions. This foundation will help you navigate the seemingly endless possibilities and gradually develop the discernment needed to identify meaningful research directions amid the field's continuous evolution from narrow to broader concerns.
+ </span>
+</p>
+<p class="c103">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 424.50px; height: 282.76px;">
+  <img alt="" src="images/image23.png" style="width: 424.50px; height: 282.76px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+ <span class="c3">
+  <br/>
+  Figure 1.1: Adapted from
+ </span>
+ <span class="c3 c25">
+  Mackay &amp; Fayard, 1997
+ </span>
+</p>
+<h4 class="c51" id="h.jn8una5tq0hz">
+ <span class="c36 c45 c3">
+  1.1.4 Summary: The Essence of HCI
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  To summarize, while the definition of Human-Computer Interaction may seem straightforward, truly understanding the field requires grasping the fundamental distinction between creating practical solutions and conducting research. HCI research goes beyond implementing functional interfaces—it demands generating new knowledge through rigorous investigation and validation. This distinction is crucial for newcomers who might otherwise conflate UI/UX design practices with HCI research requirements.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The unique position of HCI research lies in its problem-solving approach (
+ </span>
+ <span class="c3 c25">
+  Oulasvirta &amp; Hornbæk, 2016
+ </span>
+ <span class="c3">
+  ). While the field encompasses a seemingly broad range of topics and areas, this diversity is unified by a common purpose. Rather than being confused or overwhelmed by this apparent breadth, newcomers should focus on developing a solid understanding of what constitutes HCI research and contributions (which we'll explore more deeply in
+ </span>
+ <span class="c3 c25">
+  Chapter 2
+ </span>
+ <span class="c2">
+  ). Only with this foundation can one effectively navigate the complex landscape of HCI research. Without it, researchers may struggle to identify meaningful problems, apply appropriate methodologies, or make significant contributions to the field.
+ </span>
+</p>
+<h5 class="c69 c37" id="h.wwcnb75h92rq">
+</h5>
+<h3 class="c35" id="h.dq9nck3gltqq">
+ <span class="c28 c3">
+  1.2 HCI's Significance Through Time
+ </span>
+</h3>
+<p class="c11">
+ <span class="c3">
+  In the previous section, we established what HCI research is, and discussed HCI's distinction from UI/UX design, its expanding scope from narrow to broad concerns, and its interdisciplinary nature that spans multiple domains. We also briefly touched on how the field's focus has changed over time. Let's now dive deeper into this historical evolution (see
+ </span>
+ <span class="c3 c25">
+  Figure 1.2
+ </span>
+ <span class="c2">
+  ). By examining how HCI has developed through different waves and paradigms, we can better appreciate why the field has such a broad scope today and how its fundamental concerns have shifted. This historical perspective helps newcomers recognize that HCI isn't just about solving today's interaction problems, but about understanding the ongoing relationship between humans and technology that continues to evolve.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 130.33px;">
+  <img alt="" src="images/image18.jpg" style="width: 602.00px; height: 135.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c2">
+  Figure 1.2: Co-evolution of humans and our tools
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The history of HCI research can be traced back to the mid-20th century when early computers were developed. During this time, the focus was on developing and improving the technical aspects of computing, with little attention paid to how people would interact with these machines. It was not until the 1970s that the importance of understanding human-computer interaction began to be recognized. The introduction of the Graphical User Interface (GUI) in the 1970s serves as a landmark example. It democratized computer usage by transitioning from the traditional text-based command line interface to a visually intuitive system, bolstered by the integration of the mouse. This evolution transformed the personal computer from a complex tool into an indispensable component of everyday life. Researchers such as Stuart Card, Thomas Moran, and Allen Newell, working at the Xerox Palo Alto Research Center (PARC), began to develop methods for studying user behavior and cognitive processes when interacting with computers. Their work culminated in the publication of "The Psychology of Human-Computer Interaction" in 1983 (
+ </span>
+ <span class="c3 c25">
+  Card et al., 1983
+ </span>
+ <span class="c2">
+  ), which remains a seminal work in the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The 1980s and 1990s saw a significant expansion of HCI research, with the development of new methodologies and the establishment of academic programs dedicated to the field. Researchers such as Donald Norman, Ben Shneiderman, and Jakob Nielsen made significant contributions to the field during this time. One of the most influential works in HCI research during this period was Norman's "The Design of Everyday Things" (
+ </span>
+ <span class="c3 c25">
+  Norman, 1988
+ </span>
+ <span class="c3">
+  ). In this book, Norman introduced the concept of "affordances," which refers to the properties of an object that suggest how it should be used. This concept has since become a cornerstone of user-centered design, emphasizing the importance of designing products with the user in mind. Another significant contribution to the field during this time was "Designing the User Interface" (
+ </span>
+ <span class="c3 c25">
+  Shneiderman, 1987
+ </span>
+ <span class="c2">
+  ), which introduced the concept of "direct manipulation" as a means of improving user interaction with digital interfaces. Direct manipulation involves allowing users to directly manipulate on-screen objects to achieve their goals, rather than relying on complex commands or programming.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As we move along in time, the advent of the mobile interaction paradigm in the 1990s revolutionized information accessibility, enabling seamless connectivity irrespective of time or place. The emergence of touch-screen smartphones in the 2000s further accelerated this trend, democratizing access to computing capabilities and making them more intuitive and user-friendly. This period also saw the rise of social media platforms, which generated unprecedented amounts of "big data" on user behavior and interaction patterns, opening new avenues for HCI research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The field continued to evolve in response to emerging societal concerns. As technology became more pervasive, HCI researchers began examining not just how people use technology, but how technology affects society at large. This broader perspective led to the development of new subfields within HCI research, such as "value-sensitive design," (
+ </span>
+ <span class="c3 c25">
+  Friedman et al., 2013
+ </span>
+ <span class="c2">
+  ) which focuses on creating technologies that align with human values and promote ethical practices. Similarly, as AI systems have become more prevalent, HCI researchers have turned their attention to both the opportunities and challenges these systems present. While AI-powered interfaces can enhance user experiences through personalization, they also raise important questions about privacy, security, and ethical decision-making that HCI researchers must address.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  These historical developments reveal a fundamental pattern: HCI is an evolving field driven by technological breakthroughs, with each major advance in technical capabilities triggering new paradigms of human-computer interaction. The progression from command-line interfaces to GUIs, mobile computing, touch interfaces, and social media platforms all followed significant hardware and software innovations. Today, we are very likely to stand at another inflection point as wearable computing matures and AI capabilities become increasingly sophisticated, where concepts like Heads-Up Computing (
+ </span>
+ <span class="c3 c25">
+  Zhao et al., 2023
+ </span>
+ <span class="c2">
+  ) start to emerge.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For students entering the field, this historical perspective offers several important lessons about HCI's evolving relationship with technology:
+ </span>
+</p>
+<ol class="c5 lst-kix_wq5cbmw6agn-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Anticipating Technological Trends
+  </span>
+  <span class="c2">
+   : Forward-looking research must anticipate emerging technologies to remain relevant as capabilities advance. This requires researchers to stay informed about developments across multiple domains — from hardware innovations to software paradigms, from AI advancements to new sensing technologies. Rather than merely responding to existing technologies, successful HCI researchers often position their work ahead of the curve, envisioning how people might interact with technologies that are still emerging. This proactive stance allows research to shape technological development rather than simply reacting to it, creating opportunities to influence how new capabilities are implemented with human needs in mind.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_wq5cbmw6agn-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Finding the Intersection
+  </span>
+  <span class="c2">
+   : Revolutionary interfaces typically emerge at the intersection of new technical capabilities and human-centered design principles. The most impactful innovations in HCI history—from the GUI to touchscreens to voice interfaces—succeeded not merely because they were technically possible, but because they aligned with human cognitive abilities, physical capabilities, and social contexts. This intersection requires researchers to develop both technical expertise and deep understanding of human factors. By identifying where emerging technical capabilities can address fundamental human needs or overcome persistent interaction barriers, researchers can discover opportunities for transformative interfaces that might otherwise be overlooked.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_wq5cbmw6agn-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Balancing Technology's Dual Nature
+  </span>
+  <span class="c2">
+   : Understanding technology's potential to be both constructive and destructive is critical as it becomes deeply woven into the fabric of modern life. This aspect of HCI research is frequently neglected but increasingly crucial. Technologies that enhance productivity can also enable surveillance; systems that connect people can also isolate them; interfaces that simplify tasks can also reduce agency. The history of HCI reveals that technological advances often bring unintended consequences that weren't initially apparent. As technologies become more pervasive and powerful, HCI researchers have a responsibility to consider not just whether an interface is usable or efficient, but how it might reshape social dynamics, affect psychological well-being, influence power structures, or impact marginalized communities. This requires expanding research methodologies to include ethical frameworks, participatory approaches, and longer-term impact assessments. By acknowledging technology's dual nature, researchers can work to amplify its benefits while mitigating potential harms, ensuring that technological progress serves human flourishing rather than undermining it.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  This historical understanding highlights the significant responsibility HCI researchers bear in shaping not just individual interactions, but the very nature of how society engages with technology. The field's most important lesson may be the need to balance technological advancement with human-centered outcomes. By positioning research at the forefront of technological evolution while remaining grounded in human needs, behaviors, and values, HCI researchers can navigate the complexities of emerging technologies to create solutions that enhance lives, empower individuals, and contribute to the betterment of society. This balance defines HCI's critical role in our technological future.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Suggested Reading:
+     </span>
+     <span class="c17">
+      "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://www.cs.cmu.edu/~amulet/papers/uihistory.tr.html&amp;sa=D&amp;source=editors&amp;ust=1776402515700728&amp;usg=AOvVaw1IDPjqjjQ4ae5t8lk9zrzS">
+       A Brief History of Human Computer Interaction Technology
+      </a>
+     </span>
+     <span class="c4">
+      "
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35" id="h.uzkbh21709jb">
+ <span class="c28 c3">
+  1.3 The HCI research process
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Having established what HCI research is and explored its historical evolution, let's now examine the actual process of conducting HCI research. For newcomers to the field, understanding this process is essential because it differs significantly from other types of work you may have previously encountered. Most undergraduate studies involve problems with predetermined solutions or focus primarily on developing functional implementations that work correctly.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In contrast, the HCI research process is inherently more open-ended and unpredictable, which can be particularly challenging for those accustomed to more structured problem-solving environments. By developing a comprehensive understanding of what this process entails, you'll be better equipped to navigate its complexities and avoid common pitfalls that frequently discourage beginners. This section aims to demystify the HCI research journey, establishing realistic expectations and providing a framework that will help you approach your research with confidence and resilience.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  To illustrate what working on an HCI research problem is like, consider this analogy: it resembles exploring an uncharted territory (see
+ </span>
+ <span class="c3 c25">
+  Figure 1.3
+ </span>
+ <span class="c2">
+  below), where your goal is to discover a new optimal path through previously unexplored land. Unlike following established routes with clear directions, research requires you to forge your own way through unknown terrain, making discoveries and overcoming obstacles as you progress.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 242.35px;">
+  <img alt="" src="images/image5.png" style="width: 602.00px; height: 401.51px; margin-left: 0.00px; margin-top: -28.65px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c103">
+ <span class="c2">
+  Figure 1.3: Exploring an HCI research problem as venturing from known land into uncharted territory, discovering new paths through unknown challenges.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This unknown land exhibits the following characteristics:
+ </span>
+</p>
+<ul class="c5 lst-kix_8vq13gl8rggp-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Its boundary is unknown. You only know the rough direction/location of it, but its exact position, scope are not specified. In fact, it is your job to define its scope and location. This by itself can be a challenge to many students. Given the enormous world of knowledge, how can one pick the most interesting and feasible unknown land to explore?
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Not all unknown lands are interesting or solvable. Some unknown lands are solved (existing paths are already optimal, thus no need for new paths). Some contain dead-end paths, which can be frustrating after you have spent a lot of time exploring it and find there is no way out. There is no guarantee that a new optimal path can be identified in any given unknown land. When such situations happen, one needs to either adjust the path, adjust the boundary (scope) of the unknown land, or find an alternative unknown land to explore. Such adjustment of path, boundary happens very frequently, and in some cases, one needs to abandon the earlier exploration and find a new unknown land to explore.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   An unknown land can (typically) only be explored progressively. When exploring the land at the ground level piece by piece, one can encounter challenges and difficulties in each of the sub-areas of the unknown land. During this process, if without a bird-eye view, one can often get lost and feel frustrated. The experience is like, after finally overcoming very difficult challenges in one sub-area of the unknown land, new challenges suddenly emerge from the next sub-area, and this process may seem endless. Without a deeper understanding of the nature of research, and the ability to see the bird-eye overview, students can easily feel frustrated, discouraged during this process.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Not all segments of the optimal path are equal. Although the goal is to identify this new optimal path, not all segments of the path have equal importance. Some parts of the path are on the critical path, which needs to be identified first. Other parts can be secondary or complementary. During exploration, one needs to prioritize the critical elements of the path first before moving to the secondary ones.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Given such characteristics, it's no wonder many students face a hard time when starting their HCI research journey. The unknown boundaries, potential dead-ends, progressive nature of exploration, and need for careful prioritization can make the research process feel overwhelming and frustrating, especially for those new to the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While these challenges are inherent to the research process, there are strategies that can help navigate this complex terrain more effectively. By approaching the exploration process strategically, researchers can reduce frustration and increase their chances of success. Let's examine some key approaches that can minimize the difficulties in this journey:
+ </span>
+</p>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Limit the size of the unknown island. With limited resources, the size (scope) of the unknown land a student can explore is limited. Thus, it is essential to choose a piece of unknown land of adequate size for exploration. If the size of the unknown land is too big, exploration under a time constraint (typically maximum 1 year for a paper submission) will be extremely challenging. Choosing an unknown land with the right size is the first skill a student needs to learn and potentially master.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Define the boundary/scope. Once a land of a certain size is chosen, the next important step is to define its exact boundary. How to define the boundary of an unknown land? One effective approach is to write an abstract and outline. Students are often told the importance of writing abstracts and outlines before any prototypes are developed and any results are collected. They may be puzzled: what's the point of writing them when we don't have a prototype and know nothing about the results? The answer is tightly associated with the first characteristic of the exploration process. The writing of the abstract and outline is to help you to define the boundary of the unknown land. A well defined outline helps to avoid one common mistake: during literature review, many related, interesting ideas will surface, and they can easily distract you to spend a lot of time exploring ideas outside the scope of your unknown land, which can be counterproductive.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Distinguish critical vs. secondary paths. To explore a path more effectively, one needs to be clear about which part of the path is critical, which needs to be explored first, and which part of the path is secondary &amp; complementary, which can be explored at a later stage. Note that this distinction is hierarchical. Even in a critical path, certain exploration is more critical than others. This may feel abstract, so let me provide an example: A paper has 3 studies: study 1 is to motivate the investigation (people need Bla), study 2 is to show the advantage of Bla (Bla is better than a number of alternatives including the state of art), and study 3 is to generalize the finding of study 2 in real world settings (ecological validity). Among these three studies, which one is the on the critical path? The answer is study 2. Remember, we are looking for a new optimal path, and the  optimal means it is the best path. Among the three studies, study 2 establishes this claim, thus it needs to be worked out first. However, it doesn’t mean everything related to study 2 is critical. For example, to report a formal study in a paper, we may need 18 participants, but to know the result, typically 9 participants are enough. Thus the first 9 participants are on the critical part of the critical path while the remaining 9 participants are less important. When performing this study, one can prioritize the first 9 participants while leaving the remaining 9 participants to a later time or for someone else to work on in order to concentrate on the most important tasks.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Detects dead-ends or failed paths early and always be prepared to adjust the boundary of the unknown land. This can be difficult for students coming from the industry and engineering background. Engineering emphasizes preciseness and clear requirements from the beginning, yet research, especially in the beginning stage, requires extreme flexibility and an open mind. In research, we probe the unknown land to check for the possibility of the existence of a new optimal path first, and always ready to change to a new unknown land if the result of the probe is negative. Thus, it is important to design the most efficient probes to understand the situation and get ready to adjust exploration based on the results. It can be particularly painful, if one spends a lot of time and effort exploring a piece of land, and finding it to be a dead end in the end.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8vq13gl8rggp-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Seek help and work with others. Research is hard. Developing a birds-eye view is difficult for beginners. There are many challenges and it can appear endless at times. Thus, don’t be shy to seek advice, help from others. Manage your resources strategically. Balance your life and prepare for a sustainable effort. If you can successfully overcome these difficulties, you will be able to taste the excitement and joy of research, as it is truly a beautiful thing.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  These strategies represent just the beginning of what you'll need to navigate the complex terrain of HCI research. Throughout this book, we'll elaborate on these concepts and introduce additional approaches to help you become a more effective researcher. It's worth noting that many of these ideas may not fully resonate with you now — their true value often becomes apparent only after you've experienced the challenges of research firsthand. As you progress through your first few projects, you may find yourself returning to this section with new insights and appreciation.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Remember that research is inherently iterative and often messy. Even experienced researchers face setbacks and moments of uncertainty. The difference is that they've developed strategies to navigate these challenges more effectively. By approaching your research with patience, flexibility, and strategic thinking, you'll gradually build the skills needed to explore unknown territories with greater confidence.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As we transition to the next section, we'll discuss another crucial aspect of becoming an effective HCI researcher: developing the appropriate mindset, especially when transitioning from other disciplines. Whether you're coming from engineering, design, or another field entirely, understanding how to adapt your thinking to the unique demands of HCI research will be essential for your success.
+ </span>
+</p>
+<h3 class="c35" id="h.hfu69d24p9e0">
+ <span class="c28 c3">
+  1.4 Mindset and Transitions into HCI research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Transitioning into HCI research often requires a shift in mindset, especially for individuals accustomed to engineering or design roles. HCI encompasses a broader scope than implementation-driven approaches and includes a diverse range of methodologies and practices. This includes user-centered design principles, interdisciplinary collaboration, and other essential elements in the design and evaluation of interactive systems.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is important to note that an important component of HCI research is scientific practices, which involve producing scientifically validated new knowledge. While not all HCI research follows strict scientific methods and can involve creativity, having a strong scientific mindset and practice greatly facilitates the research process. Therefore, whether you come from an engineering or design background, the most significant hurdle when transitioning into HCI research is learning the scientific method and adopting scientific practices. By embracing these principles, researchers can contribute to the advancement of knowledge in the field.
+ </span>
+</p>
+<ol class="c5 lst-kix_69gnbv2z67yc-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Non-research Science/Engineering Jobs:
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Transitioning from an engineering mindset to a HCI research one can be a challenging process due to the distinct differences in the nature of these fields. A few key aspects to this transition include:
+ </span>
+</p>
+<ul class="c5 lst-kix_ddubw7tn40xx-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Valuing Different Types of Contributions
+  </span>
+  <span class="c2">
+   <br/>
+   Engineers often prioritize technical contributions such as algorithms, code, or hardware achievements, and overlook the value of knowledge contributions from other aspects, such as empirical research. This mindset limits the scope of innovation and reduces opportunities for intellectual growth. While engineering contributions are undoubtedly valuable, new knowledge can take many different forms. Engineers transitioning to HCI research need to open their minds to accept and value all types of contributions.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_ddubw7tn40xx-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Embracing Uncertainty
+  </span>
+  <span class="c2">
+   <br/>
+   Engineering is often about finding and implementing the best solution to a problem, with a strong preference for rigor and predictability. While rigor is important in science as well, yet in the early stage, research involves exploring the unknown and finding answers in often chaotic situations. Thus, uncertainty and flexibility are inherent aspects of the process. Engineers learning to adapt to this can expect to encounter situations where there isn't a single correct answer, but various interpretations based on the available information.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_ddubw7tn40xx-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Thinking More Deeply
+  </span>
+  <span class="c2">
+   <br/>
+   Engineers often focus on finishing tasks. They want to solve problems and get the job done, without thinking too much about why things work the way they do.
+  </span>
+ </li>
+</ul>
+<p class="c11 c30">
+ <span class="c2">
+  However, doing research in Human-Computer Interaction (HCI) needs a different approach. It's not just about whether something works or not. It's also about understanding why things work or don't work. So, in HCI research, we need to think more deeply about the reasons behind everything. This deeper thinking can help us see problems in a new way and provide more generalizable findings. Below are some additional differences between engineers and HCI researchers:
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3 c10">
+  Denser Theory Interaction
+ </span>
+ <span class="c3">
+  Engineers use theory as a problem-solving tool, while HCI research employs it continuously, informing question framing, result interpretation, and conclusions. For instance, engineers use ergonomics to design comfort, while HCI researchers use it to study user-computer interaction.
+  <br/>
+ </span>
+ <span class="c3 c10">
+  Wider Task Scope
+ </span>
+ <span class="c3">
+  Engineers focus on efficient solutions within defined tasks, measured by specific metrics. Conversely, HCI researchers consider the solution's context, user impact, and future improvements. For example, engineers optimize code in software development, while HCI researchers also consider user experience and accessibility.
+  <br/>
+ </span>
+ <span class="c3 c10">
+  Divergent Data Usage
+ </span>
+ <span class="c2">
+  Engineers use data to validate solutions, while HCI researchers use it to generate insights about user behavior and preferences. For example, engineers use user testing data for website navigation, while HCI researchers use it to understand user navigation preference.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  To facilitate a smoother transition, students from Engineering background are encouraged to learn scientific practices by reading books such as "
+ </span>
+ <span class="c3">
+  The Craft of Research
+ </span>
+ <span class="c3">
+  " (
+ </span>
+ <span class="c3 c25">
+  Booth et al., 2009
+ </span>
+ <span class="c3">
+  ) or "
+ </span>
+ <span class="c3">
+  How to think Straight about Psychology
+ </span>
+ <span class="c3">
+  " (
+ </span>
+ <span class="c3 c25">
+  Stanovich, 1992
+ </span>
+ <span class="c2">
+  ). These resources can provide valuable insights into developing the scientific mindset required for HCI research. Transitioning into HCI research also requires engineers to learn the different stages of research, particularly understanding that the early stages are highly uncertain and demand flexibility and adaptability. Once they grasp these principles, engineers can more successfully transition into becoming HCI researchers.
+ </span>
+</p>
+<ol class="c5 lst-kix_ggst9ohazb21-0 start" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Designers Without a Research Background:
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  While the path from an engineering background to HCI research is often steep, one might assume that individuals with a design background may find it easier, given their inherent creativity and understanding of user interfaces. However, in reality, this transition can be equally, if not more challenging, for designers. Why?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Designers are accustomed to relying heavily on their intuition and creativity to produce work. However, they may overlook the necessity within HCI research to explain the 'why' behind their choices and validate their ideas with data and evidence — a fundamental aspect of the scientific approach. This can sometimes make it more difficult for designers than engineers to adopt the scientific method.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The key for designers aiming to successfully transition into HCI researchers is to fully embrace the scientific method and effectively integrate it with their existing design practices. By doing so, they can strike a balance between their creative design process and the empirical, evidence-based approach required in HCI research.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Suggested Reading:
+     </span>
+     <span class="c17">
+      "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://library.uniq.edu.iq/storage/books/file/The%2520Craft%2520of%2520Research/1667121038craft.pdf&amp;sa=D&amp;source=editors&amp;ust=1776402515718388&amp;usg=AOvVaw0Uw40xV0Nj2JY_6ZHcJAIx">
+       The Craft of Research
+      </a>
+     </span>
+     <span class="c17">
+      "  "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://www.goodreads.com/book/show/41749.How_to_Think_Straight_About_Psychology&amp;sa=D&amp;source=editors&amp;ust=1776402515718558&amp;usg=AOvVaw2_q06MiO5JXCPq--aOsLDF">
+       How to think Straight about Psychology
+      </a>
+     </span>
+     <span class="c4">
+      "
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<ol class="c5 lst-kix_ggst9ohazb21-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Researchers From Other Disciplines:
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Researchers from fields like psychology or sociology may have a foundation in various research methodologies but be less familiar with specific technologies or HCI design principles. Transitioning into HCI research requires learning about these technologies, as well as understanding how to apply their existing research skills within the context of HCI. A cognitive psychologist with expertise in studying human memory may need to learn about the design of graphical user interfaces or the use of virtual reality for memory training. This could involve collaborating with computer scientists, learning to program in Unity, or becoming familiar with tools like Figma or Sketch for interface design.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Suggested Reading:
+     </span>
+     <span class="c17">
+      "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://faculty.washington.edu/garyhs/docs/colusso_dis2017_researchpractice.pdf&amp;sa=D&amp;source=editors&amp;ust=1776402515719825&amp;usg=AOvVaw3SgE4VlGTc3zybLQBIPYig">
+       Translational Resources: Reducing the Gap Between Academic Research and HCI Practice
+      </a>
+     </span>
+     <span class="c17">
+      "
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c2">
+  In all cases, embracing the interdisciplinary nature of HCI research and being open to learning new concepts and methods are essential for a successful transition. Whether through workshops, courses, or mentorship, the journey into great research is characterized by a relentless pursuit of knowledge and a voracious appetite for learning.
+ </span>
+</p>
+<h3 class="c35" id="h.zat91xl5q8r1">
+ <span class="c28 c3">
+  1.5 Scope and Objectives
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Now that we have provided essential background information for newcomers to the field, let's clarify the specific role this book will play in your HCI research journey.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This book aims to equip newcomers to HCI research with a deeper understanding of the research cycle and process. It offers practical guidance and hands-on approaches to kickstart research projects:
+ </span>
+</p>
+<ul class="c5 lst-kix_cxfnaweag3kw-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Overall Approach to HCI Research:
+  </span>
+  <span class="c2">
+   The book provides a comprehensive approach to HCI research, encompassing the entire research cycle and process. It guides readers through preparation, literature review, selecting research questions, exploring and validating research questions, prototyping, formal studies, and frameworks for innovation and experimental design.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_cxfnaweag3kw-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Case Studies:
+  </span>
+  <span class="c2">
+   Through diverse case studies, readers gain insights into how different HCI research cycles unfold in practice. Each case study highlights unique project characteristics, study designs, and rationales, offering valuable real-world examples of HCI research in action.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  While our book covers some topics similar to existing textbooks on HCI, it stands out in its focus on providing a practical, hands-on guide to HCI research. Instead of focusing on theory, our emphasis lies in offering actionable insights to facilitate the initiation and execution of research projects effectively.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Caution:
+ </span>
+ <span class="c2">
+  The recent trend towards producing incremental research for publication has become increasingly noticeable, with flagship conferences experiencing a surge in submissions each year. This influx has made it challenging to secure enough qualified reviewers to handle the growing volume of papers. Moreover, the contributions of many publications appear to be diminishing [ref], with content that often just meets the minimum criteria for a paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, this book serves as a hands-on guide that does not endorse the push for incremental publications. It advocates for the value of publishing impactful work over incremental contributions. Indeed, one piece of impactful research can outweigh the significance of ten incremental papers. While mastering best practices in research is critical, it's equally crucial to learn how to identify and tackle important problems.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Although it's acceptable for junior researchers (e.g., PhD students) to begin with less challenging problems as a form of practice, there is an expectation for them to evolve. As they gain experience, they should aspire to address more impactful issues, which may be more complex, but have the potential to make a significant difference in the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Background information on HCI research is crucial. We’ve prepared a list of resources for you that we recommend you spend
+ </span>
+ <span class="c17">
+  1 week
+ </span>
+ <span class="c2">
+  going through. It includes relevant books, papers, online courses and others...
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c25 c10">
+      <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/document/d/1Rb14UZnXEXx2fyX-GfmnMWHN72g7xcET380ssVxiuBs/view%23heading%3Dh.t7rjf4z5zj8k&amp;sa=D&amp;source=editors&amp;ust=1776402515723805&amp;usg=AOvVaw0vR3VCpzRX96Vlh02s6Q8V">
+       Preparation List
+      </a>
+     </span>
+     <span class="c54 c21 c17 c10">
+      :
+     </span>
+    </p>
+    <p class="c11">
+     <span class="c3 c10">
+      Tip: If you feel a lack of motivation to run through the list, we encourage you to be patient. In fact, after this week, you will feel readier to put all that theory to good use!
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c56 c25 c10 c20">
+      ★
+     </span>
+     <span class="c17 c25 c10">
+      <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/document/d/1_e3cVQzo6yh6dxPurLfBNsrt3yAQ9kOeO4GCZ72QtO0/edit%23heading%3Dh.89flllgyihaj&amp;sa=D&amp;source=editors&amp;ust=1776402515724481&amp;usg=AOvVaw09frY7KDU5ADW8ITlMEzxf">
+       Sample list of questions
+      </a>
+     </span>
+     <span class="c3 c10">
+      you may be asked.
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35" id="h.g5nu0b3319zp">
+ <span class="c28 c3">
+  References
+ </span>
+</h3>
+<p>
+ Preece, J., Sharp, H., &amp; Rogers, Y. (2015).Interaction design: Beyond human-computer interaction(4th ed.). Hoboken, NJ: John Wiley &amp; Sons.
+</p>
+<p>
+ MacKenzie, I. S. (2013). Human–computer interaction: An empirical research perspective. Waltham, MA: Morgan Kaufmann.
+</p>
+<p>
+ Oulasvirta, A., &amp; Hornbæk, K. (2016, May). HCI research as problem-solving. In Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems (pp. 4956-4967).
+</p>
+<p>
+ Mackay, W. E., &amp; Fayard, A. L. (1997, August). HCI, natural science and design: a framework for triangulation across disciplines. In Proceedings of the 2nd conference on Designing interactive systems: processes, practices, methods, and techniques (pp. 223-234).
+</p>
+<p>
+ Zhao, S., Tan, F., &amp; Fennedy, K. (2023). Heads-up computing moving beyond the device-centered paradigm. Communications of the ACM, 66(9), 56-63.
+</p>
+<p>
+ Card, S. K., Moran, T. P., &amp; Newell, A. (1983). The psychology of human-computer interaction. Hillsdale, NJ: Lawrence Erlbaum Associates.
+</p>
+<p class="c11">
+ <span class="c13 c3">
+  Norman, D. A. (1988). The design of everyday things. New York, NY: Basic Books.
+ </span>
+</p>
+<p>
+ Shneiderman, B. (1987). Designing the user interface: Strategies for effective human-computer interaction. Reading, MA: Addison-Wesley.
+</p>
+<p>
+ Friedman, B., Kahn Jr, P. H., Borning, A., &amp; Huldtgren, A. (2013). Value sensitive design and information systems. In Early engagement and new technologies: Opening up the laboratory (pp. 55-95). Dordrecht: Springer Netherlands.
+</p>
+<p>
+ Myers, B. A. (1998). A brief history of human-computer interaction technology. Interactions, 5(2), 44–54.
+</p>
+<p>
+ Booth, W. C., Colomb, G. G., &amp; Williams, J. M. (2009). The craft of research. University of Chicago press.
+</p>
+<p class="c11">
+ <span class="c13 c3">
+  Stanovich, K. E. (1992). How to think straight about psychology. HarperCollins Publishers.
+ </span>
+</p>
+<p>
+ Colusso, L., Bennett, C. L., Hsieh, G., &amp; Munson, S. A. (2017, June). Translational resources: Reducing the gap between academic research and HCI practice. In Proceedings of the 2017 conference on designing interactive systems (pp. 957-968).
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="dedication.html" class="book-breadcrumb__link">&larr; Dedication</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-02.html" class="book-breadcrumb__link">Chapter 2 &rarr;</a>
+</div>
+</body>
+</html>

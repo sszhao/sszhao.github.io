@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Synteraction Lab's Thriving Weekly Running Event"
 image: "/assets/img/group-running.jpeg"
 description: "Synteraction Lab's weekly running event saw another successful turnout this Thursday"

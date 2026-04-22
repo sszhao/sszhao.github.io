@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Prof. Zhao and Student Luoying Visit PolyU of Hong Kong"
 image: "/assets/blog/WeChat-Image_20240311210620.jpeg"
 description: Professor Shengdong Zhao and PhD student Luoying visited The Hong Kong Polytechnic University (PolyU) and had an engaging discussion with Professors Wang Hailiang and Yu Junnan and their students. The exchange was fruitful, fostering intellectual dialogue and strengthening academic ties.

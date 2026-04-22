@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Front Matter</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <span class="book-breadcrumb__link book-breadcrumb__link--disabled">&larr; Previous</span>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="dedication.html" class="book-breadcrumb__link">Dedication &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h1 class="c72" id="h.wos0v28t0dsk">
+ <span class="c39 c21 c17">
+  Preface
+ </span>
+</h1>
+<p class="c11">
+ <span class="c2">
+  Welcome to "Navigate the World of HCI Research: A Fresh Researcher's Roadmap." In the pages that follow, you'll find a comprehensive guide drawn from my considerable experience and countless hours spent delving into the intricacies of Human-Computer Interaction (HCI) research. This book is born from years of designing and building interactive techniques and systems, conducting user studies, writing and revising papers, teaching and mentoring younger researchers/students, collaborating with experts in the field, and navigating academic conferences.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As you embark on this journey with me, it's essential to understand the experiences that shaped my path in HCI. Just as a map lays out the terrain for travelers, my early experiences provided me with the essential tools and insights needed to navigate the complex world of HCI research. Each project and collaboration not only honed my skills but also deepened my passion for the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  In the early 2000s, I embarked on my HCI journey at the University of Toronto, working on the Hunter Gatherer project (
+ </span>
+ <span class="c3 c25">
+  Schraefel et al., 2002
+ </span>
+ <span class="c3">
+  )
+ </span>
+ <span class="c2">
+  with monica schraefel. This initiative, focused on improving web-based information gathering, marked my entry into the HCI domain. It highlighted the transformative power of technology in improving how people interact with digital information, paving the way for my exploration in this vibrant field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  After my involvement with the hunter-gatherer project, my PhD journey began with monica's introduction and later transitioned to Prof. Mark Chignell's lab. There, I explored the field of information visualization, creating innovative techniques like Elastic Hierarchy (
+ </span>
+ <span class="c3 c25">
+  Zhao et al., 2005
+ </span>
+ <span class="c3">
+  ), before shifting my focus to interaction techniques, such as simple-stroke marking menus (
+ </span>
+ <span class="c3 c25">
+  Zhao &amp; Balakrishnan, 2004
+ </span>
+ <span class="c3">
+  ), with Prof. Ravin Balakrishnan. This research propelled me into the dynamic world of interactive computing, where I deepened my understanding of user needs and preferences. While at Microsoft Research, I partnered with experts like Maneesh Agarawala, Ken Hinckley, Patrick Baudisch, and Ed Cutrell to develop advanced methods for human-computer interaction, including interaction techniques such as the Zone and Polygon menus (
+ </span>
+ <span class="c3 c25">
+  Zhao et al., 2006
+ </span>
+ <span class="c3">
+  ) and interactive systems like Inkseine (
+ </span>
+ <span class="c3 c25">
+  Hinckley et al., 2007
+ </span>
+ <span class="c2">
+  ).
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  During my tenure at the National University of Singapore, I dedicated myself to nurturing a new generation of HCI scholars. Collaborating with a diverse array of talented individuals such as Rubaiat Habib, Haimo Zhang, Kening Zhu, Pinsym Foong, Deb Ghosh, Ashwin Ram, Nuwan Janaka, Soon Hau Chua, and others, We led the way in award winning initiatives such as SandCanvas (
+ </span>
+ <span class="c3 c25">
+  Kazi et al., 2011
+ </span>
+ <span class="c3">
+  ), Draco (
+ </span>
+ <span class="c3 c25">
+  Kazi et al., 2014
+ </span>
+ <span class="c3">
+  ), AutoGami  (
+ </span>
+ <span class="c3 c25">
+  Zhu &amp; Zhao, 2013
+ </span>
+ <span class="c3">
+  ), Vita (
+ </span>
+ <span class="c3 c25">
+  Fong et al., 2017
+ </span>
+ <span class="c3">
+  ), Eyeditor (
+ </span>
+ <span class="c3 c25">
+  Ghosh et al., 2020
+ </span>
+ <span class="c3">
+  ), LSVP (
+ </span>
+ <span class="c3 c25">
+  Ram &amp; Zhao, 2021
+ </span>
+ <span class="c3">
+  ), PilotAR (
+ </span>
+ <span class="c3 c25">
+  Janaka et al., 2024
+ </span>
+ <span class="c3">
+  ), GlassMessaging (
+ </span>
+ <span class="c3 c25">
+  Janaka et al., 2023
+ </span>
+ <span class="c3">
+  ), and PandaLens (
+ </span>
+ <span class="c3 c25">
+  Cai et al., 2024
+ </span>
+ <span class="c2">
+  ), etc. These initiatives not only showcased the immense potential inherent in HCI research but also served as testament to the collective creativity and dedication of our dynamic team.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  As Human-Computer Interaction (HCI) gained momentum across Asia, we witnessed significant transformations, such as the inaugural SIGCHI conference held in the city of Seoul. While immersed in my work throughout the region, I observed firsthand how innovative research could profoundly influence the way people perceive and interact with technology. This realization opened my eyes to the dynamic potential within the field. During my time at Huawei, I found myself pondering the future direction of Human-Computer Interaction (HCI). It was in this period that the idea of Heads-up Computing (
+ </span>
+ <span class="c3 c25">
+  Zhao et al., 2023
+ </span>
+ <span class="c2">
+  ) surfaced, igniting a passionate spark within me. This concept, which envisioned a world where embodied technology would blend effortlessly into daily life, inspired me to overhaul my research agenda. I was driven to explore and develop ways to integrate computers seamlessly into our everyday existence, making technology an invisible yet integral part of our routines.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  These days, with all the new technology coming out, we sometimes forget about what stays the same - how people think and behave. While other fields focus on making new things, HCI helps connect people and technology. The "H" in HCI reminds us that our digital tools should work well for humans. By putting people first, we make sure new technology actually helps make our lives better.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The field of Human-Computer Interaction has experienced unprecedented growth in recent years. This is perhaps best exemplified by the staggering number of submissions — over 5,000 — to the flagship ACM SIGCHI conference for 2025. This surge reflects not only the increasing importance of HCI in our technology-driven world but also the growing community of researchers and practitioners dedicated to advancing the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, this rapid expansion has highlighted a significant gap in how we prepare the next generation of HCI researchers. Currently, most students enter the field through an informal apprenticeship model, learning primarily through hands-on experience in research labs under the guidance of experienced mentors. While this approach has its merits, it can be inconsistent and heavily dependent on the specific lab environment and mentorship quality.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  There are, of course, excellent resources available to HCI researchers. Books like "Research Methods in Human-Computer Interaction" (
+ </span>
+ <span class="c3 c25">
+  Lazar et al., 2017
+ </span>
+ <span class="c3">
+  ) provide valuable methodological foundations, and "Human-Computer Interaction: An Empirical Research Perspective" (
+ </span>
+ <span class="c3 c25">
+  MacKenzie, 2013
+ </span>
+ <span class="c2">
+  ) offers crucial insights into experimental approaches. Yet, there remains a notable absence of comprehensive guides that walk students through the complete research process - from initial problem identification to final publication. New researchers often struggle to piece together disparate knowledge sources to understand how to tackle research problems systematically, what best practices to follow, and how to navigate the various stages of HCI research effectively.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This gap became particularly apparent to me when I began teaching graduate-level courses on HCI research methodology. Searching for appropriate teaching materials, I found that while there were plenty of resources on specific aspects of HCI research, there wasn't a single source that provided the kind of systematic, end-to-end guidance that beginning PhD and Master's students needed. This realization led me to develop my own teaching materials, focusing on providing a structured approach to conducting HCI research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Through multiple iterations of teaching this course and incorporating feedback from students at different stages of their research journey, these materials evolved into a comprehensive framework for understanding and conducting HCI research. The positive response from students and their improved ability to navigate research challenges convinced me of the value in sharing these materials more broadly. This book, therefore, represents the culmination of these efforts - a systematic guide that I wish had existed when I first entered the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This book addresses these challenges through a comprehensive framework that covers:
+ </span>
+</p>
+<ul class="c5 lst-kix_5fi03zjxbybc-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   The foundations of HCI research, including its interdisciplinary nature spanning computer science, psychology, design, and social sciences (
+  </span>
+  <span class="c3 c25">
+   Chapter 1
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   A systematic approach to developing research questions and contributions, with practical guidance on choosing between empirical, conceptual, and constructive routes (
+  </span>
+  <span class="c3 c25">
+   Chapter 2
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Detailed coverage of empirical research methods, from study design to data analysis, emphasizing both quantitative and qualitative approaches (
+  </span>
+  <span class="c3 c25">
+   Chapters 3-4
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Guidelines for artifact-based research, including how to explore design spaces, prototype effectively, and evaluate novel interactive systems (
+  </span>
+  <span class="c3 c25">
+   Chapters 5-6
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Practical aspects of research from working on your first HCI project, conducting literature review, writing papers (
+  </span>
+  <span class="c3 c25">
+   Chapters 7-9
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  How to Use This Book: For newcomers to HCI: While this book provides valuable guidance before starting your first research project, you may find it even more enlightening after completing your first project under mentorship. The initial hands-on experience will help you better appreciate and internalize the principles and frameworks presented here. We recommend reading it both before and after your first project.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For experienced researchers: Use it as a reference to strengthen specific aspects of your research practice and as a structured resource for mentoring junior researchers. The systematic approach presented here can help you guide students through their research journey more effectively.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For practitioners transitioning to research: Focus on the chapters about research mindset and methodology to understand how HCI research differs from industry practice. Like newcomers, you may gain deeper insights by revisiting the material after completing an initial research project.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The goal isn't to create another "paper factory" but to develop thoughtful researchers who can:
+ </span>
+</p>
+<ul class="c5 lst-kix_5fi03zjxbybc-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Identify important questions that advance the field
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Design and execute rigorous studies
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Create innovative interactive systems
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Effectively communicate their findings
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Most importantly, conduct research that improves how people interact with and benefit from technology
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Welcome to the world of Human-Computer Interaction.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Warm regards,
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Shengdong Zhao
+ </span>
+</p>
+<h3 class="c35 c74" id="h.2vnoodgxb0v6">
+</h3>
+<h3 class="c35" id="h.ji3zpm3qfs79">
+ <span class="c28 c3">
+  References
+ </span>
+</h3>
+<p>
+ Schraefel, M. C., Zhu, Y., Modjeska, D., Wigdor, D., &amp; Zhao, S. (2002). Hunter gatherer: Interaction support for the creation and management of within-web-page collections. In Proceedings of the 11th International Conference on the World Wide Web (WWW ’02) (pp. 172–181). ACM.
+</p>
+<p>
+ Zhao, S., McGuffin, M. J., &amp; Chignell, M. H. (2005, October). Elastic hierarchies: Combining treemaps and node-link diagrams. In IEEE Symposium on Information Visualization, 2005. INFOVIS 2005. (pp. 57-64). IEEE.
+</p>
+<p>
+ Zhao, S., &amp; Balakrishnan, R. (2004, October). Simple vs. compound mark hierarchical marking menus. In Proceedings of the 17th annual ACM symposium on User interface software and technology (pp. 33-42).
+</p>
+<p>
+ Zhao, S., Agrawala, M., &amp; Hinckley, K. (2006, April). Zone and polygon menus: using relative position to increase the breadth of multi-stroke marking menus. In Proceedings of the SIGCHI conference on Human Factors in computing systems (pp. 1077-1086).
+</p>
+<p>
+ Hinckley, K., Zhao, S., Sarin, R., Baudisch, P., Cutrell, E., Shilman, M., &amp; Tan, D. (2007, April). InkSeine: In Situ search for active note taking. In Proceedings of the SIGCHI conference on human factors in computing systems (pp. 251-260).
+</p>
+<p>
+ Kazi, R. H., Chua, K. C., Zhao, S., Davis, R., &amp; Low, K. L. (2011, May). SandCanvas: A multi-touch art medium inspired by sand animation. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 1283-1292).
+</p>
+<p>
+ Kazi, R. H., Chevalier, F., Grossman, T., Zhao, S., &amp; Fitzmaurice, G. (2014, April). Draco: bringing life to illustrations with kinetic textures. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 351-360).
+</p>
+<p>
+ Zhu, K., &amp; Zhao, S. (2013, April). AutoGami: a low-cost rapid prototyping toolkit for automated movable paper craft. In Proceedings of the SIGCHI conference on human factors in computing systems (pp. 661-670).
+</p>
+<p>
+ Foong, P. S., Zhao, S., Carlson, K., &amp; Liu, Z. (2017, May). Vita: Towards supporting volunteer interactions with long-term care residents with dementia. In Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems (pp. 6195-6207).
+</p>
+<p>
+ Ghosh, D., Foong, P. S., Zhao, S., Liu, C., Janaka, N., &amp; Erusu, V. (2020, April). Eyeditor: Towards on-the-go heads-up text editing using voice and manual input. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp. 1-13).
+</p>
+<p>
+ Ram, A., &amp; Zhao, S. (2021). Lsvp: Towards effective on-the-go video learning using optical head-mounted displays. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 5(1), 1-27.
+</p>
+<p>
+ Janaka, N., Cai, R., Ram, A., Zhu, L., Zhao, S., &amp; Yong, K. Q. (2024). Pilotar: Streamlining pilot studies with ohmds from concept to insight. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 8(3), 1-35.
+</p>
+<p>
+ Janaka, N., Gao, J., Zhu, L., Zhao, S., Lyu, L., Xu, P., ... &amp; Ong, Y. (2023). GlassMessaging: Towards Ubiquitous Messaging Using OHMDs. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 7(3), 1-32.
+</p>
+<p>
+ Cai, R., Janaka, N., Chen, Y., Wang, L., Zhao, S., &amp; Liu, C. (2024, May). PANDALens: Towards AI-assisted in-context writing on OHMD during travels. In Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems (pp. 1-24).
+</p>
+<p>
+ Zhao, S., Tan, F., &amp; Fennedy, K. (2023). Heads-up computing moving beyond the device-centered paradigm. Communications of the ACM, 66(9), 56-63.
+</p>
+<p>
+ Lazar, J., Feng, J. H., &amp; Hochheiser, H. (2017). Research methods in human-computer interaction. Morgan Kaufmann.
+</p>
+<p>
+ MacKenzie, I. S. (2013). Human–computer interaction: An empirical research perspective. Waltham, MA: Morgan Kaufmann.
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <span class="book-breadcrumb__link book-breadcrumb__link--disabled">&larr; Previous</span>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="dedication.html" class="book-breadcrumb__link">Dedication &rarr;</a>
+</div>
+</body>
+</html>

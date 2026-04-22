@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-07.html" class="book-breadcrumb__link">&larr; Chapter 7</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-09.html" class="book-breadcrumb__link">Chapter 9 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.xao3u441uxlf">
+ <span class="c41 c21 c3">
+  Chapter 8: Conducting Literature Reviews
+ </span>
+</h2>
+<p class="c12">
+ <span class="c3">
+  Having explored various contribution types and detailed explanations of empirical and constructive research approaches, along with guidance for starting your first HCI project, we now turn to another fundamental component of rigorous research
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  conducting comprehensive literature reviews. This critical process forms the foundation for identifying meaningful research gaps, building theoretical frameworks, and positioning your work within the broader HCI landscape. Whether you’re validating a new interaction technique or developing novel evaluation methods, systematic literature review methods will help you establish credibility while avoiding redundant efforts.
+ </span>
+</p>
+<h3 class="c35" id="h.kg0kajsgsmh2">
+ <span class="c28 c3">
+  8.1 Selecting a Research Topic
+ </span>
+</h3>
+<p class="c12">
+ <span class="c2">
+  Before diving into literature review techniques, it’s important to first understand how to select a research topic worth investigating. According to Prof. Tan Chuan Hoo from the National University of Singapore, there are several effective approaches to choosing a research topic, rather than relying on inspiration alone or forcing a topic to fit existing data.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Picking a good research topic is one of the most challenging aspects of research. However, due to this difficulty, many researchers fall into problematic approaches. Some wait passively for inspiration or
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  eureka moments
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c2">
+  rather than actively searching for topics. Others work backwards by trying to force a topic to fit existing data or methods they already have. And some select topics based purely on convenience rather than research merit. These approaches typically lead to poorly motivated research and may frustrate advisors who expect more thoughtful topic selection.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Roberts
+ </span>
+ <span class="c3">
+  recommend a more systematic approach to topic selection
+ </span>
+ <span>
+  (
+ </span>
+ <span class="c25">
+  Roberts, 2010
+ </span>
+ <span>
+  )
+ </span>
+ <span class="c2">
+  . The first step involves deep immersion in the relevant literature while engaging in meaningful discussions with faculty and other scholars in your field. Writing about potential topics helps crystallize and organize your understanding. Most students will consider between three to five potential topics before finally settling on one, and it’s completely normal to scrap a topic and start over at least once during the process.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  When searching for potential topics, researchers should draw from diverse sources. Personal/professional interests serve as a natural starting point
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  consider what excites and energizes you, and what career goals could be enhanced by studying a particular topic. Faculty members, professional colleagues, and fellow students can provide valuable suggestions, though it’s important to maintain independent judgment while considering their advice. Professional journals in your field and digital libraries provide essential resources, and creating targeted keyword lists can help initiate focused searches.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Previously written dissertations and PhD defense discussions often suggest promising research directions. Keeping track of current theories in your field helps identify new developments or existing theories being questioned. Conferences and seminars provide opportunities for direct dialogue with presenters and authors about researchable topics. Outside agencies, professional organizations, leading scholars in your interest areas, and your current workplace can all generate valuable research ideas.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  When evaluating potential topics, several key criteria warrant careful consideration. The topic must sustain your interest over an extended period, as completing a paper/dissertation often takes longer than anticipated. It needs to be manageable in scope
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  attempting Nobel Prize-level research is best reserved for postgraduate work. The topic should have clear potential to make an original and significant contribution to knowledge, typically by addressing an identified gap in the existing literature.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Practical considerations carry equal weight in topic selection. The research must be feasible within your available time frame and budget constraints, with reliable access to necessary data. The topic should not be over-researched, as this limits opportunities for original contribution. Finally, it must gain acceptance from your advisor and committee members, whose support proves crucial throughout the research journey.
+ </span>
+</p>
+<h3 class="c35">
+ <span class="c28 c3">
+  8.2 Introducing Literature Review
+ </span>
+</h3>
+<p class="c12">
+ <span class="c2">
+  Once you’ve selected a research topic through careful consideration of the criteria above, the next crucial step is conducting a thorough literature review. It plays a crucial role throughout the entire HCI research process, warranting dedicated attention as a fundamental research skill. From a knowledge creation perspective, it serves multiple critical functions:
+ </span>
+</p>
+<ol class="c5 lst-kix_zg3jmls4aiie-0 start" start="1">
+ <li class="c63 c55 li-bullet-1">
+  <span class="c2">
+   At the problem identification stage, it helps researchers spot genuine knowledge gaps and research opportunities, ensuring their work addresses real needs rather than reinventing existing solutions.
+  </span>
+ </li>
+ <li class="c63 c55 li-bullet-1">
+  <span class="c2">
+   During research design, it provides theoretical foundations and methodological insights from related work, helping researchers build upon proven approaches while avoiding known pitfalls.
+  </span>
+ </li>
+ <li class="c55 c63 li-bullet-1">
+  <span class="c2">
+   For knowledge synthesis, it enables researchers to position their contributions within the broader landscape of HCI research, demonstrating how new findings advance or challenge existing understanding.
+  </span>
+ </li>
+ <li class="c63 c55 li-bullet-2">
+  <span class="c2">
+   In the evaluation phase, it provides frameworks and benchmarks against which new contributions can be assessed, ensuring research meets the field’s standards for rigor and significance.
+  </span>
+ </li>
+</ol>
+<h4 class="c51" id="h.kjggdllnvsam">
+ <span class="c36 c45 c3">
+  8.2.1 Basics: Search Directions and Strategies
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  Having established the core activities of literature review and their purposes, let’s explore specific search strategies that can help execute these activities effectively.
+ </span>
+</p>
+<p class="c12">
+ <span class="c17">
+  Backward search methodology
+ </span>
+ <span class="c3">
+  , sometimes called
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  snowballing,
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  involves systematically reviewing reference lists of key papers. This approach is particularly effective during the initial exploration phase, helping identify seminal works and theoretical foundations in your field. When examining references, focus particularly on papers that appear repeatedly across multiple sources
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c3">
+  these often represent fundamental contributions to the field. Webster and Watson (
+ </span>
+ <span class="c3 c25">
+  2002
+ </span>
+ <span class="c2">
+  ) recommend this approach as crucial for ensuring comprehensive coverage of prior research.
+ </span>
+</p>
+<p class="c12">
+ <span class="c17">
+  Forward search methodology
+ </span>
+ <span class="c3">
+  naturally supports the
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  following research threads
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  activity by looking at papers that cite your key references. This approach, facilitated by tools like Google Scholar’s
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  Cited by
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c2">
+  feature, helps track how ideas have evolved and identifies current developments in the field. It’s particularly valuable for understanding the current state of research and identifying potential research gaps. This method can reveal how initial concepts have been applied, critiqued, or extended in different contexts.
+ </span>
+</p>
+<p class="c12">
+ <span class="c17">
+  The connected papers approach
+ </span>
+ <span class="c3">
+  enhances knowledge synthesis by providing a network-based view of literature relationships. Tools like Connected Papers (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=http://connectedpapers.com&amp;sa=D&amp;source=editors&amp;ust=1776402516144252&amp;usg=AOvVaw3h1VSIzzWu9cG5J_y1rf4D">
+   connectedpapers.com
+  </a>
+ </span>
+ <span class="c3">
+  ) and
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.vosviewer.com/&amp;sa=D&amp;source=editors&amp;ust=1776402516144363&amp;usg=AOvVaw1bfz4uBOQSf-cur-5ry-Iy">
+   VOSviewer
+  </a>
+ </span>
+ <span class="c2">
+  visualize connections between papers based on bibliometric coupling and co-citation analysis. This approach can reveal clusters of related research that might not be immediately apparent through traditional keyword searches, supporting both systematic reading and synthesis activities.
+ </span>
+</p>
+<p class="c12">
+ <span class="c17">
+  Venue-specific searching
+ </span>
+ <span class="c3">
+  complements these approaches by systematically exploring key publication venues in your field. This method supports all core activities by helping you stay current with the latest research while understanding historical developments. Beyond just searching major journals and conference proceedings, this approach includes examining special issues, workshop proceedings, and technical reports. For HCI researchers, this might mean regularly reviewing proceedings from venues like CHI, UIST, and CSCW, while also monitoring specialized venues relevant to their specific research focus. Many venues maintain digital libraries (like the
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org&amp;sa=D&amp;source=editors&amp;ust=1776402516145282&amp;usg=AOvVaw0OYW6hsBemdxA1o_twpuZu">
+   ACM Digital Library
+  </a>
+ </span>
+ <span class="c2">
+  ) that offer advanced search features and paper recommendations.
+ </span>
+</p>
+<h4 class="c51" id="h.bn5baocm872s">
+ <span class="c36 c45 c3">
+  8.2.2 The Iterative Nature of Literature Review
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  Literature review is an iterative process that becomes more focused and effective with each cycle. Here’s a systematic approach to conducting literature reviews:
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  When you have a specific research topic in mind, start by searching for researchers and papers that directly address that topic. Look for high-quality recent papers to understand the current state of research. Be aware that your topic may be discussed across multiple fields using different terminology
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c3">
+  consulting with experts can help identify these alternative terms and perspectives. The literature review process often accelerates once you discover seminal papers that clearly define your topic and provide comprehensive overviews
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  these can serve as valuable maps for exploring both their references (backward search) and papers that cite them (forward search). If available, survey papers are excellent starting points as they synthesize key work in the field and can help identify the most important papers to read in detail.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Once you’ve identified some key papers, develop a systematic search strategy. Create targeted search strings using Boolean operators to search across multiple academic databases. Focus on specific venues and journals that publish relevant work in your area. Keep track of which search terms and combinations yield the most useful results. Tools like Connected Papers can help visualize citation networks and relationships between papers, revealing additional relevant work you may have missed through traditional searches.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Throughout the process, continuously refine your approach:
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Adjust keywords based on relevant papers found
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Narrow or broaden search scope as needed
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Document effective search patterns
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Focus more time on high-quality papers that advance your understanding
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Maintain a structured bibliography with detailed notes on key papers
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Regularly reassess your search strategy and be prepared to pivot based on new insights
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Organize papers by themes and approaches
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Map relationships between different research directions
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Identify potential gaps and contributions
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  The goal is to progressively refine your understanding while ensuring comprehensive coverage of relevant literature. Each iteration should build upon insights from previous cycles, becoming more focused while remaining open to new directions and perspectives that emerge.
+ </span>
+</p>
+<h4 class="c51" id="h.r2ajby6dh8nu">
+ <span class="c36 c45 c3">
+  8.2.3 Literature Survey Decision Charts
+ </span>
+</h4>
+<p class="c12">
+ <span class="c3">
+  Pierre Dragicevic
+ </span>
+ <span>
+  (
+ </span>
+ <span class="c25">
+  Dragicevic
+ </span>
+ <span>
+  )
+ </span>
+ <span class="c3">
+  provides two valuable decision charts to help researchers navigate the literature review process. While these charts don’t cover aspects like search tools, bibliography management, or writing literature surveys, they offer clear guidance on key decisions when encountering papers
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  such as whether to read them in detail and how to incorporate them into your related work section.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  The first decision chart outlines a general framework for handling papers encountered during research. The second chart helps assess a paper’s relevance, assuming you have already defined your research problem and potential solution approach. Together, these charts provide a systematic way to efficiently process papers while maintaining focus on your research goals.
+ </span>
+</p>
+<h4 class="c51" id="h.pkypuwgl0thl">
+ <span class="c36 c45 c3">
+  8.2.4 Types of Literature Reviews
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  Literature reviews do not just happen at the start of the research process, but have to be performed iteratively at various stages of the research process. Based on the stage of research you are at, the type of literature review that HCI researchers conduct differs according to the goals of that stage.
+ </span>
+</p>
+<h5 class="c69" id="h.re0ke1w6zqpv">
+ <span class="c45 c54 c3 c89">
+  8.2.4.1 Viability Literature Review (Scoping)
+ </span>
+</h5>
+<p class="c12">
+ <span class="c2">
+  Purpose and goals: To evaluate if a research idea is viable by assessing whether it has already been done and identifying its unique contribution. Used before committing to a research question, with the goal of quickly mapping the existing literature territory and ensuring the idea’s novelty. Helps researchers validate potential research directions through rapid assessment iterations.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Process and timeframe: Involves scanning titles and abstracts of dozens to hundreds of papers over 1-3 days. When encountering papers with potentially overlapping titles or abstracts, researchers should first quickly scan through the paper to assess if there is actual overlap before investing time in detailed reading. This rapid assessment helps efficiently eliminate non-relevant papers. Only if initial scanning suggests genuine overlap should researchers do an in-depth review. Researchers identify and search key terminology, building foundational knowledge through focused keyword searches. If substantial overlap is found with existing work, researchers should refine or redirect their idea.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Best practices: After reviewing papers, use mindmapping as a tool to classify and organize the research landscape around your specific topic. Focus the mindmap on the immediate area around your research idea rather than trying to map the entire field. The goal is to understand how your work fits into and differs from closely related work, not to create an exhaustive map of all possible connections. Carefully examine papers that appear similar to determine if they truly overlap with your proposed idea. For each important keyword, conduct focused searches to find directly relevant literature. Remember that the entire viability check, including paper review and mindmapping, should not take more than 3 days
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  if you’re spending longer, you’re likely going too deep. Success is indicated by your ability to clearly articulate how your proposed work relates to and differs from the most closely related existing research, without getting lost in mapping tangential areas.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  When to use this approach: At the beginning stages of research before research question is decided. Most frequently used type of literature review, requiring several iterations. Uses flexible inclusion/exclusion criteria and broad overview level of detail. Appropriate when validating potential research directions and establishing the unique positioning of a research idea within the existing literature.
+ </span>
+</p>
+<h5 class="c69" id="h.ptjpx6l9h8oq">
+ <span class="c45 c54 c3 c89">
+  8.2.4.2 Formal Literature Review
+ </span>
+</h5>
+<p class="c12">
+ <span class="c2">
+  Integration with research papers: Conducted at different stages, often when main studies are completed and results/insights developed. Forms the literature review section after the introduction. Groups previous literature to clearly distinguish researcher’s contribution from previous work. Requires deeper analysis of each paper with detailed notes integrated into research question’s story.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Documentation methods: Take detailed notes on papers (usually more than 50), creating narrative that weaves into research question story. Uses spreadsheet approach with database containing different tabs and classifications. Highlights relevant papers and shows clear relations to current work. Requires specific inclusion/exclusion criteria based on research question.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Best practices: Maintain database with classifications, highlighting most relevant papers and their relation to current work. Based on study results, identify related studies, extensions, disputed findings, and nuanced additions. Use step-by-step approach with examples and writing templates. Justify designs and research interests through comprehensive documentation.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Common applications: Used to support research findings and distinguish contributions after key studies are complete. Takes 1+ weeks, requiring detailed analysis with specific criteria. Helps researchers understand what studies they’re extending, disputing, or adding nuances to. Creates formal structure within research paper to support research story.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Example: In this
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DvKXNbVx8dKw&amp;sa=D&amp;source=editors&amp;ust=1776402516154021&amp;usg=AOvVaw00-PtfRKkkOdB6KqyoMHck">
+   video
+  </a>
+ </span>
+ <span class="c3">
+  , PhD student Julia shared her effective system for organizing research papers using a spreadsheet approach. Her spreadsheet contained columns for: 1) the full citation, 2) which section of the literature review the paper belongs to (e.g., theoretical foundations, methodology, related systems
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c3">
+  these sections correspond to major themes or topics in her thesis), 3) a one-sentence key message about why it’s important for her work, 4) detailed key points from the paper, and 5) critiques/limitations noted. She would first populate the spreadsheet with citations from papers she had already collected, then work through one section at a time
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  reading papers, taking focused notes on key points relevant to her work, and writing a summary sentence for each. This systematic approach allowed her to efficiently organize hundreds of papers, maintain clear documentation of important findings, and write her literature review more effectively by focusing on one thematic section at a time with all relevant papers and notes readily accessible.
+ </span>
+</p>
+<h5 class="c69" id="h.6zwopvc1iht8">
+ <span class="c45 c54 c3 c89">
+  8.2.4.3 Systematic Literature Review
+ </span>
+</h5>
+<p class="c91">
+ <span class="c2">
+  [This section is based on notes and slides prepared by Sonne Chen]
+ </span>
+</p>
+<h6 class="c67" id="h.mobtyh88mv17">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.1 Overview and Definition
+ </span>
+</h6>
+<p class="c12">
+ <span class="c3">
+  Systematic review is a scientific research method that comprehensively analyzes the evidence of a particular subject through a systematic and transparent method.
+ </span>
+ <span>
+  In the following we will
+ </span>
+ <span class="c2">
+  detail the difference between system review and literature review, the type of system review, data extraction and synthesis methods, and the specific steps of how to conduct system review.
+ </span>
+</p>
+<h6 class="c69" id="h.qrwyjzf2avu0">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.2 Comparison with Traditional Literature Review
+ </span>
+</h6>
+<p class="c11">
+ <span class="c54 c21 c3 c10">
+  Literature Review
+ </span>
+</p>
+<ul class="c5 lst-kix_j6kapi7jataq-0 start">
+ <li class="c33 li-bullet-2">
+  <span>
+   R
+  </span>
+  <span class="c2">
+   ange: It usually has a wide scope and may include discussion of past work, criticism, and identification of current knowledge gaps.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Methodology: Non-standardization may not have a clear search strategy or contain/exclude standards.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span>
+   P
+  </span>
+  <span class="c2">
+   urpose: Provide a comprehensive overview of a topic and identify new research directions.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   limitations: There may be prejudice, it is difficult to copy, and it may be too specific.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c54 c21 c3 c10">
+  Systematic Review
+ </span>
+</p>
+<ul class="c5 lst-kix_p1eqk8b1bpid-0 start">
+ <li class="c33 li-bullet-1">
+  <span>
+   R
+  </span>
+  <span class="c2">
+   ange: The preset review scope is usually narrower and more specific.
+  </span>
+ </li>
+ <li class="c33 li-bullet-1">
+  <span>
+   S
+  </span>
+  <span class="c2">
+   earch: A comprehensive search of all relevant research has a clear search strategy.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span>
+   S
+  </span>
+  <span class="c2">
+   tandard: Use clear criteria to include/exclude research.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Quality assessment: Critically evaluate the quality of research.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Data extraction: Extract and synthesize research results.
+  </span>
+ </li>
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   purpose: Providing a reliable basis for decision-making may involve meta-analysis.
+  </span>
+ </li>
+</ul>
+<h6 class="c67" id="h.gfijpllv9gfl">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.3 Core Characteristics
+ </span>
+</h6>
+<p class="c91">
+ <span class="c2">
+  The system review has the following characteristics:
+ </span>
+</p>
+<p class="c91">
+ <span class="c3">
+  - transparency : The research process and methods are open and transparent to facilitate external review.
+ </span>
+</p>
+<p class="c91">
+ <span class="c3">
+  - Reliability : Reduce prejudice and improve the reliability of research through a systematic approach.
+ </span>
+</p>
+<p class="c91">
+ <span class="c2">
+  - Decision basis : Provide scientific basis for policy formulation and practice.
+ </span>
+</p>
+<h6 class="c67" id="h.vcpnsw6uvw9u">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.4 Data Synthesis Methods
+ </span>
+</h6>
+<p class="c11">
+ <span class="c17 c23">
+  Meta-analysis
+ </span>
+</p>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Definition
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Meta-analysis is a statistical technique that allows researchers to combine the results of multiple studies to assess the overall effect of an intervention or variable. This method is particularly suitable for quantitative research because it depends on the consolidation of statistical data.
+ </span>
+</p>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Applicable conditions
+ </span>
+</p>
+<ul class="c5 lst-kix_zfcbg4o7qjhy-0 start">
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Research questions must be answered through quantitative data.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   The selected research must be sufficiently similar in design, measurement and analysis so that the results can be reasonably combined.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Process
+ </span>
+</p>
+<ul class="c5 lst-kix_grjt958twyps-0 start">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Select research : Select research based on clear inclusion and exclusion criteria.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Data extraction : Extract the effect amount from each study (such as average difference, correlation coefficient, etc.).
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Statistical synthesis : Use statistical methods (such as weighted average) to merge the effects.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Assess heterogeneity : Check the variability between the combined studies to determine the consistency of the results.
+  </span>
+ </li>
+ <li class="c33 li-bullet-1">
+  <span class="c3">
+   Forest map
+  </span>
+  <span>
+   :
+  </span>
+  <span class="c2">
+   Forest maps are usually used to visualize the combined effects and the contribution of various studies.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Advantages and Limitations
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Advantages:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - Provide quantitative and objective comprehensive results.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - You can detect patterns or trends that may not be obvious in a single study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Limitations:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - Research is required to be highly consistent in design and measurement.
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - May obscure the unique findings or background differences of individual studies.
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Narrative Analysis
+ </span>
+</p>
+<p class="c11">
+ <span class="c3 c10 c48">
+  Definition
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Narrative analysis is a qualitative research method that focuses on the detailed description and interpretation of the research results rather than statistical synthesis. This method is suitable for qualitative research or quantitative research that is difficult to combine with statistical methods.
+ </span>
+</p>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Process
+ </span>
+</p>
+<ol class="c5 lst-kix_6qs6tjs9kir1-0 start" start="1">
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Select research : Select relevant literature based on research issues and inclusion/exclusion criteria.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Data extraction : Extract key themes, concepts and discoveries.
+  </span>
+ </li>
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Theme analysis : Identify and compare topics and models in different studies.
+  </span>
+ </li>
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Comprehensive explanation : Based on the extracted data, provide a comprehensive explanation of the research results.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Advantages and Limitations
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Advantages:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - Allow in-depth discussion of the diversity and complexity of research results.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - Can handle research that is not suitable for meta-analysis.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Limitations:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  - May be affected by the subjectivity of researchers.
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - The results are not as statistically accurate as meta-analysis.
+ </span>
+</p>
+<h6 class="c69" id="h.8z6lbpvhyxkb">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.5 Types of Systematic Reviews
+ </span>
+</h6>
+<p class="c11">
+ <span class="c54 c17 c76 c71">
+  Systematic Review
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Purpose: Identify global research on a specific topic, recommend best practices, and provide information for policies.
+ </span>
+</p>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Examples:
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - Comparative effectiveness of telemonitoring versus usual care for heart failure: a systematic review and meta-analysis (
+ </span>
+ <span class="c25">
+  Yun et al., 2018
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - Experiences of learning, development, and preparedness for clinical practice among undergraduate paramedicine students, graduate/intern paramedics, and their preceptors: a qualitative systematic review (
+ </span>
+ <span class="c25">
+  Hanna et al., 2021
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - Determinants of weight loss maintenance: a systematic review (
+ </span>
+ <span class="c25">
+  Varkevisser et al., 2019
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span class="c54 c17 c76 c71">
+  Scoping Review
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  P
+ </span>
+ <span class="c2">
+  urpose: Identify existing research on a wide range of topics or a series of research issues. Features: The existing evidence may be critically evaluated, but it does not attempt to synthesize the results like a systematic review.
+ </span>
+</p>
+<p class="c11">
+ <span class="c48 c3 c10">
+  Examples:
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - Engaging with nature through technology: A scoping review of HCI research (
+ </span>
+ <span class="c25">
+  Webber et al., 2023
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - Dying, Death, and the Afterlife in Human-Computer Interaction (
+ </span>
+ <span class="c25">
+  Albers et al., 2023
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span>
+  - The use of flipped classrooms in higher education: A scoping review (
+ </span>
+ <span class="c25">
+  Boonprakong et al., 2025
+ </span>
+ <span>
+  )
+ </span>
+</p>
+<h6 class="c69" id="h.shjik0hqb0zu">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.6 Conducting a Systematic Review
+ </span>
+</h6>
+<p class="c12">
+ <span class="c2">
+  Before starting the system review, it needs to be decided according to the following criteria:
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Scope of review: Whether all evidence needs to be collected.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Manpower and time: Are there sufficient resources.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Research question: Whether it is specific and operational.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Scientific method: Are you willing to follow strict scientific methods/agreements.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Meta-analysis: Is it possible to involve meta-analysis.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Key Considerations:
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Determine the type of review : Select the appropriate type of review according to the research purpose.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Follow the guidelines: Refer to relevant research guides, such as PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses).
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Expertise: Ensure that the team has expertise in related fields.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Collaborators: Identify potential collaborators, especially experts in emerging fields.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Format and requirements: Determine the format requirements of the journal and whether a letter is required.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Journal selection: Choose a journal suitable for your review.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Inclusion/exclusion criteria: Clearly define the inclusion and exclusion criteria of the study.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Data coding: Consider the reliability between data coding and scoring.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Database update : Ensure that the database used is up-to-date.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  - Time efficiency: Set a timetable to ensure that the project is completed on time.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  System reviews are a powerful research tool that can help us understand knowledge in specific fields more deeply and provide a basis for practice and policy development. By following the guidelines provided in this article, you can effectively conduct a systematic review and contribute high-quality research to the scientific community.
+ </span>
+</p>
+<h6 class="c67" id="h.hm2u0fiweiiw">
+ <span class="c45 c54 c3 c10">
+  8.2.4.3.7 Comparison of Literature Review Types
+ </span>
+</h6>
+<table class="c117">
+ <thead>
+  <tr class="c18">
+   <td class="c112" colspan="1" rowspan="1">
+   </td>
+   <td class="c96" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      1. Viability Literature Review
+     </span>
+    </p>
+   </td>
+   <td class="c114" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      2. Formal Literature Review
+     </span>
+    </p>
+   </td>
+   <td class="c83" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c3">
+      3. Systematic Literature
+     </span>
+     <span>
+      Review
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Stage
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Beginning of study (Before RQ is decided)
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      After all key studies complete
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Applies to certain paper types such as surveys
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Purpose
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Determine if idea is workable
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Support research story, findings from previous results and current results
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Survey a large dataset of past studies, analyse and draw conclusions on patterns, and relationships
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Research question
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Not yet determined
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Established
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Established
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Inclusion criteria
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Flexible
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Specific to research question
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Specific to research question
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Exclusion criteria
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Flexible
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Specific to research question
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Specific to research question
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Number of papers reviewed
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Depends on level of familiarity with topic. Could be dozens to a hundred
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Varies, but usually more than 50
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Typically over 1,000 (dependent on the submission venue’s requirements)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Level of detail
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Broad overview
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Detailed analysis
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Detailed analysis and synthesis
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Narrative
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Limited
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Detailed and integrated with research question
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Comprehensive and integrated with research question
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Structure
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Not formal
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Formal literature review section of research paper
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Structured survey or meta-analysis
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Timeframe
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      1-3 days per cycle
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      1 week or more
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Several months to a year or more
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c75" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Frequency of use
+     </span>
+    </p>
+   </td>
+   <td class="c57" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Most frequently used
+     </span>
+    </p>
+   </td>
+   <td class="c73" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c2">
+      Used once per paper
+     </span>
+    </p>
+   </td>
+   <td class="c34" colspan="1" rowspan="1">
+    <p class="c29">
+     <span class="c3">
+      Less commonly used, typically for specific contributions or PhD
+     </span>
+     <span>
+      thesis
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<a id="kix.fuhwbhd3dh91">
+</a>
+<h3 class="c35">
+ <span class="c50 c21 c3">
+  8.3 Effective Paper Reading
+ </span>
+</h3>
+<p class="c12">
+ <span class="c2">
+  The success of any literature review heavily depends on how effectively researchers can extract, comprehend, and synthesize information from academic papers. While having good search strategies helps identify relevant papers, the ability to efficiently read and process these papers is equally crucial.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Here’s a proven method for reading academic papers systematically and efficiently that has helped many researchers:
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Prof. Pete Carr’s
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DIeaD0ZaUJ3Y&amp;sa=D&amp;source=editors&amp;ust=1776402516177425&amp;usg=AOvVaw22QN1-qEGMxU-Z-oqqWIV6">
+   method
+  </a>
+ </span>
+ <span class="c2">
+  for efficiently reading academic papers provides a structured three-pass approach that helps researchers extract key information while managing their time effectively:
+ </span>
+</p>
+<p class="c12">
+ <span class="c20">
+  Pass 1
+ </span>
+ <span class="c2">
+  (5-10 minutes): - Read the title, abstract, and introduction thoroughly - Read section and sub-section headings - Read the conclusions - Glance at references, mentally noting ones you’ve read This first pass helps you grasp the “big picture” and decide if you need to read further
+ </span>
+</p>
+<p class="c12">
+ <span class="c20">
+  Pass 2
+ </span>
+ <span class="c2">
+  (up to 1 hour): - Read the paper more carefully, but skip mathematical proofs or complex methodological details - Note key figures, diagrams, and illustrations - Mark relevant unread references for follow-up This pass helps you grasp the paper’s content without diving too deep into details
+ </span>
+</p>
+<p class="c12">
+ <span class="c20">
+  Pass 3
+ </span>
+ <span class="c2">
+  (1-5 hours): - Attempt to virtually re-implement the paper - Identify and challenge every assumption - Think about how you would present the ideas - Compare with related work - Note ideas for future work This deep pass helps you truly understand the paper’s contributions and limitations
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Additionally, drawing from other academic reading guides, here are complementary practices to enhance your paper reading:
+ </span>
+</p>
+<ul class="c5 lst-kix_598dnr6k619x-0 start">
+ <li class="c12 c15 li-bullet-0">
+  <span class="c2">
+   Critical Reading Practices: - Question the authors’ assumptions and methodology - Evaluate if they are solving the right problem - Consider if their data gathering and interpretation is sound - Make notes in margins about questions and criticisms
+  </span>
+ </li>
+ <li class="c12 c15 li-bullet-0">
+  <span class="c2">
+   Creative Reading Elements: - Look for potential applications or extensions of ideas - Consider possible improvements - Think about what research you would do next - Identify ways to generalize the findings
+  </span>
+ </li>
+</ul>
+<p class="c12">
+ <span class="c3">
+  This systematic approach helps researchers efficiently process large volumes of literature while ensuring thorough understanding of important papers. The three-pass method can be adjusted based on the paper’s relevance - some papers may only need a first pass, while crucial papers warrant all three passes.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c10 c20">
+      Additional Comprehensive Guides:
+     </span>
+     <span class="c25 c20">
+      "
+     </span>
+     <span class="c25 c20">
+      <a class="c8" href="https://www.google.com/url?q=https://www.science.org/content/article/how-seriously-read-scientific-paper&amp;sa=D&amp;source=editors&amp;ust=1776402516180095&amp;usg=AOvVaw3voEIzb0ok1PCkfnu2QsF8">
+       How to (seriously) read a scientific paper"
+      </a>
+     </span>
+     <span class="c20">
+      <a class="c8" href="https://www.google.com/url?q=https://www.science.org/content/article/how-seriously-read-scientific-paper&amp;sa=D&amp;source=editors&amp;ust=1776402516180207&amp;usg=AOvVaw1IbWcKQPP5bsXwzWo20HFo">
+       by Science Magazine
+      </a>
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<a id="kix.2di28dgg3u3h">
+</a>
+<h3 class="c35">
+ <span class="c50 c21 c3">
+  8.4 Documentation and Organization
+ </span>
+</h3>
+<p class="c12">
+ <span class="c2">
+  While effective search strategies and reading techniques form the foundation of a successful literature review, equally important is how researchers document and organize their findings. Without proper documentation and organization systems, valuable insights can be lost or become difficult to retrieve when needed. This section explores key approaches to managing the wealth of information gathered during the literature review process.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  A systematic approach to extracting and organizing information from research papers is essential for effective knowledge management during literature review. The key is to develop a consistent structure that captures both the objective details of the paper and your own analysis and insights. This structure should be comprehensive enough to include all critical information while remaining flexible enough to accommodate different types of papers and research approaches. Below is a practical framework that demonstrates how to organize paper information in a way that facilitates both immediate understanding and future retrieval.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  The structure includes sections for basic metadata, core research elements, methodological details, key findings, and your own analysis. This comprehensive yet flexible approach ensures you capture not just what the paper says, but also how it relates to your research and what questions or insights it generates. By maintaining this structured approach across all papers you review, you create a valuable knowledge base that supports both your current research and future work in the field.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Here’s a concrete example of how to structure your note-taking for each research paper:
+ </span>
+</p>
+<ol class="c5 lst-kix_idp6dr7bz1oy-0 start" start="1">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Basic Information
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_xh2wtt9igcrs-1 start">
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Full citation (authors, year, venue)
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   DOI/URL for easy reference
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Number of citations (to gauge impact)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_idp6dr7bz1oy-0" start="2">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Core Research Elements
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_p1xr01smb8k4-1 start">
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Research Question: “How does screen size affect mobile reading comprehension?”
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Objectives: “To measure reading speed and comprehension across 3 different screen sizes”
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Key Terms: Define important terminology used (e.g., “comprehension score”)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_idp6dr7bz1oy-0" start="3">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Methodology Details
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_keyx3tew0p3w-1 start">
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Study Design: Within-subjects experiment with 24 participants
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Data Collection: Reading speed (WPM), comprehension tests, eye-tracking
+  </span>
+ </li>
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Analysis Methods: ANOVA, post-hoc t-tests
+  </span>
+ </li>
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Key Variables: Independent (screen size), Dependent (WPM, comprehension)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_idp6dr7bz1oy-0" start="4">
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Main Findings
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_rdcp1p6hdwve-1 start">
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Bullet-point list of key results (e.g., “7” screens showed 15% faster reading than 4” screens”)
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Statistical significance and effect sizes
+  </span>
+ </li>
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   Important figures/tables to reference
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_idp6dr7bz1oy-0" start="5">
+ <li class="c33 li-bullet-2">
+  <span class="c2">
+   Your Analysis
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_insvj1g8thx3-1 start">
+ <li class="c59 li-bullet-2">
+  <span class="c2">
+   How this relates to your research: “Could extend this to AR displays”
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Limitations you’ve identified: “Only tested with English text”
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Questions for follow-up: “What about different text formats?”
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Potential citations to look up from their references
+  </span>
+ </li>
+</ul>
+<p class="c12">
+ <span class="c2">
+  Using this structured framework ensures you capture all essential information systematically and can easily retrieve it later when writing your literature review or research paper. While detailed paper-level documentation is essential, researchers often need a higher-level view of how different papers and concepts relate across the research landscape. Mind mapping complements this documentation by helping researchers visualize and understand broader connections, themes, and patterns that emerge from the literature. Creating visual maps allows researchers to identify clusters of related work, trace how ideas have evolved, and spot gaps in the literature that might not be apparent in linear note-taking.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Tools like XMind or MindMeister provide flexible platforms for creating and updating mind maps as understanding grows (See
+ </span>
+ <span class="c3 c25">
+  Figure 8.1
+ </span>
+ <span class="c3">
+  ). For example, when conducting a literature review on
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  HCI &amp; Games
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c2">
+  , a mind map might look like this:
+ </span>
+</p>
+<p class="c91">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 482.94px; height: 780.80px;">
+  <img alt="" src="images/image12.png" style="width: 482.94px; height: 780.80px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Figure 8.1: Example of a mind map used to organize a literature review on HCI &amp; Games
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  The mind map above shows how different aspects of AR in education research connect
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  from technical considerations like display types and tracking methods, to pedagogical approaches and learning outcomes, to evaluation methods. Regular revision of these maps can reveal new patterns in how different subtopics connect to form a broader research landscape, and help plan the narrative structure for writing literature reviews. This provides a valuable way to step back from the details and see how different pieces of research fit together into a cohesive whole.
+ </span>
+</p>
+<p class="c12">
+ <span class="c3">
+  Beyond mind mapping, effective database management of research papers is crucial for a successful literature review. Reference management software like Zotero or Mendeley can automate citation tracking and PDF organization, but researchers need thoughtful systems to make the most of these tools. For example, when using Zotero, you might create collections for different research themes (e.g.,
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  AR Interaction Techniques
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  ,
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  Mobile AR Studies
+ </span>
+ <span>
+  ")
+ </span>
+ <span class="c2">
+  while using tags to mark papers by methodology (#controlled-study, #field-study) and contribution type (#empirical, #artifact).
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  While reference managers like Zotero provide robust functionality for organizing papers, some researchers prefer using spreadsheets as an alternative or complementary approach. A spreadsheet can offer more flexibility in customizing views and tracking specific details. Here’s an example spreadsheet structure that some researchers find useful:
+ </span>
+</p>
+<ul class="c5 lst-kix_huy6pvif24wq-0 start">
+ <li class="c52 li-bullet-2">
+  <span class="c4">
+   Sheet 1: Citation Analysis
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_ikt5ddtc2znd-1 start">
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Basic metadata (title, authors, year, venue)
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Citation count and impact metrics
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Key research contributions
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Research problem addressed
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Relevance to my work (1-5 stars)
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Sheet 1 focuses on capturing the fundamental information and initial assessment of the paper’s relevance and impact
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_huy6pvif24wq-0">
+ <li class="c52 li-bullet-1">
+  <span class="c4">
+   Sheet 2: Research Design
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_8am3rxuea68o-1 start">
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Research questions/hypotheses
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Methodology and study design
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Sample characteristics
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Key variables and measures
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Analysis techniques
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Limitations identified
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Sheet 2 dives into the technical details of how the research was conducted
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_huy6pvif24wq-0">
+ <li class="c52 li-bullet-2">
+  <span class="c4">
+   Sheet 3: Knowledge Synthesis
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j9mv8ajejrap-1 start">
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Main findings and implications
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Connection to theoretical frameworks
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Relationship to other key papers
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Gaps/opportunities identified
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Future research directions
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   My critical analysis notes
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Sheet 3 focuses on higher-level synthesis and integration of the paper’s findings with existing literature
+  </span>
+ </li>
+</ul>
+<p class="c12">
+ <span class="c3">
+  As shown in Sheet 3 of the spreadsheet example above, synthesis is a critical part of the literature review process that goes beyond just organizing information. The
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  Knowledge Synthesis
+ </span>
+ <span>
+  "
+ </span>
+ <span class="c3">
+  sheet specifically focuses on connecting findings across papers, identifying gaps, and developing critical analysis
+ </span>
+ <span>
+  —
+ </span>
+ <span class="c2">
+  but how do we actually perform this synthesis effectively?
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Here are specific synthesis strategies that researchers can use to develop deeper understanding:
+ </span>
+</p>
+<ul class="c5 lst-kix_scym1l1fma0o-0 start">
+ <li class="c93 c15 li-bullet-0">
+  <span class="c2">
+   Create comparison matrices: Make tables comparing key aspects across papers, such as:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-1 start">
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Study methodologies (e.g., lab study vs field study)
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Sample sizes and participant demographics
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Key findings and effect sizes
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Limitations identified
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-0">
+ <li class="c93 c15 li-bullet-0">
+  <span class="c2">
+   Track evolving themes: Keep a running document of:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-1 start">
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Recurring concepts that appear across multiple papers
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   How definitions of key terms change over time
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Major shifts in research approaches
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-0">
+ <li class="c93 c15 li-bullet-0">
+  <span class="c2">
+   Map contradictions: When you find conflicting results, document:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-1 start">
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   The specific claims that conflict
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Potential reasons for the contradiction (different methods, contexts, etc.)
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Questions that need investigation to resolve the conflict
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-0">
+ <li class="c93 c15 li-bullet-0">
+  <span class="c2">
+   Write bi-weekly synthesis memos (1-2 pages) addressing:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-1 start">
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   New patterns you’ve noticed across papers
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Questions raised by recent readings
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   How your understanding has evolved
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Potential gaps or opportunities identified
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-0">
+ <li class="c93 c15 li-bullet-0">
+  <span class="c2">
+   Develop visual concept maps showing:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_scym1l1fma0o-1 start">
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Relationships between key theories and findings
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   How different papers build on each other
+  </span>
+ </li>
+ <li class="c1 li-bullet-0">
+  <span class="c2">
+   Clusters of related work and methodological approaches
+  </span>
+ </li>
+</ul>
+<p class="c12">
+ <span class="c2">
+  These concrete practices help transform individual paper notes into deeper analytical insights that can drive your research forward.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Regular maintenance of these documentation and organization systems ensures that literature review findings remain accessible and useful throughout the research process. While setting up these systems requires initial investment of time and effort, they significantly reduce the cognitive load of managing large amounts of information and make writing literature reviews and research papers more efficient. The key is to develop systems that are comprehensive enough to capture important details while remaining flexible enough to adapt as your research focus evolves.
+ </span>
+</p>
+<h3 class="c67" id="h.xattxxhrj7pa">
+ <span class="c50 c21 c3">
+  8.5 Best Practices and Common Pitfalls
+ </span>
+</h3>
+<h4 class="c51" id="h.nxu022po0p2e">
+ <span class="c36 c45 c3">
+  8.5.1 Recency Considerations
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  When conducting your literature review, carefully balance recency with relevance:
+ </span>
+</p>
+<ul class="c5 lst-kix_3fddq5eecd2m-0 start">
+ <li class="c52 li-bullet-1">
+  <span class="c2">
+   Focus primarily on papers published within the last 10 years to ensure you’re building on current knowledge and methods
+  </span>
+ </li>
+ <li class="c52 li-bullet-1">
+  <span class="c2">
+   Don’t automatically exclude older papers - some may be foundational to your area
+  </span>
+ </li>
+ <li class="c52 li-bullet-1">
+  <span class="c2">
+   For rapidly evolving fields like HCI, more recent papers may be especially important as technologies and methodologies advance quickly
+  </span>
+ </li>
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Use citation counts and impact to help evaluate the ongoing relevance of older papers
+  </span>
+ </li>
+</ul>
+<h4 class="c82" id="h.38mqq9hhl5za">
+ <span class="c36 c21 c3">
+  8.5.2 Handling Seminal Papers
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  Seminal papers require special attention, regardless of age:
+ </span>
+</p>
+<ul class="c5 lst-kix_bgq6sd67vgac-0 start">
+ <li class="c52 li-bullet-1">
+  <span class="c2">
+   Include highly-cited foundational papers that established key theories or methods in your field
+  </span>
+ </li>
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Understand how seminal papers have influenced subsequent research
+  </span>
+ </li>
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Look for papers that are consistently referenced across recent work in your area
+  </span>
+ </li>
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Consider both the historical significance and current applicability of classic papers
+  </span>
+ </li>
+</ul>
+<h4 class="c82" id="h.1j81l4u1xpvo">
+ <span class="c36 c45 c3">
+  8.5.3 Quality Assessment
+ </span>
+</h4>
+<p class="c12">
+ <span class="c2">
+  When evaluating papers, it’s crucial to read critically and form your own assessment rather than relying solely on venue reputation or accolades. While publication in prestigious venues like CHI indicates the work has passed peer review, this alone does not guarantee perfection or validate all aspects of the paper. Even papers from top venues can have limitations or questionable assumptions that warrant scrutiny.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Best Paper Awards often reflect papers that were exceptionally well-executed and clearly written rather than those making the most innovative or impactful contributions to the field. These awards frequently go to work that reviewers could easily evaluate and agree upon due to strong methodology and presentation. However, papers introducing more radical or transformative ideas may be more controversial and receive mixed reviews despite their potential significance.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  When assessing paper quality, develop your own standards based on scientific merit and contribution. Examine whether the work meaningfully advances knowledge in the field, regardless of where it was published. Question the authors’ assumptions, methodology, and conclusions. Look for clear acknowledgment of limitations and careful reasoning. Consider both the technical execution and the innovative potential of the ideas presented.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Critical reading means engaging deeply with the content rather than accepting arguments based on venue prestige or awards. Take time to understand the authors’ reasoning, identify unstated assumptions, and consider alternative approaches or interpretations. This thoughtful analysis will help you extract maximum value from the literature while developing your own research perspective.
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Common Question: How do I transfer RQs to suitable and related keywords when I’m doing the lit review. Any tips or suggestions?
+ </span>
+</p>
+<p class="c12">
+ <span class="c2">
+  Converting research questions into effective search keywords requires a systematic approach. Here are some key strategies:
+ </span>
+</p>
+<ol class="c5 lst-kix_qyyb0szebh30-0 start" start="1">
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Break down your RQ into core concepts
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_r3l1xqr4bm4y-1 start">
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Identify the main topics, variables, or phenomena you’re studying
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Example RQ: “How do AI-powered generative interfaces affect creative workflows?”
+  </span>
+ </li>
+ <li class="c32 li-bullet-2">
+  <span class="c2">
+   Core concepts: generative AI, creativity support tools, workflow impact
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qyyb0szebh30-0" start="2">
+ <li class="c52 li-bullet-1">
+  <span class="c2">
+   Brainstorm alternative terms for each concept
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_ntqouzhru4lh-1 start">
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   List synonyms and related terms
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Include both broader and narrower terms
+  </span>
+ </li>
+ <li class="c32 li-bullet-1">
+  <span class="c2">
+   Example for “generative AI interfaces”:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_m6qddw1psshp-2 start">
+ <li class="c93 c95 li-bullet-2">
+  <span class="c2">
+   AI co-creation tools
+  </span>
+ </li>
+ <li class="c93 c95 li-bullet-1">
+  <span class="c2">
+   Large language models
+  </span>
+ </li>
+ <li class="c93 c95 li-bullet-1">
+  <span class="c2">
+   Generative design systems
+  </span>
+ </li>
+ <li class="c93 c95 li-bullet-2">
+  <span class="c2">
+   AI-assisted creativity
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qyyb0szebh30-0" start="3">
+ <li class="c52 li-bullet-2">
+  <span class="c2">
+   Consider relevant methodological terms
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_k1laersjj0xr-1 start">
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Add terms related to your research approach
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Example: “user study”, “experiment”, “survey”, “qualitative”
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qyyb0szebh30-0" start="4">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Use Boolean operators effectively
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_x5l3k3pd3et7-1 start">
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Combine terms with AND, OR, NOT
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c3">
+   Example search string: (“generative AI” OR “AI co-creation” OR “large language model
+  </span>
+  <span class="c3 c10">
+   ”) AND (”creative workflow
+  </span>
+  <span class="c2">
+   ” OR “design process*“) AND (”user experience” OR “creative output” OR “productivity”)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qyyb0szebh30-0" start="5">
+ <li class="c33 li-bullet-1">
+  <span class="c2">
+   Iterate and refine
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_oywopn5ma803-1 start">
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Review initial search results
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Note keywords used in relevant papers
+  </span>
+ </li>
+ <li class="c59 li-bullet-1">
+  <span class="c2">
+   Adjust your terms based on what works
+  </span>
+ </li>
+</ul>
+<p class="c91">
+ <span class="c3">
+  Remember to document your search strategy and keywords for reproducibility and future reference.
+ </span>
+</p>
+<h3 class="c35" id="h.fv1s7vusv4e">
+ <span>
+  References
+ </span>
+</h3>
+<p>
+ Roberts, C. M. (2010). The dissertation journey: A practical and comprehensive guide to planning, writing, and defending your dissertation. Corwin Press.
+</p>
+<p>
+ Webster, J., &amp; Watson, R. T. (2002). Analyzing the past to prepare for the future: Writing a literature review. MIS quarterly, xiii-xxiii.
+</p>
+<p class="c11">
+ <span class="c25">
+  Dragicevic, P. (n.d.). Literature survey decision charts. AVIZ, Inria.
+ </span>
+ <span class="c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.aviz.fr/literature&amp;sa=D&amp;source=editors&amp;ust=1776402516198329&amp;usg=AOvVaw3cmY_nVdypozFrv6WdwfF0">
+   https://www.aviz.fr/literature
+  </a>
+ </span>
+</p>
+<p>
+ Yun, J. E., Park, J. E., Park, H. Y., Lee, H. Y., &amp; Park, D. A. (2018). Comparative effectiveness of telemonitoring versus usual care for heart failure: a systematic review and meta-analysis. Journal of cardiac failure, 24(1), 19-28.
+</p>
+<p>
+ Hanna, H., Jordan, Z., Stern, C., &amp; Pearce, J. (2021). Experiences of learning, development, and preparedness for clinical practice among undergraduate paramedicine students, graduate/intern paramedics, and their preceptors: a qualitative systematic review. JBI evidence synthesis, 19(9), 2052-2154.
+</p>
+<p>
+ Varkevisser, R. D. M., Van Stralen, M. M., Kroeze, W., Ket, J. C. F., &amp; Steenhuis, I. H. M. (2019). Determinants of weight loss maintenance: a systematic review. Obesity reviews, 20(2), 171-211.
+</p>
+<p>
+ Webber, S., Kelly, R. M., Wadley, G., &amp; Smith, W. (2023, April). Engaging with nature through technology: A scoping review of HCI research. In Proceedings of the 2023 CHI conference on human factors in computing systems (pp. 1-18).
+</p>
+<p>
+ Albers, R., Sadeghian, S., Laschke, M., &amp; Hassenzahl, M. (2023, April). Dying, Death, and the Afterlife in Human-Computer Interaction. A Scoping Review. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (pp. 1-16).
+</p>
+<p>
+ Boonprakong, N., Tag, B., Goncalves, J., &amp; Dingler, T. (2025, April). How Do HCI Researchers Study Cognitive Biases? A Scoping Review. In Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (pp. 1-20).
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-07.html" class="book-breadcrumb__link">&larr; Chapter 7</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-09.html" class="book-breadcrumb__link">Chapter 9 &rarr;</a>
+</div>
+</body>
+</html>

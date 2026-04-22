@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-05.html" class="book-breadcrumb__link">&larr; Chapter 5</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-07.html" class="book-breadcrumb__link">Chapter 7 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.buc80uq6pigg">
+ <span class="c41 c21 c3">
+  Chapter 6: System and Toolkits, Evaluation Methods, and Overall Summary
+ </span>
+</h2>
+<p class="c11">
+ <span class="c2">
+  In the previous chapter, we explored the foundations of constructive research and introduced the two research approaches. Building on that foundation, this chapter, we turn our attention to interactive systems and toolkits, which represent the other major category of constructive research in HCI. Unlike interaction techniques, which focus on optimizing specific, well-defined user actions, systems and toolkits are broader in scope and ambition.
+ </span>
+</p>
+<h3 class="c35" id="h.lzk0hkq25q7j">
+ <span class="c28 c3">
+  6.1 Interactive Systems
+ </span>
+</h3>
+<h4 class="c51" id="h.pedw1y34t3iy">
+ <span class="c36 c45 c3">
+  6.1.1. Brief Overview of Interactive Systems
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  Interactive systems, within the context of Human-Computer Interaction (HCI), are computer systems designed to help users accomplish specific, often complex, tasks by facilitating interaction between humans and technology. While a strict definition is elusive, interactive systems can generally be distinguished from interaction techniques using the following heuristics:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Interactive systems
+ </span>
+ <span class="c2">
+  tend to:
+ </span>
+</p>
+<ul class="c5 lst-kix_sc4lbbgv0mua-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Address user goals at the application level.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Combine multiple components into a coherent experience.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Handle complex workflows from start to finish.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Have identifiable use cases and user journeys.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Interaction techniques
+ </span>
+ <span class="c2">
+  tend to:
+ </span>
+</p>
+<ul class="c5 lst-kix_sc4lbbgv0mua-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Solve specific sub-problems within larger systems.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Function as components or building blocks.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Focus on one particular aspect of interaction.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Be reusable across different systems.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  However, the distinction is not always clear-cut. A sophisticated technique can evolve into a user-facing application, while a modular system might be embedded as a component within a larger one. Ultimately, context determines whether an artifact is viewed as a system or a technique; what is a complete system to one user may be just a component in another's workflow. Examples of interactive systems include: SandCanvas (
+ </span>
+ <span class="c3 c25">
+  Kazi et al., 2011
+ </span>
+ <span class="c3">
+  ), Draco (
+ </span>
+ <span class="c3 c25">
+  Kazi et al., 2014
+ </span>
+ <span class="c3">
+  ), VidAdaptor (
+ </span>
+ <span class="c3 c25">
+  Ram et al., 2023
+ </span>
+ <span class="c3">
+  ), Prefab (
+ </span>
+ <span class="c3 c25">
+  Dixon &amp; Fogarty et al., 2010
+ </span>
+ <span class="c3">
+  ), BumpTop (
+ </span>
+ <span class="c3 c25">
+  Agarawala &amp; Balakrishnan, 2006
+ </span>
+ <span class="c3">
+  ) , CrossY (
+ </span>
+ <span class="c3 c25">
+  Apitz &amp; Guimbretière, 2004
+ </span>
+ <span class="c2">
+  ), etc.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Systems are much more complex and support a wide range of functionalities, which makes them difficult to describe and evaluate comprehensively.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  It is well known and openly discussed in the HCI community that system research is often regarded as more difficult to publish (
+ </span>
+ <span class="c3 c25">
+  Nebeling, 2017
+ </span>
+ <span class="c2">
+  ). This is not only because building a system typically requires a much greater investment of time and effort — often at least a year of development (while recent advances in large language models and AI-assisted coding may reduce some of the development burden, the overall complexity remains high), compared to empirical research projects, which experienced PhD students can often complete in about six months.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Moreover, systems are inherently more challenging to evaluate: their breadth and the sheer number of features make it difficult to design comprehensive studies that convincingly demonstrate the value of the individual features. Unlike interaction techniques, where the novelty and contribution can often be pinpointed and empirically validated through focused experiments, the innovations in a system may be distributed across many components, making it harder for reviewers to recognize and appreciate the core contributions. As a result, the novelty of such work is not always as immediately apparent, and the evaluation is less straightforward, which can make acceptance at top venues more difficult. These factors contribute to the perception — and reality — that publishing system work is a more arduous and uncertain process in HCI research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Nevertheless, systems often address concrete, real-world problems and provide significant practical value. They also serve as a strong demonstration of a researcher’s broad skill set, integrating design, engineering, and problem-solving. This makes systems not only important for technological advancement, but also for showcasing the depth and breadth of innovation and real-world application.
+ </span>
+</p>
+<h4 class="c51" id="h.i413cjoggq5w">
+ <span class="c36 c45 c3">
+  6.1.2 Research Approaches of Interactive Systems
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  While the "be the best" and "be the first" distinction is quite useful for categorizing interaction technique research, it is less helpful when applied to system papers. This is largely because systems are inherently more complex to develop and are typically designed to address a particular, often multifaceted, real-world task. As a result, most system papers tend to share a similar structure: they identify a complex problem, analyze the limitations of existing solutions, and present a new system that addresses these challenges.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Although there are a few visionary system papers (such as CrossY (
+ </span>
+ <span class="c3 c25">
+  Apitz &amp; Guimbretière, 2004
+ </span>
+ <span class="c3">
+  ) or BumpTop (
+ </span>
+ <span class="c3 c25">
+  Agarawala &amp; Balakrishnan, 2006
+ </span>
+ <span class="c2">
+  )) that could be considered "be the first" by introducing fundamentally new ways of interacting, these are relatively rare. The vast majority of system research falls into the "be the best" category, focusing on improving how a specific task is accomplished. Moreover, because systems often integrate many features and components, the boundaries between "be the best" and "be the first" become blurred — innovations may be distributed across the system rather than concentrated in a single novel idea.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Attempting to strictly categorize system papers as "be the best" or "be the first" is therefore not particularly useful for several reasons: (1) the distribution is highly unbalanced, with most system papers falling into the "be the best" category and only a few qualifying as "be the first"; (2) the complexity of system development means that even within the same category, the way components are assembled and the structure of the paper can vary greatly depending on the specific context and goals. For these reasons, the "be the best"/"be the first" framework is less informative for system research than it is for interaction techniques.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  When discussing the research approach for system papers, it is useful to first outline the typical components that such papers include. While there is a general structure that most system papers follow, the way these elements are assembled and emphasized often depends on the specific goals and context of the research. In the following, we summarize these common components and then provide examples to illustrate how different papers adapt and prioritize them to best present their contributions.
+ </span>
+</p>
+<h4 class="c51" id="h.km4x2yg88z7o">
+ <span class="c36 c45 c3">
+  6.1.3 System Paper Common Components and Examples
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  Most system papers are motivated by dissatisfaction with how certain tasks are currently performed. This dissatisfaction can stem from several sources: the existing process may be overly manual and tedious (as in the case of sand animation, where traditional methods require labor-intensive work and researchers are inspired to create digital systems to streamline the process); the available tools may be general-purpose but not well-suited for the specific task (for example, while software like Adobe Premiere can adapt videos, it is not optimized for specialized video adaptation tasks, motivating systems like VidAdapter); or new paradigms may be introduced that fundamentally change how a task is approached (such as enabling direct manipulation of objects within a video for editing, rather than relying on traditional timeline-based interfaces).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  A well-crafted system paper typically weaves together several key elements:
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A clear articulation of the task or vision at the heart of the work.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A thoughtful analysis or study that reveal the limitations or challenges present in existing tools or approaches.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A set of design goals/factors/features based on the analysis/study
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A detailed description and demonstration of the final front-end design (including interface and interaction considerations) and the system’s underlying architecture and technical implementation, showing how the core components and backend mechanisms address the identified challenges.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   When appropriate, a presentation of the iterative design process that led to the final system, including key prototypes, design alternatives, and formative evaluations. This should highlight what worked and what did not, demonstrating how user feedback and iterative testing informed and improved the design over time.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Compelling evidence and validation — often through practical usage scenarios, user studies, or real-world deployments — demonstrating how the new system enables tasks that are improved, more efficient, or previously impossible.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Insights or generalizable lessons that deepen our understanding and can inform the design of future interactive systems, contributing to the broader HCI community through empirical findings, theoretical analysis, or logical argument.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Given the complex nature of system research, it’s often challenging to comprehensively address every aspect within a single paper. Researchers must therefore strategically balance the inclusion of various elements, considering the project’s specific characteristics and scope. While these are common components found in many system papers, it’s important to recognize that the specific composition, emphasis, and strategy for presenting them can vary depending on the project’s characteristics and scope.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We now present three examples, demonstrating the varying composition strategies commonly employed in system research papers.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Comparing System Paper Structures: Three Examples
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  System papers in HCI often share a set of core components, but the way these components are arranged and emphasized can vary depending on the nature of the project. To illustrate this, the table below compares three representative system papers —
+ </span>
+ <span class="c17">
+  Draco
+ </span>
+ <span class="c3">
+  ,
+ </span>
+ <span class="c17">
+  Eyeditor
+ </span>
+ <span class="c3">
+  , and
+ </span>
+ <span class="c17">
+  PilotAR
+ </span>
+ <span class="c2">
+  —highlighting which components are common across all, and which are distinct or emphasized differently. This side-by-side comparison makes it easier to see how paper structure adapts to the characteristics and contributions of each system.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Component / Section
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Draco ("Cool Demo")
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Eyeditor (Empirical Study)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      PilotAR (Iterative Design)
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Task or Vision
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Limitations of Existing Tools
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Some, less focus)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Formative Research
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Design Goals/Features
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Front-end Design &amp; Architecture
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Justification for Design Choices
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Demo as evidence)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️ (Controlled study)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Via iteration/feedback)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Iterative Design Process
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✖️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Not emphasized)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️ (Dedicated section)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Empirical Study/Validation
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Demo, user feedback)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️ (Controlled experiment)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️ (Case studies, SUS)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Insights/Generalizable Lessons
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      (Some, less focus)
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      ✔️
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Presentation Strategy
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Cool demo
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Study Justified Design
+     </span>
+    </p>
+   </td>
+   <td class="c9" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Design iteration
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c17">
+  Legend:
+ </span>
+ <span class="c2">
+  <br/>
+  ✔️ = Present and emphasized
+  <br/>
+  ✖️ = Not present
+  <br/>
+  ( ) = Present but less emphasized or in a different form
+ </span>
+</p>
+<p class="c11">
+ <span class="c23 c17">
+  Discussion: How Structure Varies by Project
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Draco
+  </span>
+  <span class="c3">
+   has a visually compelling demo, which helps communicate its novelty and value (
+  </span>
+  <span class="c3 c25">
+   Kazi et al., 2014
+  </span>
+  <span class="c2">
+   ). In cases like this, the paper’s structure often becomes more streamlined: it motivates the work, describes the design and implementation, and then relies on the demonstration and user feedback as primary evidence. There is typically less emphasis on controlled studies or detailed iterative design documentation, since the demo itself can help justify the contribution.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Eyeditor
+  </span>
+  <span class="c3">
+   takes a different approach (
+  </span>
+  <span class="c3 c25">
+   Ghosh et al., 2020
+  </span>
+  <span class="c2">
+   ). When the system’s value is not as immediately apparent through visual demonstration, authors choose to strengthen the paper by including a controlled experiment to justify key design decisions (such as the optimal text presentation mode). The structure still covers all the standard components, but adds a dedicated empirical study section to provide more rigorous evidence for the system’s advantages and design choices.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   PilotAR
+  </span>
+  <span class="c3">
+   illustrates a pattern that can be useful for more complex systems with many interdependent features (
+  </span>
+  <span class="c3 c25">
+   Janaka et al., 2024
+  </span>
+  <span class="c2">
+   ). Rather than isolating and empirically testing each design element, the paper devotes a section to the iterative design process, documenting how feedback and repeated refinement shaped the final system. This approach offers deeper insight into the design space and demonstrates rigor by being transparent about the system’s evolution.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c28 c17">
+  Special "Visionary" System Papers
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  While we have examined three "be the best" type system papers above, here we explore two compelling examples of visionary "be the first" system papers:
+ </span>
+ <span class="c17">
+  BumpTop
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Agarawala &amp; Balakrishnan, 2006
+ </span>
+ <span class="c3">
+  ) and
+ </span>
+ <span class="c17">
+  CrossY
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Apitz &amp; Guimbretière, 2004
+ </span>
+ <span class="c2">
+  ). Both papers exemplify novel system-level approaches that fundamentally reimagined interaction paradigms. BumpTop introduced a revolutionary desktop interface using a 2.5D environment with piles as the organizing metaphor and pen-based interaction. Similarly, CrossY explored how a drawing application could be rebuilt around goal crossing as the primary interaction technique instead of traditional pointing.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  A distinguishing feature of both papers is their
+ </span>
+ <span class="c17">
+  compelling demonstration videos
+ </span>
+ <span class="c2">
+  that effectively showcase practical implementations of their novel concepts. These demonstrations serve as powerful evidence, offering clear and engaging visualizations of their theoretical frameworks in action.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Given that both papers introduce multiple innovative concepts, their structures prioritize explaining these novel elements and demonstrating how they function within an integrated system. This approach helps readers understand not just individual components, but how they work together to create a cohesive user experience.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The papers share similar structural elements and page counts:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Design Goals
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   CrossY
+  </span>
+  <span class="c2">
+   : Dedicates ~1 page to "MOTIVATION AND DESIGN GOALS," outlining key aspects like expressiveness, fluid command composition, efficiency, and visual footprint
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   BumpTop
+  </span>
+  <span class="c2">
+   : Uses ~0.5 page for "DESIGN GOALS," covering realistic feel, physics control, paper-like icons, pen optimization, interface learnability, and smooth transitions
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  System Description and Interaction Techniques
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   CrossY
+  </span>
+  <span class="c2">
+   : Spends ~3 pages describing the application and interaction techniques, including command selection, document navigation, pen attributes, stroke operations, and implementation details
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   BumpTop
+  </span>
+  <span class="c2">
+   : Devotes ~5 pages to prototype and interaction techniques, covering core interactions, specialized features, visual search, pressure controls, and physics considerations
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Evaluation Approach
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   CrossY
+  </span>
+  <span class="c2">
+   : Includes brief (~0.25 pages) informal user feedback from public demonstrations
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   BumpTop
+  </span>
+  <span class="c2">
+   : Contains ~1 page of qualitative user study results
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Discussion and Insights
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   CrossY
+  </span>
+  <span class="c2">
+   : Features a detailed (~2.5 page) discussion examining implementation insights around expressiveness, discoverability, efficiency, and technical considerations
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   BumpTop
+  </span>
+  <span class="c2">
+   : Integrates insights into a concise ~0.5 page conclusion
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Both papers prioritize detailed system descriptions over empirical validation, reflecting their focus on novel interaction paradigms. CrossY provides deeper reflection through its discussion section while BumpTop weaves insights throughout its conclusion. Each paper dedicates roughly 5-5.5 pages to explaining design and usage, highlighting these as key selling points. This approach works effectively because both systems feature compelling demonstration videos that speak for themselves - without such clear visual evidence, more extensive validation would likely be needed, though space constraints would make this challenging given the systems' complexity.
+ </span>
+</p>
+<h4 class="c51" id="h.kxnpfbuqedgt">
+ <span class="c36 c45 c3">
+  6.1.4 Challenges  of writing system papers
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  Our analysis of the five system papers highlighted a key observation: there is no one-size-fits-all approach to their composition. The authors’ strategic decisions — shaped by elements like the inclusion of a compelling video or the demonstrable empirical justification of key system factors — resulted in varied paper structures. Yet, regardless of the format, the fundamental goal remained consistent: to effectively communicate the system’s contribution to the readers. The core expectation for a system paper is that it convincingly demonstrates either (1) new possibilities that were previously unattainable, or (2) clear advantages — such as efficiency, usability, or expressiveness — over existing approaches. Additionally, strong system papers strive to extract and communicate generalizable conceptual insights that can inform future research and design.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, assembling a compelling system paper is rarely straightforward. Systems are inherently complex, often involving numerous design decisions, technical challenges, and usage scenarios. Authors must make strategic choices about which aspects to foreground and elaborate, balancing the need to provide sufficient technical detail with the imperative to tell a clear, persuasive story. This involves prioritizing the most novel or impactful contributions, carefully framing the limitations of prior work, and selecting evaluation methods that best support the paper’s claims. The narrative should guide reviewers and readers to appreciate not only what the system does, but why it matters and how it advances the field.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Ultimately, the art of writing a successful system paper lies in curating the wealth of possible details into a focused, coherent argument — one that highlights the system’s unique value, substantiates its claims with appropriate evidence, and distills broader lessons for the HCI community. This process is particularly challenging: system papers are inherently complex, and assembling a compelling narrative requires careful attention to best practices throughout both the system development and the writing process.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is important to recognize that system papers often take significantly longer to complete than empirical HCI research papers. While an experienced team might finish an empirical study within six months, a robust system paper typically requires a year or more of sustained effort. Even with the assistance of modern AI coding tools, which can accelerate some aspects of implementation, the intricate design decisions and integration details still demand substantial time and expertise to get right.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Given these challenges, adhering to best practices is crucial. We will explore these practices in more detail later in this chapter. Before discussing best practices, let's introduce toolkit papers — another important type of constructive research in HCI.
+ </span>
+</p>
+<h3 class="c35" id="h.90kb89omp5sf">
+ <span class="c28 c3">
+  6.2 Interactive Toolkits
+ </span>
+</h3>
+<h4 class="c51" id="h.dq5k80i0e8dj">
+ <span class="c36 c45 c3">
+  6.2.1 Brief Overview
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  While interactive systems are constructive solutions designed to allow users to accompolish a complex task interactively using a computing solution,
+ </span>
+ <span class="c17">
+  Toolkits
+ </span>
+ <span class="c3">
+  , on the other hand, are software frameworks or libraries that provide reusable building blocks for creating interactive systems. Unlike systems, which has no clearcut defintion, toolkits has been defined by a number of papers. For example, paper
+ </span>
+ <span class="c3 c10">
+  Evaluation Strategies for HCI Toolkit Research
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Ledo et al., 2018
+ </span>
+ <span class="c2">
+  ). Toolkits can be thought of as platforms that help users create new interactive artifacts, simplify access to complex functionality, support rapid prototyping, and encourage creative exploration. They typically offer a programming or configuration environment made up of reusable building blocks or components, which users can combine in flexible ways to achieve their goals. Toolkits often provide features such as automation (for example, recognizing user gestures) or real-time data monitoring (such as visualization tools) to assist developers during the creation process. For instance, D3.js is a toolkit that empowers developers to create a wide variety of interactive data visualizations by providing a flexible set of tools and abstractions. Toolkits essentially serve as a bridge between low-level implementation details and high-level interaction design, allowing researchers and developers to focus more on innovation in interaction design rather than reinventing basic functionality.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Toolkits and systems share several important similarities: both are complex artifacts that require careful planning, substantial engineering effort, and often undergo multiple iterations before reaching maturity. Developing either a system or a toolkit typically demands a long-term commitment, as both must integrate diverse components, address technical challenges, and support robust, usable interaction.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, their core purposes and target audiences differ. Interactive systems are primarily designed to solve real-world problems or accomplish specific tasks for end users. Their success is measured by how effectively they enable people to achieve concrete goals in practical contexts. In contrast, toolkits are created for designers, developers, or researchers — people who want to build new interactive solutions for particular classes of tasks. Rather than directly addressing end-user needs, toolkits empower others to create systems or applications by providing reusable building blocks, abstractions, and development environments.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The rationale for developing toolkits is better described by five core goals, rather than the "be the first" or "be the best" framework:
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Streamlining Creation and Reducing Complexity:
+  </span>
+  <span class="c3">
+   Toolkits simplify the process of building interactive systems by packaging complex ideas into reusable modules, allowing users — even those without deep technical backgrounds — to develop new applications more quickly and easily (
+  </span>
+  <span class="c3 c25">
+   Dey et al., 2001
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Guiding Users Toward Effective Solutions:
+  </span>
+  <span class="c3">
+   By establishing clear rules, abstractions, and workflows, toolkits help users follow productive paths and avoid common mistakes, making it easier to achieve successful outcomes (
+  </span>
+  <span class="c3 c25">
+   Greenberg &amp; Fitchett, 2001
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Broadening Access to New User Groups:
+  </span>
+  <span class="c3">
+   Toolkits lower technical barriers, enabling a wider range of people — including non-programmers, artists, and designers — to participate in creating interactive technologies. For instance, interface builders have made interface design accessible to new audiences (
+  </span>
+  <span class="c3 c25">
+   Hartmann et al., 2006
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Supporting Integration with Existing Tools and Standards:
+  </span>
+  <span class="c3">
+   Toolkits are often designed to work seamlessly with current infrastructures and standards, which increases their utility and adoption. For example, D3 (
+  </span>
+  <span class="c3 c25">
+   Bostock et al., 2011
+  </span>
+  <span class="c2">
+   ) gained popularity in part because it integrated well with widely used web standards.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Fostering Reuse and Creative Exploration:
+  </span>
+  <span class="c3">
+   By making it easy to replicate and extend ideas, toolkits encourage the development of new tools and solutions that can be combined in novel ways, enabling broader exploration and the creation of more powerful systems (
+  </span>
+  <span class="c3 c25">
+   Myers, 1995
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  Two illustrative examples of toolkit papers are
+ </span>
+ <span class="c17">
+  Phidgets
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Greenberg &amp; Fitchett, 2001
+ </span>
+ <span class="c3">
+  ) and
+ </span>
+ <span class="c17">
+  D3
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Bostock et al., 2011
+ </span>
+ <span class="c2">
+  ). Phidgets pioneered a new approach to physical user interface development by providing a modular hardware and software toolkit that dramatically lowered the barrier for prototyping tangible interfaces, enabling rapid experimentation and creative exploration. In contrast, D3 redefined the state of the art in data visualization toolkits by introducing a powerful, flexible architecture for binding data to web-based visual elements, offering both technical innovation and quantifiable improvements in expressiveness and performance over previous tools.
+ </span>
+</p>
+<h4 class="c51" id="h.f9lkyb8j7brp">
+ <span class="c36 c45 c3">
+  6.2.2 Research Approach for Interactive Toolkit
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  While toolkit development shares some common ground with system research, its component composition and research approach differ in important ways due to differences in target audience and contribution type. The key challenge lies in balancing between technical implementation details and ecosystem design — toolkits must provide both sufficient power/flexibility for experienced developers while also being accessible enough for their target user base.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  A critical but often underestimated challenge is the identification and instrumentalization of common components shared across applications. Researchers must first develop a deep understanding of recurring patterns and abstractions within a domain, which typically requires hands-on experience building multiple applications before higher-level insights emerge. This pattern recognition and generalization process is far from trivial, often requiring researchers to cycle through several application development iterations before core abstractions crystallize into reusable toolkit components.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Developing an effective toolkit requires a combination of technical expertise and human-centered design thinking. Key skill areas include:
+ </span>
+</p>
+<ul class="c5 lst-kix_2zxl5cm83cdu-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Understanding developer needs and pain points through systematic analysis
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Strong software architecture design capabilities
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   API design skills balancing flexibility with usability
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Domain knowledge to identify universal abstractions from recurring patterns
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Iterative prototyping to refine technical foundations
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Empathy for toolkit users and their workflow constraints
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Evaluative rigor to assess technical merit and utility across contexts
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  As discussed above, while toolkit papers offer exciting opportunities to showcase technical innovation, they present significant challenges that may render them less suitable as first projects for novice researchers. These challenges include extended development timelines, demanding software architecture and implementation skill requirements, and complex integration challenges.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, the rewards can be transformative. Successful systems empower developers to create previously impossible applications while lowering barriers and expanding creative possibilities. When codified in papers, these systems create ripple effects as others build upon your work — adopting abstractions, extending architectures, and applying insights to new domains. There's particular satisfaction in seeing your solutions referenced as foundational work. The process deepens understanding of human-computer interaction fundamentals, combining technical innovation with academic discourse. This dual impact — enabling practical solutions while advancing knowledge — gives system/toolkit research unique potential to influence both industry and academia long-term.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In the next section, we examine concrete examples of successful system papers and toolkit implementations, analyzing how they balance these components to communicate their contributions effectively through detailed case studies.
+ </span>
+</p>
+<h4 class="c51" id="h.95ywisoradhp">
+ <span class="c36 c45 c3">
+  6.2.3 Toolkit Paper Common Components and Examples
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  To identify common components and effective strategies for toolkit papers, we can analyze seminal works like Phidgets (2001) and D3 (2011). These papers establish reusable patterns through their combination of technical specificity, accessible walkthroughs, and principled validation. The structural comparison below synthesizes insights from both papers, highlighting key components that characterize successful toolkit papers:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Background Information
+ </span>
+ <span class="c3">
+  The Phidgets paper (
+ </span>
+ <span class="c3 c25">
+  Greenberg &amp; Fitchett, 2001
+ </span>
+ <span class="c2">
+  ) introduces physical widgets ("phidgets") that function as building blocks for tangible interfaces, mirroring how GUI widgets abstract interface components. Phidgets encapsulate hardware complexity through a standardized API while providing both physical device control and virtual simulation capabilities. Key innovations include a connection management system for dynamic hardware detection and binding, a framework ensuring consistent software-physical object associations, and an evaluation demonstrating accelerated development cycles for physical interface prototyping. By enabling programmers to work with high-level abstractions regardless of physical hardware availability, the Phidgets toolkit significantly lowered barriers to exploring tangible interaction designs.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The D3 paper (
+ </span>
+ <span class="c3 c25">
+  Bostock et al., 2011
+ </span>
+ <span class="c2">
+  ) presents a groundbreaking approach to web-based data visualization by introducing a declarative paradigm for directly manipulating document elements based on data. Unlike previous visualization toolkits that abstracted away the DOM, D3 embraces the web's native capabilities through a novel data-driven document model. At its core, D3 introduces a declarative syntax for binding datasets to DOM elements and applying dynamic transformations through data joins — maintaining synchronization between data and visual representations. This approach combines the benefits of direct DOM manipulation (for debugging and toolchain integration) with high-level visualization abstractions. The paper demonstrates how these innovations enabled richer visual expressiveness, easier debugging workflows, and performance improvements over prior tools like Protovis — particularly in animation and interaction scenarios. By aligning with web standards while exposing lower-level control, D3 empowered both designers and developers to create complex, interactive visualizations that were previously difficult to implement.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Comparison of the two papers
+ </span>
+</p>
+<ol class="c5 lst-kix_7bkewhcrxzli-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Core Problem Identification
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Both papers:
+ </span>
+</p>
+<ul class="c5 lst-kix_rswl74h5j3v5-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Begin with concrete pain points in target domain (
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : hardware interfacing difficulties;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : DOM abstraction limitations)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Frame as accessibility issue
+   <br/>
+   ("average programmers" vs "web designers")
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Position against prior approaches (
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   vs custom one-off devices;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   vs Protovis/jQuery)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_3jn8t6ec1gaj-0 start" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Architectural Approaches
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Shared technical philosophy:
+ </span>
+</p>
+<ul class="c5 lst-kix_y2aa2j8nqbdf-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Abstraction through encapsulation:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Hardware -&gt; COM objects;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : DOM manipulation -&gt; Declarative operators
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Layered design:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Physical device &lt;-Wire&lt;- Manager &lt;- API;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : DOM &lt;- Selections &lt;- Data joins &lt;- Modules
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Dual representation:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Physical device + ActiveX control simulation;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : Direct DOM manipulation + Helper modules
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_px7ywxxa2qxg-0 start" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Evaluation Strategies
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Common validation approaches:
+ </span>
+</p>
+<ul class="c5 lst-kix_xy8fgx6t3nh1-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Novice usability studies:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Student projects;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : Transition from Protovis users
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Performance metrics:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Development time reduction;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : Frame rate benchmarks
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Rich example gallery:
+  </span>
+  <span class="c17">
+   Phidgets
+  </span>
+  <span class="c3">
+   : Flower bloom, Power Dimmer;
+  </span>
+  <span class="c17">
+   D3
+  </span>
+  <span class="c2">
+   : Treemaps, Chord diagrams
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  Through analysis of the two toolkit examples presented in this section (
+ </span>
+ <span class="c17">
+  D3
+ </span>
+ <span class="c3">
+  and
+ </span>
+ <span class="c17">
+  Phidgets
+ </span>
+ <span class="c2">
+  ), several recurring components emerge as critical elements in successful toolkit papers. These components form a foundation for effectively communicating a toolkit's technical innovations while demonstrating its practical value to both developers and the research community. We elaborate on these recurring elements below:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Core structural elements shared across toolkit papers
+ </span>
+</p>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Motivation
+  </span>
+  <span class="c2">
+   : ▪ Problem space analysis: Why the toolkit is needed ▪ Pain points analysis: What existing approaches lack ▪ Value proposition: What new capabilities become possible
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Architecture Blueprint
+  </span>
+  <span class="c2">
+   : ▪ Visual system diagram showing key components ▪ Design philosophy explanation (How components collaborate) ▪ Technical innovation map (What makes it different/special)
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Developer Journey
+  </span>
+  <span class="c2">
+   : ▪ Code tutorials: Step-by-step API walkthroughs ▪ Common patterns: Recipes for frequent use cases
+   <br/>
+   ▪ Debugging tips: Pitfalls to avoid
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Capability Spectrum
+  </span>
+  <span class="c2">
+   : ▪ Example gallery from simple hello-world to complex deployments ▪ Showcase versatility through contrasting applications ▪ Exploration boundaries (What it does/doesn't handle well)
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Evaluation Grid
+  </span>
+  <span class="c2">
+   : ▪ Performance benchmarks (How fast/efficient) ▪ Usability metrics (How easy to learn/use) ▪ Comparison matrix vs alternatives (When to choose which)
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_3oqwxbcnl3nz-0" start="6">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3 c10">
+   Adoption Roadmap
+  </span>
+  <span class="c2">
+   : ▪ Migration strategies from legacy systems ▪ Integration techniques with common workflows ▪ Maintenance and extension guidelines
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c17">
+  Additional Considerations for Effective Toolkit Papers
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Effective toolkit papers often employ strategic presentation techniques to demonstrate their value. Both analyzed papers utilize "before/after" comparisons to showcase their toolkit's benefits — Phidgets through hardware programming examples (Fig 7 VB demonstration) and D3 through visualizations comparing manual DOM manipulation to D3's declarative approach (Figs 3,7).
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Both papers exemplify balanced self-assessment through frank discussion of limitations. The
+ </span>
+ <span class="c17">
+  Phidgets
+ </span>
+ <span class="c3">
+  paper acknowledges practical constraints including scarce documentation challenges and cost barriers for hardware-based mass production. Similarly, the
+ </span>
+ <span class="c17">
+  D3
+ </span>
+ <span class="c2">
+  paper transparently addresses its steeper learning curve compared to predecessor Protovis and performance limitations when rendering complex SVG visualizations. This honesty strengthens credibility while helping readers make informed adoption decisions.
+ </span>
+</p>
+<h4 class="c51" id="h.loet1joafxsy">
+ <span class="c36 c45 c3">
+  6.2.4 Evaluating Toolkits: Challenges &amp; Strategies
+ </span>
+</h4>
+<p class="c11">
+ <span class="c3">
+  Evaluating toolkits presents unique challenges that extend far beyond traditional system evaluation. While system evaluation inherently deals with technical complexity, toolkit assessment must account for multiple interdependent factors: the toolkit’s technical performance, its ability to simplify workflows for developers, its adaptability across unpredictable use cases, and its alignment with existing ecosystems. Unlike self-contained systems, toolkits are generative by design — their true value emerges through creative reuse, often in ways designers cannot anticipate. This dual mandate—requiring rigorous technical validation while also capturing the toolkit’s capacity to empower diverse users and inspire novel applications — creates an evaluation landscape where traditional usability metrics and performance benchmarks tell only part of the story. This is well discussed in the 2018 paper,
+ </span>
+ <span class="c3 c10">
+  Evaluation Strategies for HCI Toolkit Research
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Ledo et al., 2018
+ </span>
+ <span class="c3">
+  )
+ </span>
+ <span class="c2">
+  . We highlight some of the key points below.
+ </span>
+</p>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Suggested Reading:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/pdf/10.1145/3173574.3173610?casa_token%3DUgHFDhp1_nIAAAAA:qjZfK1UqrF6aDPwL9Mr9_2V0Ibfid0z3q7qLg5nKpdfd7hec8wiFAC3wmoGowhP_n7Q_gyNZa38&amp;sa=D&amp;source=editors&amp;ust=1776402516050592&amp;usg=AOvVaw0gWLA-1BSUlxeaB0GBasNs">
+      Evaluation Strategies for HCI Toolkit Research
+     </a>
+    </span>
+    <span class="c4">
+     "
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c11">
+ <span class="c17">
+  Why Toolkit Evaluation is Difficult
+ </span>
+</p>
+<ol class="c5 lst-kix_8zvfg145rlnn-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Generative Nature: Toolkits enable diverse applications beyond initial design intent, making comprehensive evaluation impossible
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Dual Focus Requirement: Must assess both technical capabilities and human-centered outcomes (usability/utility)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Ecosystem Dependencies: Performance depends on hardware/software context (e.g., Phidgets' USB vs D3's browser compatibility)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Temporal Factors: True impact often emerges post-publication through community adoption (e.g., D3's web standards alignment)
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  A key contribution of Ledo et al.'s work is the categorization of four primary evaluation strategies for toolkit research:
+ </span>
+</p>
+<ol class="c5 lst-kix_emv6rzhjcr79-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Demonstration
+  </span>
+  <span class="c2">
+   : Showcasing what can be built with the toolkit through example applications or case studies.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Usage
+  </span>
+  <span class="c2">
+   : Investigating who can use the toolkit and how, often through user studies, walkthroughs, or interviews with target audiences.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Technical Performance
+  </span>
+  <span class="c2">
+   : Assessing how well the toolkit works, typically via benchmarks, performance metrics, or stress tests.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Heuristics
+  </span>
+  <span class="c2">
+   : Applying expert reviews or heuristic evaluations to assess the toolkit's design and usability.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  The paper emphasizes that the choice of evaluation strategy should be closely aligned with the claims and intended contributions of the toolkit. For example, a toolkit that claims to lower the barrier for novice users should include usage studies with representative participants, while a toolkit that claims technical superiority should provide rigorous performance benchmarks.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Critical Considerations
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Researchers must align their evaluation methods with the toolkit's contribution type: technical innovations merit rigorous benchmarks (e.g., algorithmic performance metrics), while novel interaction paradigms require design space demonstrations through real-world examples. Ensuring ecological validity involves balancing controlled laboratory studies — exemplified by D3's code comparison experiments — with authentic deployment contexts like Phidgets' classroom implementations. Toolkit lifespan evaluation should consider temporal dimensions, assessing immediate usability metrics alongside longitudinal measures such as community adoption trends and patterns of derivative work.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Transparency remains critically important when communicating technical tradeoffs. Developers should clearly acknowledge optimization boundaries (as seen in D3's disclosed SVG rendering limits) and simulation constraints (like Phidgets' distinctions between ActiveX controls and physical device behaviors). A toolkit's infrastructure value emerges through its capacity to enable new research trajectories — the Proxemic Toolkit's facilitation of spatial interaction studies demonstrates this principle.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Effective evaluation combines multiple complementary strategies. D3's holistic approach weds technical benchmarks with real-world demonstration galleries and heuristic alignment to web standards, while Phidgets synergizes classroom usage studies with hardware performance metrics. This multidimensional validation strategy helps establish both technical efficacy and practical relevance.
+ </span>
+</p>
+<h3 class="c35" id="h.ahojt8cygtpc">
+ <span class="c28 c3">
+  6.3 The Ideal Workflow for System/Toolkit Development
+ </span>
+</h3>
+<p class="c11">
+ <span class="c3">
+  Having established a foundation for understanding both system and toolkit research, we now turn to developing an effective workflow for conducting such projects (See Figure
+ </span>
+ <span class="c3 c25">
+  6.1
+ </span>
+ <span class="c2">
+  ). This structured approach becomes particularly crucial given the substantial investments required — projects of this scale demand rigorous planning and validation to justify their development costs. The following workflow balances methodological rigor with practical considerations, evolved through analysis of successful projects and common failure patterns in the field.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 270.67px;">
+  <img alt="" src="images/image20.jpg" style="width: 601.70px; height: 270.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c42">
+ <span class="c3">
+  Figure 6.1: The “ideal” workflow of a system/toolkit project (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1ov0eh6MqhzmnBnC1NumWdd-FI2EFuvx6BGbM1tjU8kU/edit?slide%3Did.g20146bfe01b_0_426%23slide%3Did.g20146bfe01b_0_426&amp;sa=D&amp;source=editors&amp;ust=1776402516055581&amp;usg=AOvVaw2PSSxjLwDfSej9GbfvS1f5">
+   first or best
+  </a>
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Strategic Foundations
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Identifying Interest Areas
+ </span>
+ <span class="c2">
+  The journey begins by recognizing unmet needs and growth opportunities within the HCI landscape. Researchers should maintain a "problem journal" tracking observed challenges where current solutions prove inadequate through field observations, user interviews, or personal prototyping struggles. A promising direction emerges when these pain points reveal a pattern — recurring issues that existing tools fail to address, or novel interaction paradigms requiring new foundational infrastructure. For example, the development of ARKit stemmed from recognizing the convergence of mobile GPU capabilities, sensor improvements, and emerging augmented reality applications lacking robust development frameworks.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Assessing Development Costs and Long-Term Viability
+ </span>
+ <span class="c3">
+  Undertaking system or toolkit development is akin to founding a startup — both require years of sustained investment before potentially yielding returns. A 2018 study of 50 HCI system papers revealed that 68% took over 18 months from conception to publication, with post-publication maintenance averaging 2.7 years for projects achieving sustained adoption (
+ </span>
+ <span class="c3 c25">
+  Bansal &amp; Khan, 2018
+ </span>
+ <span class="c2">
+  ). This longitudinal commitment demands careful forecasting through what-if scenarios:
+ </span>
+</p>
+<ol class="c5 lst-kix_ur27ga1seu0f-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Longevity Analysis
+  </span>
+  <span class="c2">
+   : Will this work remain relevant given current technology trajectories? An IoT toolkit targeting soon-to-be-deprecated wireless protocols might become obsolete before completion.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Maintenance Mapping
+  </span>
+  <span class="c2">
+   : Do you have institutional support and human resources beyond initial publication? The Polymaps geovisualization toolkit persisted through three PhD generations at its founding lab.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Adoption Potential Assessment
+  </span>
+  <span class="c2">
+   : What tangible advantages would drive adoption over "good enough" alternatives? D3.js overcame initial complexity concerns by enabling visualizations impossible with previous libraries.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Cost-Benefit Validation
+  </span>
+  <span class="c2">
+   : Could the desired outcomes be achieved through simpler means? Many failed toolkit projects attempted to "boil the ocean" rather than solve focused problems.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Teams should conduct a pre-mortem exercise early in the planning phase: envisioning potential failure scenarios and identifying preventable risks. Common pitfalls include underestimating documentation overhead (averaging 30% of development time for successful toolkits), overlooking dependency management, and misjudging target users' technical capacities.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Architectural Pivot Points
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Defining Situations, Tasks, Users (STUs)
+ </span>
+ <span class="c3">
+  This foundational step transforms vague aspirations into actionable specifications. Effective STU definition employs scenario-based design methods, creating detailed vignettes of real-world usage contexts. A medical AR toolkit might specify:
+ </span>
+ <span class="c3 c10">
+  "Surgeons (users) need intraoperative guidance (tasks) in resource-limited field hospitals where network connectivity fluctuates (situation)."
+ </span>
+ <span class="c2">
+  These scenarios drive technical requirements like offline functionality and low-latency rendering. The STU framework acts as a compass throughout development — when evaluating feature requests, teams should assess alignment with originally specified situations, tasks, and user needs.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Contribution Validation
+ </span>
+ <span class="c2">
+  Before writing a single line of code, researchers must validate their proposed system's unique value proposition. This involves three proof points:
+ </span>
+</p>
+<ol class="c5 lst-kix_90abttmldkxa-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Capability Gap Analysis
+  </span>
+  <span class="c2">
+   : Systematically compare existing solutions using feature matrices and capability models. A computer vision toolkit might benchmark API coverage across OpenCV, PyImageSearch, and commercial cloud services.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Wizard of Oz Prototyping
+  </span>
+  <span class="c2">
+   : Create "fake door" prototypes to test theoretical benefits. Early augmented reality researchers validated spatial UI concepts using masked smartphones years before ARCore's existence.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Expert Stakeholder Reviews
+  </span>
+  <span class="c2">
+   : Present concept papers to domain specialists. The Puppet Scripting toolkit refined its direction based on animation studio CTO feedback prior to implementation.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c28 c17">
+  Implementation Strategy
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Staged Development Approach
+ </span>
+ <span class="c2">
+  Adopting a phased implementation strategy mitigates risk while maintaining momentum. The Eclipse IDE's successful evolution demonstrates this principle — initial releases focused on core Java tooling, with subsequent versions expanding through carefully vetted community contributions. Each stage should produce:
+ </span>
+</p>
+<ul class="c5 lst-kix_287xmqr33qup-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Working prototypes answering key technical questions
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Validation checkpoints assessing usability and performance
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Architecture reviews ensuring extensibility
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Iterative Refinement Cycle
+ </span>
+ <span class="c2">
+  Real-world development resembles spiral more than waterfall models. The Unity game engine's evolution showcases effective iteration — early versions focused on macOS 3D support, but continual user feedback drove expansion to 25+ platforms. Researchers should plan for at least three major iterations:
+ </span>
+</p>
+<ol class="c5 lst-kix_atu9v16kkd42-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Proof-of-Concept
+  </span>
+  <span class="c2">
+   : Validates core technical approach through stripped-down implementation
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Feature-Complete Beta
+  </span>
+  <span class="c2">
+   : Implements all planned functionality for real-world testing
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Polish and Optimization
+  </span>
+  <span class="c2">
+   : Addresses performance bottlenecks and edge cases revealed through adoption
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Documentation must evolve alongside codebases. Successful projects like React Native maintain parallel tracks for API development and tutorial creation, recognizing that discoverability is as crucial as functionality.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Sustainability Planning
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Adoption Lifecycle Management
+ </span>
+ <span class="c2">
+  Transitioning from research project to widely used tool requires deliberate community building. The Computer Vision Annotation Tool (CVAT) grew through structured outreach:
+ </span>
+</p>
+<ul class="c5 lst-kix_ru2d7dibz9gj-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Early access programs with target user groups
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Hackathons showcasing integration capabilities
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Contributor guidelines fostering open-source participation
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Maintenance Infrastructure
+ </span>
+ <span class="c2">
+  Planning for longevity involves:
+ </span>
+</p>
+<ul class="c5 lst-kix_ru2d7dibz9gj-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Automated testing harnesses preventing regression
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   CI/CD pipelines streamlining updates
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Versioning policies managing breaking changes
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Deprecation timelines for obsolete components
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Projects like Apache's OpenOffice demonstrate the risks of neglecting these aspects — once dominant, its complex codebase and poor maintenance processes led to being supplanted by fork LibreOffice.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Dissemination Strategy**
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Academic Documentation
+ </span>
+ <span class="c2">
+  <br/>
+  Crafting the research paper requires balancing technical detail with narrative flow. Successful system papers employ:
+ </span>
+</p>
+<ul class="c5 lst-kix_ru2d7dibz9gj-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Architecture diagrams mapping technical innovation
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Usage timelines showing efficiency gains
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Comparative benchmarks quantifying improvements
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Failure analyses documenting lessons learned
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Community Engagement
+ </span>
+ <span class="c2">
+  Post-publication activities significantly impact longevity. The Processing toolkit sustained relevance through:
+ </span>
+</p>
+<ul class="c5 lst-kix_ru2d7dibz9gj-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Annual "Processing Foundations" conferences
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Educator fellowship programs
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Corporate sponsorship of development sprints
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  By viewing system/toolkit development as an ongoing process rather than one-off project, researchers can create artifacts that evolve with their fields while continuing to generate impactful scholarship.
+ </span>
+</p>
+<h3 class="c35" id="h.flet9kdhe7rn">
+ <span class="c28 c3">
+  6.4 Overall Guidelines for Constructive Research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Constructive research in HCI embodies a crucial translation process — transforming insights from user studies and theoretical knowledge into tangible systems that deliver real-world benefits. This unique value proposition requires researchers to balance technical implementation with knowledge generation. Simply documenting a technical solution proves insufficient; successful constructive research must clearly articulate novel contributions — what new capabilities emerge, why they matter, and how they advance the field beyond incremental improvements.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  These projects typically progress through four phases of increasing complexity: technique innovation ("be the first"), methodological refinement ("be the best"), system development, and toolkit creation. Early-stage researchers often find technique innovation projects particularly rewarding as initial explorations, as they focus on developing novel computational methods for previously unaddressed problems - such as creating new sensing modalities for fundamental interactions like pointing. These bounded-scope projects establish core technical competencies while offering clear milestones for completion.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  "Be the best" technique projects, while requiring more nuanced problem identification, offer structured pathways for optimization once researchers identify measurable improvement opportunities over existing techniques. Both these entry-level project types help build essential research muscles before tackling more complex challenges.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  System development demands higher-order integration skills, typically requiring 12-18 months to combine multiple technical components into architectures meeting real-world requirements. Toolkit creation represents the pinnacle of complexity, combining system-level engineering with ecosystem design awareness. While these advanced project types prove invaluable for experienced researchers with strong engineering skills — particularly given their potential for broad community impact - they present steep learning curves in infrastructure design and maintenance strategies that often challenge early-career researchers.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Successful progression through these research tiers relies on rigorous validation at each stage. From controlled experiments measuring technical performance to longitudinal studies assessing real-world adoption, researchers must maintain methodological rigor through comparative benchmarking, ecologically valid user studies, and transparent reporting of limitations. As emphasized throughout
+ </span>
+ <span class="c3 c25">
+  Chapters 5
+ </span>
+ <span class="c3">
+  and
+ </span>
+ <span class="c3 c25">
+  6
+ </span>
+ <span class="c2">
+  , the most impactful constructive research not only solves practical problems but also generates fundamental insights about human-computer interaction — requiring researchers to clearly communicate both their technical innovations and their conceptual contributions to the field.
+ </span>
+</p>
+<h3 class="c35" id="h.15dm7nvs9r6u">
+ <span class="c3">
+  References
+ </span>
+</h3>
+<p>
+ Kazi, R. H., Chua, K. C., Zhao, S., Davis, R., &amp; Low, K. L. (2011, May). SandCanvas: A multi-touch art medium inspired by sand animation. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 1283-1292).
+</p>
+<p>
+ Kazi, R. H., Chevalier, F., Grossman, T., Zhao, S., &amp; Fitzmaurice, G. (2014, April). Draco: bringing life to illustrations with kinetic textures. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 351-360).
+</p>
+<p>
+ Ram, A., Xiao, H., Zhao, S., &amp; Fu, C. W. (2023). VidAdapter: Adapting Blackboard-Style Videos for Ubiquitous Viewing. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 7(3), 1-19.
+</p>
+<p>
+ Dixon, M., &amp; Fogarty, J. (2010, April). Prefab: implementing advanced behaviors using pixel-based reverse engineering of interface structure. In Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (pp. 1525-1534).
+</p>
+<p>
+ Agarawala, A., &amp; Balakrishnan, R. (2006, April). Keepin'it real: pushing the desktop metaphor with physics, piles and the pen. In Proceedings of the SIGCHI conference on Human Factors in computing systems (pp. 1283-1292).
+</p>
+<p>
+ Apitz, G., &amp; Guimbretière, F. (2004, October). CrossY: a crossing-based drawing application. In Proceedings of the 17th annual ACM symposium on User interface software and technology (pp. 3-12).
+</p>
+<p>
+ Nebeling, M. (2017, May). Playing the Tricky Game of Toolkits Research. In workshop on HCI. Tools at CHI.
+</p>
+<p>
+ Ghosh, D., Foong, P. S., Zhao, S., Liu, C., Janaka, N., &amp; Erusu, V. (2020, April). Eyeditor: Towards on-the-go heads-up text editing using voice and manual input. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp. 1-13).
+</p>
+<p>
+ Janaka, N., Cai, R., Ram, A., Zhu, L., Zhao, S., &amp; Yong, K. Q. (2024). Pilotar: Streamlining pilot studies with ohmds from concept to insight. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 8(3), 1-35.
+</p>
+<p>
+ Ledo, D., Houben, S., Vermeulen, J., Marquardt, N., Oehlberg, L., &amp; Greenberg, S. (2018, April). Evaluation strategies for HCI toolkit research. In Proceedings of the 2018 CHI conference on human factors in computing systems (pp. 1-17).
+</p>
+<p>
+ Dey, A. K., Abowd, G. D., &amp; Salber, D. (2001). A conceptual framework and a toolkit for supporting the rapid prototyping of context-aware applications. Human–Computer Interaction, 16(2-4), 97-166.
+</p>
+<p>
+ Greenberg, S., &amp; Fitchett, C. (2001, November). Phidgets: easy development of physical interfaces through physical widgets. In Proceedings of the 14th annual ACM symposium on User interface software and technology (pp. 209-218).
+</p>
+<p>
+ Hartmann, B., Klemmer, S. R., Bernstein, M., Abdulla, L., Burr, B., Robinson-Mosher, A., &amp; Gee, J. (2006, October). Reflective physical prototyping through integrated design, test, and analysis. In Proceedings of the 19th annual ACM symposium on User interface software and technology (pp. 299-308).
+</p>
+<p>
+ Bostock, M., Ogievetsky, V., &amp; Heer, J. (2011). D³ data-driven documents. IEEE transactions on visualization and computer graphics, 17(12), 2301-2309.
+</p>
+<p>
+ Myers, B. A. (1995). User interface software tools. ACM Transactions on Computer-Human Interaction (TOCHI), 2(1), 64-103.
+</p>
+<p>
+ Bansal, H., &amp; Khan, R. (2018). A review paper on human computer interaction. International Journal of Advanced Research in Computer Science and Software Engineering, 8(4), 53.
+</p>
+<h1 class="c72 c64" id="h.hu587nfcfdox">
+</h1>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-05.html" class="book-breadcrumb__link">&larr; Chapter 5</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-07.html" class="book-breadcrumb__link">Chapter 7 &rarr;</a>
+</div>
+</body>
+</html>

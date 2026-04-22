@@ -1,0 +1,3497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-03.html" class="book-breadcrumb__link">&larr; Chapter 3</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-05.html" class="book-breadcrumb__link">Chapter 5 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.9livpa8xd9xv">
+ <span class="c41 c21 c3">
+  Chapter 4: The 5-Step approach to Experiment Design
+ </span>
+</h2>
+<p class="c11">
+ <span class="c2">
+  In the previous chapter, we covered empirical research, its core principles, and best practices for two main types of studies. Now, we turn our attention to a key element of empirical work: designing controlled experiments. These experiments are vital in empirical research as they offer a structured method to investigate cause-and-effect, test hypotheses precisely, and collect numerical data in carefully managed settings. This allows researchers to make well-supported conclusions about how specific designs or interventions work, establishing controlled experiments as a fundamental tool across many scientific disciplines, including HCI.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  However, designing controlled experiments can be tricky. To illustrate, let's examine the famous Pepsi Challenge: an intriguing case study that reveals both the power and hidden pitfalls of experimental design. While some details of this example have been simplified for clarity, it offers valuable lessons on how delicate and intricate controlled experiments can be.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In the 1970s, Pepsi launched what appeared to be a brilliantly designed experiment to demonstrate consumer preference. The setup seemed flawless: participants were presented with two cups, one labeled 'M' and one labeled 'Q' and the M cup containing Pepsi and the Q cup containing Coca-Cola, and asked to taste both before indicating their preference. The results? A clear majority preferred Pepsi, leading to a massive marketing campaign celebrating this consumer 'victory.'
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  At first glance, this looks like a perfect controlled experiment:
+ </span>
+</p>
+<ul class="c5 lst-kix_q1hxonomxl8-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Blind taste test eliminating brand bias
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Simple binary choice
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Large sample size across diverse locations
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Standardized procedure
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Statistically significant results
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Now, take a moment to think about the following questions:
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c2">
+  Ccan you trust the results?
+ </span>
+</p>
+<ul class="c5 lst-kix_q1hxonomxl8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   If not, what could have caused the results to be biased?
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  If your answer to the first question is yes: what if we told you that subtle changes to the experimental design could dramatically affect the results?
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Malcolm Gladwell, in his book  'Blink' (
+ </span>
+ <span class="c3 c25">
+  Gladwell, 2007
+ </span>
+ <span class="c2">
+  ) revealed some fascinating insights about this experiment. For instance, when researchers later conducted similar tests but with different arbitrary labels on the cups (like 'S' vs 'L' instead of 'M' vs 'Q'), the preference patterns shifted significantly. This raised an intriguing question: could something as seemingly insignificant as the letter used to mark the cups have influenced participants' choices?
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  In fact, experience has shown that our taste perception can be easily influenced by many external factors. For example, in a study by researchers at Caltech and Stanford University showed how price tags can dramatically influence people's perception and enjoyment of wine (
+ </span>
+ <span class="c3 c25">
+  Plassmann et al., 2008
+ </span>
+ <span class="c3">
+  ). In their experiment, participants tasted the same wines multiple times but were told they had different prices. When participants believed they were drinking a $90 bottle of wine, they reported enjoying it significantly more than when they thought the same wine cost only $10. Brain scans using fMRI supported these subjective reports, showing increased activity in the medial orbitofrontal cortex (mOFC) — a region associated with experiencing pleasure — when participants thought they were drinking more expensive wines. In a follow-up blind tasting without price information, participants actually preferred the cheaper wine. (
+ </span>
+ <span class="c3 c10">
+  Note: While this example draws from historical events, some details have been simplified or adapted to illustrate key principles of experimental design. The actual history of the Pepsi Challenge and its methodology is more complex.
+ </span>
+ <span class="c2">
+  )
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The lesson from these examples is that experimental design in HCI research is no easy task. What may seem like a straightforward experiment — such as the Pepsi Challenge — can be riddled with hidden confounding variables that significantly impact results. Even subtle factors like cup labels or perceived value can dramatically influence human perception and behavior, potentially invalidating what appears to be a well-designed study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This complexity is precisely why the HCI research community places strong emphasis on detailed methodology reporting. When reading or writing research papers, every aspect of the experimental design must be carefully documented and justified:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To navigate the complexities of experimental design, this chapter introduces a systematic 5-step approach. This framework is designed to help researchers transform initial ideas into well-structured experimental studies. It serves as an accessible starting point for students and researchers new to empirical work, offering a practical guide to initiating controlled experiments. For instructors and mentors, it provides a clear pedagogical structure for teaching fundamental concepts and fostering good research practices from the outset.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is important to recognize, however, that while this 5-step approach offers a valuable foundation, it does not encompass the full depth of experimental design. Mastering this field requires ongoing learning, deeper methodological knowledge, and extensive hands-on experience beyond the scope of this introductory framework. Its primary aim is to help beginners establish sound research habits.
+ </span>
+</p>
+<h3 class="c35" id="h.djjn58d3b90x">
+ <span class="c28 c3">
+  4.1  An Overview of the 5 Step Approach
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  In HCI research, we often start with broad questions like "Is my new interface better than existing approaches?" or "Does this interaction technique improve user performance?" While these questions reflect important research goals, they are not directly testable through controlled experiments. The challenge lies in transforming these rough ideas into precise, scientifically validatable hypotheses.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The 5 Step Approach to Experiment Design provides a systematic framework to help researchers bridge this gap between initial research interests and well-structured experimental methodology. This approach breaks down the process into manageable steps that progressively refine and formalize the experimental design:
+ </span>
+</p>
+<ol class="c5 lst-kix_3zm7urimkoh8-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Define the research question
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  This crucial first step transforms a broad research interest into a specific, testable question by carefully defining the target population, tasks, measures, and factors of interest. For example, rather than asking "Is this interface better?", we might ask "Does this interface reduce task completion time for novice users performing specific navigation tasks?"
+ </span>
+</p>
+<ol class="c5 lst-kix_3zm7urimkoh8-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Determine variables
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  Here we identify and operationalize the key variables that need to be measured or controlled. This includes independent variables (what we manipulate), dependent variables (what we measure), and potential confounding variables that need to be controlled.
+ </span>
+</p>
+<ol class="c5 lst-kix_3zm7urimkoh8-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Arrange conditions
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  This step involves structuring how the independent variables will be tested through specific experimental conditions, including important considerations like counterbalancing and participant assignment.
+ </span>
+</p>
+<ol class="c5 lst-kix_3zm7urimkoh8-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Decide blocks and trials
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  The experiment is further organized into blocks and trials to ensure proper experimental control and sufficient statistical power while managing practical constraints.
+ </span>
+</p>
+<ol class="c5 lst-kix_3zm7urimkoh8-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Set instruction and procedure
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  Finally, detailed protocols are established for every aspect of running the experiment, from participant recruitment through to debriefing.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For a deeper understanding of experimental methodology in HCI, readers are encouraged to consult MacKenzie's work (
+ </span>
+ <span class="c3 c25">
+  MacKenzie, 2013
+ </span>
+ <span class="c2">
+  ). The 5 Step Approach presented here serves as an accessible starting framework, helping researchers systematically develop their initial research interests into well-designed controlled experiments.
+ </span>
+</p>
+<table class="c40">
+ <tr class="c92">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Suggested Reading:
+    </span>
+    <span class="c17">
+     "
+    </span>
+    <span class="c17 c25">
+     <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/10.5555/2501707&amp;sa=D&amp;source=editors&amp;ust=1776402515819001&amp;usg=AOvVaw0Kd96oztZd6ebLa0Q1go4f">
+      Human-Computer Interaction: An Empirical Research Perspective
+     </a>
+    </span>
+    <span class="c4">
+     "
+    </span>
+   </p>
+  </td>
+ </tr>
+</table>
+<p class="c11">
+ <span class="c3">
+  Let's illustrate this approach through a concrete example. In 2007, researchers, including the author of this book, developed earPod, a novel eyes-free menu selection technique that used touch input and reactive audio feedback (
+ </span>
+ <span class="c3 c25">
+  Zhao et al., 2007
+ </span>
+ <span class="c2">
+  ). While the natural comparison would be with other audio interfaces like Interactive Voice Response (IVR) systems, the researchers took on a more ambitious challenge. Rather than simply showing improvement over IVR systems, which were known to perform poorly, they wanted to challenge the long-held assumption that audio interfaces could not compete with visual ones. They believed that earPod's careful design could potentially match the performance of visual menus like those used in iPods — an intriguing proposition that required empirical validation.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This scenario presents a classic HCI research challenge: how do we systematically evaluate and compare a new interaction technique with existing approaches? The researchers couldn't simply rely on intuition or informal testing — they needed a rigorous experimental methodology to understand how earPod compared against the established iPod-style visual menu interface, without assuming one would necessarily be better than the other.
+ </span>
+</p>
+<p class="c11 c55 c62">
+ <span class="c17">
+  A Note on Selecting a Baseline for Comparison
+ </span>
+</p>
+<p class="c11 c55 c62">
+ <span class="c3">
+  Before embarking on the 5 Step Approach, a crucial preliminary decision is selecting an appropriate "baseline"—the existing technique or system against which your new approach will be compared. This choice is fundamental, as it significantly influences the research direction and the interpretation of your findings. While this chapter details the experimental process
+ </span>
+ <span class="c3 c10">
+  after
+ </span>
+ <span class="c2">
+  a baseline is chosen, its selection is a non-trivial task.
+ </span>
+</p>
+<p class="c11 c55 c62">
+ <span class="c2">
+  For introductory purposes, consider two common strategies:
+ </span>
+</p>
+<ol class="c5 lst-kix_rw75wjl2kb9g-0 start" start="1">
+ <li class="c11 c111 c116 c62 li-bullet-0">
+  <span class="c17">
+   Compare against a State-of-the-Art (SOTA) approach:
+  </span>
+  <span class="c3">
+   Benchmark against the most advanced or highest-performing current solution addressing the
+  </span>
+  <span class="c3 c10">
+   same problem
+  </span>
+  <span class="c2">
+   . This helps demonstrate genuine innovation.
+  </span>
+ </li>
+ <li class="c11 c111 c62 c116 li-bullet-0">
+  <span class="c17">
+   Compare against the most Popular or Widely Used approach:
+  </span>
+  <span class="c2">
+   Evaluate against the incumbent solution familiar to most users. This is key for showing practical relevance and potential for real-world adoption.
+  </span>
+ </li>
+</ol>
+<p class="c11 c55 c62">
+ <span class="c2">
+  The ideal baseline often depends on specific research goals — whether aiming for theoretical advancement, practical applicability, or a combination. This foundational decision frames how your experimental results are understood.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The 5 Step Approach provides a systematic framework for transforming such research goals into well-structured experiments. Let's see how this approach helped guide the experimental design process for evaluating earPod. We'll use this example throughout the chapter to illustrate each step in detail.
+ </span>
+</p>
+<h3 class="c35" id="h.cxftw9mkgvm8">
+ <span class="c28 c3">
+  4.2   Step 1: Define the research question
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  "Defining the research question" can be broken down into 5 substeps:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 1.1 Start with a general question
+ </span>
+ <span class="c2">
+  <br/>
+  An example of a general question would be: How does earPod compare with iPod’s menu in terms of performance?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Once you have a general question, you can then refine it into a more specific, testable question. This refinement process involves narrowing down broad concepts into concrete, measurable elements.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For example, the general question "How does earPod compare with iPod's menu in terms of performance?" is too broad to test directly. We need to specify exactly what aspects of performance we're measuring, with which users, doing what tasks, and under what conditions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In the context of HCI, this refinement process can be guided using the following template:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  (Your solution/product/service) is better than (other solutions/products/services) for (what target population Step 1.2) in (what tasks Step 1.3) under (what contexts Step 1.5) based on (what measurable terms Step 1.4).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Applying this template to our earPod example, the broad question transforms into something more specific like: "Does the earPod menu selection technique result in faster task completion times compared to iPod's visual menu when used by young adults (18-30 years) performing hierarchical menu navigation tasks while walking?"
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This refined question is now more testable because it specifies:
+ </span>
+</p>
+<ul class="c5 lst-kix_xi560c9del0-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The exact comparison (earPod vs iPod visual menu)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The target users (young adults 18-30)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The specific task (hierarchical menu navigation)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The context (while walking)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   The measure (task completion time)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Now you have an understanding of the overall approach, let's go through each substep in detail.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 1.2 Define target population
+ </span>
+ <span class="c2">
+  <br/>
+  Defining the target population is an important step in the product development process as it helps to ensure that the product is designed to meet the specific needs and preferences of the intended users.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In this case, if the target population for the earPods is young people, then it's important to further define this group based on factors such as age range, gender, and other relevant characteristics.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  By defining the target population more precisely, the research/product development team can ensure that the earPods are designed with the specific needs and preferences of this group in mind. This can help to increase the product's appeal and usability among the target population, ultimately leading to greater success in the market.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 1.3 Define tasks
+ </span>
+ <span class="c2">
+  <br/>
+  Step 1.3 involves defining specific experimental tasks that will help achieve the research objectives. For menu selection interfaces like in our example, tasks can range from selecting items in a short one-level menu to navigating complex hierarchical menu structures.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Given the potentially vast number of task variations - considering different menu lengths, depths, and structures — it's typically impractical to test every possible scenario. Instead, researchers must thoughtfully select a representative subset of tasks. This selection should be guided by understanding how the target users will interact with the system in real-world contexts.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In addition, menu content itself requires careful consideration to ensure fair comparisons between conditions. For instance, if certain menu items are inherently more difficult to select than others, this could introduce unwanted bias into the results. The goal is to create balanced task sets that allow meaningful comparison while controlling for confounding variables.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The key considerations when defining tasks include:
+ </span>
+</p>
+<ul class="c5 lst-kix_xi560c9del0-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Identifying core tasks representative of real system usage
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Selecting an appropriate subset that balances thoroughness with practical constraints
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Ensuring tasks directly address the research questions
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Accounting for task characteristics like complexity, familiarity, and frequency of use
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  By the end of this step, you should have:
+ </span>
+</p>
+<ol class="c5 lst-kix_1qmh7mhu9hqh-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   A clear definition of participant tasks
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Strong rationale for task selection
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Clear connection between tasks and research objectives
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  While task design can be challenging due to the many potential sources of bias, reviewing existing literature can provide valuable guidance. Tasks that have been successfully used in similar studies often serve as good starting points for new experiments.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 1.4 Define measures
+ </span>
+ <span class="c2">
+  <br/>
+  This step involves defining the measures that will be used to evaluate the performance of the system being tested. In the example provided, the general question is how does earPod compare with iPod's menu in terms of performance. However, performance is a broad concept that needs to be operationalized to be testable.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  In traditional HCI research, several key measures have been established to evaluate system performance (
+ </span>
+ <span class="c3 c25">
+  Nielsen &amp; Phillips, 1993
+ </span>
+ <span class="c2">
+  ) . The most commonly used measures include:
+ </span>
+</p>
+<ol class="c5 lst-kix_pr1l8llvav7d-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Speed/Efficiency: Measures how quickly users can complete tasks, typically through metrics like task completion time, actions per minute, or time between actions (
+  </span>
+  <span class="c3 c25">
+   Card et al., 1983
+  </span>
+  <span class="c2">
+   ). For example, in text entry studies, words per minute (WPM) is a standard speed metric.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_pr1l8llvav7d-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Accuracy/Error Rate: Quantifies how precisely users can complete tasks without mistakes. This can be measured through error counts, error rates, or task success rates (
+  </span>
+  <span class="c3 c25">
+   Soukoreff &amp; MacKenzie, 2003
+  </span>
+  <span class="c2">
+   ). For instance, in target selection tasks, accuracy might be measured as distance from target or selection error percentage.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_pr1l8llvav7d-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Learnability: Assesses how easily users can become proficient with a system. This is often measured through learning curves showing performance improvement over time, time to reach expert performance, or retention of skills after periods of non-use (
+  </span>
+  <span class="c3 c25">
+   Grossman et al., 2009
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_pr1l8llvav7d-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   User Satisfaction: While more subjective, satisfaction has become increasingly important and is typically measured through standardized questionnaires like SUS (System Usability Scale) or custom Likert-scale ratings (
+  </span>
+  <span class="c3 c25">
+   Brooke, 1996
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_pr1l8llvav7d-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Cognitive Load: Measures the mental effort required to use a system, often assessed through techniques like NASA-TLX or dual-task performance (
+  </span>
+  <span class="c3 c25">
+   Hart &amp; Staveland, 1988
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  These measures are often used in combination to provide a comprehensive evaluation of system performance and usability. While these traditional metrics have proven effective for many conventional interfaces, the evolving landscape of HCI continues to demand new and more sophisticated measurement approaches.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This is particularly evident in the emergence of AI-powered interactive systems, which has introduced significant challenges in developing appropriate evaluation metrics. While traditional usability evaluation frameworks like the System Usability Scale (SUS), User Experience Questionnaire (UEQ), and NASA Task Load Index (NASA-TLX) have served well for conventional systems, they fall short in capturing the complex dynamics of human-AI interaction. As AI systems become increasingly sophisticated with context-awareness and real-time response capabilities, researchers must consider new dimensions such as trust, emotional engagement, and ethical implications. This has led to active research in developing new evaluation frameworks that can adequately assess these emerging aspects of human-AI interaction, while also addressing the practical challenges researchers face in selecting and combining appropriate metrics for comprehensive system evaluation (
+ </span>
+ <span class="c3 c25">
+  Zheng et al., 2025
+ </span>
+ <span class="c2">
+  ).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Regardless of whether using traditional or emerging measures, it remains crucial to specify exactly what will be measured and how the measurement will be conducted. For example, if speed is being measured, researchers must clearly define the specific task being timed, the starting and stopping points of the timer, and any rules for completing the task. This level of detail ensures that measurements can be replicated and results can be meaningfully compared across studies.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Through careful selection and precise definition of measures, researchers can ensure their evaluation is objective and consistent, ultimately enabling meaningful analysis and comparison of results across different studies and contexts.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 1.5 Define additional factors
+ </span>
+ <span class="c2">
+  <br/>
+  Beyond the core experimental elements of techniques, target users, tasks, and measures, researchers must carefully consider additional factors that can influence results. These factors encompass a wide spectrum, from environmental conditions like lighting, temperature, and ambient noise, to technical aspects such as device performance and network connectivity. Participant-related factors including physical and mental fatigue, motivation levels, and prior experience can significantly impact outcomes. The social and contextual landscape, including the presence of others, cultural considerations, and concurrent activities, adds another layer of complexity to experimental design.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While it would be impractical to manipulate or control for every possible factor, researchers must make informed decisions about which additional factors warrant inclusion. This selection process should be systematically guided by several key principles.
+ </span>
+</p>
+<ul class="c5 lst-kix_6flmnuxw7iqi-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   First, there should be theoretical or empirical evidence suggesting the factor could meaningfully impact results
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Second, the factor should have direct relevance to real-world usage scenarios of the system under study
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Third, it must be feasible to properly control and measure the factor within practical study constraints
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Finally, the factor should have potential to yield actionable insights that advance understanding of the research questions
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Consider, for instance, the evaluation of a wearable device intended for mobile use. In this context, movement patterns become crucial - how users walk, their typical pace, and their gait characteristics can significantly influence interaction. Environmental conditions such as transitioning between indoor and outdoor spaces or varying lighting conditions may affect device usability. The way users position and interact with the device, combined with their physical capabilities and cognitive load while multitasking, creates a complex web of interacting factors that must be carefully considered.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The ultimate goal is to strike a delicate balance between experimental control and ecological validity. Through thoughtful selection and control of additional factors, researchers can produce findings that maintain scientific rigor while remaining applicable to real-world scenarios. This requires careful consideration of which factors are most likely to meaningfully impact the research questions while remaining manageable within the study's practical constraints. The resulting experimental design should enable the collection of data that is both statistically sound and practically relevant, advancing our understanding of human-computer interaction in meaningful ways.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's explore how to convert general research questions into detailed experimental designs through two practical examples. We'll walk through this process step by step to help you understand how to apply these concepts in your own research.
+ </span>
+</p>
+<p class="c11">
+ <span class="c36 c21 c17">
+  Example 1: EarPods vs iPod
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Having covered the key principles and considerations for experimental design, let's examine how to apply these concepts through concrete examples. Based on the research work we reviewed earlier about the EarPod, let's explore how we can design a controlled experiment to fairly compare it with the iPod's linear menu.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  🤔
+ </span>
+ <span class="c17">
+  Exercise: Designing an EarPod vs iPod Experiment
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's design an experiment to compare EarPod and iPod's menu systems. Before looking at the solution, try answering these questions:
+ </span>
+</p>
+<ol class="c5 lst-kix_tx3vulsbttf6-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   General Question:
+  </span>
+  <span class="c2">
+   This is straightforward - we need to ask how our new technique compares with an existing technique (often called the baseline) in terms of performance. When we apply this general approach to our specific context, the question becomes:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_tx3vulsbttf6-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   How does the EarPod's radial menu compare with iPod's linear menu in terms of performance?
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  However, this general research question is not directly testable as it is too vague. To transform it into a testable experimental question, we need to specify exact test conditions, settings, measurements, and metrics. Let's examine each of these components based on the prompting questions below.
+ </span>
+</p>
+<ol class="c5 lst-kix_tx3vulsbttf6-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Target Population:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_tx3vulsbttf6-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Who would be most likely to use and benefit from this technology?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What age range would be most appropriate and why?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What prior experience should participants have?
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_tx3vulsbttf6-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Tasks:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_tx3vulsbttf6-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   The task involves menu selection, which has many possible combinations
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   When selecting representative tasks, consider these key questions:
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_tx3vulsbttf6-2 start" start="1">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   What are the key dimensions that define your task space?
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   How can you systematically categorize tasks along these dimensions?
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   What proportion of tasks should come from each category?
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Which scenarios are most critical to test?
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_tx3vulsbttf6-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Measures:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_tx3vulsbttf6-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What metrics would best capture user performance?
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_tx3vulsbttf6-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Other Factors:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_tx3vulsbttf6-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What real-world conditions might affect performance?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What variables should we control for?
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  💡
+ </span>
+ <span class="c17">
+  Sample Solution:
+ </span>
+</p>
+<ol class="c5 lst-kix_wvcirr2d02r3-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   General Question:
+  </span>
+  <span class="c2">
+   <br/>
+   "How does earPod compare to iPod's menu in terms of performance?"
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_wvcirr2d02r3-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Target Population:
+  </span>
+  <span class="c3">
+   <br/>
+   Young people (who are typically early adopters of new technology)
+  </span>
+  <span class="c3 c10">
+   Reason: This group tends to be more receptive to new interaction methods and represents likely early adopters
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_wvcirr2d02r3-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Tasks:
+  </span>
+  <span class="c2">
+   <br/>
+   Menu selection with controlled variables:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_wvcirr2d02r3-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Breadth: 4, 8, and 12 items
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   Depth: 1 and 2 levels
+  </span>
+  <span class="c3 c10">
+   Reason: This range tests both simple and complex menu structures while remaining realistic. The trend observed from different breadth and level 1 to 2 can help predict performance patterns for even deeper menu hierarchies
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_wvcirr2d02r3-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Measures:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_wvcirr2d02r3-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Speed: Time to complete selections
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Accuracy: Error rates in selection
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   Learnability: Performance improvement over time
+  </span>
+  <span class="c3 c10">
+   Reason: These metrics represent traditional HCI evaluation measures (this study was conducted in 2007). Today, researchers might also consider additional metrics like cognitive load, user satisfaction, emotional response, or physiological measures (e.g., eye tracking, EEG) to gain deeper insights into the user experience
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_wvcirr2d02r3-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Other Factors:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_wvcirr2d02r3-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Single task vs Multitasking scenarios
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   Device footprint size (small - watch, medium - mobile phone, large - tablet)
+  </span>
+  <span class="c3 c10">
+   Reason: These factors reflect real-world usage conditions and help ensure ecological validity
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3 c10">
+  Note: The specific factors, measures, and tasks chosen above represent just one possible experimental design. The key is having clear logical reasoning behind each choice that aligns with your research goals. For example:
+ </span>
+</p>
+<ul class="c5 lst-kix_to1c60k8frm3-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   If your research focused more on accessibility, you might choose a different target population like older adults or users with motor impairments
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   If investigating social contexts was important, you might add tasks involving group settings or public vs private usage
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   If environmental robustness mattered most, you might test in more extreme conditions like rain or bright sunlight
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  The choices should flow from your specific research questions and hypotheses. What's most important is explicitly stating your reasoning and ensuring all components work together cohesively to address your core research goals.
+ </span>
+</p>
+<p class="c11">
+ <span class="c36 c21 c17">
+  Example 2: Wearable Interactive Rings
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's consider another example to further illustrate this process. This time, we'll delve into designing an experiment for a wearable device.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Sarah, a PhD student at a leading HCI lab, was working on an exciting new project developing smart rings for notifications. Her advisor had challenged her to figure out the best way for these rings to alert users.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  "There are so many ways we could notify someone wearing a smart ring," Sarah thought to herself as she sketched in her research notebook. She listed out the possibilities: a subtle glow from embedded LEDs, a gentle chime or beep, a slight vibration against the finger, a small mechanical tap, and even a gradual warming sensation.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As she planned her research investigation, Sarah remembered the structured approach she had learned in her HCI methods class. First, she needed to clearly define what she was trying to learn — in this case, determining the most effective notification method for these wearable rings. Then she had to carefully analyze her options, categorizing them into immediate feedback methods (like the light, sound, vibration and physical poke) versus gradual feedback (like the thermal change).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Now came the challenging part — designing a proper investigation that would give her meaningful results. Sarah pulled out her experimental design template and began to think through the components...
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Exercise: Designing a Smart Ring Notification Experiment
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's design an experiment to evaluate different notification methods for smart rings. Before looking at the solution, try answering these questions:
+ </span>
+</p>
+<ol class="c5 lst-kix_p9yygyduvj4q-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   General Question:
+  </span>
+  <span class="c2">
+   "Which ring notification method is most effective for timely alerts?"
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_p9yygyduvj4q-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Target Population:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_p9yygyduvj4q-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Who are the intended users of smart ring notifications?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What demographics might have different notification needs?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What prior experience with wearable technology is relevant?
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_p9yygyduvj4q-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Tasks:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_p9yygyduvj4q-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What tasks would test users' ability to receive basic notifications?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What tasks could evaluate users' responses to different notification priorities?
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_p9yygyduvj4q-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Measures:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_p9yygyduvj4q-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   How do we quantify notification effectiveness?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What metrics would capture both performance and user experience?
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   How can we measure real-world usability?
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_p9yygyduvj4q-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Other Factors:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_p9yygyduvj4q-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What environmental conditions might affect notification perception? (noise, lighting, temperature)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What temporal factors should we consider? (time of day, duration of use)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   How might different contexts impact effectiveness? (social settings, work vs leisure)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   What physical states of users should we account for? (fatigue, stress level, alertness)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  💡
+ </span>
+ <span class="c17">
+  Sample Solution:
+ </span>
+</p>
+<ol class="c5 lst-kix_4j5a11emp5o4-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   General Question:
+  </span>
+  <span class="c2">
+   <br/>
+   "Which ring notification method is most effective for timely alerts?"
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_4j5a11emp5o4-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Target Population:
+  </span>
+  <span class="c3">
+   <br/>
+   General technology users (broad demographic)
+  </span>
+  <span class="c3 c10">
+   Reason: Smart rings are intended for mainstream use, so testing with a diverse population helps ensure broad applicability
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_4j5a11emp5o4-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Tasks:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_4j5a11emp5o4-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   When notification occurs, participants must:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_4j5a11emp5o4-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Acknowledge receipt by tapping the ring once
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c3">
+   Classify urgency (high/low) by number of taps (double/single)
+  </span>
+  <span class="c3 c10">
+   Reason: These tasks simulate real-world notification scenarios while providing measurable responses
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_4j5a11emp5o4-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Measures:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_4j5a11emp5o4-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Reaction Time: From notification to response
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Error Rate: Percentage of missed notifications
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   User Preference: Subjective ratings of each method
+  </span>
+  <span class="c3 c10">
+   Reason: These metrics capture both objective performance and subjective experience, which are crucial for wearable notifications
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_4j5a11emp5o4-0" start="5">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Other Factors:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_4j5a11emp5o4-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Activities in which notification is received
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-2 start">
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Lying down
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Sitting
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Standing
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c2">
+   Walking
+  </span>
+ </li>
+ <li class="c11 c44 li-bullet-0">
+  <span class="c3">
+   Running
+  </span>
+  <span class="c3 c10">
+   Reason: These contextual factors could significantly impact notification effectiveness and user receptiveness. We need to carefully consider which factors to systematically manipulate as independent variables (e.g., activity type). Also, to avoid comfounding variables, we also need to determine what factors to control for (e.g., time of day, environmental conditions) in our experimental design.
+  </span>
+ </li>
+</ul>
+<h4 class="c51" id="h.xc9fl7stv67d">
+ <span class="c36 c45 c3">
+  4.2.1 Step 1 Summary &amp; Your Turn
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  In summary, Step 1, "Formulate Research Question and Hypothesis," is about clearly defining the core elements of your study. This foundational step involves:
+ </span>
+</p>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Articulating a clear
+  </span>
+  <span class="c17">
+   General Question
+  </span>
+  <span class="c2">
+   that your experiment aims to answer.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Identifying the specific
+  </span>
+  <span class="c17">
+   Target Population
+  </span>
+  <span class="c2">
+   you intend to study.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Designing relevant
+  </span>
+  <span class="c17">
+   Tasks
+  </span>
+  <span class="c2">
+   that participants will perform.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Selecting appropriate
+  </span>
+  <span class="c17">
+   Measures
+  </span>
+  <span class="c2">
+   to quantify outcomes and user experience.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Considering
+  </span>
+  <span class="c17">
+   Other Factors
+  </span>
+  <span class="c2">
+   (environmental, temporal, contextual, or user-related) that might influence your results and need to be either controlled or systematically varied.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  The template and two example studies above illustrate how to structure these initial thoughts.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Now, it's your turn!
+ </span>
+ <span class="c2">
+  Before moving on, take a moment to think about a research idea or a problem you'd like to investigate. Using the five components discussed (General Question, Target Population, Tasks, Measures, Other Factors), try to sketch out an initial design for your own study. This exercise will help solidify your understanding of these fundamental concepts and prepare you for the next crucial step: determining your variables.
+ </span>
+</p>
+<h3 class="c35" id="h.6ny0iyiw9e3b">
+ <span class="c28 c3">
+  4.3   Step 2: Determine Variables
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  After formulating a clear research question and hypothesis, the next crucial step in experimental design is defining the variables that will be measured and manipulated. Variables are the building blocks of any experiment — they are the factors that can change or vary during the study. Understanding and carefully defining these variables is essential because they determine what we can measure, control, and ultimately conclude from our experimental results. In experimental design, we typically work with several types of variables, each serving a distinct purpose in helping us test our hypothesis and ensure the validity of our findings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The four common variables to consider are independent variables (IV), dependent variables (DV), control variables, and random variables (See
+ </span>
+ <span class="c3 c25">
+  Figure 4.1
+ </span>
+ <span class="c3">
+  ).
+ </span>
+</p>
+<p class="c103">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 196.00px;">
+  <img alt="" src="images/image3.jpg" style="width: 601.70px; height: 196.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c78">
+ <span class="c2">
+  Figure 4.1 Diagram summarizing four fundamental types of variables used in experimental research
+ </span>
+</p>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c4">
+   Independent variable (IV)
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   A factor that is manipulated in the experiment, and it has multiple levels. It is the variable that we are interested in studying, and we want to see how it affects the dependent variable. There are two types of IVs: primary and secondary, which we elaborate more in the next section.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c4">
+   Dependent variable (DV)
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   A factor that is being measured in the experiment, and it is influenced by the independent variable.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c4">
+   Control variable (CV)
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   The attribute that is fixed throughout the experiment to eliminate other factors that could affect the results.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c4">
+   Random variable (RV)
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_j1jr5c1z5hrk-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   The attribute that is randomly sampled to increase generalizability.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Let's examine how to map different components of our experimental design into appropriate variables:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Mapping Research Components to Variables:
+ </span>
+</p>
+<ol class="c5 lst-kix_qgbmbt1c4d47-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Independent Variables (IV):
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_qgbmbt1c4d47-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Primary techniques being compared (e.g., earPod vs. iPod or notification methods)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Task types or conditions (e.g., different scenarios of usage single-task vs. multi-task or activity types like sitting vs. walking)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Key factors from "Other Factors" that we actively manipulate (e.g., different environmental conditions)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qgbmbt1c4d47-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Dependent Variables (DV):
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_qgbmbt1c4d47-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Our measurement metrics (e.g., reaction time, error rate)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   User performance indicators (e.g., accuracy, completion time)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Subjective measures (e.g., user preference ratings)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qgbmbt1c4d47-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Control Variables (CV):
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_qgbmbt1c4d47-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Environmental factors we keep constant (e.g., room temperature)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Equipment settings (e.g., same testing hardware across participants or notification intensity)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Procedural elements (e.g., instruction delivery method)
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_qgbmbt1c4d47-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Random Variables (RV):
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_qgbmbt1c4d47-1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Participant demographics (e.g., age, gender)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Individual differences (e.g., prior experience)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Natural variations in participant state (e.g., alertness level)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  This mapping ensures we properly categorize and account for all relevant factors in our experimental design.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Note: Distinguishing between primary and secondary Independent variables
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The primary independent variable (IV) in an experiment is the most important factor being investigated and helps answer the primary research question. The secondary IV is an additional factor that is also manipulated to provide more information on the primary research question.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For example, in a study on the effects of interface design on task completion time, the primary IV might be the type of interface design (e.g. menu-based vs. icon-based), while the secondary IV could be the experience level of the participants (e.g. novice vs. expert users). By including the secondary IV, we can investigate whether the effect of interface design on task completion time is different for novice and expert users.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In another study, the primary IV might be the presence or absence of feedback in a virtual reality system, while the secondary IV could be usage scenarios (e.g. office work vs. entertainment settings). By including the secondary IV, we can investigate whether the effect of feedback on task performance is different for different usage scenarios.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Overall, the distinction between primary and secondary independent variables is important because it has implications for the experimental setup. Primary independent variables often need to go through the most strict experimental setup. For example, they need to be well counterbalanced in a within-subject controlled experiment design. For some secondary independent variables, sometimes they don't need to be strictly counterbalanced if we don't primarily care about how the different levels within that secondary variable compare to each other, but rather, we only care about how it affects the primary IV (more on these topics in the explanation of Step 3: Arrange conditions below).
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Note: Confounding variables
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  At this stage of the experimental design, our goal is to check how these factors affect the performance of these measures in a given task. But how do we know these factors are the only factors influencing the condition?
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We need to be careful about confounding variables, which are extraneous variables that can affect the variables being studied and produce misleading results. Any variable, other than the independent variables, that could plausibly explain changes in measures may be deemed a confounding variable. To illustrate, consider two scenarios:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In Case 1, where three techniques (A, B, C) are compared sequentially, the improvement in performance may be attributed to practice, rendering "Practice" a confounding variable.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Similarly, in Case 2, comparing search engine interfaces (Google vs. New Search Interface), the prior experience of participants with Google becomes a confounding variable if it influences their performance.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Practice and prior experience are just two examples of confounding variables that necessitate careful consideration and control in experimental design. Mitigating these factors, as elaborated in the subsequent section on Arranging Conditions through techniques such as Counterbalancing (refer to section 4.4), is imperative for ensuring the integrity of experimental outcomes.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To put things in perspective, let’s draw on some examples of confounding variables.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let us now practice determining variables in our experiment design using the similar examples from before.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Example 1:  Earpods vs ipod
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Example 2: Smart Ring Feedback &amp; Activity
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Example 1: Earpods vs iPod
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Example 2: Smart Ring Feedback &amp; Activity
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      :---------------------------
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      :---------------------------------------------
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Independent Variables (IV)
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Independent Variables (IV)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Variable | Level 1 | Level 2 | Level 3
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Variable | Level 1 | Level 2 | Level 3
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Technique | earPod | iPod | -
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Feedback Type | Light | Audio | Vibration
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Usage Scenario | single-task | dual-task | -
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Physical Activity | Lying Down | Sit | Walk
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Menu Breadth | 4 | 8 | 12
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Menu Depth | 1 | 2 | -
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Dependent Variables (DV)
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Dependent Variables (DV)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Variable | Measurement
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Variable | Measurement
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Speed | completion time
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Response Time | Time to react to feedback (s)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Accuracy | percentage of errors
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Identification Accuracy | % correctly identified feedback
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Learning | speed &amp; accuracy change over time
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Learning | Change in response time/accuracy over trials
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Control Variables (CV)
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Control Variables (CV)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Same computer
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Same smart ring model &amp; software
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Same experiment time
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Standardized feedback intensity/duration
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Same environment
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Controlled ambient environment (e.g., noise, light)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Same instructions provided
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Standardized task for evaluating feedback
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Random Variables (RV)
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Random Variables (RV)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Participant attributes:
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Participant attributes:
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Age
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Age, Gender
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Gender
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Sensory acuity (tactile, auditory)
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Background
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      - Prior experience with wearables
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35 c74" id="h.pbdolgtysy7l">
+</h3>
+<h3 class="c35" id="h.r9sw9i9mq2le">
+ <span class="c28 c3">
+  4.4   Step 3: Deciding the type of experiment and arrange conditions
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  After identifying and mapping our experimental variables, the next crucial step is to determine the type of experiment and how to structure and arrange our experimental conditions. Before diving into the specific steps of arrangement, let's understand the type of experiments, what we mean by experimental conditions, and why their careful design (such as counterbalancing) is essential.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Type of experiments:
+ </span>
+ <span class="c3">
+  Within-subject design and between-subject design are two fundamental approaches to experimental research (see
+ </span>
+ <span class="c3 c25">
+  Figure 4.2
+ </span>
+ <span class="c2">
+  ), with mixed design combining elements of both:
+ </span>
+</p>
+<p class="c42">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 223.00px;">
+  <img alt="" src="images/image11.jpg" style="width: 602.00px; height: 247.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c78">
+ <span class="c2">
+  Figure 4.2 Diagram illustrating the differences between between-subject and within-subject experimental designs.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Within-subject design
+ </span>
+ <span class="c2">
+  (also called repeated measures) has participants experience all experimental conditions. Each participant serves as their own control, which reduces individual differences as a source of error variance. This approach requires fewer participants and can be more statistically powerful. However, it may introduce order effects (fatigue, practice, carryover) that need to be controlled through counterbalancing or randomization.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Example
+ </span>
+ <span class="c2">
+  : In a study testing three different user interfaces, the same 20 participants use all three interfaces and complete tasks on each. The order of interfaces is counterbalanced across participants.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Between-subject design
+ </span>
+ <span class="c2">
+  assigns different participants to different experimental conditions, with each participant experiencing only one condition. This eliminates order effects but requires larger sample sizes to account for individual differences. It's typically simpler to implement but may have less statistical power compared to within-subject designs.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Example
+ </span>
+ <span class="c2">
+  : To test three different user interfaces, 60 participants are randomly assigned to three groups of 20. Group A uses only Interface 1, Group B uses only Interface 2, and Group C uses only Interface 3.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Mixed design
+ </span>
+ <span class="c2">
+  (also called split-plot design) combines both approaches by having at least one within-subject factor and at least one between-subject factor. This allows researchers to examine interactions between factors that can't all be tested within subjects.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Example
+ </span>
+ <span class="c2">
+  : Testing the effectiveness of three user interfaces (within-subject factor) across two age groups (between-subject factor). 40 participants (20 young, 20 older adults) each test all three interfaces. The analysis examines both the main effects of interface design and age group, plus potential interactions between these factors.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The choice between these designs depends on research questions, practical constraints, and the nature of what's being studied.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Experimental condition:
+ </span>
+ <span class="c2">
+  An experimental condition represents a specific combination of independent variable levels that participants will experience during the study. The way we arrange these conditions can significantly impact the validity of our results. For instance, if we're studying the impact of different interface designs on user performance, each unique combination of interface elements would constitute a distinct experimental condition. The order and manner in which participants experience these conditions need to be carefully controlled to ensure reliable results.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The arrangement of conditions involves several key considerations: how many participants we need, how to sequence the conditions, and how to control for potential learning or fatigue effects. These decisions will ultimately shape the robustness of our experimental design and the reliability of our findings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  We will focus on arranging conditions for
+ </span>
+ <span class="c17">
+  within-subject factors
+ </span>
+ <span class="c2">
+  — where participants experience all levels of the independent variable. This design is preferred as it is more economical and offers better statistical power compared to between-subject design. However, since participants experience multiple conditions, we must carefully control for learning effects and fatigue through proper arrangement of conditions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Between-subject factors require less attention in condition arrangement since each participant experiences only one level of these variables, eliminating concerns about order effects within these factors. Our focus remains on within-subject factors where order effects pose significant challenges.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For mixed designs, which combine both approaches, we primarily need to manage the ordering of the within-subject portions. The between-subject component is handled through random assignment to groups before any testing begins.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Counter Balancing:
+ </span>
+ <span class="c3">
+  To control for order effects, researchers can use
+ </span>
+ <span class="c17">
+  counterbalancing
+ </span>
+ <span class="c2">
+  . This involves presenting the conditions in different orders for different participants to cancel out the order effect. For example, if we assume the order effect is symmetric and linear, we can present the conditions in the order of A followed by B and B followed by A, and counter-balance the order across participants.
+ </span>
+</p>
+<p class="c11">
+ <span class="c4">
+  How do we counterbalance and number of participants needed?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Fully counter-balancing
+ </span>
+ <span class="c2">
+  means that each condition appears an equal number of times across all possible orders of presentation. It is easy to counterbalance an IV with 2 levels. To counterbalance 3 levels with the same assumptions, i.e. assume that effects are symmetric, and equal in size, we need to counter-balance as follows:
+  <br/>
+  P1: A B C
+  <br/>
+  P2: A C B
+  <br/>
+  P3: B A C
+  <br/>
+  P4: B C A
+  <br/>
+  P5: C A B
+  <br/>
+  P6: C B A
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  If we have four levels of an independent variable (A, B, C, and D), and we want to fully counterbalanced, we would need 4x3x2=24 participants to test all possible combinations of levels. Similarly, if we have five levels of an independent variable (A, B, C, D, and E), we would need 5x4x3x2=120 participants to fully counter-balance.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To take another example: A study compares earPod and iPod techniques in single-task and multi-task scenarios with two levels of menu depth. The minimum number of participants needed is four, and the counter-balancing strategies chosen are fully counter-balancing for technique and scenario of use, and no counter-balancing for menu depth. If menu depth is fully counter-balanced, eight participants would be needed. If technique has three levels and is fully counter-balanced, either 12 or 24 participants would be needed depending on whether menu depth is counter-balanced.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Fully counter-balancing can be time-consuming and impractical, especially when we have many independent variables with multiple levels. In such cases, we can use
+ </span>
+ <span class="c17">
+  partial counterbalancing
+ </span>
+ <span class="c2">
+  techniques, such as Latin square, which ensure that each level appears in every position equally often, but not all possible orders are tested.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Latin square
+ </span>
+ <span class="c2">
+  is a method of partial counterbalancing that is used to control order effects when there are more than two levels in an independent variable. In a Latin square, each level (A, B, C) appears once in each position (first, second, third) across the conditions. So, in this case, we have three conditions (A, B, C) and each participant would be tested in one of these conditions, but the order of presentation would be different for each participant based on the Latin square:
+  <br/>
+  A B C
+  <br/>
+  B C A
+  <br/>
+  C A B
+  <br/>
+  Using a Latin square reduces the number of participants needed to control for order effects compared to full counterbalancing. For example, if we have four levels in an independent variable, using a Latin square would require 4 participants instead of 24 needed for full counterbalancing.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Steps to arrange the conditions for within subject design:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 3.1
+ </span>
+ <span class="c2">
+  listing all (within-subject) independent variables and their levels. In the example given, there are three (within-subject) independent variables: technique (earPod vs. iPod), scenario of use (single-task vs. multi-task), and menu depth (1 vs. 2).
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 3.2
+ </span>
+ <span class="c2">
+  deciding on a counter-balancing strategy for each independent variable. Counterbalancing is a technique used to control for order effects in within-subject designs. The three strategies listed in the example are fully counter-balancing, Latin-square, and no counter-balancing (sequential). The choice of strategy depends on the researcher's interest in the independent variable.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 3.3
+ </span>
+ <span class="c2">
+  determining the minimum number of participants needed for the study. The minimum number of participants is calculated based on the number of levels of each independent variable and the counter-balancing strategy chosen. In the example, the minimum number of participants needed is 4 (2 technique conditions x 2 scenario conditions x 1 menu depth arrangement).
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 3.4
+ </span>
+ <span class="c2">
+  arranging the overall design of the study based on the counter-balancing strategies chosen. In the example, the technique and scenario of use variables are fully counter-balanced, while the menu depth variable is not counter-balanced and is arranged sequentially.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Step 3.5
+ </span>
+ <span class="c2">
+  determining the detailed arrangement for each participant. This involves assigning participants to each condition in a systematic way based on the counter-balancing strategies chosen.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's walk through a practical example to understand how to arrange experimental conditions. We'll use a study comparing earPod and iPod devices.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Step 3.1: First, let's identify what we're testing (our independent variables):
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Device type: earPod vs. iPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Usage context: single-task vs. multi-task scenarios
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Menu structure: two different menu depths
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Step 3.2: Next, we decide on counterbalancing strategies for each variable:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Device type: We'll use full counterbalancing to test both orders (earPod→iPod and iPod→earPod) since comparing devices is our main focus
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Usage context: We'll also fully counterbalance scenarios (single-task→multi-task and multi-task→single-task) to control for order effects
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Menu structure: We'll use no counterbalancing and always test depth-1 before depth-2 to simplify the design
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Step 3.3: How many participants do we need? Basic setup: We need 4 participants minimum because:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   We have 2 possible orders for device type
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   2 possible orders for usage context
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Only 1 order for menu depth So: 2 × 2 × 1 = 4 participants
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Let's consider some different variable setups or counterbalancing strategies and see how these changes affect the overall experimental arrangement.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  If we wanted to test menu depth in both orders too:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   This would require 8 participants (2 × 2 × 2 = 8)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  If we added a third device to test:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   We'd need 12 participants because:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_4huuzrxpls78-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   With 3 devices, there are 6 possible device orders (3 x 2 x 1 = 6)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   We still have 2 possible scenario orders (single-task→multi-task and multi-task→single-task)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   So: 6 device orders × 2 scenario orders = 12 participants needed
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Step 3.4: Let's organize our testing plan in detail:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  First, let's clearly identify how we'll refer to our variables and their levels:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Devices (T):
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T1: earPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T2: iPod We'll fully counterbalance this, so we'll test both T1→T2 and T2→T1 orders
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Scenarios (S):
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S1: single-task scenario
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S2: multi-task scenario We'll fully counterbalance this too, testing both S1→S2 and S2→S1 orders
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Menu depth (D):
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D1: depth-1 menus
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D2: depth-2 menus We won't counterbalance this - always testing D1 before D2
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  By combining these variables and their possible orders, we get 4 distinct testing sequences:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Sequence 1: (earPod first, single-task first)
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T1→T2 (earPod→iPod)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S1→S2 (single→multi-task)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D1→D2 (depth-1→depth-2)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Sequence 2: (earPod first, multi-task first)
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T1→T2 (earPod→iPod)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S2→S1 (multi→single-task)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D1→D2 (depth-1→depth-2)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Sequence 3: (iPod first, single-task first)
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T2→T1 (iPod→earPod)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S1→S2 (single→multi-task)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D1→D2 (depth-1→depth-2)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Sequence 4: (iPod first, multi-task first)
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   T2→T1 (iPod→earPod)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   S2→S1 (multi→single-task)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   D1→D2 (depth-1→depth-2)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Each participant will be randomly assigned to one of these four sequences, ensuring we have an equal number of participants for each sequence.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Step 3.5: Detailed Testing Sequence for Each Participant:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Now, let's assign one participant to each testing sequence to see how this plays out in practice. Each participant will follow their assigned sequence exactly, giving us the following detailed testing plans:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Participant 1:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Tests earPod then iPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   For each device: does single-task then multi-task
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Always tests menu depth-1 before depth-2
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Participant 2:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Tests earPod then iPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   For each device: does multi-task then single-task
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Always tests menu depth-1 before depth-2
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Participant 3:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Tests iPod then earPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   For each device: does single-task then multi-task
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Always tests menu depth-1 before depth-2
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Participant 4:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Tests iPod then earPod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   For each device: does multi-task then single-task
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Always tests menu depth-1 before depth-2
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Consider this challenge: What if we expanded our design to include:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Three levels of technique: earPod, iPod, and nosePod
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Three levels of task complexity: single-task, simple dual-task, and complex dual-task
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  How would you arrange the testing sequences? Consider:
+ </span>
+</p>
+<ul class="c5 lst-kix_4huuzrxpls78-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   How many total conditions would this create?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   How many possible orders exist for each factor?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   What would be the total number of possible sequences?
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   How might you make this manageable while still maintaining experimental validity?
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Take a moment to work through these questions and sketch out a potential testing plan.
+ </span>
+</p>
+<p class="c11">
+ <span class="c4">
+  Note: Limitations of counterbalancing
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The limitations of counter-balancing as a technique for controlling order effects in within-subject designs. Counter-balancing assumes that the transfer effects between conditions are symmetric and that the increments between conditions are linear. However, if there are asymmetric transfer effects or non-linear increments, then counter-balancing may not work and a between-subjects design may be more appropriate. Additionally, some factors, such as age or gender, may have to be between-subjects factors regardless of the design. For Between-subject Design, there is no need for counterbalancing. Simply assign different users to different conditions!
+ </span>
+</p>
+<p class="c11">
+ <span class="c4">
+  Note: Strategies for reducing the number of conditions
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In many research scenarios, numerous factors may be pertinent to the research question, yet testing them all may be impractical. One effective strategy involves testing only a subset of independent variables initially and then incorporating those demonstrating a significant effect into subsequent studies. Another approach is to exclude certain variables from a counterbalanced design if the absolute difference between their levels is not a focal point of interest. For instance, consider variables such as menu breadth and menu depth in a study comparing interface techniques. While these factors may influence the time taken for selection, they might not be directly relevant to the primary research question. In this context, menu breadth and depth can be considered secondary independent variables. The order of the levels may not significantly impact the comparison between techniques A and B. Thus, by excluding them from the counterbalanced design, researchers can streamline the experimental conditions without compromising the integrity of the study's primary objectives.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here are some examples to illustrate the strategies for reducing the number of conditions:
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Example: Usability testing for a new e-commerce website
+  <br/>
+  Assume there are several potential factors that could affect the usability of the website, including layout, color scheme, font size, and the presence of social media links. To reduce the number of conditions, the researcher may choose to
+ </span>
+ <span class="c17">
+  test only two or three of these factors
+ </span>
+ <span class="c2">
+  at a time, such as layout and color scheme, and then include the other factors in future studies if necessary.
+ </span>
+</p>
+<h3 class="c35" id="h.4z2jt54yuen8">
+ <span class="c28 c3">
+  4.5.  Step 4: Decide blocks and repetitions
+ </span>
+</h3>
+<p class="c11">
+ <span class="c3">
+  Having determined the appropriate counterbalancing strategies for each independent variable, we now need to delve into the more detailed arrangement of experiment trials and blocks (see
+ </span>
+ <span class="c3 c25">
+  Fig
+ </span>
+ <span class="c25">
+  ure 4.2
+ </span>
+ <span class="c2">
+  ).
+ </span>
+</p>
+<h6 class="c69" id="h.d1z6d8mcfj4m">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 341.33px;">
+  <img alt="" src="images/image2.jpg" style="width: 601.70px; height: 341.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</h6>
+<p class="c11">
+ <span class="c2">
+  Figure 4.2 Example arrangement of blocks and trials for a single participant (P1).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  A trial is a single repetition of a condition or cell, and several trials are used to increase reliability. On the other hand, a block is an entire section of the experiment that is repeated to analyze learning. The trials in each block have the same content, but their order is randomized to reduce order effects.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To determine the number of blocks and repetitions, the researcher must consider several factors. These include the reasonable experiment duration, time constraints, fatigue, and the need for enough data points to detect significant effects.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  For example, the experiment should be designed to fit within a reasonable time frame, typically within one hour. However, this may be shorter if pre- and post-experiment interviews are included, leaving only 45 minutes for the actual experiment. In some cases, the experiment may take up to 2 hours.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Additionally, the number of blocks and repetitions should be sufficient to generate enough data points to detect significant effects. The exact number will depend on the specific experiment and its goals, as well as the number of independent variables, levels, and participants involved.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Overall, determining Blocks and Trials involves 4 steps:
+ </span>
+</p>
+<ul class="c5 lst-kix_t3wpv741i7dt-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 4.1: estimate the time for each trial (typically at least 3 trials per condition)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 4.2: estimate the time for each block
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 4.3: balance the trials and blocks so that the main part of the experiment is within 45 minutes
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 4.4: combine with the condition arrangement
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Exercise 4.4: Blocks and Trials Design
+ </span>
+ <span class="c2">
+  Consider you are designing an experiment to evaluate three different text input methods (voice, keyboard, and gesture) on a smartwatch. You want to test these methods under two different contexts (sitting and walking).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Let's solve this step by step:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Step 4.1: Estimate time for each trial
+ </span>
+</p>
+<ul class="c5 lst-kix_yu26kn464zzb-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Each trial is estimated to take 30 seconds
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Need at least 3 trials per condition as specified
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Step 4.2: Estimate time for each block
+ </span>
+</p>
+<ol class="c5 lst-kix_almb89e84c8b-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Total conditions = 3 input methods × 2 contexts = 6 conditions
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Trials per block = 6 conditions × 3 repetitions = 18 trials
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Time per block = 18 trials × 30 seconds = 9 minutes
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Step 4.3: Balance trials and blocks Total experiment time:
+ </span>
+</p>
+<ul class="c5 lst-kix_uiw9om4mhgec-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   4 blocks × 9 minutes = 36 minutes for trials
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   3 breaks × 3 minutes = 9 minutes
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Total duration = 45 minutes (meeting the 45-minute guideline)
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Step 4.4: Condition arrangement To minimize order effects:
+ </span>
+</p>
+<ul class="c5 lst-kix_uiw9om4mhgec-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Use Latin Square design for input methods
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Counterbalance contexts within each input method
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Randomize phrase presentation within each condition
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Answers to questions:
+ </span>
+</p>
+<ol class="c5 lst-kix_bwu254qfxfdh-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   6 conditions total (3 input methods × 2 contexts)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   18 trials per block (6 conditions × 3 repetitions)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   45 minutes total (36 minutes for trials + 9 minutes for breaks)
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Recommended arrangement:
+  </span>
+ </li>
+</ol>
+<ul class="c5 lst-kix_bwu254qfxfdh-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Latin Square for input methods across 4 blocks
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Within each block, alternate sitting/walking contexts
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Each block contains all conditions (3 methods × 2 contexts)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Randomize text phrases within each condition
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Include 3-minute breaks between blocks
+  </span>
+ </li>
+</ul>
+<h3 class="c35" id="h.9ma47akkn4gi">
+ <span class="c28 c3">
+  4.6 Step 5: Set Instructions and Trials
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  After determining blocks and trials, the next crucial step is establishing clear instructions and procedures for conducting the experiment. This step is essential as it directly impacts how experiments are carried out and ensures respect for participants.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The process can be broken down into 7 chronological substeps:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Before Experiment:
+ </span>
+</p>
+<ul class="c5 lst-kix_u2pnergtw4cf-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.1: Recruiting Participants
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.2: Consent Form &amp; Pre-experiment Questionnaire
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.3: Instructions
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.4: Practice Trials
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  During Experiment:
+ </span>
+</p>
+<ul class="c5 lst-kix_u2pnergtw4cf-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.5: Main Experiment with Breaks
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  After Experiment:
+ </span>
+</p>
+<ul class="c5 lst-kix_u2pnergtw4cf-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.6: Post-experiment Questionnaire &amp; Interview
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Step 5.7: Debriefing
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c4">
+  Step 5.1 Recruiting Participants
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Two key considerations:
+ </span>
+</p>
+<ol class="c5 lst-kix_laorm08mhagu-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Determining target users - Specify qualified participant groups based on research needs
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Randomizing user characteristics - Balance participant demographics while staying within target groups
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c4">
+  Step 5.2 Consent Form &amp; Pre-experiment Questionnaire
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The consent form protects participants' legal rights and should include:
+ </span>
+</p>
+<ul class="c5 lst-kix_s7prx87nqyw2-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Researcher/institution information
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Study procedures and data collection details
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Participant rights and compensation
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Explicit consent confirmation
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Pre-experiment questionnaires gather participant background information.
+ </span>
+</p>
+<p class="c11">
+ <span class="c4">
+  Step 5.3-5.4 Instructions &amp; Practice Trials
+ </span>
+</p>
+<ul class="c5 lst-kix_s7prx87nqyw2-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Clear directions for completing tasks
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Practice trials allow participants to:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_s7prx87nqyw2-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Familiarize with procedures
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Reduce learning effects during main trials
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Test experimental process feasibility
+  </span>
+ </li>
+ <li class="c7 c37 li-bullet-0">
+ </li>
+</ul>
+<p class="c11">
+ <span class="c4">
+  Step 5.5 Main Experiment with Breaks
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Key points:
+ </span>
+</p>
+<ul class="c5 lst-kix_s7prx87nqyw2-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Maintain researcher objectivity and neutrality
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Include regular breaks to prevent fatigue
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Document observations
+  </span>
+ </li>
+ <li class="c11 c14 li-bullet-0">
+ </li>
+</ul>
+<p class="c11">
+ <span class="c4">
+  Step 5.6-5.7 Post-experiment Steps
+ </span>
+</p>
+<ul class="c5 lst-kix_s7prx87nqyw2-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Gather participant feedback via questionnaires/interviews
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Debrief participants on study objectives
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Address questions and concerns
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Document insights for analysis
+  </span>
+ </li>
+</ul>
+<h3 class="c35" id="h.y2t6x7e7nh1p">
+ <span class="c28 c3">
+  Conclusion
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  This chapter has outlined a systematic 5-step approach to designing and conducting HCI experiments, providing a structured framework for researchers to follow. While this methodology helps streamline the process and makes experiment design more approachable for novice researchers, it's important to note that designing rigorous experiments remains a complex undertaking.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The approach guides researchers through establishing clear research questions and hypotheses, determining appropriate variables and measures, planning experimental design and controls, calculating sample size and blocks, and developing detailed procedures. Each step builds upon the previous ones to create a comprehensive experimental protocol.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While this framework provides a solid foundation, researchers are strongly encouraged to consult with experienced colleagues and methodological experts when designing studies. Their expertise can help refine designs, identify potential pitfalls, and ensure scientific rigor.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The goal of this systematic approach is not to oversimplify experimental design, but rather to make it less intimidating and provide clear starting points for researchers new to HCI experimentation. With these guidelines as a foundation, and appropriate expert consultation, researchers can develop high-quality studies that advance our understanding of human-computer interaction while maintaining scientific integrity and participant protections.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Also, this chapter also concludes the discussion on the introduction to empirical research in HCI. However, the field of empirical research is vast, and true mastery requires ongoing learning and experience.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For those wishing to deepen their knowledge, we highly recommend several key resources. I. Scott MacKenzie's
+ </span>
+ <span class="c3 c10">
+  Human-Computer Interaction: An Empirical Research Perspective
+ </span>
+ <span class="c3">
+  offers a comprehensive guide to empirical methods specifically within HCI. For an accessible yet thorough understanding of statistical analysis, which is fundamental to interpreting experimental results, Andy Field's
+ </span>
+ <span class="c3 c10">
+  Discovering Statistics Using...
+ </span>
+ <span class="c3">
+  series (e.g., for IBM SPSS Statistics or R) is an excellent choice. Furthermore, to explore the broader landscape of research methodologies beyond controlled experiments, a comprehensive text like
+ </span>
+ <span class="c3 c10">
+  Research Methods in Human-Computer Interaction
+ </span>
+ <span class="c2">
+  (e.g., by Lazar, Feng, and Hochheiser) can provide invaluable insights into various qualitative and quantitative approaches.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Empirical research forms a critical pillar of HCI, enabling us to understand user behavior, evaluate system effectiveness, and build a solid evidence base for design decisions. In the next chapter, we will transition to explore constructive research, an approach often considered distinctive to HCI, where the creation of novel artifacts and systems itself serves as a primary mode of inquiry and knowledge generation.
+ </span>
+</p>
+<h3 class="c35" id="h.qqyz3mw3q0ck">
+ <span class="c3">
+  References
+ </span>
+</h3>
+<p class="c11">
+ <span class="c13 c3">
+  Gladwell, M. (2007). Blink: The power of thinking without thinking. Back bay books.
+ </span>
+</p>
+<p>
+ Plassmann, H., O'doherty, J., Shiv, B., &amp; Rangel, A. (2008). Marketing actions can modulate neural representations of experienced pleasantness. Proceedings of the national academy of sciences, 105(3), 1050-1054.
+</p>
+<p>
+ MacKenzie, I. S. (2013). Human-computer interaction: An empirical research perspective.Morgan Kaufmann.
+</p>
+<p>
+ Zhao, S., Dragicevic, P., Chignell, M., Balakrishnan, R., &amp; Baudisch, P. (2007, April). Earpod: eyes-free menu selection using touch input and reactive audio feedback. In Proceedings of the SIGCHI conference on Human factors in computing systems (pp. 1395-1404).
+</p>
+<p>
+ Card, S. K., Moran, T. P., &amp; Newell, A. (1983). The psychology of human-computer interaction. Hillsdale, NJ: L. Erlbaum Associates.
+</p>
+<p>
+ Nielsen, J., &amp; Phillips, V. L. (1993, May). Estimating the relative usability of two interfaces: Heuristic, formal, and empirical methods compared. In Proceedings of the INTERACT'93 and CHI'93 conference on Human factors in computing systems (pp. 214-221).
+</p>
+<p>
+ Soukoreff, R. W., &amp; MacKenzie, I. S. (2003, April). Metrics for text entry research: An evaluation of MSD and KSPC, and a new unified error metric. In Proceedings of the SIGCHI conference on Human factors in computing systems (pp. 113-120).
+</p>
+<p>
+ Grossman, T., Fitzmaurice, G., &amp; Attar, R. (2009, April). A survey of software learnability: metrics, methodologies and guidelines. In Proceedings of the sigchi conference on human factors in computing systems (pp. 649-658).
+</p>
+<p>
+ Brooke, J. (1996). SUS-A quick and dirty usability scale. Usability evaluation in industry, 189(194), 4-7.
+</p>
+<p>
+ Hart, S. G., &amp; Staveland, L. E. (1988). Development of NASA-TLX (Task Load Index): Results of empirical and theoretical research. In Advances in psychology (Vol. 52, pp. 139-183). North-Holland.
+</p>
+<p>
+ Zheng, Q., Chen, M., Sharma, P., Tang, Y., Oswal, M., Liu, Y., &amp; Huang, Y. (2025, April). EvAlignUX: Advancing UX Evaluation through LLM-Supported Metrics Exploration. In Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (pp. 1-25).
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-03.html" class="book-breadcrumb__link">&larr; Chapter 3</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-05.html" class="book-breadcrumb__link">Chapter 5 &rarr;</a>
+</div>
+</body>
+</html>

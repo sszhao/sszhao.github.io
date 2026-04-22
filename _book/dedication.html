@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dedication</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --color-text: #1a1c1a;
+      --color-text-secondary: #4b4454;
+      --color-accent: #7929d8;
+      --color-gold: #735c00;
+      --color-bg: #faf9f6;
+      --color-surface: #f4f3f1;
+      --color-border: rgba(206, 194, 215, 0.3);
+      --font-body: 'Manrope', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 28px;
+      color: var(--color-text);
+      background: var(--color-bg);
+      padding: 0;
+    }
+
+    /* Content Container */
+    .book-content {
+      max-width: 768px;
+      margin: 0 auto;
+      padding: 112px 24px 48px;
+    }
+
+    /* Content Styles */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.5px;
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--color-text-secondary);
+      line-height: 28px;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Language Switcher */
+    .lang-toggle {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 48px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .lang-toggle__btn {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all 180ms ease;
+      text-decoration: none;
+    }
+
+    .lang-toggle__btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    .lang-toggle__btn--active {
+      background: var(--color-accent);
+      color: white;
+      border-color: var(--color-accent);
+    }
+
+    .lang-toggle__btn--active:hover {
+      color: white;
+    }
+
+    /* Dedication Sections */
+    .dedication-section {
+      margin-bottom: 64px;
+    }
+
+    .dedication-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .dedication-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 48px 0;
+    }
+
+    .dedication-section--cn p {
+      line-height: 32px;
+    }
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="preface.html" class="book-breadcrumb__link">&larr; Preface</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-01.html" class="book-breadcrumb__link">Chapter 1 &rarr;</a>
+</div>
+<div class="book-content">
+
+  <div class="lang-toggle">
+    <a href="#dedication-en" class="lang-toggle__btn lang-toggle__btn--active">English</a>
+    <a href="#dedication-cn" class="lang-toggle__btn">中文</a>
+  </div>
+
+  <div class="dedication-section" id="dedication-en">
+    <h1>In Memory of My Mentor, Mark Chignell</h1>
+
+    <p>The weather in Hong Kong has finally turned cool, but the wind blows fierce tonight, carrying with it a trace of sorrow.</p>
+
+    <p>On the morning of November 22nd, in the hazy early light, a message from Michael McGuffin appeared in my WeChat. Michael is a dear friend of mine — a professor at a university in Montreal, Canada. We have kept in touch for over twenty years now. But distance and the busyness of life have kept our exchanges infrequent, the kind where you catch up a few times a year, no more.</p>
+
+    <p>The message was short, but every word landed like a stone: "Mark Chignell passed away yesterday. Sachi posted the news on Facebook."</p>
+
+    <p>What had happened? Mark was born in 1956. He was only 69…</p>
+
+    <p>Just over a year ago, we were together at the ACM CHI conference in Hawaii. Mark arrived with his signature warm smile and his newest PhD student, and sat with me and my students. The atmosphere was so easy, so full of warmth. He talked with everyone — attentive, unhurried, the way he always was. He looked so healthy then, his smile as gentle as ever. I always assumed there would be many more gatherings like that one, that every conference would bring another happy reunion, that time would never really take anything away…</p>
+
+    <p>A little over two years ago, in Hamburg, Germany — inside a cozy hotel along the ancient cobblestone streets of that old European city — Mark, I, and a student who had just begun at an Ivy League school in the United States, full of questions and hopes about the future, talked for several hours. The student had many questions. Mark answered every single one, patiently and without reservation. The way he looked as he spoke, and the quiet image of us all rising together afterward to walk home through the evening streets — that image remains vivid in my mind…</p>
+
+    <p>Going further back to 2017: I traveled to Toronto with a company delegation, and we paid Mark a visit. He was in the middle of launching a new startup. The lab was full of new faces, buzzing with fresh energy — just the way it had felt when I was a PhD student there, only with a new cast of people…</p>
+
+    <p>And back to 2009, the year I finished my doctorate. I had received an interview invitation from Singapore Management University. As it happened, Mark had a long connection with Singapore — he had worked there for several years. He warmly introduced me to his friends there and encouraged me to visit them, among them Professor Chua at NUS. At the time, NUS was quietly looking for a Human-Computer Interaction scholar to join their faculty, though nothing had been announced publicly. I remember clearly: when I wrote to Professor Chua asking if I might come by for a visit, his reply was — "Would you be interested in coming for an interview?" "Oh, my god. Of course yes!" And just like that, through a stroke of serendipity, I joined NUS and stepped into what I can only describe as a dream chapter of my life. Without Mark, none of it would have happened…</p>
+
+    <p>Then there were the years in the middle and late 2000s — the years of the PhD itself. Those years were full of hardship and doubt: the frustration of late nights that went nowhere, the dejection of failed experiments, the despair of rejected papers. But no matter what storms I faced outside, Mark's lab was always a warm harbor, a place we could return to whenever we needed to recover. It was an office I called home for five years — a modest room, just big enough for three rows of desks. Standing at the doorway and looking in, the deep-red desk tucked against the cabinets at the far end was where I worked and lived for those five years. The spot nearest the door belonged to my good friend Alvin — a young man who radiated energy and optimism in everything he did. Turning left from the entrance was a common room, filled with memories of every MIE Lab party. That long rectangular table, big enough for a dozen people, would be covered at those times with food from every corner of the world — and the dishes that always outnumbered everything else were the desserts. At the far end of the common room, just past the table, was Mark's office. Looking in from the doorway, you would always find him there, quietly working through his papers. And we could always go to him, any time — that door, in my memory, was almost always open, always welcoming us in. The Bahen Centre, home to the University of Toronto's Department of Computer Science, is a building of industrial lines — clean, direct, and not without a certain seriousness. But the MIE Lab on the eighth floor felt nothing like the rest of the building. Every time you walked through its door, you were met with something warm and familiar. That was the most precious thing Mark had given that place…</p>
+
+    <p>Back to the winter of 2004. I had been in the doctoral program at U of T for over a year, but I still had no real home within it. The supervisor who had recruited me had left the university shortly after my arrival, leaving me adrift for more than a year — without a supervisor, like a small boat lost on an open sea. I was searching desperately for a lab to belong to, but the other faculty in the department all had full rosters. It was at this near-desperate moment that I found Mark — a professor in Industrial Engineering, cross-appointed to Computer Science. And he accepted me, quickly and without hesitation…</p>
+
+    <p>...</p>
+
+    <p>Life is a journey. Along the way, you meet many people. Most come and go in a flash, but a rare few walk alongside you for years — even decades. They are sometimes far away, sometimes close at hand. Most of the time, your paths run parallel, each of you moving forward into your own unknown horizon. But every so often, those lines cross, and in that crossing, they leave warmth and kindness woven into the fabric of your days.</p>
+
+    <p>It is with great sadness that on November 21st, 2025, that warm, kind, and wise parallel line — the one that had woven itself through so many of our lives for so many years — came to rest.</p>
+
+    <p>But he left what he had nurtured in all of us. Among just our cohort alone: I am at the National University of Singapore and the City University of Hong Kong; Alvin is at the University of Illinois Chicago; Danielle Lotridge is at the University of Auckland — and so many others are scattered across the world, each of us carrying his journey forward in our own way…</p>
+
+    <p>We will pass on the gifts Mark gave us. We will let that warmth live on in our students, as it once lived in us. That is the truest memorial we can offer him.</p>
+
+    <p>Compared to Singapore, the seasons in Hong Kong are unpredictable — summer arrives with fierce passion, autumn and winter bring a certain bleakness, and every so often, a Typhoon Signal 8 or a Black Rainstorm Warning tears across this city without warning. Tonight, the wind in Hong Kong is still howling.</p>
+
+    <p>But I will never stop missing you. This book is dedicated to you, my dear mentor, Mark Chignell.</p>
+  </div>
+
+  <hr class="dedication-divider">
+
+  <div class="dedication-section dedication-section--cn" id="dedication-cn">
+    <h1>纪念我的导师 Mark Chignell</h1>
+
+    <p>香港的天气终于凉下来了，但风吹得猛烈，带着一丝凄凉。</p>
+
+    <p>11月22日，在朦胧的晨光中，微信里出现了一则 Michael McGuffin 的消息。Michael 和我是好朋友，加拿大蒙特利尔市里一所大学的教授。二十多年了，我们一直保持联系。但距离和忙碌，让这种联系频率不高，一年几次的那种。</p>
+
+    <p>消息很短，却字字扎心："Mark Chignell passed away yesterday. Sachi posted the news on Facebook"。</p>
+
+    <p>发生了什么？Mark 是1956年出生的，今年才69岁……</p>
+
+    <p>一年多前，我们还在夏威夷的人机交互年会上相见。Mark 带着他标志性的慈祥笑容和他最新的博士生，和我还有我的学生们坐在一起，气氛是那么轻松融洽。他和每个人亲切交流，如沐春风。那时候他看上去非常健康，笑容还是那么温和。我心里一直觉得，这种聚会还会发生很多次，每一年开会都会是我们相聚的快乐时光，时间仿佛永远不会带走什么……</p>
+
+    <p>两年多前，德国汉堡。在欧洲小镇古老的石子路旁，一家温暖的小酒店里，Mark、我，和一个刚刚去美国藤校读书、对未来充满疑问与憧憬的学生，交谈了几个小时。学生的问题很多，Mark 耐心且毫无保留地一一回答。他当时说话的神情，和聊完后起身一起出门散步回家的身影，至今仍清晰地印在眼前……</p>
+
+    <p>时光再回溯到2017年。我随着一家公司去多伦多访问，期间我们拜访了 Mark。那时候他正在开始新的一轮创业，实验室里出现了不少新面孔，一片盎然生机——实验室就像我读博时的状态一样，只是换了一批人……</p>
+
+    <p>时间再拨回到2009年，我博士毕业的那一年。当时我拿到了新加坡管理大学的面试邀请。很巧的是，Mark 和新加坡也很有渊源，他在那里工作过几年。Mark 热情地把他在新加坡的朋友介绍给我，让我去拜访，其中就有国大的蔡教授。而那时国大正在寻找一位做人机交互的学者，虽然并没有对外宣布。我清晰地记得，当我发信给蔡教授咨询是否可以去参观访问时，收到的回信是："你有兴趣过来面试吗？"Oh, my god! Of course yes! 就这样，我机缘巧合地加入了国大，开启了一段梦幻的人生之旅。如果没有 Mark，这段奇妙的旅程一定不会发生……</p>
+
+    <p>时间再回到2000年中后段的那几年。博士的生涯充满了艰辛与挑战，那些深夜里的挫折，实验失败的沮丧，论文被拒的绝望。但无论在外面遇到什么风浪，Mark 的实验室就像一个温暖的港湾，随时欢迎我们回去修整。那是一个我生活了5年的办公室，一个不大、勉强可以放下三排书桌的房间。站在门口向里眺望，最里面那张深红色的、连着柜子的书桌，就是我工作和生活了5年的地方；而最靠近门口的那个位置，是我的好朋友 Alvin 的座位——一个永远充满朝气、积极向上的大男孩。转过身朝左看，是一个客厅，这里充满了 MIE 实验室各种 Party 的回忆。客厅里那张可以坐十多人的大长方桌，每到那时就会摆满来自各个国家的食物，而每次最多的一定是各种甜品。桌子边上，客厅那头，就是 Mark 的办公室。从门口望进去，Mark 总是安详地坐在那里处理文件，而我们随时可以去找他——记忆中，那扇门几乎总是敞开着，永远欢迎着我们。多伦多大学计算机系所在的 Bahen Centre 是一座工业风的大楼，楼里线条横平竖直，去其他实验室总带着一丝严肃。但处在8楼的 MIE Lab，却丝毫感受不到那略显冰冷的工业气息——每次走进它的大门，迎面而来的是一种温润而亲切的气息。这，是 Mark 赋予这所实验室最宝贵的财富……</p>
+
+    <p>时间再回溯到2004年那个冬天。那时我已进入多大的博士程序一年多，却还没有一个真正的"家"——招我入校的导师很快离开了多大，让我一年多没有导师，像一叶孤舟，漂在茫茫大海之中。那时的我急切地想找到一个可以归属的实验室，但系里的其他几位导师都已招满了学生。就在几乎走投无路之时，我找到了在计算机系兼职的工业设计系教授——Mark。而他，很快就接受了我……</p>
+
+    <p>人生是一段旅途，途中你会遇到很多不同的人。大多数人匆匆相聚又离开，但也有少数几个可以陪你几年、甚至几十年的朋友——他们时而在远方，时而近在咫尺，大部分时间是一条平行前进的线，各自探索着未知的远方，但也时常与你的轨迹产生交汇，把温暖和亲切注入你平淡的旅程。</p>
+
+    <p>很可惜，2025年11月21日，那条曾经与我们交织了许多年的、温润、亲切、睿智的平行线，停止了向前延伸的步伐。</p>
+
+    <p>他把他的养分，分给了那些曾经和他交织过的平行线们——就在我们那一届里，我在新加坡国立大学和香港城市大学，Alvin 在 University of Illinois Chicago，Danielle Lotridge 在 University of Auckland，还有许多人在世界各地的其他地方，延续着他的历程……</p>
+
+    <p>我们会把 Mark 给我们的精神财富传承下去，让那份温暖在更多的学生身上延续。这，是对他最好的纪念。</p>
+
+    <p>相比新加坡，香港的季节是多变的，它既有盛夏的热情，也有秋冬的萧瑟，时不时地，还有8号风球和四级黑雨来蹂躏这片大地。今夜香港的风依然猛烈，但我会永远怀念您. 谨以此书，献给我亲爱的导师, Mark Chignell。</p>
+  </div>
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="preface.html" class="book-breadcrumb__link">&larr; Preface</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-01.html" class="book-breadcrumb__link">Chapter 1 &rarr;</a>
+</div>
+<script>
+document.querySelectorAll('.lang-toggle__btn').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    document.querySelectorAll('.lang-toggle__btn').forEach(function(b) { b.classList.remove('lang-toggle__btn--active'); });
+    e.currentTarget.classList.add('lang-toggle__btn--active');
+  });
+});
+</script>
+</body>
+</html>

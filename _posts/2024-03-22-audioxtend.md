@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "AudioXtend: Assisted Reality Visual Accompaniments forAudiobook Storytelling During Everyday Routine Tasks"
 image: "/assets/blog/AudioXtend-feature.png"
 description: 

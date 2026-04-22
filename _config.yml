@@ -9,8 +9,8 @@ github_username:  jekyll
 
 # Build settings
 plugins:
-  - jekyll-feed
   - jekyll-paginate
+  - jekyll-feed
 
 markdown: kramdown
 
@@ -154,6 +154,13 @@ prose:
           element: "text"
           value: 
 
+
+# Include the _book folder so it's copied to the output
+include:
+  - _book
+
+exclude:
+  - backup_content/
 
 # Exclude from processing.
 # The following items will not be processed, by default.

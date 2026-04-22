@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Prof. An Pengcheng and Prof. Li Xueliang Convene at West Lake, Hui Zhou"
 image: "/assets/blog/WeChat-Image_20240316220510.jpeg"
 description: In a bid to enhance Human-Computer Interaction (HCI) endeavors within the Greater Bay Area, Prof. An Pengcheng and Prof. Li Xueliang recently held a meeting at West Lake in Hui Zhou. The meeting served as a pivotal platform for exchanging ideas, forging partnerships, and charting a course towards elevating HCI endeavors in one of China’s most dynamic economic regions.

@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "The Conclusion of the 2024 Chiang Mai Research Camp"
 image: /assets/img/扫描件20240722-1653-34.jpg
 description: "The end of the 2024 Chiang Mai Research Camp was marked by a celebration of innovation and collaboration."

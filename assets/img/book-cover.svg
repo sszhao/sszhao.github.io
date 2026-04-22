@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520">
+  <defs>
+    <linearGradient id="coverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7929d8"/>
+      <stop offset="100%" style="stop-color:#9a5ce0"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffe087"/>
+      <stop offset="100%" style="stop-color:#fdd34d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Book background -->
+  <rect x="20" y="10" width="360" height="500" rx="8" fill="url(#coverGrad)"/>
+
+  <!-- Spine effect -->
+  <rect x="20" y="10" width="30" height="500" rx="8" fill="#6b24c2"/>
+  <rect x="25" y="10" width="5" height="500" fill="#5a1fa8"/>
+
+  <!-- Decorative circles -->
+  <circle cx="300" cy="100" r="60" fill="rgba(255,224,135,0.1)"/>
+  <circle cx="100" cy="400" r="80" fill="rgba(255,224,135,0.08)"/>
+
+  <!-- Gold accent bar -->
+  <rect x="60" y="160" width="80" height="4" rx="2" fill="url(#accentGrad)"/>
+
+  <!-- Title -->
+  <text x="200" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
+    Navigate the
+  </text>
+  <text x="200" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="#ffe087" text-anchor="middle">
+    World of HCI
+  </text>
+  <text x="200" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
+    Research
+  </text>
+
+  <!-- Subtitle -->
+  <text x="200" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="rgba(255,255,255,0.8)" text-anchor="middle">
+    A Fresh Researcher's Roadmap
+  </text>
+
+  <!-- Author -->
+  <text x="200" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="white" text-anchor="middle">
+    Prof. Zhao Shengdong
+  </text>
+
+  <!-- Publisher info -->
+  <text x="200" y="470" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">
+    City University of Hong Kong
+  </text>
+  <text x="200" y="490" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">
+    October 2025
+  </text>
+</svg>

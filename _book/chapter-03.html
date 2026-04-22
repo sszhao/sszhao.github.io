@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-030YPW3KDJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-030YPW3KDJ');
+  </script>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #faf9f6;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 0;
+}
+
+/* Content Container */
+.book-content {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 112px 24px 48px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  
+
+
+/* Site Nav */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  height: 80px; width: 100%;
+  background: rgba(250,249,246,0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(26,28,26,0.04);
+}
+.site-nav__inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #1a1c1a;
+  letter-spacing: -0.55px;
+  text-decoration: none;
+}
+.site-nav__wordmark em {
+  font-style: normal;
+  color: #7929d8;
+}
+.site-nav__links {
+  display: flex; gap: 36px;
+  align-items: center;
+}
+.site-nav__link {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6576;
+  text-decoration: none;
+  transition: color 180ms ease;
+  position: relative;
+  padding: 6px 0;
+}
+.site-nav__link:hover { color: #1a1c1a; }
+.site-nav__link--active {
+  color: #7929d8;
+  font-weight: 700;
+}
+.site-nav__link--active::after {
+  content: ""; position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: #7929d8;
+  border-radius: 1px;
+}
+.site-nav__cta {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.site-nav__cta img {
+  height: 40px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Book Breadcrumb */
+.book-breadcrumb {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+}
+.book-breadcrumb--top {
+  background: rgba(250,249,246,0.92);
+  border-bottom: 1px solid rgba(206,194,215,0.2);
+}
+.book-breadcrumb--bottom {
+  border-top: 1px solid rgba(206,194,215,0.3);
+  margin-top: 48px;
+  padding-top: 24px;
+  background: rgba(250,249,246,0.6);
+}
+.book-breadcrumb__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: #7929d8; text-decoration: none; transition: gap 150ms;
+}
+.book-breadcrumb__link:hover { gap: 10px; }
+.book-breadcrumb__link--disabled {
+  color: #8b8596; pointer-events: none; opacity: 0.4;
+}
+.book-breadcrumb__home {
+  font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500;
+  color: #8b8596; text-decoration: none;
+}
+.book-breadcrumb__home:hover { color: #7929d8; }
+
+@media (max-width: 768px) {
+  .site-nav__links .site-nav__link { display: none; }
+  .site-nav__links .site-nav__cta { display: none; }
+  .site-nav__inner { padding: 0 24px; }
+  .book-breadcrumb { flex-direction: column; gap: 8px; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link site-nav__link--active" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="book-breadcrumb book-breadcrumb--top">
+  <a href="chapter-02.html" class="book-breadcrumb__link">&larr; Chapter 2</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-04.html" class="book-breadcrumb__link">Chapter 4 &rarr;</a>
+</div>
+<div class="book-content">
+
+
+
+
+<h2 class="c77" id="h.pa5tajem0riz">
+ <span class="c21 c3 c41">
+  Chapter 3: Introduction to Empirical Research and its Overall Workflow
+ </span>
+</h2>
+<p class="c11">
+ <span class="c2">
+  In the previous chapter, we explored what constitutes valuable knowledge contributions within HCI research and provided an overview of the diverse types of contributions that researchers can make. Building upon that foundation, this chapter will now dive deeper into one specific and highly prevalent type of contribution: empirical research. We will examine its core principles, methodologies, and the overall workflow involved in conducting rigorous empirical studies.
+ </span>
+</p>
+<h3 class="c35" id="h.1993c5wmauc8">
+ <span class="c28 c3">
+  3.1 What is empirical research, and why conduct it?
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Empirical research is a foundational method in HCI, characterized by its systematic approach to collecting and analyzing data through observation, experimentation, or measurement. Its primary aim is to understand, explain, or predict human behavior and interactions with technology.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This method serves as the bedrock of HCI because the field strives to contribute new,
+ </span>
+ <span class="c3 c10">
+  validated
+ </span>
+ <span class="c3">
+  , and useful knowledge. Empirical research, deeply rooted in the scientific method, provides the crucial means for this validation. While students and researchers alike may find artifact-centric (constructive) contributions particularly exciting, it is through empirical investigation that we can rigorously demonstrate
+ </span>
+ <span class="c3 c10">
+  why
+ </span>
+ <span class="c3">
+  a novel solution is genuinely useful or how it compares favorably against existing alternatives. Without this systematic gathering of evidence-based insights into effectiveness and usability, the true value of a proposed system or design remains unsubstantiated. Consequently, most proposed solutions must ultimately be evaluated with users through empirical methods, making such studies a cornerstone of scholarly contributions at leading HCI conferences like CHI (see
+ </span>
+ <span class="c3 c25">
+  Figure 3.1
+ </span>
+ <span class="c3">
+  from
+ </span>
+ <span class="c3 c25">
+  Wobbrock &amp; Kientz, 2016
+ </span>
+ <span class="c2">
+  ).
+ </span>
+</p>
+<p class="c78">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 309.33px;">
+  <img alt="" src="images/image9.jpg" style="width: 601.70px; height: 309.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+ <span class="c3">
+  <br/>
+ </span>
+ <span class="c3">
+  Figure 3.1: Paper Type Distribution at CHI 2016. This chart illustrates the overwhelming predominance of empirical studies which focus on the usage of systems and human behaviors, accounting for over 70% of all submissions.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Looking back at the three problem types in HCI discussed in Chapter 2 (Empirical, Conceptual, and Constructive), empirical research is not only a standalone category but is also fundamentally integrated into the other types. For conceptual research, a common pattern involves:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Observation [empirical] -&gt; generalizable insights -&gt; validate insights in multiple contexts [empirical]
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Similarly, constructive research often follows a path where empirical work is key:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Observation [empirical] -&gt; insights -&gt; design -&gt; implementation -&gt; validate effectiveness [empirical]
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  These patterns demonstrate how empirical methods serve a dual role: they are foundational for generating initial insights and act as an essential validation mechanism across all types of HCI research, although other research approaches are also viable.
+ </span>
+</p>
+<h3 class="c35" id="h.95utlzf62q2t">
+ <span class="c28 c3">
+  3.2  The 2 subtypes of Empirical Studies
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  As previously described, our approach consolidates the three subtypes of empirical contribution into two distinct subtypes for greater simplicity: (1) unknown phenomena, and (2) unknown factors and effects. Each subtype is defined by its specific focal points and objectives, streamlining the exploration and analysis within empirical studies. Let’s dive into Subtype 1 and Subtype 2.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Subtype 1: Exploring Phenomena in a Holistic Manner
+ </span>
+</p>
+<ul class="c5 lst-kix_2qo00vo4894f-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   This approach involves broadly studying a phenomenon within HCI to understand its general patterns and implications. For this type of research to be impactful, it must focus on phenomena that capture the attention and interest of the HCI community.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_2qo00vo4894f-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   While there's no universal formula for what makes a phenomenon
+  </span>
+  <span class="c17 c10">
+   "interesting"
+  </span>
+  <span class="c2">
+   , successful papers in this category typically study phenomena that exhibit several key characteristics:
+  </span>
+ </li>
+</ul>
+<ol class="c5 lst-kix_2qo00vo4894f-1 start" start="1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Timeliness — The phenomenon represents emerging practices or contexts that warrant investigation (e.g., hackathons as new forms of collaborative work)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Societal Impact — The phenomenon can be impactful in different ways: through broad reach affecting many users, or by addressing critical needs of specific underserved communities. Both approaches — and others — can demonstrate meaningful societal contributions.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Technological Disruption — It examines how new technological platforms are reshaping work and social practices (e.g., gig economy platforms' impact on freelancers)
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Research Potential — It offers opportunities to develop theoretical frameworks and design implications (e.g., understanding participation patterns in hackathons)
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  When writing about such phenomena, researchers must clearly articulate why their chosen phenomenon warrants attention from both the HCI community and society at large. This often involves highlighting the scale of impact, identifying affected stakeholders, and demonstrating gaps in current understanding.
+ </span>
+</p>
+<table class="c40">
+ <tr class="c85">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Example papers:
+    </span>
+   </p>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 1
+     </span>
+     <span class="c3">
+      : Jeanette Falk, Gopinaath Kannabiran, and Nicolai Brodersen Hansen. 2021. What Do Hackathons Do? Understanding Participation in Hackathons Through Program Theory Analysis. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems (CHI '21). Association for Computing Machinery, New York, NY, USA, Article 147, 1–16.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3411764.3445198&amp;sa=D&amp;source=editors&amp;ust=1776402515763554&amp;usg=AOvVaw2os9KSApdOZp1F31lgN0K3">
+       https://doi.org/10.1145/3411764.3445198
+      </a>
+     </span>
+    </li>
+   </ul>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 2
+     </span>
+     <span class="c3">
+      : Juan Carlos Alvarez de la Vega, Marta E. Cecchinato, and John Rooksby. 2021. "Why lose control?" A Study of Freelancers' Experiences with Gig Economy Platforms. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems (CHI '21). Association for Computing Machinery, New York, NY, USA, Article 455, 1–14.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3411764.3445305&amp;sa=D&amp;source=editors&amp;ust=1776402515764187&amp;usg=AOvVaw0Atn54Ck4Tpw4isEqEVhSI">
+       https://doi.org/10.1145/3411764.3445305
+      </a>
+     </span>
+    </li>
+   </ul>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 3
+     </span>
+     <span class="c3">
+      : Tzu-Sheng Kuo, Hong Shen, Jisoo Geum, Nev Jones, Jason I. Hong, Haiyi Zhu, and Kenneth Holstein. 2023. Understanding Frontline Workers' and Unhoused Individuals' Perspectives on AI Used in Homeless Services. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI '23). Association for Computing Machinery, New York, NY, USA, Article 860, 1–17.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3544548.3580882&amp;sa=D&amp;source=editors&amp;ust=1776402515764817&amp;usg=AOvVaw1KiKS9lmdjxfWXEnBl7bm-">
+       https://doi.org/10.1145/3544548.3580882
+      </a>
+     </span>
+    </li>
+   </ul>
+  </td>
+ </tr>
+</table>
+<p class="c11 c30">
+ <span class="c17">
+  Subtype 2: Analyzing Specific Factors and Their Effects
+ </span>
+</p>
+<ul class="c5 lst-kix_2qo00vo4894f-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   While Subtype 1 explores broad phenomena, Subtype 2 emerges from the specific questions and hypotheses that arise from that exploration. Subtype 2 studies isolate and examine particular factors, mechanisms, or relationships within a phenomenon, allowing researchers to establish causal links and understand how different variables interact. This focused investigation is essential for building actionable knowledge that can directly inform the design of interactive techniques or systems.
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_2qo00vo4894f-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   The concept of
+  </span>
+  <span class="c17 c10">
+   "interesting" research questions
+  </span>
+  <span class="c2">
+   is paramount in this subtype of empirical studies. Drawing from decades of HCI research, questions become compelling when they: (1) address fundamental interaction challenges that persist across technologies and contexts (e.g., input accuracy, cognitive load, social dynamics); (2) challenge existing assumptions or reveal counterintuitive relationships; (3) bridge theoretical understanding with practical implications for design; (4) tackle emerging challenges brought by new technologies or user behaviors; and (5) offer insights that could generalize beyond the specific context being studied. The most impactful work often combines multiple of these aspects — for instance, examining how established interaction principles manifest differently in novel technological contexts, or investigating how theoretical frameworks from other disciplines might inform our understanding of persistent HCI challenges.
+  </span>
+ </li>
+</ul>
+<table class="c40">
+ <tr class="c85">
+  <td class="c46" colspan="1" rowspan="1">
+   <p class="c24">
+    <span class="c17 c10">
+     Example papers:
+    </span>
+   </p>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 1
+     </span>
+     <span class="c3">
+      : Yixuan Zhang, Joseph D Gaggiano, Nutchanon Yongsatianchot, Nurul M Suhaimi, Miso Kim, Yifan Sun, Jacqueline Griffin, and Andrea G Parker. 2023. What Do We Mean When We Talk about Trust in Social Media? A Systematic Review. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI '23), April 23–28, 2023, Hamburg, Germany. ACM, New York, NY, USA 22 Pages.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3544548.3581019&amp;sa=D&amp;source=editors&amp;ust=1776402515767418&amp;usg=AOvVaw3qJytkIRuL6HBsJhIOY2tv">
+       https://doi.org/10.1145/3544548.3581019
+      </a>
+     </span>
+    </li>
+   </ul>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 2
+     </span>
+     <span class="c3">
+      : Alix Goguey, Carl Gutwin, Zhe Chen, Pang Suwanaposee, and Andy Cockburn. 2021. Interaction Pace and User Preferences. In Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems (CHI '21). Association for Computing Machinery, New York, NY, USA, Article 195, 1–14.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3411764.3445772&amp;sa=D&amp;source=editors&amp;ust=1776402515768043&amp;usg=AOvVaw10L44rMmAwPMsAvRS-dDl7">
+       https://doi.org/10.1145/3411764.3445772
+      </a>
+     </span>
+    </li>
+   </ul>
+   <ul class="c5 lst-kix_2qo00vo4894f-0">
+    <li class="c11 c15 li-bullet-0">
+     <span class="c17 c25">
+      Paper 3
+     </span>
+     <span class="c3">
+      : Ananya Bhattacharjee, Joseph Jay Williams, Jonah Meyerhoff, Harsh Kumar, Alex Mariakakis, and Rachel Kornfield. 2023. Investigating the Role of Context in the Delivery of Text Messages for Supporting Psychological Wellbeing. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI '23). Association for Computing Machinery, New York, NY, USA, Article 494, 1–19.
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://doi.org/10.1145/3544548.3580774&amp;sa=D&amp;source=editors&amp;ust=1776402515768759&amp;usg=AOvVaw0JyJA7hAGMm2VrzG2wFLZK">
+       https://doi.org/10.1145/3544548.3580774
+      </a>
+     </span>
+    </li>
+   </ul>
+  </td>
+ </tr>
+</table>
+<h3 class="c35" id="h.car227ex908i">
+ <span class="c28 c3">
+  3.3 A formula and best practice​​ to successful empirical research
+ </span>
+</h3>
+<p class="c11">
+ <span class="c2">
+  Successful empirical research hinges on two key elements:
+ </span>
+</p>
+<ol class="c5 lst-kix_mb2cj5enlla4-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Interesting results/insights
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Rigorous methodology/data support
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  These elements transform into a two-stage research process:
+ </span>
+</p>
+<p class="c11">
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c4">
+  Stage 1: Finding "Interesting" Insights
+ </span>
+</p>
+<ul class="c5 lst-kix_ephgloqo3jve-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Identifying compelling phenomena, effects, or relationships that warrant investigation (
+  </span>
+  <span>
+   see
+  </span>
+  <span class="c25">
+   Figure 3.2
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c4">
+  Stage 2: Ensuring Methodological Rigor
+ </span>
+</p>
+<ul class="c5 lst-kix_ephgloqo3jve-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Systematic investigation with proper research methods (
+  </span>
+  <span>
+   see
+  </span>
+  <span class="c25">
+   Figure 3.3
+  </span>
+  <span class="c2">
+   )
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  The manifestation of these stages differs between the two empirical subtypes:
+ </span>
+</p>
+<h4 class="c51" id="h.y8zgfad78x09">
+ <span class="c36 c45 c3">
+  3.3.1 Stage 1: Identifying Interesting Insights
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  For Subtype 1 (Phenomenon Studies), Stage 1 focuses on identifying and validating an interesting phenomenon to study. This process begins with selecting emerging and timely phenomena that capture attention in the HCI community. Researchers should carefully scan the landscape for novel technological practices, social behaviors, or interaction patterns that have not been extensively studied in prior literature.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The phenomenon must demonstrate meaningful societal impact or address critical needs of specific user groups. This could manifest through broad reach affecting many users, or by tackling important challenges faced by underserved communities. Through preliminary observations and interviews, researchers map out key activities and interactions within the phenomenon to understand its scope and characteristics.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  When evaluating a phenomenon's research potential, it's crucial to identify aspects that connect to core HCI interests. This includes examining how the phenomenon reveals new patterns of human-computer interaction, challenges existing behavioral theories, suggests implications for future system design, or offers insights that could generalize beyond the specific context. These connections help position the work within the broader HCI research landscape.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Before committing to a full study, researchers should validate the phenomenon's research potential through pilot investigations. This initial phase involves conducting preliminary studies, such as gathering a few interview results or performing initial field investigations. The insights from these activities, along with relevant publications, are then used to construct an outline of the potential paper. This outline is a critical step to validate whether there are enough interesting insights to justify a full paper. For Subtype 1 (Unknown Phenomenon), the 'Discussion' section of this outline is particularly important, as this is the heart and soul of a phenomenon-type paper; it is where the key conceptual contributions and the overall narrative are defined. Only after researchers have a clear idea about the key conceptual contributions are clearly articulated in this outline should they move to Stage 2 (Ensuring Methodological Rigor). These pilot investigations also serve the practical purpose of confirming that the phenomenon is observable and analyzable using available research methods, which is essential for the successful execution of the research project.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Stage 1 for factor and effects studies centers on discovering effects that are both interesting and impactful within HCI research. For a finding to be truly 'interesting' and valuable to the research community, it often needs to offer more than simple confirmation of existing intuitions. Consider, for example, an investigation into how text presentation affects learning. A common assumption, perhaps inspired by educational videos like those from Khan Academy, might be that dynamically revealing text letter by letter enhances engagement and improves learning outcomes. If empirical results align with this intuitive belief, they confirm common understanding but may not offer significant new insights to the community.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  However, if pilot investigations suggest a counterintuitive outcome — for instance, that dynamically drawn text
+ </span>
+ <span class="c3 c10">
+  hinders
+ </span>
+ <span class="c3">
+  learning compared to presenting text all at once — this becomes a much more compelling avenue for research. Such an unexpected result, if rigorously validated and accompanied by a plausible explanation for
+ </span>
+ <span class="c3 c10">
+  why
+ </span>
+ <span class="c2">
+  it occurs, can provide genuinely useful knowledge. In this scenario, the new insight could significantly influence how designers approach textual presentation to optimize learning.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Identifying genuinely 'interesting' insights — effects that are non-obvious, surprising, or challenge conventional wisdom — is a primary goal at this stage, yet it's often challenging. Many initial ideas, when explored, might only confirm common beliefs, leading to results that are not particularly novel. Investing in a full-scale study only to find such predictable outcomes would not be very cost effective. This is where pilot studies play a critical role. Because they are low-cost and quick to conduct, researchers can test numerous hypotheses. The strategy is to iterate through many such pilot studies, accepting that most might yield uninteresting results, until a truly surprising or counterintuitive effect is identified. Only then, when an 'interesting' lead is found, does it become justifiable to commit to a more resource-intensive Stage 2 full study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  One might wonder how reliable findings from pilot studies with small sample sizes (e.g., 4-6 participants) can be. While a pilot study cannot guarantee the statistical validity or 'truth' of an effect, its value is significant. Firstly, strong and impactful effects often become evident even with a small number of participants. If a novel input technique offers genuine advantages, or if certain interface factors have meaningful psychological or behavioral impacts, these should be observable even in preliminary testing. More crucially, pilot studies allow researchers to delve into the
+ </span>
+ <span class="c3 c10">
+  reasons
+ </span>
+ <span class="c2">
+  behind observed differences, often through methods like participant interviews. This qualitative understanding helps distinguish effects that might be due to chance from those grounded in fundamental reasons. Thus, by conducting pilot studies and intelligently analyzing their results, researchers are more likely to discover genuinely interesting effects that warrant deeper, more rigorous investigation.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Identifying an interesting effect is only the initial step in Stage 1. The crucial next step is to understand
+ </span>
+ <span class="c3 c10">
+  why
+ </span>
+ <span class="c3">
+  this effect occurs and to develop a compelling, logical explanation. This underlying rationale is often a significant finding in itself, particularly if it illuminates fundamental aspects of human-computer interaction. Such explanations should ideally be grounded in established theories of human cognition, perception, or behavior, or derived from systematic analytical approaches (e.g., a detailed task analysis like KLM
+ </span>
+ <span class="c3">
+  (
+ </span>
+ <span class="c3 c25">
+  Hinckley et al., 2006
+ </span>
+ <span class="c3">
+  )
+ </span>
+ <span class="c2">
+  ). At a minimum, the reasoning must be logically sound.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  To uncover these explanations, researchers must actively investigate the 'why' behind an observed effect. When a pilot study reveals a potentially interesting outcome, interviewing participants is a valuable method to understand their experiences and perceived reasons for their actions or preferences. However, participant insights alone may not suffice. It is critically important for researchers to also immerse themselves in the pilot study conditions, experiencing the tasks or interfaces firsthand. This direct engagement can provide an intuitive 'feel' for why one condition might differ from another, offering insights that participants might not articulate or even be consciously aware of. This self-experimentation helps distinguish robust, explainable phenomena from coincidental observations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The most valuable research directions emerge when observed effects not only reproduce reliably but are also accompanied by a strong explanatory framework that connects them to broader principles of interaction design or HCI theory. For instance, discovering that users consistently violate an established design guideline under specific conditions becomes far more impactful when researchers can articulate
+ </span>
+ <span class="c3 c10">
+  why
+ </span>
+ <span class="c2">
+  this violation occurs, potentially revealing limitations in our current understanding or the guideline itself. Ultimately, the goal at this stage is not to achieve statistical significance, but to identify robust effects that are explainable, theoretically or logically grounded, and have clear implications for advancing HCI research and practice.
+ </span>
+</p>
+<p class="c78">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 246.67px;">
+  <img alt="" src="images/image1.jpg" style="width: 601.70px; height: 246.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c78">
+ <span class="c2">
+  Figure 3.2: Roadmap for identifying and refining research topics.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Common Challenges in Stage 1 and Strategies to Address Them:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Navigating Stage 1 of empirical research effectively involves overcoming common hurdles. Beginner researchers often struggle with generating interesting ideas, managing their time efficiently, and dealing with the inherent frustrations of the exploratory process. Addressing these challenges systematically can lead to more fruitful outcomes.
+ </span>
+</p>
+<ol class="c5 lst-kix_becaaf5omq2-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17 c10">
+   "I have tried many ideas, but none seem to be interesting."
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c3">
+  This common frustration can often be addressed by a multifaceted approach. Firstly, a robust
+ </span>
+ <span class="c17">
+  Literature Review
+ </span>
+ <span class="c2">
+  is indispensable. Thoroughly understanding prior work allows researchers to build upon existing knowledge rather than reinventing the wheel, identify genuine gaps where new contributions can be made, recognize emerging trends that might signal fertile research areas, and connect their nascent ideas to established theoretical frameworks, thereby grounding them in existing scholarly discourse.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Secondly, it's crucial to develop a nuanced
+ </span>
+ <span class="c17">
+  Understanding of 'interesting' in HCI
+ </span>
+ <span class="c2">
+  . The field typically values research that pushes boundaries by challenging existing paradigms or assumptions, addresses significant and demonstrable user needs, offers novel solutions to complex interaction problems, or provides compelling empirical insights that deepen our understanding of how humans interact with technology.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  A critical distinction must also be made between
+ </span>
+ <span class="c17">
+  Engineering vs. Research Problems
+ </span>
+ <span class="c2">
+  . Engineering problems are often solution-focused, aiming to fix a specific issue in a particular context. In contrast, research problems seek to generate generalizable knowledge about interaction, asking broader questions that can inform theory and practice beyond a single application. Focusing on the latter is key to developing impactful research.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Specific strategies can then be applied depending on the study subtype. For
+ </span>
+ <span class="c17">
+  Phenomenon Studies
+ </span>
+ <span class="c2">
+  , researchers should focus on emerging technologies or novel user behaviors that are not yet well understood. It's important to look for phenomena with broader societal implications, as this often signals significance. Ensuring practical access to the relevant population for study is a logistical necessity, and initial ideas should be validated through preliminary data collection, such as a few exploratory interviews or observations, to confirm the phenomenon's research-worthiness before committing extensive resources.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  For
+ </span>
+ <span class="c17">
+  Factor/Effect Studies
+ </span>
+ <span class="c2">
+  , a productive strategy involves systematically mapping the design space of interest to identify potential variables and their interactions. Researchers might test extreme parameters or conditions where effects are more likely to be pronounced or surprising. Employing rapid prototyping techniques allows for quick iteration and testing of different design variations, while building on established theoretical frameworks can guide the selection of factors and the formulation of hypotheses about their effects.
+ </span>
+</p>
+<ol class="c5 lst-kix_becaaf5omq2-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17 c10">
+   "I waste too much time on things that are not necessary at this stage."
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  Efficiency in Stage 1 hinges on maintaining a sharp focus on the primary goal: determining whether an idea has the potential to yield interesting results. This means prioritizing activities that directly contribute to this assessment and deferring those that are premature.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  For
+ </span>
+ <span class="c17">
+  Phenomenon Studies
+ </span>
+ <span class="c2">
+  , the emphasis should be on establishing the significance and research-worthiness of the phenomenon before launching into a detailed, comprehensive investigation. This often involves using rapid, lightweight methods initially, such as quick environmental scans, informal discussions with potential users, or analysis of publicly available data. The aim is to gather just enough minimal validation data to make an informed decision about whether to proceed, rather than attempting to collect exhaustive data at this early stage.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Similarly, for
+ </span>
+ <span class="c17">
+  Factor/Effect Studies
+ </span>
+ <span class="c2">
+  , the priority is to quickly identify clear and potentially impactful effects. Techniques like Wizard of Oz, where a human simulates system functionality, can be invaluable for testing interaction concepts without building fully functional prototypes. The focus should be squarely on finding these clear effects and understanding their potential implications, while consciously avoiding premature optimization of the interface, system performance, or experimental design, as these can consume significant time and effort for ideas that may ultimately prove uninteresting.
+ </span>
+</p>
+<ol class="c5 lst-kix_becaaf5omq2-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17 c10">
+   "I'm feeling impatient and frustrated with no interesting results."
+  </span>
+ </li>
+</ol>
+<p class="c11 c30">
+ <span class="c2">
+  The exploratory nature of Stage 1 can indeed be a source of impatience and frustration, especially when interesting results are not immediately forthcoming. Several strategies can help manage these feelings and maintain momentum.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Firstly,
+ </span>
+ <span class="c17">
+  seeking expert guidance
+ </span>
+ <span class="c2">
+  from mentors, supervisors, or senior colleagues can be immensely beneficial. Experienced researchers can offer fresh perspectives, help troubleshoot conceptual roadblocks, suggest alternative approaches, or validate whether an idea has merit. Their insights can often help reframe a problem or identify overlooked opportunities.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Secondly, it is important to be flexible and
+ </span>
+ <span class="c17">
+  consider alternative directions
+ </span>
+ <span class="c2">
+  if an initial line of inquiry proves unfruitful after a reasonable period of exploration. Research is rarely a linear process, and the willingness to pivot or abandon unpromising ideas is a hallmark of an effective researcher.
+ </span>
+</p>
+<p class="c11 c30">
+ <span class="c3">
+  Finally, a practical strategy to mitigate frustration and increase the probability of success is to
+ </span>
+ <span class="c17">
+  maintain multiple parallel investigations
+ </span>
+ <span class="c2">
+  . By exploring several potential ideas or hypotheses concurrently, researchers are less dependent on any single idea panning out. This approach not only diversifies risk but also ensures that progress can be made on other fronts if one avenue stalls, thereby fostering a more continuous sense of advancement.
+ </span>
+</p>
+<h4 class="c51" id="h.mnr46xe1j47e">
+ <span class="c36 c45 c3">
+  3.3.2 Stage 2: Applying Rigorous Methodology
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  Before transitioning to Stage 2, it is crucial to ensure that sufficient conceptual contributions have been identified in Stage 1. This means the core conceptual elements of your research paper should be largely established. Stage 2 then focuses on applying solid, rigorous methodology to validate and ensure the trustworthiness of these Stage 1 findings.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Determining whether there are 'enough contributions' can be challenging, especially for beginner researchers. Therefore,
+ </span>
+ <span class="c17">
+  it is essential to consult with your research mentor
+ </span>
+ <span class="c2">
+  . Only proceed to Stage 2 if your mentor confirms that the conceptual contributions from your Stage 1 investigation are substantial enough.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In Stage 2, the specific rigorous methodology employed will depend on the type of empirical research you are conducting.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For
+ </span>
+ <span class="c17">
+  Phenomenon-based research (Subtype 1)
+ </span>
+ <span class="c2">
+  , you will likely rely on methods such as ethnographic studies, field studies, and interview studies. The key activities include:
+ </span>
+</p>
+<ul class="c5 lst-kix_az4w6rkycda8-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Design comprehensive documentation studies
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Collect rigorous data through ethnography, interviews, or field studies
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Analyze systematically to extract patterns
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Validate through triangulation and member checking
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  For
+ </span>
+ <span class="c17">
+  Factor/Effect research (Subtype 2)
+ </span>
+ <span class="c2">
+  , the design of controlled studies is paramount. The key activities include:
+ </span>
+</p>
+<ul class="c5 lst-kix_az4w6rkycda8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Design formal controlled experiments
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Collect comprehensive data to:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Identify mechanisms and factors
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Understand edge cases
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Apply statistical analyses to:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Model variable relationships
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Quantify effect sizes
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Ensure reproducibility through:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Detailed documentation
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Shared code and data
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Cross-context validation
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Generate insights via:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Qualitative analysis
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Multiple data source triangulation
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Theoretical refinement
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Connect to broader implications for:
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_az4w6rkycda8-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Design guidelines
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Theoretical frameworks
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   Future research
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Ensuring methodological rigor in Stage 2 is paramount. This involves several critical considerations, akin to meticulously planning and documenting an empirical study:
+ </span>
+</p>
+<ol class="c5 lst-kix_tgd59fsetziu-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Alignment with Research Objectives:
+  </span>
+  <span class="c2">
+   The foundation of a rigorous methodology is its direct alignment with the research questions and goals. Every chosen method and procedural step must clearly serve the purpose of addressing these objectives. For instance, if your goal is to understand user behavior in a specific context, your chosen data collection method (e.g., observation, interviews) must be well-suited for capturing that behavior.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_tgd59fsetziu-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Justification of Methodological Choices:
+  </span>
+  <span class="c2">
+   Each component of your methodology — from participant selection and task design to data collection techniques and analysis plans — requires explicit justification. This rationale should be grounded in established research practices (supported by citations to relevant literature) or, for novel approaches, clear logical reasoning demonstrating its appropriateness.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_tgd59fsetziu-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Detailed Articulation of the Study Protocol:
+  </span>
+  <span class="c2">
+   Especially for complex empirical studies, rigor demands a detailed, step-by-step articulation of the entire research design. This often takes the form of a study protocol, outlining how variables will be operationalized, the precise procedures for data collection, and the intended methods for data analysis.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_tgd59fsetziu-0" start="4">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Proactive Identification and Mitigation of Flaws:
+  </span>
+  <span class="c2">
+   A rigorous design anticipates potential threats to the study's validity. This includes foreseeing and planning to control for confounding variables, minimizing potential biases, and selecting appropriate statistical analyses to avoid errors. The anticipated results should also flow logically from the study design and the theoretical underpinnings of your research.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Achieving this level of rigor can seem intimidating, particularly for beginner researchers. However, it's crucial to understand that crafting a robust methodology is an iterative process, not something achieved perfectly on the first attempt. Don't be afraid if your initial ideas have gaps; this is a natural part of research. The key is patience and a willingness to refine.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  A highly effective, and indeed critical, strategy is to
+ </span>
+ <span class="c17">
+  write down your complete study plan in detail, as if it were the methods section of your final research paper,
+ </span>
+ <span class="c17 c10">
+  before
+ </span>
+ <span class="c17">
+  you conduct the full study.
+ </span>
+ <span class="c2">
+  This act of writing itself is a powerful tool for identifying potential logical inconsistencies, overlooked variables, or procedural flaws. Furthermore, this detailed written plan becomes an invaluable document that you can share with your mentor, peers, or experienced colleagues to solicit critical feedback.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Remember, fixing a methodological flaw
+ </span>
+ <span class="c3 c10">
+  after
+ </span>
+ <span class="c3">
+  you have prepared everything for a study, and especially after you have begun testing participants, is incredibly expensive. If issues are discovered mid-study, it often means that the data collected from those initial participants may no longer be valid for your main analysis and might, at best, be treated as pilot data. Thus, this pre-data collection review, facilitated by a thoroughly written plan, is crucial for identifying and rectifying problems
+ </span>
+ <span class="c3 c10">
+  before
+ </span>
+ <span class="c2">
+  you invest significant time and resources, significantly strengthening your study's rigor. Embrace this cycle of meticulous planning through writing, seeking feedback, and iterative revision; it's a cornerstone of developing sound and publishable research.
+ </span>
+</p>
+<p class="c11">
+ <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 602.00px; height: 210.63px;">
+  <img alt="" src="images/image21.png" style="width: 602.00px; height: 247.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""/>
+ </span>
+</p>
+<p class="c78">
+ <span class="c2">
+  Figure 3.3: Roadmap for designing the first formal study rigorously.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  During the study's execution, even after the initial plan receives mentor approval, continuous vigilance and an iterative approach remain essential.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Firstly, anticipate and address emergent issues effectively.
+ </span>
+ <span class="c2">
+  Flaws, unexpected results, or bugs can surface at any point, particularly in the early stages. Therefore, conduct periodic reviews, especially as you begin the study. Proactively check and validate procedures and initial data. It is crucial to address potential errors promptly and only proceed with broader data collection (e.g., recruiting the full set of participants) once you are confident that your methods are sound and the initial phase of the study is running smoothly.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Secondly, maintain meticulous documentation while actively pursuing insights.
+ </span>
+ <span class="c2">
+  Meticulously document all procedures, observations, and findings. Crucially, remember that insights are what you are seeking. These can emerge from ongoing study observations and participant interactions, so be prepared to update your research outline or writing as results are obtained. If you find that initial results are not yielding sufficiently interesting insights, you may need to adjust the study to find a more fruitful angle to investigate the problem.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Throughout this dynamic process, continue to solicit feedback from mentors.
+ </span>
+ <span class="c2">
+  A study that is thus well-defined, iteratively refined, meticulously executed, and yields results consistent with well-grounded expectations is one that generally meets the standards for publication.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Let's dive into a real-world example to see how these research stages can play out, and importantly, what happens when the ideal path takes a few detours. We'll look at the paper "Not All Spacings are Created Equal" (
+ </span>
+ <span class="c3 c25">
+  Zhou et al., 2023
+ </span>
+ <span class="c2">
+  ) an example of Subtype 2 research (unknown factor/effect) that explored a seemingly simple question with significant implications: how does text spacing impact our ability to read on optical see-through head-mounted displays (OHMDs) while staying aware of our surroundings?
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Stage 1: The Spark of an Idea – Initial Insight Development
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  The journey for this specific research didn't start with an isolated observation about OHMDs, but rather evolved from an earlier investigation by the team. In that prior study, they explored how to effectively lay out video information for on-the-go viewing with smart-glasses. A particularly interesting observation arose from considering scenarios akin to an educational video where a diagram is annotated with multiple text labels. The team found that when such textual labels were displayed — for instance, to explain different parts of a visual figure — users expressed a strong preference for ample spacing
+ </span>
+ <span class="c3 c10">
+  between
+ </span>
+ <span class="c2">
+  the individual labels. This preference wasn't merely for the clarity of each label in isolation, but more crucially, because larger gaps allowed them to better see the underlying diagram or, in the broader context of smart-glasses, more of their physical environment that the labels might be overlaying or adjacent to. The insight gleaned was that these gaps were not just empty space, but functional, making it easier for users to observe their surroundings while simultaneously processing information on the display.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This insight directly led to an open, previously unexplored research question pertinent to OHMDs: how should text spacing be configured when reading on such devices during multitasking situations? While previous approaches to text display on OHMDs had primarily focused on
+ </span>
+ <span class="c3 c10">
+  where
+ </span>
+ <span class="c3">
+  the text should be displayed (e.g., a particular location in the viewport), the internal spacing of the text itself — between words and lines — typically defaulted to standard settings. The new question was whether these default text spacings were still optimal in the demanding dual-task context of OHMD usage. Building on this, the team had a hunch: what if tweaking the spacing between words and lines could make it easier to absorb information from the display
+ </span>
+ <span class="c3 c10">
+  and
+ </span>
+ <span class="c2">
+  keep an eye on what's around you? This was their core hypothesis — a potential breakthrough for OHMD usability.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  But a hunch isn't enough. To see if they were onto something, they didn't immediately launch into massive, complex experiments. Instead, they embraced the spirit of Stage 1 validation with quick, nimble pilot studies:
+ </span>
+</p>
+<ul class="c5 lst-kix_lag2ump3nmuw-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   They informally tested various text layouts with a handful of participants (3-4 people) who were literally walking around — a scenario mimicking real-world OHMD use.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Intriguingly, they noticed that certain spacing configurations appeared to boost both reading speed and the participants' awareness of their environment. These weren't definitive proofs yet, but they were strong, encouraging signals.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  The team knew they had struck a promising vein when three things aligned:
+ </span>
+</p>
+<ol class="c5 lst-kix_z5lc1rpznazv-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Consistent User Benefit:
+  </span>
+  <span class="c3">
+   Participants weren't just anecdotally preferring some layouts; they were
+  </span>
+  <span class="c3 c10">
+   performing
+  </span>
+  <span class="c2">
+   better with specific spacing.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Plausible Explanation:
+  </span>
+  <span class="c3">
+   They could articulate a logical reason
+  </span>
+  <span class="c3 c10">
+   why
+  </span>
+  <span class="c2">
+   these changes might be working — the new layouts seemed to help users distribute their visual attention more effectively between the text and the world.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Subjective Confirmation:
+  </span>
+  <span class="c2">
+   When the researchers tried it themselves, their own experiences mirrored their hypotheses and the pilot participants' feedback. This alignment of observation, theory, and personal experience gave them the confidence to dig deeper.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c3">
+  This initial exploration, while sounding straightforward, was a substantial undertaking in itself, spanning nearly six months. The extended duration wasn't due to a lack of focus, but rather the inherent complexity of navigating uncharted territory. There were numerous subtle details and a wide array of potential configurations to test, even in these early pilot phases. Furthermore, the research was spearheaded by a researcher who was relatively new to this specific domain of HCI methodology. A significant portion of this time involved her learning and refining the research methods
+ </span>
+ <span class="c3 c10">
+  concurrently
+ </span>
+ <span class="c2">
+  with conducting the pilot studies. This learning curve, natural for a beginner researcher, meant the process wasn't always optimally efficient.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Stage 2: The Path to Proof — Systematic Investigation (with a Twist)
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  With their initial insight showing promise, the team was ready for the rigor of Stage 2: systematic investigation. They designed a series of three formal studies to dissect the phenomenon. However, this is where their journey offers a crucial lesson in research strategy.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Ideally, after validating a core insight (Stage 1), the next step in a factor/effect study is to conduct a
+ </span>
+ <span class="c17">
+  critical validation study
+ </span>
+ <span class="c2">
+  . Scientifically, this means an experiment designed to rigorously establish the key contribution by providing robust evidence that the primary hypothesis offers a significant advantage over existing or alternative solutions. For this team, this critical validation required demonstrating that their novel text spacing — employing larger-than-usual gaps to distribute text more evenly across the viewport — could significantly outperform traditional methods that present the same amount of text more compactly in a specific location (leaving other viewport areas clear). Validating this central hypothesis in a full study was crucial for the research's viability, as the entire premise hinged on this key hypothesis being valid, even if pilot studies had already provided encouraging indications. However, due to the research team's relative inexperience, this essential step of confirming their key hypothesis first was not carried out until much later.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Here's how their studies actually unfolded:
+ </span>
+</p>
+<ul class="c5 lst-kix_6fcscnbu2nh5-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Studies 1 &amp; 2 (Mechanism Deep Dive – Conducted First):
+  </span>
+ </li>
+</ul>
+<ul class="c5 lst-kix_6fcscnbu2nh5-1 start">
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Study 1:
+  </span>
+  <span class="c2">
+   Systematically explored a wide array of spacing configurations to understand the landscape of possibilities.
+  </span>
+ </li>
+ <li class="c7 li-bullet-0">
+  <span class="c17">
+   Study 2:
+  </span>
+  <span class="c2">
+   Honed in on the specifics, investigating the interplay between word spacing and line spacing.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  These two studies, which explored various sub-factors in detail to provide a more nuanced understanding of the spacing issue, are truly meaningful and should ideally be conducted
+ </span>
+ <span class="c3 c10">
+  only after
+ </span>
+ <span class="c2">
+  a critical validation study (like Study 3) has first established that the novel spacing strategy actually outperforms traditional methods.
+ </span>
+</p>
+<ul class="c5 lst-kix_6fcscnbu2nh5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Study 3 (The Critical Validation — Conducted Last):
+  </span>
+  <span class="c3">
+   This was the pivotal experiment. It directly compared their optimized spacing with conventional methods. This study ultimately validated their core contribution, demonstrating the superiority of their approach.
+  </span>
+  <span class="c3 c10">
+   However, in retrospect, the team realized this crucial "go/no-go" study should have been their first formal experiment, not their last.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c56 c25 c10 c20">
+  ★
+ </span>
+ <span class="c17">
+  Key Lessons: The Price of an Out-of-Order Approach
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  While the research was ultimately successful, the team's decision to conduct the mechanism studies (1 &amp; 2)
+ </span>
+ <span class="c3 c10">
+  before
+ </span>
+ <span class="c2">
+  the critical validation study (3) introduced significant inefficiencies and risks:
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  This out-of-order approach meant they: *
+ </span>
+ <span class="c17">
+  Gambled on an Unconfirmed Premise:
+ </span>
+ <span class="c3">
+  They invested considerable time and resources exploring the nuances of
+ </span>
+ <span class="c3 c10">
+  how
+ </span>
+ <span class="c3">
+  their idea worked (Studies 1 &amp; 2) without first robustly confirming
+ </span>
+ <span class="c3 c10">
+  if
+ </span>
+ <span class="c3">
+  it offered a genuine advantage over existing methods. Had Study 3 ultimately shown their core hypothesis to be flawed or no better than the status quo, much of the preceding effort on Studies 1 and 2 could have been rendered moot or its value significantly diminished. While their core hypothesis fortunately held true, this sequencing placed a large part of their research investment at unnecessary risk. *
+ </span>
+ <span class="c17">
+  Forfeited Early Course Correction and Confidence:
+ </span>
+ <span class="c2">
+  Prioritizing the critical validation study (Study 3) would have provided an early, crucial go/no-go decision. This would have either quickly validated their core assumption, allowing them to proceed with greater confidence and a solid foundation, or signaled the need to pivot their approach if the results were unfavorable. This early feedback loop would have reduced the underlying uncertainty and prevented deeper investment in potentially unproven mechanisms.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  But what if, one might ask, Studies 1 and 2 were actually necessary to help define some of the experimental setups for Study 3? In that case, shouldn't they be conducted first? If such a dependency exists, it's understandable to consider conducting Studies 1 and 2 initially. However, given that the critical validation (Study 3) would still be pending, a more cautious approach is advisable. One could conduct Studies 1 and 2 as
+ </span>
+ <span class="c3 c10">
+  pilot studies
+ </span>
+ <span class="c3">
+  first. Once the setups are reasonably determined from these pilots, the team should then quickly move to Study 3. Study 3 itself could also be conducted as a pilot study initially to ensure the key hypotheses are not fundamentally flawed. After this crucial early check, one can then revisit and complete the full-scale Studies 1 and 2.
+ </span>
+ <span class="c17">
+  In any case, the overarching goal should be to find ways to ascertain the likely outcome of Study 3 as soon as possible to avoid investing heavily in a potentially flawed premise.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  The Team's Hard-Won Wisdom for Future Researchers:
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Reflecting on their process, the team strongly advocates for a more structured path:
+ </span>
+</p>
+<ul class="c5 lst-kix_6fcscnbu2nh5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Validate First, Then Explore:
+  </span>
+  <span class="c3">
+   Rigorously test your core insights with robust pilot studies
+  </span>
+  <span class="c3 c10">
+   before
+  </span>
+  <span class="c2">
+   committing to extensive, resource-intensive formal studies.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Document Everything:
+  </span>
+  <span class="c2">
+   Keep meticulous records of all observations, procedures, and findings, even during the earliest, most informal explorations.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Prioritize the 'Winning Case':
+  </span>
+  <span class="c2">
+   Conduct your critical validation study — the one that tests your core contribution against alternatives — as early as possible in Stage 2. This is your primary go/no-go checkpoint.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Analyze Pilots Systematically:
+  </span>
+  <span class="c2">
+   Don't just rely on gut feelings from pilot data. Apply systematic analysis methods to extract meaningful signals.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Mechanism Studies Follow Success:
+  </span>
+  <span class="c2">
+   Only once you have clear, compelling evidence that your core effect is real and significant should you dive deep into understanding the underlying mechanisms.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  The Power of Staging, Even with Detours
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Despite the less-than-optimal sequencing, the project still demonstrates the underlying power of a staged thought process:
+ </span>
+</p>
+<ul class="c5 lst-kix_6fcscnbu2nh5-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Stage 1 (Insight Validation):
+  </span>
+  <span class="c2">
+   Their initial pilot work successfully confirmed that the core idea — spacing's effect on dual-task performance — was worth pursuing.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Stage 2 (Systematic Investigation):
+  </span>
+  <span class="c2">
+   Their formal studies, though not ideally ordered, systematically built the theoretical framework and empirical evidence needed to support their claims.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c3">
+  This case study, with its valuable 'what we learned' moments, powerfully illustrates how adhering more closely to a staged approach — validating core insights
+ </span>
+ <span class="c3 c10">
+  before
+ </span>
+ <span class="c2">
+  deep mechanism dives, and tackling critical 'Winning Case' studies early — can lead to more efficient, less risky, and ultimately more impactful research outcomes. Their journey provides a rich template, and a few cautionary notes, for anyone embarking on similar HCI research projects.
+ </span>
+</p>
+<h3 class="c35" id="h.ih16097igdis">
+ <span class="c28 c3">
+  References
+ </span>
+</h3>
+<p>
+ Hinckley, K., Guimbretiere, F., Baudisch, P., Sarin, R., Agrawala, M., &amp; Cutrell, E. (2006, April). The springboard: multiple modes in one spring-loaded control. In Proceedings of the SIGCHI conference on Human Factors in computing systems (pp. 181-190).
+</p>
+<p>
+ Zhou, C., Fennedy, K., Tan, F. F. Y., Zhao, S., &amp; Shao, Y. (2023, April). Not All Spacings are Created Equal: The Effect of Text Spacings in On-the-go Reading Using Optical See-Through Head-Mounted Displays. In Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (pp. 1-19).
+</p>
+
+
+</div>
+<div class="book-breadcrumb book-breadcrumb--bottom">
+  <a href="chapter-02.html" class="book-breadcrumb__link">&larr; Chapter 2</a>
+  <a href="/book/" class="book-breadcrumb__home">Back to Book</a>
+  <a href="chapter-04.html" class="book-breadcrumb__link">Chapter 4 &rarr;</a>
+</div>
+</body>
+</html>

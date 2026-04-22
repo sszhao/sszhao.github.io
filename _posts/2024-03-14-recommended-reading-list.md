@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: blog-post
 title: "Recommended Reading List for First-year HCI Ph.D. students"
 image: "/assets/blog/Recommended-Reading-List-for-First-year-HCI-PhD-students-2048x1365.jpeg"
 description: Before you start, we want to make sure you have enough background information to proceed. We have prepared the following “must-reads” for you to get started. Photo by cottonbro studio from Pexels.

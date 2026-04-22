@@ -1,0 +1,378 @@
+---
+layout: new-default
+---
+
+<!-- Blog Post Page -->
+<section class="blog-post">
+  <div class="container">
+    <div class="blog-post__content">
+
+      <!-- Back Link -->
+      <a href="/blogs/" class="blog-post__back">
+        <svg width="10.667" height="10.667" viewBox="0 0 10.667 10.667" fill="none">
+          <path d="M8.667 5.333H2.227L5.113 2.447a.94.94 0 1 0-1.33-1.33l-4 4a.94.94 0 0 0 0 1.33l4 4a.94.94 0 1 0 1.33-1.33L2.227 6.667H8.667a.94.94 0 1 0 0-1.877" fill="#7929d8"/>
+        </svg>
+        Back to Blog
+      </a>
+
+      <!-- Header Section -->
+      <div class="blog-post__header">
+        {% if page.category %}
+        <span class="blog-post__category">{{ page.category | upcase }}</span>
+        <span class="blog-post__divider"></span>
+        {% endif %}
+        <time class="blog-post__date">{{ page.date | date: "%b %d, %Y" }}</time>
+      </div>
+
+      <!-- Title -->
+      <h1 class="blog-post__title">
+        {{ page.title }}
+      </h1>
+
+      <!-- Author Info -->
+      <div class="blog-post__author">
+        {% if page.author %}
+        <img src="{{ page.image }}" alt="{{ page.author }}" class="blog-post__author-avatar">
+        <div class="blog-post__author-info">
+          <span class="blog-post__author-name">{{ page.author }}</span>
+          <span class="blog-post__author-role">Director of Synteraction Lab</span>
+        </div>
+        {% else %}
+        <img src="/assets/img/Shen-CityU.jpg" alt="Shengdong Zhao" class="blog-post__author-avatar">
+        <div class="blog-post__author-info">
+          <span class="blog-post__author-name">Shengdong Zhao</span>
+          <span class="blog-post__author-role">Professor, City University of Hong Kong</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Hero Image -->
+      {% if page.image %}
+      <div class="blog-post__hero">
+        <img src="{{ page.image }}" alt="{{ page.title }}" class="blog-post__hero-img">
+        {% if page.description and page.description != "" %}
+        <p class="blog-post__hero-caption">{{ page.title }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Content Body -->
+      <div class="blog-post__body">
+        {{ content }}
+      </div>
+
+      <!-- Footer -->
+      <div class="blog-post__footer">
+        <div class="blog-post__signature">
+          <p class="blog-post__signature-text">Best,</p>
+          <p class="blog-post__signature-name">Shengdong Zhao</p>
+        </div>
+
+        {% if page.keywords %}
+        <div class="blog-post__tags">
+          {% for tag in page.keywords %}
+          <span class="blog-post__tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.blog-post {
+  padding-top: 128px;
+  padding-bottom: 96px;
+  background: var(--color-bg-lighter);
+  min-height: 100vh;
+}
+
+.blog-post__content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Back Link */
+.blog-post__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  width: fit-content;
+}
+
+.blog-post__back:hover {
+  opacity: 0.8;
+}
+
+/* Header */
+.blog-post__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.blog-post__category {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: #735c00;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.blog-post__divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(206, 194, 215, 0.3);
+}
+
+.blog-post__date {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
+/* Title */
+.blog-post__title {
+  font-family: var(--font-heading);
+  font-size: 60px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -1.5px;
+  line-height: 60px;
+  margin: 0;
+}
+
+.blog-post__title--gradient {
+  background: linear-gradient(to right, #7929d8, #934af3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Author */
+.blog-post__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.blog-post__author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #e9e8e5;
+}
+
+.blog-post__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.blog-post__author-name {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.blog-post__author-role {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
+/* Hero Image */
+.blog-post__hero {
+  border: 1px solid rgba(206, 194, 215, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.blog-post__hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blog-post__hero-caption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 16px;
+  margin: 0;
+  background: var(--color-bg-light);
+}
+
+/* Body Content */
+.blog-post__body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 15px;
+}
+
+.blog-post__body h2 {
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 36px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.blog-post__body h3 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.blog-post__body p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: 28px;
+  margin: 0;
+}
+
+.blog-post__body ul,
+.blog-post__body ol {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: 28px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.blog-post__body li {
+  margin-bottom: 8px;
+}
+
+.blog-post__body strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.blog-post__body em {
+  font-style: italic;
+}
+
+.blog-post__body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.blog-post__body blockquote {
+  background: var(--color-bg-light);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  padding: 32px;
+  margin: 0;
+}
+
+.blog-post__body blockquote p {
+  font-style: italic;
+}
+
+/* Section styling */
+.blog-post__body > p:first-of-type {
+  font-size: 20px;
+  line-height: 32.5px;
+}
+
+/* Footer */
+.blog-post__footer {
+  border-top: 1px solid rgba(206, 194, 215, 0.2);
+  padding-top: 49px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.blog-post__signature {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.blog-post__signature-text {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.blog-post__signature-name {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.blog-post__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.blog-post__tag {
+  background: #e3e2e0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  padding: 6px 16px;
+  border-radius: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .blog-post__title {
+    font-size: 48px;
+    letter-spacing: -1.2px;
+    line-height: 48px;
+  }
+
+  .blog-post__body {
+    gap: 32px;
+  }
+
+  .blog-post__body h2 {
+    font-size: 24px;
+  }
+
+  .blog-post__body p {
+    font-size: 16px;
+  }
+}
+</style>
