@@ -14,7 +14,6 @@ PROD_DIR="$VAULT/Social Media/Blog Posts/production"
 WEBSITE="/Users/zhaoshengdong/Documents/Shen_Website"
 POSTS_DIR="$WEBSITE/_posts"
 IMG_DIR="$WEBSITE/assets/blog"
-BLOG_HTML="$WEBSITE/pages/blog.html"
 
 # Colors
 GREEN='\033[0;32m'
@@ -123,6 +122,7 @@ Rules:
 - Remove the 'Raw material below' section and everything after it
 - Remove any notes about photos (those are internal notes)
 - Rewrite Obsidian wiki image links like ![[photo.jpeg]] as standard markdown: ![Photo](/assets/blog/photo.jpeg)
+- IMPORTANT: The FIRST image is used as the hero image in the layout. Do NOT include the first image in the body — only include the 2nd, 3rd, etc. images in the body text. If there is only one image, include NO images in the body.
 - Use proper markdown formatting
 - Keep the post concise (3-5 paragraphs)
 - Do NOT add a title heading (# Title) — the title comes from front matter
@@ -181,6 +181,5 @@ echo "  Images:   $HERO_IMAGE"
 echo "  URL:      $POST_URL"
 echo ""
 echo "Next steps:"
-echo "  1. Review: cat _posts/$POST_FILENAME"
-echo "  2. Preview: bundle exec jekyll serve"
-echo "  3. Publish: git add -A && git commit -m 'Add blog: $POST_TITLE'"
+echo "  1. Preview: bundle exec jekyll serve"
+echo "  2. Publish: git add _posts/$POST_FILENAME && git commit -m 'Add blog: $POST_TITLE' && git push origin master"
