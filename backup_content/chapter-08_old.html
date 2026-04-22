@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08</title>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #ffffff;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 48px 24px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+<h2 class="c77 c99" id="h.n1fkvmpu6zig">
+</h2>
+<h4 class="c51" id="h.jn70lbw4aqve">
+ <span class="c36 c45 c3">
+  Step 1: Select your research question
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  Choosing a research topic is a crucial decision that deserves dedicated time and effort. It often requires several months of serious reading and investigation to truly understand the literature and research space. For a more comprehensive explanation of this important process, we highly recommend reading "The Craft of Research" by Booth et al. The approach we present below is more practical and hands-on, designed specifically for beginner HCI researchers taking their first steps.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Suggested Reading:
+     </span>
+     <span class="c17">
+      "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://library.uniq.edu.iq/storage/books/file/The%2520Craft%2520of%2520Research/1667121038craft.pdf&amp;sa=D&amp;source=editors&amp;ust=1776402516079470&amp;usg=AOvVaw3WiED-Kivy3-pDIKv3TXNv">
+       The Craft of Research
+      </a>
+     </span>
+     <span class="c4">
+      "
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c3">
+  For more experienced researchers or those with a dedicated research focus, we encourage starting with a grand vision or significant problem that can shape your research direction for years to come. From this bigger vision, you can then identify and select specific subproblems to tackle as initial projects. However, this approach requires significant research maturity and may not be suitable for everyone starting out. The method
+ </span>
+ <span>
+  below provides
+ </span>
+ <span class="c2">
+  a path that helps beginners navigate the process of topic selection, while acknowledging that the rich skill of problem-finding develops with research experience.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Before performing a literature review, you can first
+ </span>
+ <span class="c17">
+  choose your focus
+ </span>
+ <span class="c3">
+  within
+ </span>
+ <span class="c17">
+  2 domains: Technological and Application
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Technological domain
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Application domain
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <ul class="c5 lst-kix_arjduukty10l-0 start">
+     <li class="c16 c15 li-bullet-0">
+      <span class="c3">
+       In HCI, the
+      </span>
+      <span class="c3 c10">
+       type of technology
+      </span>
+      <span class="c3">
+       you want to work with defines the
+      </span>
+      <span class="c3 c10">
+       device/technology affordance, expectations
+      </span>
+      <span class="c3">
+       and
+      </span>
+      <span class="c3 c10">
+       research opportunities
+      </span>
+      <span class="c2">
+       .  Examples of technological domains are “Mobile phone”, “Smart glass”, “Desktop Web application”, “Wearable interactive ring” and “Watch”. Take a look at these studies:
+      </span>
+     </li>
+    </ul>
+    <ul class="c5 lst-kix_arjduukty10l-1 start">
+     <li class="c16 c68 c111 li-bullet-0">
+      <span class="c3 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/abs/10.1145/3313831.3376132&amp;sa=D&amp;source=editors&amp;ust=1776402516081587&amp;usg=AOvVaw0WkLZR4-0YNB_gl3d5T1MB">
+        Smart Watch
+       </a>
+      </span>
+      <span class="c3">
+       (
+      </span>
+      <span class="c3 c25">
+       Wang &amp; Grossman, 2020
+      </span>
+      <span class="c2">
+       )
+      </span>
+     </li>
+     <li class="c16 c111 c68 li-bullet-0">
+      <span class="c3 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/abs/10.1145/3313831.3376138&amp;sa=D&amp;source=editors&amp;ust=1776402516081802&amp;usg=AOvVaw3oU-CeuIxsR-pQILvvbeQL">
+        VR
+       </a>
+      </span>
+      <span class="c3">
+       (
+      </span>
+      <span class="c3 c25">
+       Han et al., 2020
+      </span>
+      <span class="c2">
+       )
+      </span>
+     </li>
+    </ul>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <ul class="c5 lst-kix_b24yg4ngy6b6-0 start">
+     <li class="c16 c15 li-bullet-0">
+      <span class="c3">
+       Your application domain will define your
+      </span>
+      <span class="c3 c10">
+       research purpose
+      </span>
+      <span class="c3">
+       and
+      </span>
+      <span class="c3 c10">
+       success criteria
+      </span>
+      <span class="c2">
+       .  For example, with studies on learning, how much you learn is the criteria by which success is measured. For gaming, your experience (e.g. fun) is the success criteria. It is important to clarify your application domain for a focused investigation. Take a look at these studies:
+      </span>
+     </li>
+    </ul>
+    <ul class="c5 lst-kix_b24yg4ngy6b6-1 start">
+     <li class="c16 c111 c68 li-bullet-0">
+      <span class="c3 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/abs/10.1145/3313831.3376134&amp;sa=D&amp;source=editors&amp;ust=1776402516082591&amp;usg=AOvVaw1U7IkTq_5RZgCC9TiqWkeo">
+        Sketching
+       </a>
+      </span>
+      <span class="c3">
+       (
+      </span>
+      <span class="c3 c25">
+       Kianzad et al., 2020
+      </span>
+      <span class="c2">
+       )
+      </span>
+     </li>
+     <li class="c16 c111 c68 li-bullet-0">
+      <span class="c3 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://dl.acm.org/doi/abs/10.1145/3313831.3376133&amp;sa=D&amp;source=editors&amp;ust=1776402516082847&amp;usg=AOvVaw3s5Noh71IrXtDM4Y6nfE5i">
+        Social Interaction for People with Dementia
+       </a>
+      </span>
+      <span class="c3">
+       (
+      </span>
+      <span class="c3 c25">
+       Dai &amp; Moffatt, 2020
+      </span>
+      <span class="c2">
+       )
+      </span>
+     </li>
+    </ul>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c3">
+  With your technological and application domains defined, e.g. 'smart glasses' and 'text input on smart glasses', you can begin your literature review. We discuss how to conduct a thorough literature review in detail in
+ </span>
+ <span class="c3 c25">
+  Chapter 8
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Narrowing your topic into something investigable
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  When your topic or scope of the problem is too broad
+ </span>
+ <span class="c2">
+  (examples will be given below), and the design space is not constrained, there will be too many factors/variables that can influence the design of a potential solution. Going through them all will be exhaustive and difficult.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  If the scope of the problem is narrow enough
+ </span>
+ <span class="c3">
+  , fewer but important factors of clearer relevance can be identified. You will know better what factors to analyze. How do you know if your topic is narrow enough? It would depend on your problem, but a good gauge would be to
+ </span>
+ <span class="c17">
+  limit your problem into 6 variables or less
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Pay attention to the following
+ </span>
+ <span class="c17">
+  criteria
+ </span>
+ <span class="c2">
+  to help narrow down the problem:
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Context
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      In what contexts will your technology be used?  E.g. If you state ‘Mobility’ as your context, it may be too broad. A better-defined context could be “While commuting, on public transportation”, or “Standing, walking, and sitting”
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17">
+      Interaction
+     </span>
+     <span class="c2">
+      e.g. input/output  modality, visual/audio/haptic
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      Consider the
+     </span>
+     <span class="c3 c10">
+      types of interaction
+     </span>
+     <span class="c3">
+      you want to focus on. Select which input and output channels to investigate. E.g.  Visual output (primary), Auditory output (secondary) Manual and voice input, visual and auditory output. Take a look at
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://shengdongzhao.com/newSite/eyeditor-towards-on-the-go-heads-up-text-editing-using-voice-and-manual-input/&amp;sa=D&amp;source=editors&amp;ust=1776402516085352&amp;usg=AOvVaw1CKpogKWrL-qciVHbNVqNT">
+       Eyeditor
+      </a>
+     </span>
+     <span class="c3 c106">
+      <a class="c8" href="https://www.google.com/url?q=https://shengdongzhao.com/newSite/eyeditor-towards-on-the-go-heads-up-text-editing-using-voice-and-manual-input/&amp;sa=D&amp;source=editors&amp;ust=1776402516085463&amp;usg=AOvVaw0QrD1_cc1zH9Xs5RelVGkF">
+       paper
+      </a>
+     </span>
+     <span class="c3">
+      (
+     </span>
+     <span class="c3 c25">
+      Ghosh et al., 2020
+     </span>
+     <span class="c3">
+      )
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c3">
+  Keep in mind as you find your focus, that the problem should not lose its
+ </span>
+ <span class="c17">
+  originality
+ </span>
+ <span class="c3">
+  (i.e. no one has worked on the same problem before) and
+ </span>
+ <span class="c17">
+  importance
+ </span>
+ <span class="c2">
+  (i.e. people care about solving this problem and it enhances our understanding of the phenomenon at hand).
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  To paint a clearer picture on how this concept of narrowing one’s topic can be applied, we provide
+ </span>
+ <span class="c17">
+  two examples
+ </span>
+ <span class="c3">
+  experienced personally by our PhD students
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="mailto:nuwanjanakan.p.k@gmail.com">
+   Nuwan
+  </a>
+ </span>
+ <span class="c3">
+  and
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="mailto:ashwinram10@gmail.com">
+   Ashwin
+  </a>
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<p class="c11">
+ <span class="c50 c21 c17">
+  Examples
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Nuwan started with the idea of working on AR (technological domain) and learning (application domain).  After a literature review, the topic gradually narrowed down to “Visual attention on microlearning of the second language on the commute with public transport, comparing mobile phones and smart glasses”.
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <ul class="c5 lst-kix_rd8xcj1va2jn-0 start">
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       AR
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       AR learning
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Learning on smart glasses
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Microlearning on smart glasses
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Smart glasses microlearning on the move
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Smart glasses microlearning on commute
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Visual attention on microlearning on commute
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Visual attention on microlearning on the commute with public transport
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c4">
+       Visual attention on microlearning of the second language on the commute with public transport (comparing mobile phone and smart-glasses)
+      </span>
+     </li>
+    </ul>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      Ashwin was initially interested in improving
+     </span>
+     <span class="c17">
+      education
+     </span>
+     <span class="c3">
+      (application domain) using mobile and wearable technology (technological domain).  After several rounds of exploration and topic narrowing, he landed upon
+     </span>
+     <span class="c17">
+      “Presentation effects (visual) in on-the-go (walking situations) for digital blackboard videos learning using smart glasses”
+     </span>
+     <span class="c2">
+      .
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <ul class="c5 lst-kix_fkfscowls6tx-0 start">
+     <li class="c16 c15 li-bullet-0">
+      <span class="c2">
+       **Education**
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c2">
+       Video Learning
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c2">
+       On-the-go video learning using smart glass
+      </span>
+     </li>
+     <li class="c16 c15 li-bullet-0">
+      <span class="c2">
+       On-the-go (walking situations) digital blackboard videos learning using smart glasses
+      </span>
+     </li>
+     <li class="c15 c16 li-bullet-0">
+      <span class="c2">
+       **Presentation effects (visual) in on-the-go (walking situations) for digital blackboard videos learning using smart glasses**
+      </span>
+     </li>
+    </ul>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35 c74" id="h.x0ouvuwbequ7">
+</h3>
+<p class="c11">
+ <span class="c17 c28">
+  Common pitfalls as you narrow down on your topic
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Narrowing down your topic can be a painful process. We highlight the common issues students face:
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Common Issue
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Description
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Possible Solutions
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      1. Paradox of choice
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      There may be many possible topics to choose from. It can be difficult to select a specific area, but it has to be done.
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      One useful approach is to ask your peers and advisors for help and feedback, then pick your topic without excessive delay.
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      2. Project Ambition
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Wanting to solve a problem that covers many smaller problems. E.g. When designing notifications for smart-glasses, the researcher may want to cover both work related and non-work related scenarios, yet that is too broad as it would cover hundreds of different situations. Instead, the researcher could cover only short text notifications (with a maximum number of words) for on-the-go commuting scenarios.
+     </span>
+    </p>
+   </td>
+   <td class="c47" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      It is generally harder to start with something broad and narrow it down. We recommend starting with something
+     </span>
+     <span class="c17">
+      small**
+     </span>
+     <span class="c2">
+      (but grounded in the literature), then expand it later if it is too narrow.
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c17">
+  ** ‘Small’
+ </span>
+ <span class="c3">
+  here refers to a concept that you can
+ </span>
+ <span class="c17">
+  concretely describe and implement.
+ </span>
+ <span class="c3">
+  <br/>
+  Examples of concrete and narrow research topics include the
+ </span>
+ <span class="c3 c10">
+  effects of 3 dimensions of information presentation (which can affect cognitive load and attention),
+ </span>
+ <span class="c3">
+  and
+ </span>
+ <span class="c3 c10">
+  the use of fingers for ink annotations on mobile phones, to help with vocabulary memorization
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  You can always refer back to Chapter 8 on conducting literature reviews as you learn to find the right research question.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Mind-mapping the Literature
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Mind-mapping is a great way to visualize and compile all the information you have collected during your literature review (especially if it feels like a lot of information!).
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We suggest that you do the following:
+ </span>
+</p>
+<ul class="c5 lst-kix_u1ai7nfuijpe-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Map out the literature (
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1d6NuZFFtYaV1EP1KDbrC3qMQiETyQX58/view&amp;sa=D&amp;source=editors&amp;ust=1776402516092951&amp;usg=AOvVaw3QVVpO8ilzj4VGReOF5cN-">
+    example of a mind-map
+   </a>
+  </span>
+  <span class="c2">
+   ).
+  </span>
+ </li>
+</ul>
+<p class="c11 c30">
+ <span class="c3">
+  To create mind maps, we suggest
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.xmind.net&amp;sa=D&amp;source=editors&amp;ust=1776402516093180&amp;usg=AOvVaw1QYbocb2TIX16udXJDwaxj">
+   XMind
+  </a>
+ </span>
+ <span class="c3">
+  if you do not have a preference for another software tool. Here is a quick
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DszBb5f7zeQ0&amp;sa=D&amp;source=editors&amp;ust=1776402516093361&amp;usg=AOvVaw1YWdygpCI6FxEXNatu4MtI">
+   video introduction to XMind
+  </a>
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<ul class="c5 lst-kix_u1ai7nfuijpe-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Collect feedback on it via a presentation (
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1kX8rbq5VEpkR-WdfPbZ7fhSwuC5_4eclF4a81vmcoRE/view%23slide%3Did.p&amp;sa=D&amp;source=editors&amp;ust=1776402516093644&amp;usg=AOvVaw1pkKek7sj_aMvIQFUEzY0l">
+    example of a presentation
+   </a>
+  </span>
+  <span class="c2">
+   ). In your presentation, identify as many potential project ideas as possible (that are narrow enough too). A more thorough/focused literature review is needed for each of the identified potential projects.
+  </span>
+ </li>
+</ul>
+<h4 class="c51" id="h.qpf3w4eqf7sn">
+ <span class="c36 c45 c3">
+  Step 2: Explore, concretize, and validate your research questions
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  With the approval of your lab members/advisor, you now have successfully narrowed down to 3-4 research questions. Let’s take it a step further and look at how research questions can be effectively framed, as well as what research route you can follow:
+ </span>
+</p>
+<ul class="c5 lst-kix_u1ai7nfuijpe-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   For
+  </span>
+  <span class="c17">
+   general research questions
+  </span>
+  <span class="c3">
+   , browse through the following resources:
+   <br/>
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/drive/u/4/folders/1w7aKs_l3DKAXkfj_0AmvHOiHINe2PTe8&amp;sa=D&amp;source=editors&amp;ust=1776402516094613&amp;usg=AOvVaw0LtqmSocNikAuKKh6IiMXj">
+    Research Questions
+   </a>
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   For
+  </span>
+  <span class="c17">
+   HCI-specific research questions
+  </span>
+  <span class="c3">
+   , read
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1Z7oyD3iZQvV8YcPkqZVw3w0GeMI4-rvd/view&amp;sa=D&amp;source=editors&amp;ust=1776402516094996&amp;usg=AOvVaw1MqzPzm2LukhBXq2INT4vU">
+    Chapter 4 of Scott MacKenzie’s book
+   </a>
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c28 c17">
+  Research Routes
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  As discussed in previous chapters on empirical and constructive research, there are multiple approaches you can take to address your research problem. We encourage you to review those chapters to understand the different types of research work and determine which approach best suits your goals.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Your research route — your strategy to address the research problem — should align with your research objectives and desired impact. Key considerations include:
+ </span>
+</p>
+<ol class="c5 lst-kix_5nbxm5lodbwd-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   What type of research contribution do you want to make? (empirical findings, new methods/tools, theoretical frameworks, etc.; if unsure, refer to
+  </span>
+  <span class="c3 c25">
+   Chapter 2
+  </span>
+  <span class="c2">
+   for more details.)
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_5nbxm5lodbwd-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   What research approach will best help you answer your research questions?
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_5nbxm5lodbwd-0" start="3">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   How can you position your work to create the strongest impact in your chosen direction?
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  The answers to these questions will help guide how you concretize your research questions into actionable research plans.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Organize Your Thoughts in Writing
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  A trick to concretizing your research questions, and to see which of the 3-4 questions you currently have is best, is to begin writing the abstract and paper outline (problem, motivation, and potential contribution).
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Of course, you don’t yet have any results. That is ok — in fact, we want you to
+ </span>
+ <span class="c17">
+  speculate possible findings
+ </span>
+ <span class="c2">
+  and use them as a guide for you to plan your research. These imagined results are essentially what you are looking for, and you can shape your study accordingly. Take 1-3 days working on the steps below:
+ </span>
+</p>
+<ol class="c5 lst-kix_kwzduau1wkb5-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   Write an abstract for each research question you want to explore. Refer to
+  </span>
+  <span class="c3 c25">
+   Chapter 9
+  </span>
+  <span class="c3">
+   for detailed guidance on writing effective abstracts. For additional references, you may also consult the
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://libguides.usc.edu/writingguide/abstract&amp;sa=D&amp;source=editors&amp;ust=1776402516097757&amp;usg=AOvVaw3njt7HBgq6aFsYCKmLM4PG">
+    USC guide on writing abstracts
+   </a>
+  </span>
+  <span class="c2">
+   .
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_kwzduau1wkb5-1 start" start="1">
+ <li class="c7 li-bullet-0">
+  <span class="c2">
+   With your abstract, make a judgment on whether the research questions are still viable or interesting. Abandon those that aren't.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_kwzduau1wkb5-1" start="2">
+ <li class="c7 li-bullet-0">
+  <span class="c3">
+   Write a paper outline for those research questions with abstracts that show potential. The paper outline can then serve as your research agenda.
+  </span>
+  <span class="c3 c25">
+   Chapter 9
+  </span>
+  <span class="c3">
+   provides comprehensive guidance on creating paper outlines. For additional reference, you may also refer to Jacob O. Wobbrock's article on writing research papers — we have adapted his recommendations into this
+  </span>
+  <span class="c3 c25">
+   <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1uLKswLykAVUfUTNaz7D2bdywuJjP5fKj/view&amp;sa=D&amp;source=editors&amp;ust=1776402516098597&amp;usg=AOvVaw3dTlcP10zSWsSr_zXdjZJQ">
+    Paper Outline Template
+   </a>
+  </span>
+  <span class="c2">
+   for your use.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c28 c17">
+  Using Your Outline to Plan Next Steps
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Once you have a promising outline, use it to strategically plan your next steps. The key principle is to focus first on your biggest unknown or the most critical factor that will determine the success of your project/paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The critical factor varies depending on your project/paper type:
+ </span>
+</p>
+<ul class="c5 lst-kix_509w45cgjcnr-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   For
+  </span>
+  <span class="c3 c10">
+   empirical papers
+  </span>
+  <span class="c2">
+   , the most critical factor is whether you can obtain "interesting" findings - results that are both statistically significant and provide unobvious, useful insights for the HCI community. While surprising results can be valuable, the key is that findings offer meaningful implications for design or theory. Your first priority should be running studies to verify you can obtain such findings.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   For
+  </span>
+  <span class="c3 c10">
+   "be the best" artifact papers
+  </span>
+  <span class="c2">
+   , the critical factor is demonstrating that your new technique/system outperforms the state-of-the-art on important metrics. Focus initially on pilot studies comparing your approach against existing solutions to validate this advantage.
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c3">
+   For
+  </span>
+  <span class="c3 c10">
+   "be the first" papers
+  </span>
+  <span class="c2">
+   exploring new interaction techniques or systems, the critical factor may be establishing that your novel approach is viable and valuable to users. Prioritize user studies that can validate the core value proposition.
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  By identifying and tackling the most critical unknown first, you:
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0 start">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Avoid wasting time on secondary aspects if the core premise isn't viable
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Get early validation (or pivot signals) for your key research contribution
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Can adjust your approach based on initial findings before investing heavily in implementation
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Only after addressing the critical factor should you move on to other aspects like polishing the implementation, running additional studies, or exploring edge cases.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Set SMART Goals for Your Research Plan
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Once you know what to focus on, you need to excute it, yet executing research goals can be challenging due to their inherently vague and open-ended nature. For instance, a task like "conduct literature review" provides little concrete direction. This is where SMART goals become particularly valuable in research planning — they help transform abstract research objectives into concrete, actionable tasks.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  When planning your research steps, frame them as SMART goals — Specific, Measurable, Achievable, Results-focused, and Time-bound:
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Specific:
+ </span>
+ <span class="c2">
+  Define exactly what needs to be done
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Instead of "Do literature review", specify "Search ACM Digital Library using keywords X,Y,Z to identify 50 relevant papers by Week 1"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Detail the what, why, and how of each research activity
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Measurable:
+ </span>
+ <span class="c2">
+  Include concrete metrics and deliverables
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Complete prototype achieving &lt;90% accuracy in target selection"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Collect data from 20 participants showing at least 20% improvement over baseline"
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Achievable:
+ </span>
+ <span class="c2">
+  Set realistic goals given your resources and constraints
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Consider your timeline, equipment access, and participant recruitment capabilities
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Break down ambitious goals into smaller milestones
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Results-focused:
+ </span>
+ <span class="c2">
+  Focus on outcomes rather than activities
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Instead of "Spend time coding", target "Implement core functionality X that enables Y capability"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Emphasize research contributions and findings rather than just tasks
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c17">
+  Time-bound:
+ </span>
+ <span class="c2">
+  Set clear deadlines
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Complete initial prototype by end of month 1"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Finish data collection by week 6"
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  For example, vague goals like "run some user studies" can become:
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Recruit 5 participants and conduct 30-minute pilot sessions testing core functionality by next Friday"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Analyze pilot data to identify at least 3 key usability issues within 2 days"
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   "Revise prototype based on pilot findings within 1 week"
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Using SMART goals helps you:
+ </span>
+</p>
+<ul class="c5 lst-kix_dtt9zxiaq2pn-0">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Track progress more effectively
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Identify and address bottlenecks early
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Maintain momentum through clear milestones
+  </span>
+ </li>
+ <li class="c11 c15 li-bullet-0">
+  <span class="c2">
+   Communicate plans and progress clearly with advisors
+  </span>
+ </li>
+</ul>
+<p class="c11">
+ <span class="c2">
+  Remember to regularly review and adjust your SMART goals based on emerging insights while maintaining clear direction.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Validate Ideas through Pilots
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  About pilots:
+ </span>
+ <span class="c2">
+  We conduct pilot studies to verify that our research questions provide interesting and important preliminary answers. The process is iterative, and we try to design quick and dirty pilots (elaborated below) such that it takes no more than 1-3 days for each study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Why conduct pilots:
+ </span>
+</p>
+<ol class="c5 lst-kix_9vi9ufbpzjbo-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Check for interesting and publication-worthy results/insights -
+  </span>
+  <span class="c2">
+   You have by this point identified promising projects and written outlines for them. However, no matter how promising a storyline looks from your written outline, there is a chance it provides no interesting or insufficient findings to report in a paper. Pilots are a great way to check for the presence as well as type of potentially publication-worthy results.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_9vi9ufbpzjbo-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Avoid wasting your time and effort -
+  </span>
+  <span class="c2">
+   We recommend early, quick and dirty pilot studies. Even the most seemingly 'promising' ideas fail when tested. We want to avoid a situation where you work painstakingly on a project for a long time, only to find that your formal experiment yields uninteresting results when you get to conducting it. This situation is avoidable if you conduct early pilot studies and get initial results ASAP.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c20">
+  '
+ </span>
+ <span class="c17">
+  Quick and dirty
+ </span>
+ <span class="c20">
+  '
+ </span>
+ <span class="c17">
+  method:
+ </span>
+ <span class="c2">
+  For each pilot study, focus on the main result you want to report in your paper, and get creative with devising a quick and dirty pilot to collect these results. For example, if your study explores a newly designed technique (e.g. a new menu system) that you believe can outperform the state-of-the-art (e.g. marking menu), you do not have to write out all the code to your new technique in order to pilot test it. A quick and dirty example would be to simulate technique usage with finger/pen, and use a timer to check for its performance. While this method may not be able to find subtle differences between your idea and the baseline, that's actually a good thing, as if the effect is subtle, you probably don’t want to waste time investigating it.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Depending on your research question, the
+ </span>
+ <span class="c3 c25 c10">
+  <a class="c8" href="https://www.google.com/url?q=https://en.wikipedia.org/wiki/Wizard_of_Oz_experiment&amp;sa=D&amp;source=editors&amp;ust=1776402516109651&amp;usg=AOvVaw1xk7_sUZd95TnIp1w0vXY1">
+   Wizard of Oz
+  </a>
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://en.wikipedia.org/wiki/Wizard_of_Oz_experiment&amp;sa=D&amp;source=editors&amp;ust=1776402516109806&amp;usg=AOvVaw3NXarXyfjnY4XNIc4U9CDX">
+   method
+  </a>
+ </span>
+ <span class="c2">
+  may be applicable. It is a process that allows a user to interact with an interface without knowing that the system responses are being generated by a human behind-the-scenes rather than the computer.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Tip: 'Quick and dirty' designs require creativity. Cool ideas may develop as a result of brainstorming with your lab members.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Contribution and feasibility check
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is important that the results of the pilot study support your story, and we do so by verifying the study's feasibility and contribution. This check can be approached differently for 'Be the best' papers and 'Be the first' papers.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      'Empirical' Description
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Examples
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      For empirical studies, pilots help verify if your research questions can yield interesting and publishable results. Run quick tests with 2-3 participants to check if your hypothesized effects exist and are meaningful enough to warrant a full study. If pilot results show promising trends that align with your research goals, proceed with the formal experiment. If not, consider revising your research questions or approach. The goal is to avoid investing significant time in studies that may not yield publication-worthy findings.
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      For example, consider a study investigating whether AudioXtend improves learning. AudioXtend is a system that augments audiobook experiences with AI-generated glanceable visuals displayed through optical see-through head-mounted displays, designed to enhance information retention during multitasking scenarios (
+     </span>
+     <span class="c3 c25">
+      Tan et al., 2024
+     </span>
+     <span class="c2">
+      ). A pilot might involve having 2-3 participants learn concepts through both pure audio and audio + visual conditions. If pilot data shows that participants remember significantly more information in the AudioXtend condition and it does not affect the performance of the primary task, this suggests the research direction is promising. However, if there's no noticeable difference in learning outcomes, you may need to revise your approach or explore different research questions.
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      'Be the best' Description
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Examples
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      Your pilot study should be able to indicate that your new technique can outperform the state-of-the-art technique in certain scenarios.  A convincing technique usually leads to pilot results that can show advantages over the state-of-the-art even with just 3-4 people.  If no convincing results are observed after pilot testing with 3-4 people, this could be a risky study to proceed with. We recommend that you either move to a different research question, or  pivot by changing the scenario or technique  (example listed on the right). The bottom line is that pilots for 'be the best' papers need to convince you of a winning case, otherwise, the study may lead to a null result and be difficult to publish.  In certain cases however, a failed "be the best" technique can reveal important insight about interaction design. For example, in Ken Hinckley's
+     </span>
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=http://vis.berkeley.edu/papers/springboard/&amp;sa=D&amp;source=editors&amp;ust=1776402516116676&amp;usg=AOvVaw0haBICmBx0skMd9hs2qF3U">
+       Springboard paper
+      </a>
+     </span>
+     <span class="c2">
+      , his initial idea was that the local marking menu would be better than a fixed widget placed at the corner of the screen. When the experiment results showed otherwise, he turned his study into an analysis paper which informed readers on the underlying causes of that.
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      In the context of mobile eyes-free interaction, if you believe that your
+     </span>
+     <span class="c3 c10">
+      new menu system can outperform the marking menu
+     </span>
+     <span class="c3">
+      , your pilot results should indicate a convincing win in speed and accuracy, i.e. either comparable in speed, but much more accurate, or comparable in accuracy but much faster in speed, or better in both speed and accuracy.
+     </span>
+     <span class="c17">
+      Pivoting by changing scenario:
+     </span>
+     <span class="c3">
+      If you explored your system but found that it did not significantly outperform the marking menu under the eyes-free mobile scenario, you could explore the same technique under a single handed usage scenario. If pilot results are favourable in the latter, you could craft a new story based on the winning case. You could also
+     </span>
+     <span class="c17">
+      pivot by changing the technique
+     </span>
+     <span class="c2">
+      .
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      'Be the first' Description
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Examples
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3">
+      A 'be the first' paper does not necessarily have to outperform the state-of-the-art existing technique (great if it does!), but to know its feasibility, check that the pilot demonstrates some of these characteristics, especially the first:
+     </span>
+     <span class="c17">
+      The new technique/topic needs to be useful and desirable in certain usage scenarios, i.e. people like and want it.
+     </span>
+     <span class="c2">
+      To check for this, implement a quick and dirty pilot on a few people - If the reaction it elicits includes "this is cool", "this is useful", or "I like it", then you are onto something interesting. If not, you may need to switch your direction.  You explore the design space for potential solutions within the problem domain. Since it is a new technique for a novel problem domain you are proposing, reviewers want to know that your solution is well-thought out rather than arbitrary. You can do this by identifying the parameters considered as you were seeking the solution, and conducting a comparative study to demonstrate which configuration of the parameters reveal the best possible results.   Once that is established, it is often useful to compare your approach with existing approaches. Compared to 'be the best' papers, the requirement for having a convincing winning case is more relaxed with 'be the first' papers, because usage scenarios can vary with the latter. Justify that in some cases it is more desirable to use your technique, and you will have a reasonable story.
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c3 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://events.comp.nus.edu.sg/view/17897&amp;sa=D&amp;source=editors&amp;ust=1776402516120557&amp;usg=AOvVaw0kzC9L6U4YgTK7PiYjcT6v">
+       Ashwin's LSVP paper
+      </a>
+     </span>
+     <span class="c3">
+      (
+     </span>
+     <span class="c3 c25">
+      Ram &amp; Zhao, 2021
+     </span>
+     <span class="c3">
+      )
+     </span>
+     <span class="c2">
+      is a 'be the first' paper introducing smart-glasses as a platform for watching videos. He first had to establish that watching videos on-the-go (using smart-glasses) is not only possible but useful in certain cases.  Ashwin's LSVP paper compares LSVP with the mobile phone, and demonstrates that LSVP achieves better results in both learning and navigation cases. This is a convincing winning case.
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35 c74" id="h.z2cy66i0bon8">
+</h3>
+<p class="c11">
+ <span class="c28 c17">
+  Statistical significance estimation in pilots
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While pilot studies typically have too few participants for statistical significance, there's a useful estimation technique to predict if your full study might yield significant results. This technique, called the data duplication method, involves taking your pilot data (e.g., from 3 participants), duplicating it several times (e.g., 4x to simulate 12 participants), running statistical tests on the duplicated dataset, and checking if this shows significance. If significance emerges from this analysis, it suggests you may achieve significance with a larger sample in your full study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Consider an example where 3 participants complete tasks with two different interaction techniques. The original data might show a clear trend but with p &gt; 0.05. However, when duplicating this data 4x to simulate 12 participants, if the analysis shows p &lt; 0.05, this suggests promising potential for the full study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  There are important caveats to consider with this approach. The method assumes future participants will show similar variance patterns, and small pilot samples may not be representative of the broader population. It's crucial to triangulate these statistical estimations with qualitative evidence. Consider whether all participants notice and articulate the difference, if their explanations are logically sound, and whether the effect aligns with theoretical expectations.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  The strongest evidence that your pilot results are meaningful and worth pursuing in a full study comes from the combination of promising estimated statistical trends, consistent qualitative feedback, and sound theoretical reasoning. When these three elements align, they provide a solid foundation for proceeding with a full-scale study.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Write Up the Result and Discussion Section based on Pilots
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Writing up pilot results and discussion sections is a crucial step that serves multiple important purposes. First, it helps organize your thoughts and findings in a structured way, making it easier to identify potential logical gaps or weaknesses in your argument. Second, it allows you to share concrete writing with peers and advisors who can evaluate whether your results are truly promising and your story compelling. Finally, it helps identify what additional data or explanations you'll need to collect in your formal study.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Section
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c4">
+      Key Elements
+     </span>
+    </p>
+   </td>
+   <tbody>
+   </tbody>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Results
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Present pilot findings organized by research question. Document clear trends and patterns, even without complete statistical analysis. Include both quantitative metrics (e.g., task completion times, error rates) and qualitative observations from participants. Highlight any unexpected or particularly interesting findings.
+     </span>
+    </p>
+   </td>
+  </tr>
+  <tr class="c18">
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Discussion
+     </span>
+    </p>
+   </td>
+   <td class="c6" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c2">
+      Analyze how results support or challenge your hypotheses. Use participant quotes and feedback to build your argument. Connect findings to existing literature to demonstrate relevance. Identify any gaps in your evidence or explanation that need addressing in the formal study.
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c2">
+  Aim to write up results and discussion for each promising pilot within 1-2 days while observations are fresh. Share these write-ups with your research team to get early feedback and ensure you're building toward a compelling research contribution. This iterative process helps refine your approach before investing in a full study.
+ </span>
+</p>
+<h4 class="c51" id="h.ha6eyh4srova">
+ <span class="c36 c45 c3">
+  Step 3: Prototyping and Formal Studies
+ </span>
+</h4>
+<p class="c11">
+ <span class="c2">
+  If you’ve received good feedback from the previous steps, and feel confident that you have a viable project at hand, congratulations! You know now that you have good material to work with, though it is the next steps of your formal study that will determine whether you complete a successful cycle, and publish. Despite having a good problem with promising results to work with, students often fail due to weak methodology and poor writing.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  In this section we revisit guidelines on how to design controlled experiments in HCI. We also highlight strategies to avoid the common pitfalls of this process, such as by following 'good' paper templates and using theories and analysis to support your results. Finally, we provide you with a comprehensive guide to writing your entire paper. We encourage you to write out parts of your paper even before you implement your formal experiment (to ensure that you do not miss out on important considerations). Let’s begin.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Designing controlled experiments in HCI
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  Once your pilot results show promise and you've drafted initial write-ups that receive positive feedback from your team, you can begin designing your formal study. This critical phase requires careful thought and methodological rigor to ensure valid, publishable results. For beginners, we recommend referring to
+ </span>
+ <span class="c3 c25">
+  Chapter 4
+ </span>
+ <span class="c3">
+  's structured 5-Step Approach to Experiment Design, which provides a systematic framework for conducting controlled HCI experiments. Additionally,
+ </span>
+ <span class="c3 c25">
+  Chapter 9
+ </span>
+ <span class="c2">
+  offers detailed guidance on writing up experiment designs — we suggest drafting your experimental protocol following these guidelines and sharing it with your research team for feedback before proceeding. Remember to be thorough and methodical in your planning, as a well-designed experiment forms the foundation for generating meaningful research contributions. Take time to consult with your advisor and lab members throughout this process to refine your approach and catch potential issues early.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Find and Follow 'Good' Templates
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  It is crucial that you find 'good' template papers in the next 1-3 days to benchmark your design methodology and writing against.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  We encourage you to look for 1-3 well-established papers that you admire and that fit your research question and type. Use these papers as templates to structure your paper and design your methodology by.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  There are two benefits to finding and following 'good' templates:
+ </span>
+</p>
+<ol class="c5 lst-kix_dl7zpec2kfhi-0 start" start="1">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Design a bulletproof method/procedure -
+  </span>
+  <span class="c2">
+   Reviewers often question the validity of study results, and this is where the paper you submit may fall short. Following exemplary papers will ensure you have a more bulletproof method/procedure.
+  </span>
+ </li>
+</ol>
+<ol class="c5 lst-kix_dl7zpec2kfhi-0" start="2">
+ <li class="c11 c15 li-bullet-0">
+  <span class="c17">
+   Simplify your process and save time -
+  </span>
+  <span class="c2">
+   This is a tried and tested way of simplifying your own design process.
+  </span>
+ </li>
+</ol>
+<p class="c11">
+ <span class="c2">
+  Here, we’ve compiled and categorized papers that could serve as a template for you:
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Suggested Reading:
+     </span>
+     <span class="c17">
+      "
+     </span>
+     <span class="c17 c25">
+      <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/drive/folders/1MLk5VndLLn862XJUjNIRwSpgaMdXz4Kc?usp%3Dsharing&amp;sa=D&amp;source=editors&amp;ust=1776402516129503&amp;usg=AOvVaw28GdTqVoZ63szqZHhgF4Wt">
+       Great Paper Collection/Templates
+      </a>
+     </span>
+     <span class="c4">
+      "
+     </span>
+    </p>
+   </td>
+  </tr>
+ </thead>
+</table>
+<p class="c11">
+ <span class="c28 c17">
+  Explain ‘Why’ with Theories/Analysis
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Research is fundamentally the contribution of new knowledge. Support and explain your results with theories and analyses. Explain why something worked or did not in your experiment. Explaining how and why your method may be better/worse than something else that exists or the state-of-the-art.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For example, Keystroke-level Analysis provides one effective way of explaining an interaction technique (
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://www.youtube.com/watch?v%3DOcz1hV34flk&amp;sa=D&amp;source=editors&amp;ust=1776402516130227&amp;usg=AOvVaw3lbG98ZoyqksKcKEIG3QaG">
+   video overview
+  </a>
+ </span>
+ <span class="c3">
+  ). You can find this applied in the
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1lMs7NN2eEu9Kpr7tyrXQcuwmSe8AZshU/view&amp;sa=D&amp;source=editors&amp;ust=1776402516130380&amp;usg=AOvVaw2fU2gv55tUq0HIM2N_MwUU">
+   Springboard KLM analysis paper
+  </a>
+ </span>
+ <span class="c2">
+  (page 7 onwards) submitted to CHI.
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For more information on supporting theories and analysis, we recommend
+ </span>
+ <span class="c3 c25">
+  <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1Z7oyD3iZQvV8YcPkqZVw3w0GeMI4-rvd/view&amp;sa=D&amp;source=editors&amp;ust=1776402516130670&amp;usg=AOvVaw21kGVMv3JDdOaxoQRi8BPo">
+   Chapter 7 of Scott MacKenzie’s book
+  </a>
+ </span>
+ <span class="c2">
+  .
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Guide to writing
+ </span>
+</p>
+<p class="c11">
+ <span class="c3">
+  For detailed guidance on writing your paper, please refer to
+ </span>
+ <span class="c3 c25">
+  Chapter 9
+ </span>
+ <span class="c2">
+  which provides comprehensive instructions on structuring and writing each section of your research paper.
+ </span>
+</p>
+<p class="c11">
+ <span class="c28 c17">
+  Summary: Your First Project Journey
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  Your first HCI research project represents a critical milestone in your academic journey. While it is often the most challenging undertaking as you navigate unfamiliar territory, successfully completing your first project can be transformative for your research career. Many students discover that after overcoming this initial hurdle, subsequent projects become more manageable as they build confidence and develop their research instincts.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  This guide provides a structured approach to help you through the key stages — from selecting your research questions to conducting formal studies. However, it's important to recognize that research is inherently complex, with daily decisions and obstacles that require careful navigation. We strongly recommend pursuing your first project under the guidance of an experienced mentor who can provide contextual advice, help you avoid common pitfalls, and support you through the inevitable challenges that arise.
+ </span>
+</p>
+<p class="c11">
+ <span class="c2">
+  While the path may seem daunting at times, remember that persistence through this process is invaluable. Your first project teaches crucial skills in problem identification, experimental design, academic writing, and research methodology that will serve as the foundation for your future work. The hands-on experience gained cannot be replicated through coursework alone. By following this guide while leveraging mentor support, you'll be well-equipped to tackle this important milestone and emerge as a more capable researcher ready to make meaningful contributions to the field.
+ </span>
+</p>
+
+</body>
+</html>

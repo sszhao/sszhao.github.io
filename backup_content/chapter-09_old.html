@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 09</title>
+  <style>
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-text: #1a1c1a;
+  --color-text-secondary: #4b4454;
+  --color-accent: #7929d8;
+  --color-gold: #735c00;
+  --color-bg: #ffffff;
+  --color-surface: #f4f3f1;
+  --color-border: rgba(206, 194, 215, 0.3);
+  --font-body: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: 48px 24px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.5px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 16px;
+}
+
+/* Bold / strong */
+strong, b {
+  font-weight: 700;
+}
+
+/* Emphasis / italic */
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 12px;
+  line-height: 28px;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote-style boxes (suggested reading, info boxes) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+td {
+  padding: 24px;
+}
+
+td p {
+  margin-bottom: 8px;
+}
+
+td p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto 8px;
+  border-radius: 8px;
+}
+
+/* Figure captions */
+.caption, figcaption,
+p:has(img) + p,
+.c103 {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(75, 68, 84, 0.6);
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+/* References section */
+.references p,
+#references ~ p,
+h3:has(span:contains("References")) ~ p,
+h3#references ~ p {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 32px 0;
+}
+
+/* Empty paragraph cleanup helper */
+.empty {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+<h2 class="c77 c99" id="h.l4pvfoe0dqvz">
+</h2>
+<p class="c11">
+ <span class="c28 c17">
+  Additional resources
+ </span>
+</p>
+<p class="c11">
+ <span class="c17">
+  Congratulations!
+ </span>
+ <span class="c2">
+  You have reached the end of the step-by-step guide and we hope it has equipped you with the necessary knowledge and confidence for beginning your first HCI project.
+ </span>
+</p>
+<table class="c40">
+ <thead>
+  <tr class="c18">
+   <td class="c70" colspan="1" rowspan="1">
+    <p class="c11">
+     <span class="c17 c10">
+      Additional Resources:
+     </span>
+    </p>
+    <ul class="c5 lst-kix_vmiiatj1ise1-0 start">
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1d6NuZFFtYaV1EP1KDbrC3qMQiETyQX58/view&amp;sa=D&amp;source=editors&amp;ust=1776402516133200&amp;usg=AOvVaw1lZh_H2ne-8bOljxQDE0_b">
+        Example of a mind-map
+       </a>
+      </span>
+     </li>
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://docs.google.com/presentation/d/1kX8rbq5VEpkR-WdfPbZ7fhSwuC5_4eclF4a81vmcoRE/view%23slide%3Did.p&amp;sa=D&amp;source=editors&amp;ust=1776402516133418&amp;usg=AOvVaw0es_q3SWC17Do6E9qWU-9R">
+        Example of a project idea presentation
+       </a>
+      </span>
+     </li>
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=http://s.m.a.r.t.&amp;sa=D&amp;source=editors&amp;ust=1776402516133596&amp;usg=AOvVaw1HwBUjKZgamPRYc5iiq3WM">
+        S.M.A.R.T. planning
+       </a>
+      </span>
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/10Yaw0QQJCboiNkg6K3O0kue8RXCTzSZt/view?usp%3Dsharing&amp;sa=D&amp;source=editors&amp;ust=1776402516133702&amp;usg=AOvVaw2BwGDRDewQ8Q8uNYGJWm2k">
+        template
+       </a>
+      </span>
+     </li>
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/0BwPqkSJHEAHPcVFad083TmFGc2c/view&amp;sa=D&amp;source=editors&amp;ust=1776402516133873&amp;usg=AOvVaw1sucWeKkgX8oNqkhnE1cs4">
+        Paper Outline Examples
+       </a>
+      </span>
+     </li>
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/file/d/1uLKswLykAVUfUTNaz7D2bdywuJjP5fKj/view&amp;sa=D&amp;source=editors&amp;ust=1776402516134049&amp;usg=AOvVaw3RkkL2hlAjkZRCX5i1-Gmj">
+        Paper Outline Template
+       </a>
+      </span>
+     </li>
+     <li class="c11 c15 li-bullet-0">
+      <span class="c17 c25">
+       <a class="c8" href="https://www.google.com/url?q=https://drive.google.com/drive/folders/1MLk5VndLLn862XJUjNIRwSpgaMdXz4Kc?usp%3Dsharing&amp;sa=D&amp;source=editors&amp;ust=1776402516134232&amp;usg=AOvVaw3QHw4GxeZlHKcgzFsj180t">
+        Great Paper Collection/Templates
+       </a>
+      </span>
+     </li>
+    </ul>
+   </td>
+  </tr>
+ </thead>
+</table>
+<h3 class="c35" id="h.min3im5yjlpw">
+ <span class="c3">
+  References
+ </span>
+</h3>
+<p>
+ Wang, B., &amp; Grossman, T. (2020, April). BlyncSync: Enabling multimodal smartwatch gestures with synchronous touch and blink. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp. 1-14).
+</p>
+<p>
+ Han, T., Wang, S., Wang, S., Fan, X., Liu, J., Tian, F., &amp; Fan, M. (2020, April). Mouillé: Exploring wetness illusion on fingertips to enhance immersive experience in vr. In Proceedings of the 2020 CHI conference on human factors in computing systems (pp. 1-10).
+</p>
+<p>
+ Kianzad, S., Huang, Y., Xiao, R., &amp; MacLean, K. E. (2020, April). Phasking on paper: Accessing a continuum of physically assisted sketching. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp. 1-12).
+</p>
+<p>
+ Dai, J., &amp; Moffatt, K. (2020, April). Making space for social sharing: Insights from a community-based social group for people with dementia. In Proceedings of the 2020 CHI conference on human factors in computing systems (pp. 1-13).
+</p>
+<p>
+ Ghosh, D., Foong, P. S., Zhao, S., Liu, C., Janaka, N., &amp; Erusu, V. (2020, April). Eyeditor: Towards on-the-go heads-up text editing using voice and manual input. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp. 1-13).
+</p>
+<p>
+ Tan, F. F. Y., Xu, P., Ram, A., Suen, W. Z., Zhao, S., Huang, Y., &amp; Hurter, C. (2024, May). Audioxtend: Assisted reality visual accompaniments for audiobook storytelling during everyday routine tasks. In Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems (pp. 1-22).
+</p>
+<p>
+ Ram, A., &amp; Zhao, S. (2021). Lsvp: Towards effective on-the-go video learning using optical head-mounted displays. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 5(1), 1-27.
+</p>
+<h1 class="c72 c64">
+</h1>
+<h1 class="c72 c64">
+</h1>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blog — Shengdong Zhao</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:         rgb(250, 249, 246);
+  --paper-2:       rgb(244, 243, 241);
+  --paper-3:       rgb(233, 232, 229);
+  --border-warm:   rgb(227, 226, 224);
+  --ink:           rgb(26, 28, 26);
+  --fg-1:          rgb(26, 28, 26);
+  --fg-2:          rgb(75, 68, 84);
+  --fg-4:          rgb(120, 113, 108);
+  --purple-700:    rgb(121, 41, 216);
+  --purple-600:    rgb(147, 74, 243);
+  --purple-200:    rgb(215, 186, 255);
+  --purple-700-05: rgba(121, 41, 216, 0.05);
+  --purple-700-20: rgba(121, 41, 216, 0.2);
+  --gold-800:      rgb(114, 91, 0);
+  --gold-700:      rgb(115, 92, 0);
+  --gold-700-05:   rgba(115, 92, 0, 0.05);
+  --gold-700-30:   rgba(115, 92, 0, 0.3);
+  --gold-500:      rgb(253, 211, 77);
+  --gold-300:      rgb(255, 224, 135);
+  --white:         rgb(255, 255, 255);
+  --font-display:  "Space Grotesk", system-ui, sans-serif;
+  --font-body:     "Manrope", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--fg-1); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 96px; width: 100%; }
+.site-nav { position: sticky; top: 0; z-index: 50; height: 80px; width: 100%; background: rgba(250,249,246,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(26,28,26,0.04); }
+.site-nav__inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.site-nav__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--ink); letter-spacing: -0.55px; text-decoration: none; }
+.site-nav__links { display: flex; gap: 36px; align-items: center; }
+.site-nav__link { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg-2); text-decoration: none; transition: color 180ms; position: relative; padding: 6px 0; }
+.site-nav__link:hover { color: var(--ink); }
+.site-nav__link--active { color: var(--purple-700); font-weight: 700; }
+.site-nav__link--active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--purple-700); border-radius: 1px; }
+.site-nav__cta { margin-left: 12px; display: flex; align-items: center; text-decoration: none; }
+.site-nav__cta img { height: 40px; width: auto; border-radius: 8px; }
+.site-footer { background: var(--paper-2); border-top: 1px solid var(--border-warm); padding: 72px 0 48px; }
+.site-footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border-warm); }
+.site-footer__brand { display: flex; flex-direction: column; gap: 16px; max-width: 320px; }
+.site-footer__wordmark { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.55px; color: var(--purple-700); }
+.site-footer__tagline { font-family: var(--font-body); font-weight: 300; font-size: 15px; line-height: 24px; color: var(--fg-2); margin: 0; }
+.site-footer__col h4 { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); margin: 0 0 16px 0; }
+.site-footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.site-footer__col a { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); text-decoration: none; transition: color 180ms; }
+.site-footer__col a:hover { color: var(--purple-700); }
+.site-footer__legal { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-family: var(--font-body); font-size: 12px; color: var(--fg-4); }
+.site-footer__legal a { color: var(--fg-4); text-decoration: none; margin-left: 24px; }
+.blog { padding: 128px 0 96px; background: var(--paper); position: relative; overflow: hidden; }
+.blog__deco { position: absolute; right: -80px; top: 40px; width: 320px; height: 320px; border-radius: 12px; background: rgba(255,224,135,0.2); pointer-events: none; }
+.blog__header { position: relative; margin-bottom: 80px; max-width: 720px; }
+.blog__title { font-family: var(--font-display); font-weight: 700; font-size: 72px; line-height: 1.02; letter-spacing: -3.2px; color: var(--ink); margin: 20px 0 24px; }
+.blog__subtitle { font-family: var(--font-body); font-weight: 300; font-size: 20px; line-height: 32px; color: var(--fg-2); margin: 0; }
+.blog__giant { position: absolute; right: 0; top: -40px; font-family: var(--font-display); font-weight: 700; font-size: 180px; line-height: 1; color: var(--gold-500); opacity: 0.12; letter-spacing: -0.05em; user-select: none; }
+.blog__layout { display: grid; grid-template-columns: 1fr 340px; gap: 80px; }
+.blog__posts { display: flex; flex-direction: column; gap: 64px; }
+.post { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding-bottom: 64px; border-bottom: 1px solid var(--border-warm); }
+.post:last-child { border-bottom: none; }
+.post__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px; background: var(--paper-2); }
+.post__content { display: flex; flex-direction: column; gap: 12px; }
+.post__meta { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); margin: 0; }
+.post__title { font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1.15; letter-spacing: -0.8px; color: var(--ink); margin: 0; text-wrap: balance; }
+.post__excerpt { font-family: var(--font-body); font-weight: 400; font-size: 16px; line-height: 26px; color: var(--fg-2); margin: 0; }
+.post__link { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--purple-700); text-decoration: none; margin-top: 8px; display: inline-flex; align-items: center; gap: 8px; }
+.sidebar { display: flex; flex-direction: column; gap: 48px; position: sticky; top: 112px; align-self: start; }
+.side-card { background: var(--white); border: 1px solid rgba(206,194,215,0.3); border-radius: 16px; padding: 28px; box-shadow: 0 20px 40px rgba(26,28,26,0.04); }
+.side-h { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-700); margin: 0 0 16px; }
+.cat-list { display: flex; flex-direction: column; gap: 2px; }
+.cat { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 10px; font-family: var(--font-body); font-size: 15px; color: var(--fg-1); text-decoration: none; transition: background 180ms; }
+.cat:hover { background: var(--paper-2); }
+.cat--active { background: var(--purple-700-05); color: var(--purple-700); font-weight: 700; }
+.cat__count { font-family: var(--font-display); font-size: 12px; color: var(--fg-4); font-weight: 700; }
+.subscribe { background: var(--ink); color: var(--paper); border-radius: 16px; padding: 28px; }
+.subscribe h4 { font-family: var(--font-display); font-weight: 700; font-size: 20px; margin: 0 0 8px; letter-spacing: -0.4px; }
+.subscribe p { font-family: var(--font-body); font-size: 14px; line-height: 22px; opacity: 0.75; margin: 0 0 16px; }
+.subscribe__input { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--paper); border-radius: 8px; padding: 12px; font-family: var(--font-body); font-size: 14px; margin-bottom: 10px; }
+.subscribe__input::placeholder { color: rgba(250,249,246,0.5); }
+.subscribe__btn { width: 100%; background: var(--purple-700); color: var(--white); border: none; border-radius: 8px; padding: 12px; font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.05em; cursor: pointer; transition: background 180ms; }
+.subscribe__btn:hover { background: var(--purple-600); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: var(--paper-2); border: 1px solid var(--border-warm); border-radius: 999px; padding: 6px 14px; font-family: var(--font-body); font-size: 12px; color: var(--fg-2); }
+.recent-list { display: flex; flex-direction: column; gap: 20px; }
+.recent-item { display: flex; flex-direction: column; gap: 4px; text-decoration: none; transition: opacity 180ms; }
+.recent-item:hover { opacity: 0.7; }
+.recent-tag { font-family: var(--font-body); font-size: 11px; font-weight: 700; color: var(--gold-700); letter-spacing: 0.1em; text-transform: uppercase; }
+.recent-heading { font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.3; }
+.teaching { background: var(--paper-2); border: 1px solid rgba(206,194,215,0.2); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
+.teaching h4 { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin: 0; color: var(--ink); }
+.teaching p { font-family: var(--font-body); font-size: 14px; color: var(--fg-2); line-height: 22px; margin: 0; }
+.teaching a { font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--purple-700); text-decoration: none; margin-top: 4px; }
+.pagination { display: flex; align-items: center; gap: 8px; padding-top: 48px; margin-top: 16px; border-top: 1px solid var(--border-warm); }
+.pagination__page { display: flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; border-radius: 10px; font-family: var(--font-display); font-weight: 700; font-size: 14px; text-decoration: none; color: var(--fg-2); background: var(--white); border: 1px solid var(--border-warm); transition: all 180ms ease; }
+.pagination__page:hover { background: var(--purple-700-05); border-color: var(--purple-700-20); color: var(--purple-700); }
+.pagination__page--active { background: var(--purple-700); border-color: var(--purple-700); color: var(--white); pointer-events: none; }
+.pagination__next { display: flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--purple-700); margin-left: auto; transition: opacity 180ms; }
+.pagination__next:hover { opacity: 0.7; }
+.pagination__prev { display: flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; color: var(--purple-700); margin-right: auto; transition: opacity 180ms; }
+.pagination__prev:hover { opacity: 0.7; }
+@media (max-width: 1024px) { .container { padding: 0 32px; } .blog__layout { grid-template-columns: 1fr; } .sidebar { position: static; } .post { grid-template-columns: 1fr; } .blog__giant { display: none; } .blog__title { font-size: 48px; letter-spacing: -2px; } .site-footer__grid { grid-template-columns: 1fr 1fr; } .site-nav__links { gap: 20px; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
+    <div class="site-nav__links">
+      <a class="site-nav__link" href="/">Home</a>
+      <a class="site-nav__link" href="/book/">Book</a>
+      <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
+      <a class="site-nav__link" href="/research/">Publications</a>
+      <a class="site-nav__link site-nav__link--active" href="/blogs/">Blog</a>
+      <a class="site-nav__link" href="/join-us/">Join Us</a>
+      <a class="site-nav__cta" href="https://www.synteraction.org/" target="_blank" rel="noopener">
+        <img src="/assets/synteraction-logo.jpeg" alt="Synteraction Lab">
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="blog">
+  <div class="blog__deco"></div>
+  <div class="container">
+    <header class="blog__header">
+      <span class="blog__giant">04</span>
+      <h1 class="blog__title">Latest News and Blogs.</h1>
+      <p class="blog__subtitle">Reflections on the intersection of human psychology, hardware design, and the future of interaction.</p>
+    </header>
+
+    <div class="blog__layout">
+      <div class="blog__posts">
+
+        
+        
+
+
+<article class="post">
+  <img class="post__img" src="/assets/blog/glassMessaging.png" alt="GlassMessaging: Towards Ubiquitous Messaging Using OHMDs">
+  <div class="post__content">
+    <p class="post__meta">Mar 29, 2024 · Activities</p>
+    <h2 class="post__title">GlassMessaging: Towards Ubiquitous Messaging Using OHMDs</h2>
+    <p class="post__excerpt">
+</p>
+    <a href="/activities/2024/03/29/glass-messaging.html" class="post__link">Read more →</a>
+  </div>
+</article>
+
+
+        
+        
+
+
+<article class="post">
+  <img class="post__img" src="/assets/blog/截圖-2024-02-21-下午10.16.07.png" alt="Heads-Up Computing Moving Beyond the Device-Centered Paradigm">
+  <div class="post__content">
+    <p class="post__meta">Mar 28, 2024 · Publications</p>
+    <h2 class="post__title">Heads-Up Computing Moving Beyond the Device-Centered Paradigm</h2>
+    <p class="post__excerpt">
+</p>
+    <a href="/publications/2024/03/28/heads-up-computing.html" class="post__link">Read more →</a>
+  </div>
+</article>
+
+
+        
+        
+
+
+<article class="post">
+  <img class="post__img" src="/assets/blog/AudioXtend-feature.png" alt="AudioXtend: Assisted Reality Visual Accompaniments forAudiobook Storytelling During Everyday Routine Tasks">
+  <div class="post__content">
+    <p class="post__meta">Mar 28, 2024 · News</p>
+    <h2 class="post__title">AudioXtend: Assisted Reality Visual Accompaniments forAudiobook Storytelling During Everyday Routine Tasks</h2>
+    <p class="post__excerpt">
+</p>
+    <a href="/2024/03/28/audioxtend.html" class="post__link">Read more →</a>
+  </div>
+</article>
+
+
+        
+        
+
+
+<article class="post">
+  <img class="post__img" src="/assets/blog/PANDALens.png" alt="PANDALens: Towards AI-Assisted In-Context Writing on OHMD During Travels">
+  <div class="post__content">
+    <p class="post__meta">Mar 26, 2024 · News</p>
+    <h2 class="post__title">PANDALens: Towards AI-Assisted In-Context Writing on OHMD During Travels</h2>
+    <p class="post__excerpt">
+</p>
+    <a href="/2024/03/26/pandalens.html" class="post__link">Read more →</a>
+  </div>
+</article>
+
+
+        
+        
+
+
+<article class="post">
+  <img class="post__img" src="/assets/blog/Heads-Up-Multitasker.png" alt="Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays">
+  <div class="post__content">
+    <p class="post__meta">Mar 25, 2024 · News</p>
+    <h2 class="post__title">Heads-Up Multitasker: Simulating Attention Switching On Optical Head-Mounted Displays</h2>
+    <p class="post__excerpt">
+</p>
+    <a href="/2024/03/25/heads-up-multitasker.html" class="post__link">Read more →</a>
+  </div>
+</article>
+
+
+        
+
+        
+        <nav class="pagination">
+          
+          <a href="/blogs/page3/" class="pagination__prev">← Prev</a>
+          
+
+          
+            
+            <a href="/blogs/" class="pagination__page">1</a>
+            
+          
+            
+            <a href="/blogs/page2/" class="pagination__page">2</a>
+            
+          
+            
+            <a href="/blogs/page3/" class="pagination__page">3</a>
+            
+          
+            
+            <span class="pagination__page pagination__page--active">4</span>
+            
+          
+            
+            <a href="/blogs/page5/" class="pagination__page">5</a>
+            
+          
+            
+            <a href="/blogs/page6/" class="pagination__page">6</a>
+            
+          
+
+          
+          <a href="/blogs/page5/" class="pagination__next">Next →</a>
+          
+        </nav>
+        
+
+      </div>
+
+      <aside class="sidebar">
+        <div class="side-card">
+          <h3 class="side-h">Categories</h3>
+          <div class="cat-list">
+            <a href="#" class="cat cat--active"><span>All Posts</span><span class="cat__count">29</span></a>
+            <a href="#" class="cat"><span>News</span><span class="cat__count"></span></a>
+            <a href="#" class="cat"><span>Publications</span><span class="cat__count">3</span></a>
+            <a href="#" class="cat"><span>Events</span><span class="cat__count"></span></a>
+            <a href="#" class="cat"><span>Lab Life</span><span class="cat__count">2</span></a>
+          </div>
+        </div>
+        <div class="subscribe">
+          <h4>Stay updated.</h4>
+          <p>A monthly letter on HCI research and academic life. No more, no less.</p>
+          <input class="subscribe__input" placeholder="you@email.com">
+          <button class="subscribe__btn">Subscribe</button>
+        </div>
+        <div class="side-card">
+          <h3 class="side-h">Recent Thoughts</h3>
+          <div class="recent-list">
+            
+            <a href="/2026/04/13/visiting-three-star-mound-sanxingdui.html" class="recent-item">
+              <span class="recent-tag">Personal Life</span>
+              <span class="recent-heading">Visiting Three Star Mound(s) — Sanxingdui</span>
+            </a>
+            
+            <a href="/2026/04/09/april-9-running-and-eating.html" class="recent-item">
+              <span class="recent-tag">Lab Life</span>
+              <span class="recent-heading">April 9 Running and Eating</span>
+            </a>
+            
+            <a href="/2026/04/08/lunch-with-tony-tang-in-cityu-s-bistro-lodge.html" class="recent-item">
+              <span class="recent-tag">Lab Life</span>
+              <span class="recent-heading">Lunch with Tony Tang in CityU's Bistro Lodge</span>
+            </a>
+            
+            <a href="/2024/12/05/professor-shengdong-zhao-honored-for-pioneering-contributions-in-hci.html" class="recent-item">
+              <span class="recent-tag"></span>
+              <span class="recent-heading">Professor Shengdong Zhao Honored for Pioneering Contributions in HCI</span>
+            </a>
+            
+          </div>
+        </div>
+        <div class="side-card">
+          <h3 class="side-h">Popular Tags</h3>
+          <div class="tags">
+            <span class="tag">Ubiquitous Computing</span>
+            <span class="tag">Haptics</span>
+            <span class="tag">User Studies</span>
+            <span class="tag">Hardware Design</span>
+            <span class="tag">AI Ethics</span>
+            <span class="tag">OHMD</span>
+          </div>
+        </div>
+        <div class="teaching">
+          <h4>Teaching Resources</h4>
+          <p>Access lecture notes and workshop materials for CS4249 & CS5240.</p>
+          <a href="#">Browse Repository →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="site-footer__wordmark">Synteraction Lab</span>
+        <p class="site-footer__tagline">An HCI research group exploring heads-up computing and the perceptual field — led by Prof. Shengdong Zhao at City University of Hong Kong.</p>
+      </div>
+      <div class="site-footer__col">
+        <h4>Research</h4>
+        <ul>
+          <li><a href="/heads-up-computing">Heads-Up Computing</a></li>
+          <li><a href="/publications">Publications</a></li>
+          <li><a href="/book">The Book</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Lab</h4>
+        <ul>
+          <li><a href="/">About Prof. Zhao</a></li>
+          <li><a href="/join-us">Join Us</a></li>
+          <li><a href="/cv">Full CV</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <h4>Keep in touch</h4>
+        <ul>
+          <li><a href="/blog">Blog &amp; News</a></li>
+          <li><a href="mailto:contact@synteraction.org">contact@synteraction.org</a></li>
+          <li><a href="#">Google Scholar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <span>&copy; 2026 Synteraction Lab &middot; City University of Hong Kong</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
