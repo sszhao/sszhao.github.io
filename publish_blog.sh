@@ -5,8 +5,16 @@ set -euo pipefail
 # Converts raw Obsidian posts → polished Jekyll blog posts via Claude CLI
 #
 # Usage:
-#   ./publish_blog.sh "Post Title"
-#   ./publish_blog.sh                  # lists available raw posts to choose
+#   ./publish_blog.sh "Post Title"           # create post + preview locally
+#   ./publish_blog.sh --publish "Post Title" # create post + publish directly
+#   ./publish_blog.sh                        # lists available raw posts to choose
+
+# Parse --publish flag
+PUBLISH=false
+if [[ "${1:-}" == "--publish" ]]; then
+  PUBLISH=true
+  shift
+fi
 
 VAULT="/Users/zhaoshengdong/Documents/GitHub/ShenMacPro_Obsidian"
 RAW_DIR="$VAULT/Social Media/Blog Posts/raw"
@@ -179,7 +187,21 @@ echo "  Slug:     $SLUG"
 echo "  Post:     _posts/$POST_FILENAME"
 echo "  Images:   $HERO_IMAGE"
 echo "  URL:      $POST_URL"
-echo ""
-echo "Next steps:"
-echo "  1. Preview: bundle exec jekyll serve"
-echo "  2. Publish: git add _posts/$POST_FILENAME && git commit -m 'Add blog: $POST_TITLE' && git push origin master"
+
+# ── Preview or Publish ──
+if [ "$PUBLISH" = true ]; then
+  echo ""
+  echo -e "${CYAN}Publishing directly...${NC}"
+  git add "_posts/$POST_FILENAME"
+  git add assets/blog/ 2>/dev/null || true
+  git commit -m "Add blog: $POST_TITLE"
+  git push origin master
+  echo -e "${GREEN}Published!${NC} Check https://www.shengdongzhao.com$POST_URL"
+else
+  echo ""
+  echo -e "${CYAN}Starting local preview...${NC}"
+  echo "  Open http://localhost:4000/blogs/"
+  echo "  When ready, run: ./push.sh"
+  echo ""
+  bundle exec jekyll serve
+fi
