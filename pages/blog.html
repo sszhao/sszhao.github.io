@@ -126,6 +126,28 @@ a { color: inherit; }
   width: auto;
   border-radius: 8px;
 }
+.site-nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.site-nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: all 250ms ease;
+}
+.site-nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.site-nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ─── Footer ───────────────────────────────────────────────────── */
 .site-footer {
@@ -272,6 +294,20 @@ a { color: inherit; }
   .site-footer__grid { grid-template-columns: 1fr 1fr; }
   .site-nav__links { gap: 20px; }
 }
+@media (max-width: 768px) {
+  .site-nav__toggle { display: flex; }
+  .site-nav__inner { flex-wrap: wrap; height: auto; min-height: 80px; padding: 0 24px; }
+  .site-nav__links {
+    display: flex; flex-direction: column; gap: 0;
+    width: 100%; max-height: 0; overflow: hidden;
+    transition: max-height 350ms ease, padding 350ms ease;
+    order: 3;
+  }
+  .site-nav__links.is-open { max-height: 500px; padding: 16px 0 24px; }
+  .site-nav__link { padding: 12px 0; font-size: 17px; width: 100%; border-bottom: 1px solid rgba(26,28,26,0.06); }
+  .site-nav__link:last-of-type { border-bottom: none; }
+  .site-nav__cta { margin-left: 0; margin-top: 8px; }
+}
 </style>
 </head>
 <body>
@@ -280,7 +316,10 @@ a { color: inherit; }
 <nav class="site-nav">
   <div class="site-nav__inner">
     <a class="site-nav__wordmark" href="/">Shengdong Zhao</a>
-    <div class="site-nav__links">
+    <button class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="site-nav__links" id="site-nav-menu">
       <a class="site-nav__link" href="/">Home</a>
       <a class="site-nav__link" href="/book/">Book</a>
       <a class="site-nav__link" href="/heads-up-computing/">Heads-Up</a>
@@ -422,6 +461,35 @@ a { color: inherit; }
     </div>
   </div>
 </footer>
+
+<script>
+/* Mobile nav toggle */
+(function() {
+  var toggle = document.querySelector('.site-nav__toggle');
+  var menu = document.querySelector('.site-nav__links');
+  if (!toggle || !menu) return;
+  toggle.addEventListener('click', function() {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    menu.classList.toggle('is-open');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('is-open');
+      toggle.focus();
+    }
+  });
+  menu.querySelectorAll('.site-nav__link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('is-open');
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
